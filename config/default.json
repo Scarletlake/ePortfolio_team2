@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://itprojteam2:itprojteam2@cluster0.pukn5.mongodb.net/E-Portfolio?retryWrites=true&w=majority",
+    "jwtSecret": "secret"
+}
