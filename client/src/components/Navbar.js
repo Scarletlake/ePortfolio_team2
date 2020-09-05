@@ -9,8 +9,7 @@ const Navbar = () => {
   const authLinks = (
     <ul>  
       <li>
-          <span className='hide-sm'>Logout</span>
-      
+          <span className='hide-sm'>Logout</span>      
       </li>    
       <li>
         <Link to='/user/home'>

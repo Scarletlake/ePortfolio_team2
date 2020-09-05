@@ -13,8 +13,8 @@ const PrivateRoute = ({
       ) : (
         <Redirect to="/user/signin" />
       )
-    }
-  />
+      }
+    />
   );
 }
   

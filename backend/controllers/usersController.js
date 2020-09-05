@@ -112,17 +112,40 @@ const userSignIn = async (req, res) => {
 // Get user by token
 const getUser = async (req, res) => {
     try {
-      const user = await User.findById(req.user.id).select('-password');
-      res.json(user);
+      const user = await User.findById(req.user.id).select('-password -__v -_id');
+
+      if (!user) {
+        return res.status(500).json({
+          message: "User Not Found",
+        });
+      }else {
+        res.json(user);
+      }
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
     }
 }
 
+
+// Delete user by email
+const deleteUser = async (req, res) => {
+    
+    try {
+      await User.remove({email: req.body.email });
+      res.status(200)
+        .json({message: "user deleted"});
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+}
+
+
 module.exports = {
     userSignUp,   
     userSignIn,
-    getUser
+    getUser,
+    deleteUser
 };  
 

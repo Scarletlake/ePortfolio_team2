@@ -41,4 +41,9 @@ router.post(
 router.get('/', auth, usersController.getUser);
 
 
+// @route    GET api/user/delete
+// @desc     Get user by token
+// @access   Public
+router.delete('/delete', usersController.deleteUser);
+
 module.exports = router;
