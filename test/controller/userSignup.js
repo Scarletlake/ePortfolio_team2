@@ -14,6 +14,13 @@ describe('User Register', function() {
                             .send(newUser);
         expect(res.statusCode).to.equal(200);
 
+        const remove = await supertest(app)
+                            .delete('/api/user/delete')
+                            .send(newUser);
+        expect(remove.statusCode).to.equal(200);
+        expect(remove.text).to.be.equal('{"message":"user deleted"}');
+
+
       });
 
       it('Duplicate registration detection', async function() {
@@ -30,6 +37,12 @@ describe('User Register', function() {
                     .send(newUser);
         expect(res.statusCode).to.equal(400);
         expect(res.text).to.be.equal('{"errors":[{"msg":"User already exists"}]}');   
+
+        const remove = await supertest(app)
+                            .delete('/api/user/delete')
+                            .send(newUser);
+        expect(remove.statusCode).to.equal(200);
+        expect(remove.text).to.be.equal('{"message":"user deleted"}');
                 
       });
     });
