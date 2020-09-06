@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer"
 import PrivateRoute from "./components/PrivateRoute"
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
@@ -20,6 +21,7 @@ const App = () => {
             <PrivateRoute exact path="/user/home" component={HomePage} />
             <Route component={NotFoundPage} />
           </Switch>
+          <Footer />
         </Fragment>
       </Router>
   );
