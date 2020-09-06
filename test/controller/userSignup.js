@@ -6,7 +6,7 @@ const app = require('../../server');
 describe('User Register', function() {
     describe('Check if we can sign up:', function() {
       // eslint-disable-next-line max-len
-      it('Registration test', async function() {
+      it('Normal Registration test', async function() {
         let newUser = {"email":"simplesignup@gmail.com",
                        "password":"Example"};
         const res = await supertest(app)
@@ -45,6 +45,29 @@ describe('User Register', function() {
         expect(remove.text).to.be.equal('{"message":"user deleted"}');
                 
       });
+
+      it('Invalid Email Registration test', async function() {
+        let newUser = {"email":"invalidemail",
+                       "password":"Example"};
+        const res = await supertest(app)
+                            .post('/api/user/signup')
+                            .send(newUser);
+        expect(res.statusCode).to.equal(400);
+        expect(res.text).to.be.equal('{"errors":[{"value":"invalidemail","msg":"Please include a valid email","param":"email","location":"body"}]}');  
+
+      });
+
+      it('Incompatible password test', async function() {
+        let newUser = {"email":"compatible@gmail.com",
+                       "password":"12345"};
+        const res = await supertest(app)
+                            .post('/api/user/signup')
+                            .send(newUser);
+        expect(res.statusCode).to.equal(400);
+        expect(res.text).to.be.equal('{"errors":[{"value":"12345","msg":"Please enter a password with 6 or more characters","param":"password","location":"body"}]}');  
+
+      });
+      
     });
   });
   
