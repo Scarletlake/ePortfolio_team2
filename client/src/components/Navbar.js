@@ -29,9 +29,6 @@ const Navbar = () => {
       <li>
         <Link to='/user/signup'>SignUp</Link>
       </li>
-      <li>
-        <Link to='/user/home'>Home</Link>
-      </li>
     </ul>
   );
 
