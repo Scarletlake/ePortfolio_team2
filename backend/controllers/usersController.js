@@ -140,7 +140,7 @@ const getUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     
     try {
-      await User.remove({email: req.body.email });
+      await User.deleteOne({email: req.body.email });
       res.status(200)
         .json({message: "user deleted"});
     } catch (err) {
