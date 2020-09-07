@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import isAuthenticated from "../utils/checkAuthToken";
 
 const PrivateRoute = ({
   component: Component
 }) => {
-  const isAuthenticated = localStorage.getItem('token');
 
   return (
     <Route
-    render={props => isAuthenticated ? (
+    render={props => isAuthenticated('Authorization') ? (
         <Component {...props} />
       ) : (
         <Redirect to="/user/signin" />

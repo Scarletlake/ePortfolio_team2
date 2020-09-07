@@ -50,7 +50,8 @@ const userSignUp = async (req, res) => {
         { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          //res.json({ token });
+          res.cookie("Authorization", token, { maxAge: 3600000 });
         }
       );
     } catch (err) {
@@ -99,7 +100,8 @@ const userSignIn = async (req, res) => {
         { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          //res.json({ token });
+          res.cookie("Authorization", token, { maxAge: 3600000 });
         }
       );
     } catch (err) {

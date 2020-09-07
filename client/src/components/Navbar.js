@@ -1,15 +1,17 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-//import {userLogOut} from '../api/userAPI';
+import isAuthenticated from "../utils/checkAuthToken";
+import {userLogOut} from '../api/userAPI';
 
 const Navbar = () => {
-  const isAuthenticated = localStorage.getItem('token');
 
   // if user has logged in
   const authLinks = (
     <ul>  
       <li>
-          <span className='hide-sm'>Logout</span>      
+        <a onClick={userLogOut} href='#!'>
+          <span className='hide-sm'>Logout</span>     
+        </a> 
       </li>    
       <li>
         <Link to='/user/home'>
@@ -40,7 +42,7 @@ const Navbar = () => {
           ePortfolio
         </Link>
       </h1>
-        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+        <Fragment>{isAuthenticated('Authorization') ? authLinks : guestLinks}</Fragment>
     </nav>
   );
 };
