@@ -5,7 +5,7 @@ const app = require('../../server');
 
 describe('User Login', function() {
     describe('Check if we can sign in:', function() {
-      // eslint-disable-next-line max-len
+      
       it('Normal Sign in', async function() {
         let newUser = {"email":"simplesignin@gmail.com",
                        "password":"Example"};

@@ -14,6 +14,15 @@ describe('User Register', function() {
                             .send(newUser);
         expect(res.statusCode).to.equal(200);
 
+<<<<<<< Updated upstream
+=======
+        const remove = await supertest(app)
+                            .delete('/api/user/delete')
+                            .send(newUser);
+        expect(remove.statusCode).to.equal(200);
+        expect(remove.text).to.be.equal('{"message":"user deleted"}');
+
+>>>>>>> Stashed changes
       });
 
       it('Duplicate registration detection', async function() {

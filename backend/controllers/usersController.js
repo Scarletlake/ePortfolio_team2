@@ -51,6 +51,10 @@ const userSignUp = async (req, res) => {
         (err, token) => {
           if (err) throw err;
           res.json({ token });
+<<<<<<< Updated upstream
+=======
+          res.cookie("Authorization", token, { maxAge: 3600000 });
+>>>>>>> Stashed changes
         }
       );
     } catch (err) {
@@ -100,6 +104,10 @@ const userSignIn = async (req, res) => {
         (err, token) => {
           if (err) throw err;
           res.json({ token });
+<<<<<<< Updated upstream
+=======
+          res.cookie("Authorization", token, { maxAge: 3600000 });
+>>>>>>> Stashed changes
         }
       );
     } catch (err) {
