@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 const supertest = require('supertest'); 
 const app = require('../../../server'); 
 
-describe('User Login', function() {
+describe('User Login Integration test:', function() {
     describe('Check if we can sign in:', function() {
       // eslint-disable-next-line max-len
       it('Normal Sign in', function(done) {

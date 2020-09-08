@@ -3,7 +3,7 @@ const supertest = require('supertest');
 const app = require('../../../server'); 
 
 
-describe('User Register', function() {
+describe('User Register Integration test:', function() {
     describe('Check if we can sign up:', function() {
       // eslint-disable-next-line max-len
       it('Normal Registration test', function(done) {
@@ -84,7 +84,7 @@ describe('User Register', function() {
             expect(res.statusCode).to.equal(400);
             expect(res.text).to.be.equal('{"errors":[{"value":"12345","msg":"Please enter a password with 6 or more characters","param":"password","location":"body"}]}');     
           });
-        
+
           done();
         
       });
