@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 const supertest = require('supertest'); 
-const app = require('../../../server'); 
+const app = require('../../server'); 
 
 
 describe('User Register Integration test:', function() {
