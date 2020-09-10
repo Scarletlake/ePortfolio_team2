@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
   linkstyle: {
     margin: 'auto',
-  }, 
+  },
 
   inneralign: {
     width: '90%',
@@ -111,7 +111,7 @@ export default function SignUpPage() {
               name="re_password"
               autoComplete="password"
               autoFocus />
-          
+
 
             <br />
             <br />
@@ -145,11 +145,11 @@ export default function SignUpPage() {
             </Grid>
            </Grid>
 
-           <br /> 
+           <br />
           <br />
 
 
-          
+
           </div>
         </form>
       </div>

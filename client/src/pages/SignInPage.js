@@ -1,3 +1,4 @@
+
 import React, { Fragment } from 'react';
 import userSignin from "../api/userAPI";
 import validateEmail from "../utils/validateEmail";
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
   linkstyle: {
     margin: 'auto',
-  }, 
+  },
 
   inneralign: {
     width: '90%',
@@ -97,7 +98,7 @@ export default function SignInPage() {
               name="password"
               autoComplete="password"
               autoFocus />
-          
+
 
             <br />
             <br />
@@ -131,11 +132,11 @@ export default function SignInPage() {
             </Grid>
            </Grid>
 
-           <br /> 
+           <br />
           <br />
 
 
-            
+
 
           </div>
         </form>
@@ -143,8 +144,7 @@ export default function SignInPage() {
       <br />
     </Container>
 
-   
+
 
   );
 };
-
