@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function SignIn() {
+export default function SignUp() {
 
   const classes = useStyles();
 
@@ -96,6 +96,20 @@ export default function SignIn() {
               name="password"
               autoComplete="password"
               autoFocus />
+
+            <Typography component="h2" variant="h6" >
+              Confirm your password:
+            </Typography>
+            <TextField
+              required
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              id="re_password"
+              label="password"
+              name="re_password"
+              autoComplete="password"
+              autoFocus />
           
 
             <br />
@@ -107,14 +121,14 @@ export default function SignIn() {
                 variant="contained"
                 className={classes.submit}
               >
-                Sign In
+                Create Account
               </Button>
             </div>
             <br />
 
 
             <Typography align="center">
-              New to ePortfolio?
+              Already have an account?
             </Typography>
 
             <Grid
@@ -123,9 +137,9 @@ export default function SignIn() {
               alignItems="center"
               justify="center"
             >
-              <Grid item xs={5} >
+              <Grid item xs={4.5} >
                 <Link href="#" variant='body1'>
-                Click here to create an account
+                Click here to sign in
               </Link>
             </Grid>
            </Grid>
@@ -146,4 +160,3 @@ export default function SignIn() {
 
   );
 };
-
