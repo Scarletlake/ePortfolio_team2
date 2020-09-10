@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import userLogIn from "../api/userAPI";
+import userSignin from "../api/userAPI";
+import validateEmail from "../utils/validateEmail";
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function SignUp() {
+export default function SignInPage() {
 
   const classes = useStyles();
 
@@ -96,20 +97,6 @@ export default function SignUp() {
               name="password"
               autoComplete="password"
               autoFocus />
-
-            <Typography component="h2" variant="h6" >
-              Confirm your password:
-            </Typography>
-            <TextField
-              required
-              fullWidth
-              margin="normal"
-              variant="outlined"
-              id="re_password"
-              label="password"
-              name="re_password"
-              autoComplete="password"
-              autoFocus />
           
 
             <br />
@@ -121,14 +108,14 @@ export default function SignUp() {
                 variant="contained"
                 className={classes.submit}
               >
-                Create Account
+                Sign In
               </Button>
             </div>
             <br />
 
 
             <Typography align="center">
-              Already have an account?
+              New to ePortfolio?
             </Typography>
 
             <Grid
@@ -137,9 +124,9 @@ export default function SignUp() {
               alignItems="center"
               justify="center"
             >
-              <Grid item xs={4.5} >
+              <Grid item xs={5} >
                 <Link href="#" variant='body1'>
-                Click here to sign in
+                Click here to create an account
               </Link>
             </Grid>
            </Grid>
@@ -160,3 +147,4 @@ export default function SignUp() {
 
   );
 };
+
