@@ -15,7 +15,6 @@ describe('User Register Integration test:', function() {
           .end(function(err, res) {
             expect(res.statusCode).to.equal(200);
           });
-
         supertest(app)
           .delete('/api/user/delete')
           .send(newUser)
@@ -59,7 +58,7 @@ describe('User Register Integration test:', function() {
                 
       });
 
-      it('Invalid Email Registration test', function(done) {
+      it('Invalid Email Registration test (Without suffix)', function(done) {
         let newUser = {"email":"invalidemail",
                        "password":"Example"};
         supertest(app)
@@ -74,7 +73,68 @@ describe('User Register Integration test:', function() {
           
       });
 
-      it('Incompatible password test', function(done) {
+      it('Invalid Email Registration test (Invalid username)', function(done) {
+        let newUser = {"email":"compa&tible@gmail.com",
+                       "password":"Example"};
+        supertest(app)
+          .post('/api/user/signup')
+          .send(newUser)
+          .end(function(err, res) {
+            expect(res.statusCode).to.equal(400);
+            expect(res.text).to.be.equal('{"errors":[{"value":"compa&tible@gmail.com","msg":"Please include a valid email","param":"email","location":"body"}]}');   
+          });
+
+          done();
+        
+      });
+
+      it('Invalid Email Registration test (Double @)', function(done) {
+        let newUser = {"email":"invalidemail@@gmail.com",
+                       "password":"Example"};
+        supertest(app)
+          .post('/api/user/signup')
+          .send(newUser)
+          .end(function(err, res) {
+            expect(res.statusCode).to.equal(400);
+            expect(res.text).to.be.equal('{"errors":[{"value":"invalidemail@@gmail.com","msg":"Please include a valid email","param":"email","location":"body"}]}');   
+          });
+        
+          done();
+          
+      });
+
+
+      it('Invalid Email Registration test (Start with dot)', function(done) {
+        let newUser = {"email":".invalidemail@gmail.com",
+                       "password":"Example"};
+        supertest(app)
+          .post('/api/user/signup')
+          .send(newUser)
+          .end(function(err, res) {
+            expect(res.statusCode).to.equal(400);
+            expect(res.text).to.be.equal('{"errors":[{"value":".invalidemail@gmail.com","msg":"Please include a valid email","param":"email","location":"body"}]}');   
+          });
+        
+          done();
+          
+      });
+
+      it('Invalid Email Registration test (Finish with dot)', function(done) {
+        let newUser = {"email":"invalidemail.@gmail.com",
+                       "password":"Example"};
+        supertest(app)
+          .post('/api/user/signup')
+          .send(newUser)
+          .end(function(err, res) {
+            expect(res.statusCode).to.equal(400);
+            expect(res.text).to.be.equal('{"errors":[{"value":"invalidemail.@gmail.com","msg":"Please include a valid email","param":"email","location":"body"}]}');   
+          });
+        
+          done();
+          
+      });
+
+      it('Incompatible password test (Below 6 digits)', function(done) {
         let newUser = {"email":"compatible@gmail.com",
                        "password":"12345"};
         supertest(app)
@@ -82,13 +142,27 @@ describe('User Register Integration test:', function() {
           .send(newUser)
           .end(function(err, res) {
             expect(res.statusCode).to.equal(400);
-            expect(res.text).to.be.equal('{"errors":[{"value":"12345","msg":"Please enter a password with 6 or more characters","param":"password","location":"body"}]}');     
+            expect(res.text).to.be.equal('{"errors":[{"value":"12345","msg":"Please enter a password between 6 to 16 characters","param":"password","location":"body"}]}');     
           });
 
           done();
         
       });
-      
+
+      it('Incompatible password test (Above 16 digits)', function(done) {
+        let newUser = {"email":"compatible@gmail.com",
+                       "password":"12345678910111213"};
+        supertest(app)
+          .post('/api/user/signup')
+          .send(newUser)
+          .end(function(err, res) {
+            expect(res.statusCode).to.equal(400);
+            expect(res.text).to.be.equal('{"errors":[{"value":"12345678910111213","msg":"Please enter a password between 6 to 16 characters","param":"password","location":"body"}]}');     
+          });
+
+          done();
+        
+      });
     });
   });
   
