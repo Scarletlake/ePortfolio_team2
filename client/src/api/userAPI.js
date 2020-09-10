@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import getCookie from "../utils/checkAuthToken"
 
 const BASE_URL = "http://localhost:5000/api";
 
