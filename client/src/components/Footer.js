@@ -5,8 +5,8 @@ export default function Footer() {
         <div>
             <footer style={{
                 padding: "10px 0",
-                backgroundColor: "lightgray",
-                color: "#0072b1",
+                backgroundColor: "#757de8",
+                color: "#f0f0f0",
                 textAlign: "center",
                 fontSize: "14px",
                 width: "100%"}}>
