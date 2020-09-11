@@ -82,7 +82,7 @@ export default function SignUpPage() {
         </Typography>
         <br />
 
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={userSignUp}>
           <br />
           <div className={classes.inneralign}>
             <Typography component="h2" variant="h6" >
