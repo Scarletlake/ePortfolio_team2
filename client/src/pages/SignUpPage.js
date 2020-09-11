@@ -1,6 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import userSignUp from "../api/userAPI";
 import validateEmail from "../utils/validateEmail";
+
+import { useHistory } from "react-router-dom";
+//import { HelpBlock, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -54,6 +57,18 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUpPage() {
 
   const classes = useStyles();
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  function validateForm() {
+    const res = 
+      validateEmail(email) &&
+      password > 0 &&
+      password == confirmPassword
+    return res;
+  }
 
   return (
 
@@ -75,13 +90,13 @@ export default function SignUpPage() {
             </Typography>
             <TextField
               required
-              margin="normal"
               fullWidth
-              variant="outlined"
+              margin = 'normal'
+              variant = 'outlined'
               id="email"
               label="Email Address"
-              name="email"
               autoComplete="email"
+              onChange={e => setEmail(e.target.value)}
             />
 
             <Typography component="h2" variant="h6" >
@@ -90,12 +105,13 @@ export default function SignUpPage() {
             <TextField
               required
               fullWidth
+              type="password"
               margin="normal"
               variant="outlined"
               id="password"
               label="password"
-              name="password"
               autoComplete="password"
+              onChange={e => setPassword(e.target.value)}
               autoFocus />
 
             <Typography component="h2" variant="h6" >
@@ -104,12 +120,12 @@ export default function SignUpPage() {
             <TextField
               required
               fullWidth
+              type="password"
               margin="normal"
               variant="outlined"
               id="re_password"
-              label="password"
-              name="re_password"
-              autoComplete="password"
+              label="confirm password"
+              onChange={e => setConfirmPassword(e.target.value)}
               autoFocus />
 
 
@@ -121,6 +137,7 @@ export default function SignUpPage() {
                 type="submit"
                 variant="contained"
                 className={classes.submit}
+                disabled={!validateForm()}
               >
                 Create Account
               </Button>
@@ -139,7 +156,7 @@ export default function SignUpPage() {
               justify="center"
             >
               <Grid item xs={4.5} >
-                <Link href="#" variant='body1'>
+                <Link href="/user/signin" variant='body1'>
                 Click here to sign in
               </Link>
             </Grid>
