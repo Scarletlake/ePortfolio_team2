@@ -38,7 +38,7 @@ router.post(
 // @route    GET api/user
 // @desc     Get user by token
 // @access   Private
-router.get('/', auth, usersController.getUser);
+router.get('/profile', auth, usersController.getUser);
 
 
 // @route    GET api/user/delete
