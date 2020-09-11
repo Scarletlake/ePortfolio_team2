@@ -1,5 +1,7 @@
 
-import React, { Fragment } from 'react';
+
+import React, { Fragment, useState } from 'react';
+
 import userSignin from "../api/userAPI";
 import validateEmail from "../utils/validateEmail";
 
@@ -47,7 +49,9 @@ const useStyles = makeStyles((theme) => ({
     width: '90%',
     alignItems: 'center',
     margin: 'auto'
-  }
+  },
+
+  
 }));
 
 
@@ -55,6 +59,12 @@ const useStyles = makeStyles((theme) => ({
 export default function SignInPage() {
 
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function validateForm() {
+    return validateEmail(email) && password.length > 0;
+  }
 
   return (
 
@@ -68,7 +78,7 @@ export default function SignInPage() {
         </Typography>
         <br />
 
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={userSignin}>
           <br />
           <div className={classes.inneralign}>
             <Typography component="h2" variant="h6" >
@@ -76,13 +86,13 @@ export default function SignInPage() {
             </Typography>
             <TextField
               required
-              margin="normal"
               fullWidth
-              variant="outlined"
+              margin = 'normal'
+              variant = 'outlined'
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
+              onChange={e => setEmail(e.target.value)}
             />
 
             <Typography component="h2" variant="h6" >
@@ -91,12 +101,11 @@ export default function SignInPage() {
             <TextField
               required
               fullWidth
-              margin="normal"
-              variant="outlined"
+              margin = 'normal'
+              variant = 'outlined'
               id="password"
               label="password"
-              name="password"
-              autoComplete="password"
+              onChange={e => setPassword(e.target.value)}
               autoFocus />
 
 
@@ -108,6 +117,7 @@ export default function SignInPage() {
                 type="submit"
                 variant="contained"
                 className={classes.submit}
+                disabled={!validateForm()}
               >
                 Sign In
               </Button>
@@ -126,7 +136,7 @@ export default function SignInPage() {
               justify="center"
             >
               <Grid item xs={5} >
-                <Link href="#" variant='body1'>
+                <Link href="/user/signup" variant='body1'>
                 Click here to create an account
               </Link>
             </Grid>

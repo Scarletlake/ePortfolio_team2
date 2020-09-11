@@ -16,10 +16,13 @@ const UserSchema = new mongoose.Schema({
   },
   phone:{
     type: String,
+    default: '',
     //required: true
   },
   gender: {
     type: String,
+    enum : ['male','female', 'other'],    
+    default: 'other',
     //required: true
   },
   password: {
@@ -27,7 +30,14 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   avatar: {
-    type: String
+    type: String,
+    default: '',
+  },
+  portfolio: {
+    type: [{
+      portfolioID: mongoose.Schema.Types.ObjectId,
+    }],
+    default: []
   }
 });
 

@@ -1,3 +1,26 @@
+// import React, { Fragment, Component } from 'react'
+// import { Link } from 'react-router-dom';
+
+// class LandingPage extends Component {
+//   render() {
+//     return (
+//       <Fragment>
+//       <h1 className="landing-title">
+//       ePortfolio
+//       </h1>
+
+//       <img></img>
+
+//       <Link to='/' className="btn" >See Examples</Link>
+//       <br />
+//       <Link to='/user/signup' className="btn" >Start Now</Link>
+//     </Fragment>
+//     )
+//   }
+// }
+
+// export default LandingPage
+
 import React, { Component } from 'react'
 // import { Link } from 'react-router-dom';
 
@@ -53,7 +76,7 @@ export default function LandingPage() {
 
             <div className={classes.landing_btn}>
               <Button className={classes.btn} color="primary" variant="outlined" href="#">
-                Sign In
+                See Examples
               </Button>
             </div>
 

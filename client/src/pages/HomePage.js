@@ -1,8 +1,16 @@
 import React, { Component, Fragment } from 'react'
-import HomePortfolios from '../components/HomePortfolios'
+import HomePortfolioList from '../components/PortfolioList'
+import Profile from '../components/Profile'
 
 class HomePage extends Component {
+  
   state = {
+    first_name: "FirstName",
+    last_name: "LastName", 
+    email: "example@gmail.com", 
+    phone: "1234567",
+    gender: "female", 
+    avatar: "",
     portfolios: [
       {
         id: 1,
@@ -27,16 +35,17 @@ class HomePage extends Component {
     ]
   }
 
-  delPortfolio = id => {
-    console.log(this.state)
-    this.setState({ portfolios: [...this.state.portfolios.filter(portfolio => portfolio.id !== id)] })
-  };
-
   render() {
     return (
       <Fragment>
-        <h2>Your Portfolio</h2>
-        <HomePortfolios portfolios={this.state.portfolios} delPortfolio={this.delPortfolio} />
+        <Profile first_name ={this.state.first_name} 
+                last_name={this.state.last_name} 
+                email={this.state.email} 
+                phone={this.state.phone} 
+                gender={this.state.gender} 
+                avatar={this.state.avatar}/>
+        
+        <HomePortfolioList portfolios={this.state.portfolios} />
       </Fragment>
     )
   }
