@@ -1,5 +1,12 @@
 # ePortfolio
 
+### Install material-ui
+
+```bash
+cd client
+npm install @material-ui/core
+```
+
 ### Install server dependencies
 
 ```bash
@@ -25,5 +32,3 @@ npm run dev
 cd client
 npm run build
 ```
-
-
