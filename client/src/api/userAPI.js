@@ -42,6 +42,21 @@ export function userSignUp(user){
     return res;
 }
 
+
+export async function getUserProfile() {
+      const endpoint = `/users/profile`;
+    
+      const res = await fetch(endpoint, {
+        method: "GET",
+        headers: {
+          "credentials": 'include',
+          "Accept": 'application/json'
+        }
+      });
+      
+      return res.json();
+}
+
 // logout by clearing cookie
 export function userLogOut() {      
     var d = new Date();
