@@ -27,10 +27,6 @@ router.post(
 // @access   Public
 router.post(
   '/signin',
-  [
-    check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password is required').exists()
-  ],
   usersController.userSignIn
 );
 
