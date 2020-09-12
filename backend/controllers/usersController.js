@@ -61,7 +61,7 @@ const userSignUp = async (req, res) => {
 
 
 // Sign in
-const userSignIn = (req, res) => {
+const userSignIn = async (req, res) => {
     
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -71,7 +71,7 @@ const userSignIn = (req, res) => {
     const { email, password } = req.body;
     
     try {
-      let user = User.findOne({ email: email });
+      let user = await User.findOne({ email: email });
       
 
       if (!user) {
@@ -81,7 +81,7 @@ const userSignIn = (req, res) => {
       }
       
 
-      const isMatch = bcrypt.compare(password, user.password);
+      const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res

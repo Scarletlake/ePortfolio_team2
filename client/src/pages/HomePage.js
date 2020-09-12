@@ -36,6 +36,14 @@ export default function HomePage (){
     ]
   }
 
+  const user =  getUserProfile();
+  const {  first_name, last_name, email,
+  phone,
+  gender,
+  avatar,
+  portfolios  } = user;
+
+  
     return (
       <Fragment>
         <Profile first_name ={state.first_name} 
@@ -48,4 +56,17 @@ export default function HomePage (){
         <HomePortfolioList portfolios={state.portfolios} />
       </Fragment>
     )
+
+    /*return (
+      <Fragment>
+        <Profile first_name ={first_name} 
+                last_name={last_name} 
+                email={email} 
+                phone={phone} 
+                gender={gender} 
+                avatar={avatar}/>
+        
+        <HomePortfolioList portfolios={portfolios} />
+      </Fragment>
+    )*/
 }

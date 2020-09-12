@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 export default function HomePortfolioList (props) {
     const {portfolios} = props;
     const [portfolio_list, setPortfolioList] = useState(portfolios);
-
+    
     const classes = useStyles();
 
     function deletePortfolio(id){
@@ -95,13 +95,14 @@ export default function HomePortfolioList (props) {
         ) 
     }
 
+
     return (
         <div className={classes.portfolio_list_root}>
             <Typography gutterBottom variant="h4">
                 Your Portfolio
             </Typography>
 
-            {portfolio_list.length === 0 ?
+            {!portfolio_list || portfolio_list.length === 0 ?
                 (<Typography gutterBottom variant="h6">
                     no published portfolio
                 </Typography>):
@@ -113,7 +114,8 @@ export default function HomePortfolioList (props) {
                     <Grid item key={portfolio}>
                         <HomePortfolio portfolio={portfolio}/>
                     </Grid>
-                ))} 
+                ))
+                } 
               </Grid>)        
             }          
         </div>
