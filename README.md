@@ -70,9 +70,9 @@ npm run build
 npm install -D mocha chai supertest sinon
 ```
 
-### Run integration tests
+### Run the integration tests
 
-Before running unit test
+Before running the integration tests
 - Install Mocha
 
 ```bash
@@ -85,9 +85,9 @@ npm test
 pip install -U selenium
 ```
 
-### Run unit tests
+### Run the unit tests
 
-Before running unit test
+Before running the unit tests
 - Install Python
 - Install Selenium
 - Install ChromeDriver that matches the version of your Chrome
