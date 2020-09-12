@@ -7,29 +7,41 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles=makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  title: {
+  logoButton: {
+    marginRight: theme.spacing(2),
     flexGrow: 1,
   },
+  userButton: {
+    flexGrow: 1,
+    float:"right",
+  }
 }));
 
 const GuestNavBar =()=>{
   const classes = useStyles;
   return (
-      <div className={classes.root}>
+      <div>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-              <Link href='/' color="inherit">
-                ePortfolio
-              </Link>
-            </Typography>
-            <Button color="inherit"  href="/user/signin">SignIn</Button>
-            <Button color="inherit"  href="/user/signup">SignUp</Button>
+            <Button href='/' color="inherit" className={classes.logoButton}>
+                <Typography variant="h6">
+                  ePortfolio
+                </Typography>
+            </Button>
+
+            <Grid container direction="row" justify = "flex-end" alignItems="center">
+            <ButtonGroup variant="text" color = "inherit" aria-label="text primary button group" className={classes.userButton}>
+              <Button href="/user/signin">SignIn</Button>
+              <Button href="/user/signup">SignUp</Button>
+            </ButtonGroup>
+            </Grid>
           </Toolbar>
         </AppBar>
       </div>
@@ -40,16 +52,20 @@ const AuthNavBar =()=> {
 
   const classes = useStyles;
   return(
-      <div className={classes.root}>
+      <div>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              <Link href='/user/home' color="inherit">
+              <Button href='/user/home' color="inherit">
                 ePortfolio
-              </Link>
+              </Button>
             </Typography>
-            <Button onClick={userLogOut}>SignOut</Button>
-            <Button href="/user/home">DashBoard</Button>
+            <Grid container direction="row" justify = "flex-end" alignItems="center">
+            <ButtonGroup variant="text" color = "inherit" aria-label="text primary button group" className={classes.userButton}>
+              <Button color="inherit" onClick={userLogOut}>SignOut</Button>
+              <Button color="inherit" href="/user/home">DashBoard</Button>
+            </ButtonGroup>
+            </Grid>
           </Toolbar>
         </AppBar>
       </div>
