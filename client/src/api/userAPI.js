@@ -12,7 +12,7 @@ export default function userSignin(user) {
         method: "POST",
         headers:{
             "credentials": 'include',
-            'content-Type': "application/jsn"
+            'content-Type': "application/json"
         },
         body: JSON.stringify({
             email,
