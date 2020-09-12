@@ -23,7 +23,7 @@ const loggedOut =()=>{
 }
 
 const loggedIn =()=> {
-    return{
+    return (
         <div>
             <Appbar position="static">
                 <Toolbar>
@@ -36,7 +36,7 @@ const loggedIn =()=> {
                 </Toolbar>
             </Appbar>
         </div>
-    }
+    )
 }
 
 export default function NavBar() {
