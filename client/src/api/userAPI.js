@@ -13,7 +13,7 @@ export default async function userSignIn(user) {
         credentials: 'include',
         headers:{
             "credentials": 'include',
-            'content-Type': "application/jsn"
+            'content-Type': "application/json"
         },
         body: JSON.stringify({
             email,
