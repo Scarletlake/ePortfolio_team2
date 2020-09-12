@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 
 const BASE_URL = "http://localhost:5000/api";
 
-export default function userSignin(user) {
+export default async function userSignIn(user) {
     const endpoint = BASE_URL + "/user/signin";
 
     const {email, password} = user;
-
-    const res = fetch(endpoint,{
+    
+    const res = await fetch(endpoint,{
 
         method: "POST",
+        credentials: 'include',
         headers:{
             "credentials": 'include',
             'content-Type': "application/jsn"
@@ -19,29 +20,28 @@ export default function userSignin(user) {
             password
         })
     });
+    console.log(res);
     return res;
 }
 
-export function userSignUp(user){
+export async function userSignUp(user) {
     const endpoint = BASE_URL + "/user/signup";
-
     const {email, password} = user;
-
-    const res = fetch(endpoint, {
+  
+    const res = await fetch(endpoint, {
         method: "POST",
         headers: {
-            "credentials": 'include',
-            "Content-Type": "application/json"
+        "credentials": 'include',
+        "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            email,
-            password
+        email,
+        password
         })
     });
-
+    console.log(res);
     return res;
 }
-
 
 export async function getUserProfile() {
       const endpoint = `/users/profile`;

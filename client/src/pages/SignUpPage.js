@@ -1,9 +1,8 @@
 import React, { Fragment, useState } from 'react';
-import userSignUp from "../api/userAPI";
+import {userSignUp} from "../api/userAPI";
 import validateEmail from "../utils/validateEmail";
 
-import { useHistory } from "react-router-dom";
-//import { HelpBlock, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -58,16 +57,75 @@ export default function SignUpPage() {
 
   const classes = useStyles();
   
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email_input, setEmail] = useState("");
+  const [password_input, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [email_message, setEmailMsg] = useState("");
+  const [password_message, setPasswordMsg] = useState("");
+  const [confirm_password_messsage, setConfirmPasswordMsg] = useState("");
+  const [message, setMessage] = useState("");
+
   function validateForm() {
-    const res = 
-      validateEmail(email) &&
-      password > 0 &&
-      password == confirmPassword
-    return res;
+    return validateEmail(email_input) && 
+    password_input.length >= 6 &&  
+    password_input.length <= 16 &&
+    password_input === confirmPassword
+  }
+
+  function handleChange (event) {
+    event.preventDefault(); 
+    let nam = event.target.name;
+    let val = event.target.value;
+
+    if (nam === "email") {
+      if (!validateEmail(val)){
+        setEmailMsg("Please input a valid email");       
+      }else{
+        setEmailMsg("");
+      }
+      setEmail(val);
+    }    
+    else if (nam === "password") {
+      if (password_input.length < 5 || password_input.length > 16 ){
+        setPasswordMsg("Password length should be between 6 to 16 characters");
+      }else{
+        setPasswordMsg("");
+      }
+      setPassword(val);
+    }else if(nam === "re_password"){
+      if(password_input === confirmPassword){
+        setConfirmPasswordMsg("Password does not match");
+      } else{
+        setConfirmPasswordMsg("");
+      }
+      setConfirmPassword(val);
+    }
+  }
+
+  function onSubmit (event) {
+    event.preventDefault();
+
+
+
+    userSignUp ({
+      email: email_input,
+      password: password_input   
+    }).then(res => {
+      if (res.status === 200) {
+        setMessage ("Account created!");
+        window.location.replace("/user/home");
+      }else if(res.status === 409) {
+        setMessage ("This email has been registered.");
+      }
+      else {
+        const error = new Error(res.error);
+        throw error;
+      }
+    })
+    .catch(error => {
+      setMessage ('Error registering please try again');
+    });
   }
 
   return (
@@ -82,8 +140,9 @@ export default function SignUpPage() {
         </Typography>
         <br />
 
-        <form className={classes.form} onSubmit={userSignUp}>
+        <form className={classes.form}>
           <br />
+          {message}
           <div className={classes.inneralign}>
             <Typography component="h2" variant="h6" >
               Email:
@@ -94,9 +153,11 @@ export default function SignUpPage() {
               margin = 'normal'
               variant = 'outlined'
               id="email"
+              name="email"
               label="Email Address"
               autoComplete="email"
-              onChange={e => setEmail(e.target.value)}
+              helperText={email_message}
+              onChange={event=>handleChange(event)}
             />
 
             <Typography component="h2" variant="h6" >
@@ -109,9 +170,11 @@ export default function SignUpPage() {
               margin="normal"
               variant="outlined"
               id="password"
+              name="password"
               label="password"
               autoComplete="password"
-              onChange={e => setPassword(e.target.value)}
+              helperText={password_message}
+              onChange={event=>handleChange(event)}
               autoFocus />
 
             <Typography component="h2" variant="h6" >
@@ -124,8 +187,10 @@ export default function SignUpPage() {
               margin="normal"
               variant="outlined"
               id="re_password"
+              name="re_password"
               label="confirm password"
-              onChange={e => setConfirmPassword(e.target.value)}
+              helperText={confirm_password_messsage}
+              onChange={event=>handleChange(event)}
               autoFocus />
 
 
@@ -138,9 +203,11 @@ export default function SignUpPage() {
                 variant="contained"
                 className={classes.submit}
                 disabled={!validateForm()}
-              >
+                onClick={onSubmit}
+              >                
                 Create Account
               </Button>
+             
             </div>
             <br />
 
@@ -164,8 +231,6 @@ export default function SignUpPage() {
 
            <br />
           <br />
-
-
 
           </div>
         </form>

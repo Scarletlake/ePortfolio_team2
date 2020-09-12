@@ -3,12 +3,17 @@ const connectDB = require('./config/db');
 const path = require('path');
 const http = require('http');
 const app = express();
+const cors = require('cors');
 
 // Connect Database
 connectDB();
 
 // Init Middleware
 app.use(express.json());
+
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+
+
 
 // Define Routes
 app.use('/api/user', require('./backend/routes/usersRouter'));

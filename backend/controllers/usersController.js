@@ -13,7 +13,6 @@ const userSignUp = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-  
     const { email, password } = req.body;
   
     try {
@@ -21,7 +20,7 @@ const userSignUp = async (req, res) => {
   
       if (user) {
         return res
-          .status(400)
+          .status(409)
           .json({ errors: [{ msg: 'User already exists' }] });
       }
       
@@ -44,19 +43,16 @@ const userSignUp = async (req, res) => {
       };
   
       // generate a token
-      jwt.sign(
+      token = jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: '5 days' },
-        (err, token) => {
-          if (err) throw err;
-          //res.json({ token });
-          res.cookie("Authorization", token, { maxAge: 3600000 });
-          return res.status(200).json({
-            message: "Authentication succeeded.",
-          });
-        }
+        { expiresIn: "1h" },
       );
+      res.cookie("Authorization", token, { maxAge: 3600000 });
+      return res.status(200).json({
+        message: "Authentication succeeded.",
+      });
+       
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -65,28 +61,31 @@ const userSignUp = async (req, res) => {
 
 
 // Sign in
-const userSignIn = async (req, res) => {
+const userSignIn = (req, res) => {
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
+    
     const { email, password } = req.body;
-
+    
     try {
-      let user = await User.findOne({ email });
+      let user = User.findOne({ email: email });
+      
 
       if (!user) {
         return res
-          .status(400)
+          .status(401)
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
+      
 
-      const isMatch = await bcrypt.compare(password, user.password);
+      const isMatch = bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res
-          .status(400)
+          .status(401)
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
@@ -96,25 +95,22 @@ const userSignIn = async (req, res) => {
         }
       };
 
-      // generate a token
-      jwt.sign(
+      token = jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: '5 days' },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-          res.cookie("Authorization", token, { maxAge: 3600000 });
-          return res.status(200).json({
-            message: "Authentication succeeded.",
-          });
-        }
+        { expiresIn: "1h" },
       );
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server error');
-    }
+      res.cookie("Authorization", token, { maxAge: 3600000 });
+      return res.status(200).json({
+        message: "Authentication succeeded.",
+      });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 }
+
+
 
 
 // Get user by token
