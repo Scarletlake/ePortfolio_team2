@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import isAuthenticated from "../utils/checkAuthToken";
 import {userLogOut} from '../api/userAPI';
 import AppBar from '@material-ui/core/AppBar';
+import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -18,6 +19,7 @@ const useStyles=makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     flexGrow: 1,
   },
+
   userButton: {
     flexGrow: 1,
     float:"right",
@@ -30,6 +32,7 @@ const GuestNavBar =()=>{
       <div>
         <AppBar position="static">
           <Toolbar>
+
             <Button href='/' color="inherit" className={classes.logoButton}>
                 <Typography variant="h6">
                   ePortfolio
@@ -42,6 +45,7 @@ const GuestNavBar =()=>{
               <Button href="/user/signup">SignUp</Button>
             </ButtonGroup>
             </Grid>
+
           </Toolbar>
         </AppBar>
       </div>
@@ -60,11 +64,13 @@ const AuthNavBar =()=> {
                 ePortfolio
               </Button>
             </Typography>
+
             <Grid container direction="row" justify = "flex-end" alignItems="center">
             <ButtonGroup variant="text" color = "inherit" aria-label="text primary button group" className={classes.userButton}>
               <Button color="inherit" onClick={userLogOut}>SignOut</Button>
               <Button color="inherit" href="/user/home">DashBoard</Button>
             </ButtonGroup>
+
             </Grid>
           </Toolbar>
         </AppBar>
@@ -73,11 +79,10 @@ const AuthNavBar =()=> {
 }
 
 export default function NavBar() {
-  const [userAuthenticated, setUserAuthenticated] = useState(isAuthenticated("Authorization"));
 
   return (
     <div>
-      {userAuthenticated ? 
+      {isAuthenticated("Authorization") ? 
       <AuthNavBar /> : 
       <GuestNavBar />
       }

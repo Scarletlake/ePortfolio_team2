@@ -10,12 +10,13 @@ import Link from '@material-ui/core/Link';
 const usePortfolioStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing(0, 3),
+    maxWidth: 2000,
+    padding: theme.spacing(1),
   },
   paper: {
     maxWidth: 2000,
     margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
   },
   image: {
     width: 128,
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 export default function HomePortfolioList (props) {
     const {portfolios} = props;
     const [portfolio_list, setPortfolioList] = useState(portfolios);
-
+    
     const classes = useStyles();
 
     function deletePortfolio(id){
@@ -61,12 +62,12 @@ export default function HomePortfolioList (props) {
         const { id, name, url } = props.portfolio;
     
         return (
-            <div className={classes.root}>
+            <div className={classes.root}>   
             <Paper className={classes.paper}>
                 <Grid container direction="row" spacing={2}>
                     <Grid item>
                         <ButtonBase className={classes.image}>
-                        <img className={classes.img} src="/static/images/grid/complex.jpg" />
+                        <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
                         </ButtonBase>
                     </Grid>
                     <Grid item xs={12} sm container>
@@ -82,18 +83,35 @@ export default function HomePortfolioList (props) {
                     </Grid>
                 </Grid>           
             </Paper>
-    
-                <div className={classes.buttom_root} >  
-                    <Button variant="contained" color="primary">
-                                Edit
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={()=>deletePortfolio(id)}>
-                                Delete 
-                    </Button>
-                </div>
+            <div className={classes.buttom_root} >  
+                <Button variant="contained" color="primary">
+                            Edit
+                </Button>
+                <Button variant="contained" color="primary" onClick={()=>deletePortfolio(id)}>
+                            Delete 
+                </Button>
+            </div>
             </div>
         ) 
     }
+
+
+    function PortfolioList(props){
+        return(
+        <Grid container
+            direction="column"
+            justify="flex-start"
+            alignItems="flex-start">
+            {props.portfolio_list.map((portfolio) => (
+            <Grid item key={portfolio}>
+                <HomePortfolio portfolio={portfolio}/>
+            </Grid>
+            ))
+            } 
+            </Grid>
+        )
+    }
+
 
     return (
         <div className={classes.portfolio_list_root}>
@@ -101,20 +119,11 @@ export default function HomePortfolioList (props) {
                 Your Portfolio
             </Typography>
 
-            {portfolio_list.length === 0 ?
+            {!portfolio_list || portfolio_list.length === 0 ?
                 (<Typography gutterBottom variant="h6">
                     no published portfolio
                 </Typography>):
-                (<Grid container
-                    direction="column"
-                    justify="flex-start"
-                    alignItems="flex-start">
-                {portfolio_list.map((portfolio) => (
-                    <Grid item key={portfolio}>
-                        <HomePortfolio portfolio={portfolio}/>
-                    </Grid>
-                ))} 
-              </Grid>)        
+                <PortfolioList portfolio_list={portfolio_list}/>                      
             }          
         </div>
     );

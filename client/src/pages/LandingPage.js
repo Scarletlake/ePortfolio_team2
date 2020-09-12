@@ -1,30 +1,6 @@
-// import React, { Fragment, Component } from 'react'
-// import { Link } from 'react-router-dom';
+import React from 'react'
 
-// class LandingPage extends Component {
-//   render() {
-//     return (
-//       <Fragment>
-//       <h1 className="landing-title">
-//       ePortfolio
-//       </h1>
-
-//       <img></img>
-
-//       <Link to='/' className="btn" >See Examples</Link>
-//       <br />
-//       <Link to='/user/signup' className="btn" >Start Now</Link>
-//     </Fragment>
-//     )
-//   }
-// }
-
-// export default LandingPage
-
-import React, { Component } from 'react'
-// import { Link } from 'react-router-dom';
-
-import { Button, Typography, Container, Grid } from '@material-ui/core';
+import { Button, Typography, Container } from '@material-ui/core';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import { makeStyles } from "@material-ui/core/styles";
 

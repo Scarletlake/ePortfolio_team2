@@ -1,8 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import {userSignUp} from "../api/userAPI";
 import validateEmail from "../utils/validateEmail";
 
-import { Redirect } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -87,7 +86,7 @@ export default function SignUpPage() {
       setEmail(val);
     }    
     else if (nam === "password") {
-      if (password_input.length < 5 || password_input.length > 16 ){
+      if (password_input.length < 6 || password_input.length > 16 ){
         setPasswordMsg("Password length should be between 6 to 16 characters");
       }else{
         setPasswordMsg("");

@@ -61,7 +61,7 @@ const userSignUp = async (req, res) => {
 
 
 // Sign in
-const userSignIn = (req, res) => {
+const userSignIn = async (req, res) => {
     
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -71,7 +71,7 @@ const userSignIn = (req, res) => {
     const { email, password } = req.body;
     
     try {
-      let user = User.findOne({ email: email });
+      let user = await User.findOne({ email: email });
       
 
       if (!user) {
@@ -81,7 +81,7 @@ const userSignIn = (req, res) => {
       }
       
 
-      const isMatch = bcrypt.compare(password, user.password);
+      const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res
@@ -123,7 +123,16 @@ const getUser = async (req, res) => {
           message: "User Not Found",
         });
       }else {
-        res.json(user);
+        res.status(200).json({
+          firstName: user.firstName,
+          lastName: user.lastName, 
+          phone: user.phone, 
+          gender: user.gender, 
+          avatar: user.gender, 
+          portfolios: user.portfolios,
+          email: user.email,
+    
+        });
       }
     } catch (err) {
       console.error(err.message);

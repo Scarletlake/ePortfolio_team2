@@ -27,6 +27,13 @@ router.post(
 // @access   Public
 router.post(
   '/signin',
+  [
+    check('email', 'Please include a valid email').isEmail(),
+    check(
+      'password',
+      'Please enter a password between 6 to 16 characters'
+    ).isLength({ min: 6, max: 16})
+  ],
   usersController.userSignIn
 );
 
