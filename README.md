@@ -12,6 +12,7 @@ This ePortfolio system  is a web application which allows users to create their 
 - Ouyang Hui
 - Zhuolun Wu
 
+
 ### Functionalities description
 
 #### Group 1: Authentication
@@ -19,6 +20,7 @@ This ePortfolio system  is a web application which allows users to create their 
 - Log in to access web features to add and edit his hor her personal portfolio, share portfolio with someone else, etc
 - Sign up allows user to register for an account which could be used to logged into the system
 - Log out from frontend
+
 
 #### Related files for functionality
 
@@ -62,17 +64,35 @@ cd client
 npm run build
 ```
 
-### Run unit tests
+### Install mocha
 
 ```bash
-pip install -U selenium
-cd test/unit
-python runall.py
+npm install -D mocha chai supertest sinon
 ```
 
 ### Run integration tests
 
+Before running unit test
+- Install Mocha
+
 ```bash
-npm install -D mocha chai supertest sinon
 npm test
+```
+
+### Install Selenium
+
+```bash
+pip install -U selenium
+```
+
+### Run unit tests
+
+Before running unit test
+- Install Python
+- Install Selenium
+- Install ChromeDriver that matches the version of your Chrome
+
+```bash
+cd test/unit
+python runall.py
 ```
