@@ -13,10 +13,6 @@ const userSignUp = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-<<<<<<< HEAD
-  
-=======
->>>>>>> ouyangh_merge
     const { email, password } = req.body;
   
     try {
@@ -24,11 +20,7 @@ const userSignUp = async (req, res) => {
   
       if (user) {
         return res
-<<<<<<< HEAD
-          .status(400)
-=======
           .status(409)
->>>>>>> ouyangh_merge
           .json({ errors: [{ msg: 'User already exists' }] });
       }
       
@@ -51,17 +43,6 @@ const userSignUp = async (req, res) => {
       };
   
       // generate a token
-<<<<<<< HEAD
-      jwt.sign(
-        payload,
-        config.get('jwtSecret'),
-        { expiresIn: '5 days' },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
-=======
       token = jwt.sign(
         payload,
         config.get('jwtSecret'),
@@ -72,7 +53,6 @@ const userSignUp = async (req, res) => {
         message: "Authentication succeeded.",
       });
        
->>>>>>> ouyangh_merge
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -82,27 +62,11 @@ const userSignUp = async (req, res) => {
 
 // Sign in
 const userSignIn = async (req, res) => {
-<<<<<<< HEAD
-=======
     
->>>>>>> ouyangh_merge
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-<<<<<<< HEAD
-
-    const { email, password } = req.body;
-
-    try {
-      let user = await User.findOne({ email });
-
-      if (!user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials' }] });
-      }
-=======
     
     const { email, password } = req.body;
     
@@ -116,17 +80,12 @@ const userSignIn = async (req, res) => {
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
       
->>>>>>> ouyangh_merge
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res
-<<<<<<< HEAD
-          .status(400)
-=======
           .status(401)
->>>>>>> ouyangh_merge
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
@@ -136,21 +95,6 @@ const userSignIn = async (req, res) => {
         }
       };
 
-<<<<<<< HEAD
-      // generate a token
-      jwt.sign(
-        payload,
-        config.get('jwtSecret'),
-        { expiresIn: '5 days' },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server error');
-=======
       token = jwt.sign(
         payload,
         config.get('jwtSecret'),
@@ -193,18 +137,10 @@ const getUser = async (req, res) => {
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
->>>>>>> ouyangh_merge
     }
 }
 
 
-<<<<<<< HEAD
-// Get user by token
-const getUser = async (req, res) => {
-    try {
-      const user = await User.findById(req.user.id).select('-password');
-      res.json(user);
-=======
 // Delete user by email
 const deleteUser = async (req, res) => {
     
@@ -212,21 +148,12 @@ const deleteUser = async (req, res) => {
       await User.deleteOne({email: req.body.email });
       res.status(200)
         .json({message: "user deleted"});
->>>>>>> ouyangh_merge
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
     }
 }
 
-<<<<<<< HEAD
-module.exports = {
-    userSignUp,   
-    userSignIn,
-    getUser
-};  
-
-=======
 
 module.exports = {
     userSignUp,   
@@ -234,4 +161,3 @@ module.exports = {
     getUser,
     deleteUser
 };  
->>>>>>> ouyangh_merge

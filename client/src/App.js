@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React, { Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-
-const App = () => {
-  return (
-    
-      <h1>
-        E-Portfolio
-      </h1>
-   
-=======
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from "./components/Navbar";
@@ -37,7 +24,6 @@ const App = () => {
           <Footer />
         </Fragment>
       </Router>
->>>>>>> ouyangh_merge
   );
 };
 
