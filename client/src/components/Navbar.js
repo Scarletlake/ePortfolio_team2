@@ -49,7 +49,7 @@ const AuthNavBar =()=> {
               </Link>
             </Typography>
             <Button onClick={userLogOut}>SignOut</Button>
-            <Button onClick={userLogOut}>DashBoard</Button>
+            <Button href="/user/home">DashBoard</Button>
           </Toolbar>
         </AppBar>
       </div>

@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import HomePortfolioList from '../components/PortfolioList'
 import Profile from '../components/Profile'
+import {getUserProfile} from '../api/userAPI'
 
-class HomePage extends Component {
+export default function HomePage (){
   
-  state = {
+  const state = {
     first_name: "FirstName",
     last_name: "LastName", 
     email: "example@gmail.com", 
@@ -35,20 +36,16 @@ class HomePage extends Component {
     ]
   }
 
-  render() {
     return (
       <Fragment>
-        <Profile first_name ={this.state.first_name} 
-                last_name={this.state.last_name} 
-                email={this.state.email} 
-                phone={this.state.phone} 
-                gender={this.state.gender} 
-                avatar={this.state.avatar}/>
+        <Profile first_name ={state.first_name} 
+                last_name={state.last_name} 
+                email={state.email} 
+                phone={state.phone} 
+                gender={state.gender} 
+                avatar={state.avatar}/>
         
-        <HomePortfolioList portfolios={this.state.portfolios} />
+        <HomePortfolioList portfolios={state.portfolios} />
       </Fragment>
     )
-  }
 }
-
-export default HomePage;
