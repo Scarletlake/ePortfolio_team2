@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import isAuthenticated from "../utils/checkAuthToken";
 import {userLogOut} from '../api/userAPI';
@@ -57,11 +57,10 @@ const AuthNavBar =()=> {
 }
 
 export default function NavBar() {
-  const [userAuthenticated, setUserAuthenticated] = useState(isAuthenticated("Authorization"));
 
   return (
     <div>
-      {userAuthenticated ? 
+      {isAuthenticated("Authorization") ? 
       <AuthNavBar /> : 
       <GuestNavBar />
       }

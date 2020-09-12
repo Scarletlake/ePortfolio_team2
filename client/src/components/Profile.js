@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import ProfileAvatar from "../components/ProfileAvatar"
 import RadioButtom from "../components/RadioButtom"
 
@@ -6,43 +6,45 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-export default function Profile(props) {
-    const useStyles = makeStyles((theme) => ({
 
-        profile_form_root: {
-          '& > *': {
-            margin: theme.spacing(1),
-            marginLeft: theme.spacing(6),
-            width: '40ch',
-          },
+const useStyles = makeStyles((theme) => ({
+
+    profile_form_root: {
+      '& > *': {
+        margin: theme.spacing(1),
+        marginLeft: theme.spacing(6),
+        width: '40ch',
+      },
+    },
+    
+    buttom_root: {
+        '& > *': {
+            margin: theme.spacing(2),
         },
-        
-        buttom_root: {
-            '& > *': {
-                margin: theme.spacing(2),
-            },
+    },
+    field_root: {
+        '& > *': {
+            marginBottom: theme.spacing(2),
         },
-        field_root: {
-            '& > *': {
-                marginBottom: theme.spacing(2),
-            },
-        },
-    }));
+    },
+}));
+
+export default function Profile(props) {
 
     const classes = useStyles();
 
-    const { first_name, last_name, email, phone, gender } = props;
+    const { firstName, lastName, email, phone, gender } = props;
 
-    const [first_name_value, setFirstName] = useState(first_name);
-    const [last_name_value, setLastName] = useState(last_name);
+    const [first_name_value, setFirstName] = useState(firstName);
+    const [last_name_value, setLastName] = useState(lastName);
     const [phone_value, setPhone] = useState(phone);
     const [gender_value, setGender] = useState(gender);
 
     const [showUpdateForm, setShowUpdateForm] = useState(false);
 
     function cancelSubmit(){
-        setFirstName(first_name);
-        setLastName(last_name);
+        setFirstName(firstName);
+        setLastName(lastName);
         setPhone(phone);
         setGender(gender);
         setShowUpdateForm(!showUpdateForm);
@@ -56,17 +58,20 @@ export default function Profile(props) {
     }
 
     const ProfileField = (props) =>{
-        return(
-            <div>
-                <TextField label={props.label}
-                            defaultValue={props.value}
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                /> 
-                <br/>
-            </div>
-        )
+        if (props.value){
+            return(
+                <div>
+                    <TextField label={props.label}
+                                defaultValue={props.value}
+                                InputProps={{
+                                    readOnly: true,
+                                }}
+                    /> 
+                    <br/>
+                </div>
+            )
+        }
+        return null ;
     }
 
     
@@ -75,10 +80,10 @@ export default function Profile(props) {
 
         return (
             <div className={classes.field_root}>
-                {first_name_value? <ProfileField label="First Name" value={first_name_value} />:{}}
-                {last_name_value? <ProfileField label="Last Name" value={last_name_value} />:{}}
-                {gender_value? <ProfileField label="Gender" value={gender_value} />:{}}
-                {phone_value? <ProfileField label="Phone Number" value={phone_value} />:{}}          
+                <ProfileField label="First Name" value={first_name_value} />
+                <ProfileField label="Last Name" value={last_name_value} />
+                <ProfileField label="Gender" value={gender_value} />
+                <ProfileField label="Phone Number" value={phone_value} />        
                 <ProfileField label="Email" value={email} />            
                 
                 <Button variant="contained" onClick={()=>setShowUpdateForm(!showUpdateForm)}>

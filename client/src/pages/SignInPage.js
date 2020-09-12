@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
 
 import userSignIn from "../api/userAPI";
 import validateEmail from "../utils/validateEmail";
@@ -83,7 +82,7 @@ export default function SignInPage() {
         setEmail(val);
     }    
     else if (nam === "password") {
-      if (password_input.length < 5 || password_input.length > 16 ){
+      if (password_input.length < 6 || password_input.length > 16 ){
         setPasswordMsg("Password length should be between 6 to 16 characters");
       }else{
         setPasswordMsg("");

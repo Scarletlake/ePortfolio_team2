@@ -58,6 +58,8 @@ export async function getUserProfile() {
       return res.json();
 }
 
+
+
 // logout by clearing cookie
 export function userLogOut() {      
     document.cookie.split(";").forEach((c) => {
@@ -69,3 +71,28 @@ export function userLogOut() {
     window.location.replace("/");
 }
   
+
+export function useUserProfile() {
+    const [loading, setLoading] = useState(true);
+    const [user, setResponse] = useState([]);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      getUserProfile()
+        .then(user => {
+          setResponse(user);
+          setLoading(false);
+        })
+        .catch(e => {
+          console.log(e);
+          setError(e);
+          setLoading(false);
+        });
+    },[]);
+  
+    return {
+      loading,
+      user,
+      error
+    };
+  }

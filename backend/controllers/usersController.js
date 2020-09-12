@@ -123,7 +123,16 @@ const getUser = async (req, res) => {
           message: "User Not Found",
         });
       }else {
-        res.json(user);
+        res.status(200).json({
+          firstName: user.firstName,
+          lastName: user.lastName, 
+          phone: user.phone, 
+          gender: user.gender, 
+          avatar: user.gender, 
+          portfolios: user.portfolios,
+          email: user.email,
+    
+        });
       }
     } catch (err) {
       console.error(err.message);

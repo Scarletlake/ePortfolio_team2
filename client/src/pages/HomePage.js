@@ -1,15 +1,16 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import HomePortfolioList from '../components/PortfolioList'
 import Profile from '../components/Profile'
-import {getUserProfile} from '../api/userAPI'
+//import { getUserProfile, useUserProfile} from '../api/userAPI'
 
 export default function HomePage (){
   
+  // for testing only 
   const state = {
-    first_name: "FirstName",
-    last_name: "LastName", 
-    email: "example@gmail.com", 
-    phone: "1234567",
+    firstName: "FirstName",
+    lastName: "LastName", 
+    email: "emailIsNotEditable@gmail.com", 
+    phone: "123456789",
     gender: "female", 
     avatar: "",
     portfolios: [
@@ -36,18 +37,25 @@ export default function HomePage (){
     ]
   }
 
-  const user =  getUserProfile();
-  const {  first_name, last_name, email,
-  phone,
-  gender,
-  avatar,
-  portfolios  } = user;
 
+    /*const { loading, user, error } = useUserProfile();
+    
+    
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+    if (error) {
+        return <p>Something went wrong: {error.message}</p>;
+    }*/
+    
+    
+    //const {  firstName, lastName, email, phone, gender, avatar, portfolios } = getUserProfile();
+    //const {  firstName, lastName, email, phone, gender, avatar, portfolios } = user;
   
     return (
       <Fragment>
-        <Profile first_name ={state.first_name} 
-                last_name={state.last_name} 
+        <Profile firstName ={state.firstName} 
+                lastName={state.lastName} 
                 email={state.email} 
                 phone={state.phone} 
                 gender={state.gender} 
@@ -59,8 +67,9 @@ export default function HomePage (){
 
     /*return (
       <Fragment>
-        <Profile first_name ={first_name} 
-                last_name={last_name} 
+        <p>{email}</p>
+        <Profile firstName ={firstName} 
+                lastName={lastName} 
                 email={email} 
                 phone={phone} 
                 gender={gender} 
