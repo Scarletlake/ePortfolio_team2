@@ -1,5 +1,9 @@
 # ePortfolio
 
+### Overview
+This ePortfolio system  is a web application which allows users to create their personal website or online portfolio by uploading photos and texts to demonstrate their basic information, the studying and working experience, their extracurricular activities and so on. After publishing the personal website, the user can share this website by sharing the link to this website or by exporting the pdf version of this website.
+
+
 ### Team members:
 
 - Heitong Chan
