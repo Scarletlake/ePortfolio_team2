@@ -139,10 +139,17 @@ export default function SignUpPage() {
           ePortfolio
         </Typography>
         <br />
-
+        <Typography component="h3" variant="h4" >
+          Sign up for ePortfolio
+        </Typography>
         <form className={classes.form}>
           <br />
-          {message}
+          <div className={classes.inneralign}>
+            <Typography component="h2" variant="h6" >
+              {message}
+            </Typography>
+          </div> 
+          <br />       
           <div className={classes.inneralign}>
             <Typography component="h2" variant="h6" >
               Email:

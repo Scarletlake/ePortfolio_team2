@@ -126,9 +126,16 @@ export default function SignInPage() {
           ePortfolio
         </Typography>
         <br />
-
+        <Typography component="h3" variant="h4" >
+          Sign in to ePortfolio
+        </Typography>
         <form className={classes.form}>
-          {message}
+          <br />
+          <div className={classes.inneralign}>
+            <Typography component="h2" variant="h6" >
+              {message}
+            </Typography>
+          </div>
           <br />
           <div className={classes.inneralign}>
             <Typography component="h2" variant="h6" >

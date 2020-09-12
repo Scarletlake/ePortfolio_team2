@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import isAuthenticated from "../utils/checkAuthToken";
 import {userLogOut} from '../api/userAPI';
@@ -17,7 +17,7 @@ const useStyles=makeStyles((theme) => ({
   },
 }));
 
-const loggedOut =()=>{
+const GuestNavBar =()=>{
   const classes = useStyles;
   return (
       <div className={classes.root}>
@@ -36,7 +36,8 @@ const loggedOut =()=>{
 )
 }
 
-const loggedIn =()=> {
+const AuthNavBar =()=> {
+
   const classes = useStyles;
   return(
       <div className={classes.root}>
@@ -48,6 +49,7 @@ const loggedIn =()=> {
               </Link>
             </Typography>
             <Button onClick={userLogOut}>SignOut</Button>
+            <Button onClick={userLogOut}>DashBoard</Button>
           </Toolbar>
         </AppBar>
       </div>
@@ -55,10 +57,15 @@ const loggedIn =()=> {
 }
 
 export default function NavBar() {
-  if (isAuthenticated("Authorization")) {
-    return (
-        loggedIn());
-  } else {
-    return loggedOut();
-  }
+  const [userAuthenticated, setUserAuthenticated] = useState(isAuthenticated("Authorization"));
+
+  return (
+    <div>
+      {userAuthenticated ? 
+      <AuthNavBar /> : 
+      <GuestNavBar />
+      }
+    </div> 
+    );
+  
 }

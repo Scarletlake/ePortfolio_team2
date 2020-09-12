@@ -30,6 +30,7 @@ export async function userSignUp(user) {
   
     const res = await fetch(endpoint, {
         method: "POST",
+        credentials: 'include',
         headers: {
         "credentials": 'include',
         "Content-Type": "application/json"
@@ -59,10 +60,12 @@ export async function getUserProfile() {
 
 // logout by clearing cookie
 export function userLogOut() {      
-    var d = new Date();
-    d.setTime(d.getTime() - 1);
-    var expires = "expires="+d.toUTCString();
-    document.cookie = "Authorization" + "=" + "" + "; " + expires;
+    document.cookie.split(";").forEach((c) => {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      });
     alert("logout!");
+    window.location.replace("/");
 }
   
