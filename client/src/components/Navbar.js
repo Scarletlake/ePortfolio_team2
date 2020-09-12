@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import isAuthenticated from "../utils/checkAuthToken";
 import {userLogOut} from '../api/userAPI';
 import AppBar from '@material-ui/core/AppBar';
+import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -14,6 +15,9 @@ const useStyles=makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: theme.spacing(2),
   },
 }));
 
@@ -28,8 +32,15 @@ const GuestNavBar =()=>{
                 ePortfolio
               </Link>
             </Typography>
-            <Button color="inherit"  href="/user/signin">SignIn</Button>
-            <Button color="inherit"  href="/user/signup">SignUp</Button>
+            <Grid container
+                  direction="row"
+                  justify="flex-end"
+                  alignItems="center"
+            >
+              <Button color="inherit"  href="/user/signin">SignIn</Button>
+              <Button color="inherit"  href="/user/signup">SignUp</Button>
+            </Grid>
+            
           </Toolbar>
         </AppBar>
       </div>
@@ -48,8 +59,14 @@ const AuthNavBar =()=> {
                 ePortfolio
               </Link>
             </Typography>
-            <Button onClick={userLogOut}>SignOut</Button>
-            <Button href="/user/home">DashBoard</Button>
+            <Grid container
+                  direction="row"
+                  justify="flex-end"
+                  alignItems="center"
+            >
+              <Button className={classes.menuButton} onClick={userLogOut}>SignOut</Button>
+              <Button className={classes.menuButton} href="/user/home">DashBoard</Button>
+            </Grid>
           </Toolbar>
         </AppBar>
       </div>
