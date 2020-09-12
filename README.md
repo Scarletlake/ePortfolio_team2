@@ -32,3 +32,18 @@ npm run dev
 cd client
 npm run build
 ```
+
+### Run unit tests
+
+```bash
+pip install -U selenium
+cd test/unit
+python runall.py
+```
+
+### Run integration tests
+
+```bash
+npm install -D mocha chai supertest sinon
+npm test
+```
