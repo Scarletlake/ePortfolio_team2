@@ -3,6 +3,10 @@ const connectDB = require('./config/db');
 const path = require('path');
 const http = require('http');
 const app = express();
+<<<<<<< HEAD
+=======
+const cors = require('cors');
+>>>>>>> ouyangh_merge
 
 // Connect Database
 connectDB();
@@ -10,9 +14,19 @@ connectDB();
 // Init Middleware
 app.use(express.json());
 
+<<<<<<< HEAD
 // Define Routes
 app.use('/api/user', require('./backend/routes/usersRouter'));
 // app.use('/api/portfolio', require('./backend/routes/portfolioRouter'));
+=======
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+
+
+
+// Define Routes
+app.use('/api/user', require('./backend/routes/usersRouter'));
+//app.use('/api/portfolio', require('./backend/routes/portfolioRouter'));
+>>>>>>> ouyangh_merge
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
@@ -50,4 +64,8 @@ function normalizePort(val) {
   return false;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ouyangh_merge
 module.exports = server;

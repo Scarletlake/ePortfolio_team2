@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@material-ui/core": "latest",
+>>>>>>> ouyangh_merge
     "moment": "^2.24.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -13,7 +17,10 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+<<<<<<< HEAD
     "typescript": "^4.0.2",
+=======
+>>>>>>> ouyangh_merge
     "uuid": "^7.0.2"
   },
   "scripts": {

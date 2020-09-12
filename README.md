@@ -1,5 +1,15 @@
 # ePortfolio
 
+<<<<<<< HEAD
+=======
+### Install material-ui
+
+```bash
+cd client
+npm install @material-ui/core
+```
+
+>>>>>>> ouyangh_merge
 ### Install server dependencies
 
 ```bash
@@ -25,5 +35,8 @@ npm run dev
 cd client
 npm run build
 ```
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ouyangh_merge
