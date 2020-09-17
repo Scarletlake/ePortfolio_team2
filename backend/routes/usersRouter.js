@@ -44,6 +44,12 @@ router.post(
 router.get('/profile', auth, usersController.getUser);
 
 
+// @route    POST api/user
+// @desc     Get user by token then update user's profile
+// @access   Private
+router.post('/profile', auth ,usersController.updateUser);
+
+
 // @route    GET api/user/delete
 // @desc     Get user by token
 // @access   Public

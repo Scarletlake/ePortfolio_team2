@@ -75,7 +75,6 @@ export default function RadioButtom(props) {
                   onChange={props.onChange}>
         <FormControlLabel value="female" control={<StyledRadio />} label="Female" />
         <FormControlLabel value="male" control={<StyledRadio />} label="Male" />
-        <FormControlLabel value="other" control={<StyledRadio />} label="Other" />
       </RadioGroup>
     </FormControl>
   );

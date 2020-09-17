@@ -20,7 +20,7 @@ export default async function userSignIn(user) {
             password
         })
     });
-    console.log(res);
+   
     return res;
 }
 
@@ -40,15 +40,16 @@ export async function userSignUp(user) {
         password
         })
     });
-    console.log(res);
+   
     return res;
 }
 
 export async function getUserProfile() {
-      const endpoint = `/users/profile`;
+      const endpoint = BASE_URL + `/user/profile`;
     
       const res = await fetch(endpoint, {
         method: "GET",
+        credentials: 'include',
         headers: {
           "credentials": 'include',
           "Accept": 'application/json'
@@ -58,6 +59,32 @@ export async function getUserProfile() {
       return res.json();
 }
 
+
+// update user profile
+export async function updateUserProfile(user) {
+  const { firstName, lastName, phone, gender } = user;
+
+  console.log(firstName);
+  const endpoint = BASE_URL + `/user/profile`;
+
+  const res = await fetch(endpoint, {
+    method: "POST",
+    credentials: 'include',
+    headers: {
+      "credentials": 'include',
+      "Accept": 'application/json',
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      phone,
+      gender
+      })
+  });
+  console.log(res);
+  return res;
+}
 
 
 // logout by clearing cookie

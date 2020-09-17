@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import HomePortfolioList from '../components/PortfolioList'
 import Profile from '../components/Profile'
-//import { getUserProfile, useUserProfile} from '../api/userAPI'
+import { getUserProfile, useUserProfile} from '../api/userAPI'
 
 export default function HomePage (){
   
@@ -38,7 +38,7 @@ export default function HomePage (){
   }
 
 
-    /*const { loading, user, error } = useUserProfile();
+    const { loading, user, error } = useUserProfile();
     
     
     if (loading) {
@@ -46,13 +46,13 @@ export default function HomePage (){
     }
     if (error) {
         return <p>Something went wrong: {error.message}</p>;
-    }*/
+    }
     
     
     //const {  firstName, lastName, email, phone, gender, avatar, portfolios } = getUserProfile();
-    //const {  firstName, lastName, email, phone, gender, avatar, portfolios } = user;
+    const {  firstName, lastName, email, phone, gender, avatar, portfolios } = user;
   
-    return (
+    /*return (
       <Fragment>
         <Profile firstName ={state.firstName} 
                 lastName={state.lastName} 
@@ -63,11 +63,10 @@ export default function HomePage (){
         
         <HomePortfolioList portfolios={state.portfolios} />
       </Fragment>
-    )
+    )*/
 
-    /*return (
+    return (
       <Fragment>
-        <p>{email}</p>
         <Profile firstName ={firstName} 
                 lastName={lastName} 
                 email={email} 
@@ -77,5 +76,5 @@ export default function HomePage (){
         
         <HomePortfolioList portfolios={portfolios} />
       </Fragment>
-    )*/
+    )
 }

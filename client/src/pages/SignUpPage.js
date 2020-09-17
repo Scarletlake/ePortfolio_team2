@@ -93,7 +93,7 @@ export default function SignUpPage() {
       }
       setPassword(val);
     }else if(nam === "re_password"){
-      if(password_input === confirmPassword){
+      if(password_input !== confirmPassword){
         setConfirmPasswordMsg("Password does not match");
       } else{
         setConfirmPasswordMsg("");

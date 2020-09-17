@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -26,6 +27,7 @@ const userSignUp = async (req, res) => {
       
       // add the user to database
       user = new User({
+        _id: new mongoose.Types.ObjectId(),
         email,
         password
       });
@@ -38,7 +40,7 @@ const userSignUp = async (req, res) => {
   
       const payload = {
         user: {
-          id: user.id
+          id: user._id
         }
       };
   
@@ -91,7 +93,7 @@ const userSignIn = async (req, res) => {
 
       const payload = {
         user: {
-          id: user.id
+          id: user._id
         }
       };
 
@@ -116,22 +118,19 @@ const userSignIn = async (req, res) => {
 // Get user by token
 const getUser = async (req, res) => {
     try {
-      const user = await User.findById(req.user.id).select('-password -__v -_id');
-
-      if (!user) {
-        return res.status(500).json({
+      const user = await User.findOne({ _id: req.userInfo.user.id });
+      if (!user) {        
+        return res.status(500).json({         
           message: "User Not Found",
         });
       }else {
-        res.status(200).json({
+        return res.status(200).json({
           firstName: user.firstName,
           lastName: user.lastName, 
+          email: user.email,
           phone: user.phone, 
           gender: user.gender, 
-          avatar: user.gender, 
-          portfolios: user.portfolios,
-          email: user.email,
-    
+          portfolios: user.portfolios,    
         });
       }
     } catch (err) {
@@ -139,6 +138,36 @@ const getUser = async (req, res) => {
       res.status(500).send('Server Error');
     }
 }
+
+
+
+// Update user profile
+const updateUser = async (req, res) => {
+  
+  const { firstName, lastName, phone, gender } = req.body;
+  
+  try {
+    await User.findOneAndUpdate(
+      { _id: req.userInfo.user.id },
+      { $set: { 
+        firstName: firstName,
+        lastName: lastName,      
+        phone: phone, 
+        gender: gender},
+      },
+      { returnOriginal: false }
+    );
+    
+    res.status(200).json({
+        message: "Update successful!",
+    });
+   
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+}
+
 
 
 // Delete user by email
@@ -159,5 +188,6 @@ module.exports = {
     userSignUp,   
     userSignIn,
     getUser,
-    deleteUser
-};  
+    deleteUser,
+    updateUser
+}; 

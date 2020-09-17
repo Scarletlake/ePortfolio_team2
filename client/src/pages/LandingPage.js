@@ -1,8 +1,10 @@
 import React from 'react'
-
+import { Redirect } from 'react-router-dom';
 import { Button, Typography, Container } from '@material-ui/core';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import { makeStyles } from "@material-ui/core/styles";
+
+import isAuthenticated from "../utils/checkAuthToken";
 
 const useStyles = makeStyles((theme) => ({
   landing: {
@@ -32,9 +34,13 @@ export default function LandingPage() {
 
   const classes = useStyles();
 
+  if (isAuthenticated("Authorization") ){
+    return <Redirect to="/user/home" /> 
+  }
+
   return (
-    
-    <Container component="main" maxwidth="xs">
+   
+      <Container component="main" maxwidth="xs">
 
       <CssBaseLine />
       <div className={classes.block}>
@@ -67,7 +73,5 @@ export default function LandingPage() {
 
       </div>
     </Container>
-
-    
   )
 }
