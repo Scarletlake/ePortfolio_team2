@@ -34,6 +34,8 @@ const UserSchema = new mongoose.Schema({
   portfolios: {
     type: [{
       portfolioID: mongoose.Schema.Types.ObjectId,
+      portfolioName: String,
+      portfolioURL: String,
     }],
     default: [],    
   }
