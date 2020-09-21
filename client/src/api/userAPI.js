@@ -143,13 +143,13 @@ export function useUserProfile() {
 
 export function useUserPortfolio() {
     const [loading, setLoading] = useState(true);
-    const [portfolio, setResponse] = useState([]);
+    const [res, setResponse] = useState([]);
     const [error, setError] = useState(null);
   
     useEffect(() => {
       getUserPortfolio()
-        .then(portfolio => {
-          setResponse(portfolio);
+        .then(res => {
+          setResponse(res);
           setLoading(false);
         })
         .catch(e => {
@@ -161,7 +161,7 @@ export function useUserPortfolio() {
   
     return {
       loading,
-      portfolio,
+      res,
       error
     };
   } 

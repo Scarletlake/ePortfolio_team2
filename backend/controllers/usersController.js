@@ -129,8 +129,7 @@ const getUserProfile = async (req, res) => {
           lastName: user.lastName, 
           email: user.email,
           phone: user.phone, 
-          gender: user.gender, 
-          portfolios: user.portfolios,    
+          gender: user.gender
         });
       }
     } catch (err) {

@@ -53,13 +53,13 @@ export default function PortfolioList (props) {
     
     const classes = useStyles();
 
-    function deletePortfolio(id){
-        setPortfolioList(portfolio_list.filter(portfolio => portfolio.id !== id)); 
+    function deletePortfolio(portfolioID){
+        setPortfolioList(portfolio_list.filter(portfolio => portfolio.portfolioID !== portfolioID)); 
     }
 
     function HomePortfolio(props) {   
         const classes = usePortfolioStyles();
-        const { id, name, url } = props.portfolio;
+        const { portfolioID, portfolioName, portfolioURL } = props.portfolio;
     
         return (
             <div className={classes.root}>   
@@ -73,11 +73,11 @@ export default function PortfolioList (props) {
                     <Grid item xs={12} sm container>
                         <Grid item xs container direction="column" spacing={3}>
                             <Typography gutterBottom variant="h6">
-                                {name}
+                                {portfolioName}
                             </Typography>
                             <br/>
                             <Link>
-                                {url}
+                                {portfolioURL}
                             </Link>
                         </Grid>
                     </Grid>
@@ -87,7 +87,7 @@ export default function PortfolioList (props) {
                 <Button variant="contained" color="primary">
                             Edit
                 </Button>
-                <Button variant="contained" color="primary" onClick={()=>deletePortfolio(id)}>
+                <Button variant="contained" color="primary" onClick={()=>deletePortfolio(portfolioID)}>
                             Delete 
                 </Button>
             </div>

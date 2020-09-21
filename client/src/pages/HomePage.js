@@ -7,38 +7,32 @@ export default function HomePage (){
   
   // for testing only 
   const state = {
-    firstName: "FirstName",
-    lastName: "LastName", 
-    email: "emailIsNotEditable@gmail.com", 
-    phone: "123456789",
-    gender: "female", 
-    avatar: "",
     portfolios: [
       {
-        id: 1,
-        name: 'portfolio 1',
-        url: 'https://eportfolio.com/firstnamelastname/portfolio_1'
+        portfolioID: 1,
+        portfolioName: 'portfolio 1',
+        portfolioURL: 'https://eportfolio.com/firstnamelastname/portfolio_1'
       },
       {
-        id: 2,
-        name: 'portfolio 2',
-        url: 'https://eportfolio.com/firstnamelastname/portfolio_2'
+        portfolioID: 2,
+        portfolioName: 'portfolio 2',
+        portfolioURL: 'https://eportfolio.com/firstnamelastname/portfolio_2'
       },
       {
-        id: 3,
-        name: 'portfolio 3',
-        url: 'https://eportfolio.com/firstnamelastname/portfolio_3'
+        portfolioID: 3,
+        portfolioName: 'portfolio 3',
+        portfolioURL: 'https://eportfolio.com/firstnamelastname/portfolio_3'
       },
       {
-        id: 4,
-        name: 'portfolio 4',
-        url: 'https://eportfolio.com/firstnamelastname/portfolio_4'
+        portfolioID: 4,
+        portfolioName: 'portfolio 4',
+        portfolioURL: 'https://eportfolio.com/firstnamelastname/portfolio_4'
       }
     ]
   }
 
 
-    const { loading, portfolio, error } = useUserPortfolio();
+    const { loading, res, error } = useUserPortfolio();
     
     
     if (loading) {
@@ -48,19 +42,13 @@ export default function HomePage (){
         return <p>Something went wrong: {error.message}</p>;
     }
     
-    const {portfolios} = portfolio;
+    const {portfolios} = res;
     
   
     /*return (
       <Fragment>
-        <Profile firstName ={state.firstName} 
-                lastName={state.lastName} 
-                email={state.email} 
-                phone={state.phone} 
-                gender={state.gender} 
-                avatar={state.avatar}/>
         
-        <HomePortfolioList portfolios={state.portfolios} />
+        <PortfolioList portfolios={state.portfolios} />
       </Fragment>
     )*/
 
