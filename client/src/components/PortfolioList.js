@@ -114,6 +114,7 @@ export default function PortfolioList (props) {
 
 
     return (
+        
         <div className={classes.portfolio_list_root}>
             <Typography gutterBottom variant="h4">
                 Your Portfolio
@@ -126,5 +127,6 @@ export default function PortfolioList (props) {
                 <PortfolioList portfolio_list={portfolio_list}/>                      
             }          
         </div>
+        
     );
 }

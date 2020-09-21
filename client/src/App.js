@@ -8,6 +8,9 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import LandingPage from "./pages/LandingPage";
 import ProfilePage from "./pages/ProfilePage";
+import TemplatePage from "./pages/TemplatePage";
+import PortfolioPage from "./pages/PortfolioPage";
+import PortfolioEditorPage from "./pages/PortfolioEditorPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
@@ -19,8 +22,11 @@ const App = () => {
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/user/signin" component={SignInPage} />
             <Route exact path="/user/signup" component={SignUpPage} />
+            <Route exact path="/portfolio" component={PortfolioPage} />
             <PrivateRoute exact path="/user/home" component={HomePage} />
             <PrivateRoute exact path="/user/profile" component={ProfilePage} />
+            <PrivateRoute exact path="/portfolio/template/editor" component={PortfolioEditorPage} />
+            <PrivateRoute exact path="/portfolio/template/option" component={TemplatePage} />
             <Route component={NotFoundPage} />
           </Switch>
           <Footer />

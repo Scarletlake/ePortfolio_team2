@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PortfolioList from '../components/PortfolioList'
 import { useUserPortfolio} from '../api/userAPI'
+import Button from '@material-ui/core/Button';
 
 export default function HomePage (){
   
@@ -65,7 +66,12 @@ export default function HomePage (){
 
     return (
       <div>
-        <PortfolioList portfolios={portfolios} />
+        <div>
+          <PortfolioList portfolios={portfolios} />
+        </div>
+      <Button variant="contained" color="primary" href="/portfolio/template/option">
+      Create a new portfolio
+      </Button>
       </div>
     )
 }
