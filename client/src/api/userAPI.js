@@ -44,6 +44,7 @@ export async function userSignUp(user) {
     return res;
 }
 
+// get user's profile
 export async function getUserProfile() {
       const endpoint = BASE_URL + `/user/profile`;
     
@@ -57,6 +58,22 @@ export async function getUserProfile() {
       });
       
       return res.json();
+}
+
+// get user's published portfolio
+export async function getUserPortfolio() {
+  const endpoint = BASE_URL + `/user/portfolio`;
+
+  const res = await fetch(endpoint, {
+    method: "GET",
+    credentials: 'include',
+    headers: {
+      "credentials": 'include',
+      "Accept": 'application/json'
+    }
+  });
+  
+  return res.json();
 }
 
 
@@ -123,3 +140,28 @@ export function useUserProfile() {
       error
     };
   }
+
+export function useUserPortfolio() {
+    const [loading, setLoading] = useState(true);
+    const [portfolio, setResponse] = useState([]);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      getUserPortfolio()
+        .then(portfolio => {
+          setResponse(portfolio);
+          setLoading(false);
+        })
+        .catch(e => {
+          console.log(e);
+          setError(e);
+          setLoading(false);
+        });
+    },[]);
+  
+    return {
+      loading,
+      portfolio,
+      error
+    };
+  } 

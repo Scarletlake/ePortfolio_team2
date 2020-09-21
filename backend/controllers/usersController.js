@@ -116,7 +116,7 @@ const userSignIn = async (req, res) => {
 
 
 // Get user by token
-const getUser = async (req, res) => {
+const getUserProfile = async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.userInfo.user.id });
       if (!user) {        
@@ -139,10 +139,28 @@ const getUser = async (req, res) => {
     }
 }
 
+// Get user by token
+const getUserPortfolio = async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.userInfo.user.id });
+    if (!user) {        
+      return res.status(500).json({         
+        message: "User Not Found",
+      });
+    }else {
+      return res.status(200).json({
+        portfolios: user.portfolios,    
+      });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+}
 
 
 // Update user profile
-const updateUser = async (req, res) => {
+const updateUserProfile = async (req, res) => {
   
   const { firstName, lastName, phone, gender } = req.body;
   
@@ -187,7 +205,8 @@ const deleteUser = async (req, res) => {
 module.exports = {
     userSignUp,   
     userSignIn,
-    getUser,
+    getUserProfile,
+    getUserPortfolio,
     deleteUser,
-    updateUser
+    updateUserProfile
 }; 

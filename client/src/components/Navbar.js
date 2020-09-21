@@ -67,6 +67,7 @@ const AuthNavBar =()=> {
             <ButtonGroup variant="text" color = "inherit" aria-label="text primary button group" className={classes.userButton}>
               <Button color="inherit" onClick={userLogOut}>SignOut</Button>
               <Button color="inherit" href="/user/home">DashBoard</Button>
+              <Button color="inherit" href="/user/profile">Profile</Button>
             </ButtonGroup>
 
             </Grid>

@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
-import HomePortfolioList from '../components/PortfolioList'
-import Profile from '../components/Profile'
-import { getUserProfile, useUserProfile} from '../api/userAPI'
+import PortfolioList from '../components/PortfolioList'
+import { useUserPortfolio} from '../api/userAPI'
 
 export default function HomePage (){
   
@@ -38,7 +37,7 @@ export default function HomePage (){
   }
 
 
-    const { loading, user, error } = useUserProfile();
+    const { loading, portfolio, error } = useUserPortfolio();
     
     
     if (loading) {
@@ -48,9 +47,8 @@ export default function HomePage (){
         return <p>Something went wrong: {error.message}</p>;
     }
     
+    const {portfolios} = portfolio;
     
-    //const {  firstName, lastName, email, phone, gender, avatar, portfolios } = getUserProfile();
-    const {  firstName, lastName, email, phone, gender, avatar, portfolios } = user;
   
     /*return (
       <Fragment>
@@ -66,15 +64,8 @@ export default function HomePage (){
     )*/
 
     return (
-      <Fragment>
-        <Profile firstName ={firstName} 
-                lastName={lastName} 
-                email={email} 
-                phone={phone} 
-                gender={gender} 
-                avatar={avatar}/>
-        
-        <HomePortfolioList portfolios={portfolios} />
-      </Fragment>
+      <div>
+        <PortfolioList portfolios={portfolios} />
+      </div>
     )
 }

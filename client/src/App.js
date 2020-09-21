@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import LandingPage from "./pages/LandingPage";
+import ProfilePage from "./pages/ProfilePage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
             <Route exact path="/user/signin" component={SignInPage} />
             <Route exact path="/user/signup" component={SignUpPage} />
             <PrivateRoute exact path="/user/home" component={HomePage} />
+            <PrivateRoute exact path="/user/profile" component={ProfilePage} />
             <Route component={NotFoundPage} />
           </Switch>
           <Footer />
