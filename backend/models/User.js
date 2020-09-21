@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  portfolio: {
+  portfolios: {
     type: [{
       portfolioID: mongoose.Schema.Types.ObjectId,
     }],

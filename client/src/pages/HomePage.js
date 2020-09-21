@@ -37,7 +37,7 @@ export default function HomePage (){
   }
 
 
-    const { loading, portfolio, error } = useUserPortfolio();
+    const { loading, res, error } = useUserPortfolio();
     
     
     if (loading) {
@@ -47,7 +47,7 @@ export default function HomePage (){
         return <p>Something went wrong: {error.message}</p>;
     }
     
-    const {portfolios} = portfolio;
+    const {portfolios} = res;
     
   
     /*return (
