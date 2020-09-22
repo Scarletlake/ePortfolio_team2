@@ -7,6 +7,8 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
+import { deletePortfolioByID } from "../api/portfolioAPI"
+
 const usePortfolioStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -54,7 +56,31 @@ export default function PortfolioList (props) {
     const classes = useStyles();
 
     function deletePortfolio(portfolioID){
-        setPortfolioList(portfolio_list.filter(portfolio => portfolio.portfolioID !== portfolioID)); 
+        deletePortfolioByID(portfolioID)
+        .then(res => {
+            if (res.status === 200) {            
+            setPortfolioList(portfolio_list.filter(portfolio => portfolio.portfolioID !== portfolioID)); 
+            alert("Deleted!");
+        }else if(res.status === 401) {
+            console.log(res);
+              alert ("Log in first");
+              window.location.replace("/user/signin");             
+          }
+          else {
+            const error = new Error(res.error);
+            throw error;
+           
+          }
+          })
+            .catch(error => {            
+            alert ("Can't delete ");
+         
+        });     
+
+
+        
+
+        
     }
 
     function HomePortfolio(props) {   
