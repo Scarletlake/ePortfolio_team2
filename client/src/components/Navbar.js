@@ -8,20 +8,26 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home';
+
 
 const useStyles=makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   logoButton: {
     marginRight: theme.spacing(2),
     flexGrow: 1,
   },
-
   userButton: {
     flexGrow: 1,
     float:"right",
-  }
+  },
+  title:{
+    flexGrow: 1
+  },
 }));
 
 const GuestNavBar =()=>{
@@ -30,12 +36,14 @@ const GuestNavBar =()=>{
       <div>
         <AppBar position="static">
           <Toolbar>
+              <IconButton href="/" color="inherit">
+                <HomeIcon/>
+              </IconButton>
 
-            <Button href='/' color="inherit" className={classes.logoButton}>
-                <Typography variant="h6">
+                <Typography variant="h6" className={classes.title}>
                   ePortfolio
                 </Typography>
-            </Button>
+
 
             <Grid container direction="row" justify = "flex-end" alignItems="center">
             <ButtonGroup variant="text" color = "inherit" aria-label="text primary button group" className={classes.userButton}>
@@ -52,25 +60,45 @@ const GuestNavBar =()=>{
 
 const AuthNavBar =()=> {
 
-  const classes = useStyles;
+  const classes = useStyles();
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+
+  const handleChange = (event) => {
+    setAuth(event.target.checked)
+  }
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
   return(
       <div>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-              <Button href='/user/home' color="inherit">
+              <IconButton href="/user/home" color="inherit">
+                <HomeIcon/>
+              </IconButton>
+              <Typography variant="h6" className={classes.title}>
                 ePortfolio
-              </Button>
-            </Typography>
+              </Typography>
 
             <Grid container direction="row" justify = "flex-end" alignItems="center">
-            <ButtonGroup variant="text" color = "inherit" aria-label="text primary button group" className={classes.userButton}>
-              <Button color="inherit" onClick={userLogOut}>SignOut</Button>
-              <Button color="inherit" href="/user/home">DashBoard</Button>
-              <Button color="inherit" href="/user/profile">Profile</Button>
-            </ButtonGroup>
-
-            </Grid>
+              {auth && (
+                <div>
+                  <IconButton aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit">
+                    <AccountCircle/>
+                  </IconButton>
+                  <Menu id="menu-appbar" anchorEl={anchorEl} anchorOrigin={{vertical: 'top', horizontal: 'right',}} keepMounted transformOrigin={{vertical: 'top',  horizontal: 'right',}} open={open} onClose={handleClose}>
+                    <MenuItem onClick={handleClose} href="/user/profile">Profile</MenuItem>
+                    <MenuItem onClick={userLogOut} href>Sign Out</MenuItem>
+                  </Menu>
+                </div>
+              )}
+              </Grid>
           </Toolbar>
         </AppBar>
       </div>
@@ -82,7 +110,7 @@ export default function NavBar() {
   return (
     <div>
       {isAuthenticated("Authorization") ? 
-      <AuthNavBar /> : 
+      <AuthNavBar /> :
       <GuestNavBar />
       }
     </div> 
