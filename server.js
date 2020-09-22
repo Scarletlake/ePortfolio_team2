@@ -22,7 +22,7 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 // Define Routes
 app.use('/api/user', require('./backend/routes/usersRouter'));
-//app.use('/api/portfolio', require('./backend/routes/portfolioRouter'));
+app.use('/api/portfolio', require('./backend/routes/portfolioRouter'));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
