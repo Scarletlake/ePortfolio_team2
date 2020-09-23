@@ -14,7 +14,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
-
+import Link from '@material-ui/core/Link';
+import MenuList from '@material-ui/core/MenuList';
 
 const useStyles=makeStyles((theme) => ({
   logoButton: {
@@ -87,17 +88,15 @@ const AuthNavBar =()=> {
               </Typography>
 
             <Grid container direction="row" justify = "flex-end" alignItems="center">
-              {auth && (
                 <div>
                   <IconButton aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit">
                     <AccountCircle/>
                   </IconButton>
                   <Menu id="menu-appbar" anchorEl={anchorEl} anchorOrigin={{vertical: 'top', horizontal: 'right',}} keepMounted transformOrigin={{vertical: 'top',  horizontal: 'right',}} open={open} onClose={handleClose}>
-                    <MenuItem onClick={handleClose} href="/user/profile">Profile</MenuItem>
-                    <MenuItem onClick={userLogOut} href>Sign Out</MenuItem>
+                    <MenuItem onClick={handleClose} color="inherit"><a href="/user/profile" style={{ color:'black',textDecoration: 'none', backgroundColor: 'none'}}>Profile</a ></MenuItem>
+                    <MenuItem onClick={userLogOut}>Sign Out</MenuItem>
                   </Menu>
                 </div>
-              )}
               </Grid>
           </Toolbar>
         </AppBar>
@@ -109,11 +108,11 @@ export default function NavBar() {
 
   return (
     <div>
-      {isAuthenticated("Authorization") ? 
+      {isAuthenticated("Authorization") ?
       <AuthNavBar /> :
       <GuestNavBar />
       }
-    </div> 
+    </div>
     );
-  
+
 }
