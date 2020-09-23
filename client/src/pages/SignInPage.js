@@ -158,6 +158,7 @@ export default function SignInPage() {
             <TextField
               required
               fullWidth
+              type="password"
               margin = 'normal'
               variant = 'outlined'
               id="password"
@@ -177,6 +178,7 @@ export default function SignInPage() {
                 className={classes.submit}
                 disabled={!validateForm()}
                 onClick={onSubmit}
+    color="primary"
               >
                 Sign In
               </Button>
@@ -195,7 +197,7 @@ export default function SignInPage() {
               justify="center"
             >
               <Grid item xs={5} >
-                <Link href="/user/signup" variant='body1'>
+                <Link href="/user/signup" variant='body1' style={{ textDecoration: 'none'}}>
                 Click here to create an account
               </Link>
             </Grid>

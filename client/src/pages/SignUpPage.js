@@ -210,6 +210,7 @@ export default function SignUpPage() {
                 className={classes.submit}
                 disabled={!validateForm()}
                 onClick={onSubmit}
+                    color="primary"
               >                
                 Create Account
               </Button>
@@ -229,7 +230,7 @@ export default function SignUpPage() {
               justify="center"
             >
               <Grid item xs={4.5} >
-                <Link href="/user/signin" variant='body1'>
+                <Link href="/user/signin" variant='body1' style={{ textDecoration: 'none'}}>
                 Click here to sign in
               </Link>
             </Grid>

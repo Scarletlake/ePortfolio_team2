@@ -16,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import Link from '@material-ui/core/Link';
 import MenuList from '@material-ui/core/MenuList';
+import blue from '@material-ui/core/colors/blue';
 
 const useStyles=makeStyles((theme) => ({
   logoButton: {
@@ -58,7 +59,7 @@ const GuestNavBar =()=>{
 
 const AuthNavBar =()=> {
 
-  const classes = useStyles();
+    const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
