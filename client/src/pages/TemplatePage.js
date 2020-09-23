@@ -4,8 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   grid: {
-    marginTop: "500px",
-    marginBottom: "500px",
+    marginTop: "20%",
     textAlign: "center",
   },
   btn_style: {
