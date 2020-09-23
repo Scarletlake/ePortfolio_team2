@@ -161,7 +161,7 @@ export default function SignUpPage() {
               id="email"
               name="email"
               label="Email Address"
-              autoComplete="email"
+
               helperText={email_message}
               onChange={event=>handleChange(event)}
             />
@@ -178,7 +178,6 @@ export default function SignUpPage() {
               id="password"
               name="password"
               label="password"
-              autoComplete="password"
               helperText={password_message}
               onChange={event=>handleChange(event)}
               autoFocus />
@@ -230,7 +229,7 @@ export default function SignUpPage() {
               justify="center"
             >
               <Grid item xs={4.5} >
-                <Link href="/user/signin" variant='body1' style={{ textDecoration: 'none'}}>
+                <Link href="/user/signin" variant='body1' style={{textDecoration: 'none'}}>
                 Click here to sign in
               </Link>
             </Grid>

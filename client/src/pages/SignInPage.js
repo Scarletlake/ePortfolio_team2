@@ -148,6 +148,7 @@ export default function SignInPage() {
               id="email"
               label="Email Address"
               name="email"
+              autoComplete="email"
               helperText={email_message}
               onChange={event => handleChange(event)}
             />
@@ -164,6 +165,7 @@ export default function SignInPage() {
               id="password"
               name="password"
               label="password"
+              autoComplete="password"
               helperText={password_message}
               onChange={event => handleChange(event)}
               autoFocus />
@@ -178,7 +180,7 @@ export default function SignInPage() {
                 className={classes.submit}
                 disabled={!validateForm()}
                 onClick={onSubmit}
-    color="primary"
+                    color="primary"
               >
                 Sign In
               </Button>
@@ -197,7 +199,7 @@ export default function SignInPage() {
               justify="center"
             >
               <Grid item xs={5} >
-                <Link href="/user/signup" variant='body1' style={{ textDecoration: 'none'}}>
+                <Link href="/user/signup" variant='body1' style={{textDecoration: 'none'}}>
                 Click here to create an account
               </Link>
             </Grid>
