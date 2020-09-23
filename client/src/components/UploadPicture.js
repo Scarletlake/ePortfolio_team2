@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import request from "superagent";
+import { FormControl } from '@material-ui/core';
 
 const CLOUDINARY_UPLOAD_PRESET = "portfolio";
 const CLOUDINARY_UPLOAD_URL =
@@ -27,7 +28,7 @@ export default function MyDropzone() {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-    <form>
+    <FormControl>
       <div {...getRootProps()}>
         <input {...getInputProps()} />
         <p>Drag or add your avatar here</p>
@@ -39,6 +40,6 @@ export default function MyDropzone() {
           </div>
         )}
       </div>
-    </form>
+    </FormControl>
   );
 }
