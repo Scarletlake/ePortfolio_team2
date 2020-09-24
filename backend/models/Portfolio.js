@@ -50,7 +50,8 @@ const UserSchema = new mongoose.Schema({
     sections: {
       type: [{
         sectionTitle: String,
-        sectionDescription: String
+        sectionDescription: String,
+        photo: String
       }],
       default: []
     },    
@@ -67,7 +68,8 @@ const UserSchema = new mongoose.Schema({
     sections: {
       type: [{
         sectionTitle: String,
-        sectionDescription: String
+        sectionDescription: String,
+        photo: String
       }],
       default: []
     },    
