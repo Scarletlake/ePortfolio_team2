@@ -1,34 +1,52 @@
 import React, { useState } from 'react';
+import SwipeableViews from 'react-swipeable-views';
 import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-import { Stepper, Step, StepLabel, Button, Typography, TextField } from '@material-ui/core';
+import { AppBar, Tabs, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
 
-import { useUserProfile } from '../api/userAPI'
 import UploadAvatar from './UploadAvatar';
 import UploadPicture from './UploadPicture';
 
 
 const useStyles = makeStyles((theme) => ({
-    head: {
-        textAlign: "center",
-    },
-    button: {
-        marginRight: theme.spacing(1),
-    },
-    instructions: {
-        marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(1),
+    root: {
+        backgroundColor: theme.palette.background.paper,
+        width: 500,
     },
 }));
 
-function getSteps() {
-    return ['Setting "Home"', 'Setting "About"', 'Setting "Leisure"', 'Setting "Contact"'];
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box p={3}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+function a11yProps(index) {
+    return {
+        id: `full-width-tab-${index}`,
+        'aria-controls': `full-width-tabpanel-${index}`,
+    };
 }
 
 export default function PortfolioEditorPage(props) {
 
-    const classes = useStyles();
+    // const classes = useStyles();
+    const theme = useTheme();
 
     const { firstName, lastName, email, phone, gender } = props;
 
@@ -38,14 +56,39 @@ export default function PortfolioEditorPage(props) {
     const [phone_value, setPhone] = useState(phone);
     const [gender_value, setGender] = useState(gender);
 
-    const [activeStep, setActiveStep] = useState(0);
+    const [value, setValue] = React.useState(0);
 
-    const steps = getSteps();
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-    function getStepContent(step) {
-        switch (step) {
-            case 0:
-                return (
+    const handleChangeIndex = (index) => {
+        setValue(index);
+    };
+
+    return (
+        <Container component="main" maxwidth="xs">
+            <AppBar position="static" color="default">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="fullWidth"
+                    aria-label="full width tabs example"
+                >
+                    <Tab label="Home" {...a11yProps(0)} />
+                    <Tab label="About" {...a11yProps(1)} />
+                    <Tab label="Leisure" {...a11yProps(2)} />
+                    <Tab label="Contact" {...a11yProps(3)} />
+                </Tabs>
+            </AppBar>
+            <SwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={value}
+                onChangeIndex={handleChangeIndex}
+            >
+                <TabPanel value={value} index={0} dir={theme.direction}>
                     <form>
                         <UploadAvatar first_name={firstName} last_name={lastName} />
                         <br />
@@ -73,9 +116,8 @@ export default function PortfolioEditorPage(props) {
                             placeholder="Enter your description ..."
                         />
                     </form>
-                );
-            case 1:
-                return (
+                </TabPanel>
+                <TabPanel value={value} index={1} dir={theme.direction}>
                     <form>
                         <UploadPicture
                             name=""
@@ -91,9 +133,8 @@ export default function PortfolioEditorPage(props) {
                             placeholder="Enter your description ..."
                         />
                     </form>
-                );
-            case 2:
-                return (
+                </TabPanel>
+                <TabPanel value={value} index={2} dir={theme.direction}>
                     <form>
                         <UploadPicture
                             name=""
@@ -109,9 +150,8 @@ export default function PortfolioEditorPage(props) {
                             placeholder="Enter your description ..."
                         />
                     </form>
-                );
-            case 3:
-                return (
+                </TabPanel>
+                <TabPanel value={value} index={3} dir={theme.direction}>
                     <form>
                         <UploadPicture
                             name=""
@@ -143,90 +183,8 @@ export default function PortfolioEditorPage(props) {
                             placeholder="Enter your contact description ..."
                         />
                     </form>
-                );
-            default:
-                return 'Unknown step';
-        }
-    }
-
-    function handleChange(event) {
-        // event.preventDefault();
-        // let nam = event.target.name;
-        // let val = event.target.value;
-
-        // if (nam === "email") {
-        //   if (!validateEmail(val)) {
-        //     setEmailMsg("Please input a valid email");
-        //   } else {
-        //     setEmailMsg("");
-        //   }
-        //   setEmail(val);
-        // }
-        // else if (nam === "password") {
-        //   if (password_input.length < 6 || password_input.length > 16) {
-        //     setPasswordMsg("Password length should be between 6 to 16 characters");
-        //   } else {
-        //     setPasswordMsg("");
-        //   }
-        //   setPassword(val);
-        // }
-    }
-
-    const handleNext = () => {
-
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
-
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
-    };
-
-    return (
-        <Container component="main" maxwidth="xs">
-            <Stepper activeStep={activeStep}>
-                {steps.map((label, index) => {
-                    const stepProps = {};
-                    const labelProps = {};
-                    return (
-                        <Step key={label} {...stepProps}>
-                            <StepLabel {...labelProps}>{label}</StepLabel>
-                        </Step>
-                    );
-                })}
-            </Stepper>
-            <div>
-                <div>
-                    {getStepContent(activeStep)}
-                    <div>
-                        <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                            Back
-              </Button>
-
-                        {activeStep === steps.length - 1 ?
-                            (<Button
-                                variant="contained"
-                                color="primary"
-                                className={classes.button}
-                            >
-                                Submit
-                            </Button>) :
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={handleNext}
-                                className={classes.button}
-                            >
-                                Next
-                            </Button>
-                        }
-
-                    </div>
-                </div>
-            </div>
+                </TabPanel>
+            </SwipeableViews>
         </Container>
     );
 }
