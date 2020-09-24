@@ -68,6 +68,7 @@ const AuthNavBar =()=> {
               <Button color="inherit" onClick={userLogOut}>SignOut</Button>
               <Button color="inherit" href="/user/home">DashBoard</Button>
               <Button color="inherit" href="/user/profile">Profile</Button>
+              <Button color="inherit" href="/portfolio/template">Create a new portfolio</Button>
             </ButtonGroup>
 
             </Grid>

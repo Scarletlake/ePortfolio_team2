@@ -57,7 +57,7 @@ export default function HomePage (){
         <div>
           <PortfolioList portfolios={portfolios} />
         </div>
-      <Button variant="contained" color="primary" href="/portfolio/template/option">
+      <Button variant="contained" color="primary" href="/portfolio/template">
       Create a new portfolio
       </Button>
       </div>

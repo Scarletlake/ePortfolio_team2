@@ -18,60 +18,80 @@ const UserSchema = new mongoose.Schema({
     default: '',
     required: true,
   },
+  userName: {
+    type: String,
+    default: '',
+    required: true,
+  },
   homePage:{   
-    type: {
-      title:{
-        type: String,
-        default: 'Home',
-        required: true
-      },
-      firstName: {
-        type: String,
-        default: '',
-        required: true
-      },
-      lastName: {
-        type: String,          
-        default: '',
-        required: true
-      },
-      email: {
-        type: String,          
-        required: true,   
-      },
-      phone:{            
-        type: String,
-        default: '',
-        required: true          
-      },
-      profilePhoto:{
-        type: String,
-        default: '',
-      } 
-    },
-        //required: true
-  },
-
-  formalPage: {
-    type: {
-      title:{
+    tag:{
       type: String,
-      default: 'Academic Background',
-      required: true          
-      }, 
+      default: '',
+      required: true
+    },
+    profilePhoto:{        
+      type: String,
+      default: '',
+    },
+    description:{
+      type: String,
+      default: '',
+    }
+  },
+  formalPage: {
+    tag: {
+      type: String,
+      default: '',
+    }, 
+    title: {
+      type: String,
+      default: '',   
+    }, 
+    sections: {
+      type: [{
+        sectionTitle: String,
+        sectionDescription: String
+      }],
+      default: []
     },    
-        //required: true    
+  },
+  leisurePage: {
+    tag: {
+      type: String,
+      default: '',       
+    }, 
+    title: {
+      type: String,
+      default: '',    
+    }, 
+    sections: {
+      type: [{
+        sectionTitle: String,
+        sectionDescription: String
+      }],
+      default: []
+    },    
   },
 
-  leisurePage: {
-    type: {
-      title:{
-        type: String,
-        default: 'About me',
-        required: true
-      },
+  contactPage: {
+    tag: {
+      type: String,
+      default: '',
+      required: true          
+    }, 
+    title: {
+      type: String,
+      default: '',
+      required: true          
     },
-    //required: true    
+    email: {
+      type: String,   
+      default: '',
+    },
+    phone:{            
+      type: String,   
+      default: '',
+    },
   }
 });
 

@@ -7,27 +7,27 @@ const portfolioController = require('../controllers/portfolioController.js');
 
 
 
-// @route    GET api/portfolio/
+// @route    GET api/portfolio/id
 // @desc     get the portfolio
 // @access   Public
-router.get('/', portfolioController.getPortfolio);
+router.get('/:id', portfolioController.getPortfolio);
 
-
-// @route    POST api/portfolio/profile
-// @desc     Creat the portfolio
-// @access   Private
-router.post('/profile', auth ,portfolioController.createPortfolio);
-
-
-// @route    POST api/portfolio/profile
-// @desc     Update the portfolio
-// @access   Private
-router.post('/profile', auth ,portfolioController.updatePortfolio);
-
-
-// @route    GET api/portfolio/delete
+// @route    DELETE api/portfolio/id
 // @desc     Delete the portfolio
 // @access   Private
-router.delete('/delete', auth, portfolioController.deletePortfolio);
+router.delete('/:id', auth, portfolioController.deletePortfolio);
+
+
+// @route    POST api/portfolio/create
+// @desc     Creat the portfolio
+// @access   Private
+router.post('/new', auth ,portfolioController.createPortfolio);
+
+
+// @route    POST api/portfolio/update
+// @desc     Update the portfolio
+// @access   Private
+router.post('/:id', auth ,portfolioController.updatePortfolio);
+
 
 module.exports = router;

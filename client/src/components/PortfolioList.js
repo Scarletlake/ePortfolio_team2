@@ -60,11 +60,11 @@ export default function PortfolioList (props) {
         .then(res => {
             if (res.status === 200) {            
             setPortfolioList(portfolio_list.filter(portfolio => portfolio.portfolioID !== portfolioID)); 
-            alert("Deleted!");
+            //alert("Deleted!");
         }else if(res.status === 401) {
             console.log(res);
-              alert ("Log in first");
-              window.location.replace("/user/signin");             
+            alert ("Log in first");
+            window.location.replace("/user/signin");             
           }
           else {
             const error = new Error(res.error);
@@ -83,10 +83,10 @@ export default function PortfolioList (props) {
         
     }
 
-    function HomePortfolio(props) {   
+    function Portfolio(props) {   
         const classes = usePortfolioStyles();
-        const { portfolioID, portfolioName, portfolioURL } = props.portfolio;
-    
+        const { portfolioID, portfolioName, portfolioURL, template} = props.portfolio;
+        const editor_url = "/portfolio/editor?temp="+template+"&id="+portfolioID;
         return (
             <div className={classes.root}>   
             <Paper className={classes.paper}>
@@ -110,7 +110,7 @@ export default function PortfolioList (props) {
                 </Grid>           
             </Paper>
             <div className={classes.buttom_root} >  
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" href={editor_url}>
                             Edit
                 </Button>
                 <Button variant="contained" color="primary" onClick={()=>deletePortfolio(portfolioID)}>
@@ -128,9 +128,9 @@ export default function PortfolioList (props) {
             direction="column"
             justify="flex-start"
             alignItems="flex-start">
-            {props.portfolio_list.map((portfolio) => (
-            <Grid item key={portfolio}>
-                <HomePortfolio portfolio={portfolio}/>
+            {props.portfolio_list.map((portfolio, index) => (
+            <Grid item key={index}>
+                <Portfolio portfolio={portfolio}/>
             </Grid>
             ))
             } 

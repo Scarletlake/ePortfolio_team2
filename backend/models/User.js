@@ -36,8 +36,10 @@ const UserSchema = new mongoose.Schema({
       portfolioID: mongoose.Schema.Types.ObjectId,
       portfolioName: String,
       portfolioURL: String,
+      template: String
     }],
-    default: [],    
+    default: [],   
+    required: true 
   }
 });
 

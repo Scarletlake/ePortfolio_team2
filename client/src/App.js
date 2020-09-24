@@ -21,12 +21,12 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/user/signin" component={SignInPage} />
-            <Route exact path="/user/signup" component={SignUpPage} />
-            <Route exact path="/portfolio" component={PortfolioPage} />
+            <Route exact path="/user/signup" component={SignUpPage} />          
             <PrivateRoute exact path="/user/home" component={HomePage} />
             <PrivateRoute exact path="/user/profile" component={ProfilePage} />
-            <PrivateRoute exact path="/portfolio/template/editor" component={PortfolioEditorPage} />
-            <PrivateRoute exact path="/portfolio/template/option" component={TemplatePage} />
+            <PrivateRoute exact path="/portfolio/editor" component={PortfolioEditorPage} />
+            <PrivateRoute exact path="/portfolio/template" component={TemplatePage} />
+            <Route exact path="/portfolio/:id" component={PortfolioPage} />
             <Route component={NotFoundPage} />
           </Switch>
           <Footer />

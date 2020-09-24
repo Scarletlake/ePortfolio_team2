@@ -56,7 +56,7 @@ export async function getUserProfile() {
           "Accept": 'application/json'
         }
       });
-      
+   
       return res.json();
 }
 
@@ -81,7 +81,6 @@ export async function getUserPortfolio() {
 export async function updateUserProfile(user) {
   const { firstName, lastName, phone, gender } = user;
 
-  console.log(firstName);
   const endpoint = BASE_URL + `/user/profile`;
 
   const res = await fetch(endpoint, {

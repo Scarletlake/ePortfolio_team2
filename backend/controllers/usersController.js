@@ -29,7 +29,8 @@ const userSignUp = async (req, res) => {
       user = new User({
         _id: new mongoose.Types.ObjectId(),
         email,
-        password
+        password,
+        portfolios: []
       });
       
       // hash the password
