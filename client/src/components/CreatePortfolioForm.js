@@ -22,7 +22,7 @@ export default function CreatePortfolioform (props){
     _id : "0",
     portfolioName: "portfolio_name",
     template: props.temp,
-    userName: user.firstName,
+    userName: user.firstName + " " + user.lastName,
     homePage: {
       tag: "Home",
       profilePhoto: "link to img",

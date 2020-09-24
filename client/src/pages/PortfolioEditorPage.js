@@ -14,7 +14,6 @@ export default function PortfolioEditorPage (props){
   const search = useLocation().search;
   const template = new URLSearchParams(search).get('temp');
   const portfolio_id = new URLSearchParams(search).get('id');  
-
  
   // create a new portfolio
   // get user profile
