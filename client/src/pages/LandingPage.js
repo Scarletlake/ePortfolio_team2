@@ -23,10 +23,11 @@ const useStyles = makeStyles((theme) => ({
     width: "30%",
   },
   block: {
-    marginTop: theme.spacing(20),
+    marginTop: theme.spacing(40),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+
   },
 }));
 

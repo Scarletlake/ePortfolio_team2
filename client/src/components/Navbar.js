@@ -16,15 +16,14 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import Link from '@material-ui/core/Link';
 import MenuList from '@material-ui/core/MenuList';
+import blue from '@material-ui/core/colors/blue';
 
 const useStyles=makeStyles((theme) => ({
   logoButton: {
-    marginRight: theme.spacing(2),
     flexGrow: 1,
   },
   userButton: {
     flexGrow: 1,
-    float:"right",
   },
   title:{
     flexGrow: 1
@@ -32,7 +31,6 @@ const useStyles=makeStyles((theme) => ({
 }));
 
 const GuestNavBar =()=>{
-  const classes = useStyles;
   return (
       <div>
         <AppBar position="static">
@@ -41,13 +39,13 @@ const GuestNavBar =()=>{
                 <HomeIcon/>
               </IconButton>
 
-                <Typography variant="h6" className={classes.title}>
+                <Typography variant="h6" >
                   ePortfolio
                 </Typography>
 
 
             <Grid container direction="row" justify = "flex-end" alignItems="center">
-            <ButtonGroup variant="text" color = "inherit" aria-label="text primary button group" className={classes.userButton}>
+            <ButtonGroup variant="text" color = "inherit" aria-label="text primary button group" >
               <Button href="/user/signin">SignIn</Button>
               <Button href="/user/signup">SignUp</Button>
             </ButtonGroup>
@@ -61,7 +59,7 @@ const GuestNavBar =()=>{
 
 const AuthNavBar =()=> {
 
-  const classes = useStyles();
+    const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
