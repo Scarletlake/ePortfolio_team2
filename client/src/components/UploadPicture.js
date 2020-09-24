@@ -25,21 +25,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function MyDropzone(props) {
+export default function MyDropzone() {
 
     const classes = useStyles();
-
-    function NameInitial() {
-        var initial = '';
-        if (props.first_name) {
-            initial += props.first_name[0];
-        }
-
-        if (props.last_name) {
-            initial += props.last_name[0];
-        }
-        return initial;
-    }
 
     const onDrop = useCallback((acceptedFiles) => {
         acceptedFiles.forEach((file) => {
