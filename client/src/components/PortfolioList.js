@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -10,31 +10,31 @@ import Link from '@material-ui/core/Link';
 import { deletePortfolioByID } from "../api/portfolioAPI"
 
 const usePortfolioStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    maxWidth: 2000,
-    padding: theme.spacing(1),
-  },
-  paper: {
-    maxWidth: 2000,
-    margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(4),
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-  buttom_root: {
-    '& > *': {
-        margin: theme.spacing(2),
+    root: {
+        flexGrow: 1,
+        maxWidth: 2000,
+        padding: theme.spacing(1),
     },
-  },
+    paper: {
+        maxWidth: 2000,
+        margin: `${theme.spacing(1)}px auto`,
+        padding: theme.spacing(4),
+    },
+    image: {
+        width: 128,
+        height: 128,
+    },
+    img: {
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
+    },
+    buttom_root: {
+        '& > *': {
+            margin: theme.spacing(2),
+        },
+    },
 
 }));
 
@@ -43,104 +43,104 @@ const useStyles = makeStyles((theme) => ({
         '& > *': {
             margin: theme.spacing(1),
             marginLeft: theme.spacing(6),
-          },
         },
-  }));
+    },
+}));
 
 
 
-export default function PortfolioList (props) {
-    const {portfolios} = props;
+export default function PortfolioList(props) {
+    const { portfolios } = props;
     const [portfolio_list, setPortfolioList] = useState(portfolios);
-    
+
     const classes = useStyles();
 
-    function deletePortfolio(portfolioID){
+    function deletePortfolio(portfolioID) {
         deletePortfolioByID(portfolioID)
-        .then(res => {
-            if (res.status === 200) {            
-            setPortfolioList(portfolio_list.filter(portfolio => portfolio.portfolioID !== portfolioID)); 
-            //alert("Deleted!");
-        }else if(res.status === 401) {
-            console.log(res);
-            alert ("Log in first");
-            window.location.replace("/user/signin");             
-          }
-          else {
-            const error = new Error(res.error);
-            throw error;
-           
-          }
-          })
-            .catch(error => {            
-            alert ("Can't delete ");
-         
-        });     
+            .then(res => {
+                if (res.status === 200) {
+                    setPortfolioList(portfolio_list.filter(portfolio => portfolio.portfolioID !== portfolioID));
+                    //alert("Deleted!");
+                } else if (res.status === 401) {
+                    console.log(res);
+                    alert("Log in first");
+                    window.location.replace("/user/signin");
+                }
+                else {
+                    const error = new Error(res.error);
+                    throw error;
+
+                }
+            })
+            .catch(error => {
+                alert("Can't delete ");
+
+            });
 
 
-        
 
-        
+
+
     }
 
-    function Portfolio(props) {   
+    function Portfolio(props) {
         const classes = usePortfolioStyles();
-        const { portfolioID, portfolioName, portfolioURL, template} = props.portfolio;
-        const editor_url = "/portfolio/editor?temp="+template+"&id="+portfolioID;
+        const { portfolioID, portfolioName, portfolioURL, template } = props.portfolio;
+        const editor_url = "/portfolio/editor?temp=" + template + "&id=" + portfolioID;
         return (
-            <div className={classes.root}>   
-            <Paper className={classes.paper}>
-                <Grid container direction="row" spacing={2}>
-                    <Grid item>
-                        <ButtonBase className={classes.image}>
-                        <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
-                        </ButtonBase>
-                    </Grid>
-                    <Grid item xs={12} sm container>
-                        <Grid item xs container direction="column" spacing={3}>
-                            <Typography gutterBottom variant="h6">
-                                {portfolioName}
-                            </Typography>
-                            <br/>
-                            <Link>
-                                {portfolioURL}
-                            </Link>
+            <div className={classes.root}>
+                <Paper className={classes.paper}>
+                    <Grid container direction="row" spacing={2}>
+                        <Grid item>
+                            <ButtonBase className={classes.image}>
+                                <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
+                            </ButtonBase>
+                        </Grid>
+                        <Grid item xs={12} sm container>
+                            <Grid item xs container direction="column" spacing={3}>
+                                <Typography gutterBottom variant="h6">
+                                    {portfolioName}
+                                </Typography>
+                                <br />
+                                <Link href={portfolioURL}>
+                                    {portfolioURL}
+                                </Link>
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Grid>           
-            </Paper>
-            <div className={classes.buttom_root} >  
-                <Button variant="contained" color="primary" href={editor_url}>
-                            Edit
+                </Paper>
+                <div className={classes.buttom_root} >
+                    <Button variant="contained" color="primary" href={editor_url}>
+                        Edit
                 </Button>
-                <Button variant="contained" color="primary" onClick={()=>deletePortfolio(portfolioID)}>
-                            Delete 
+                    <Button variant="contained" color="primary" onClick={() => deletePortfolio(portfolioID)}>
+                        Delete
                 </Button>
+                </div>
             </div>
-            </div>
-        ) 
+        )
     }
 
 
-    function PortfolioList(props){
-        return(
-        <Grid container
-            direction="column"
-            justify="flex-start"
-            alignItems="flex-start">
-            {props.portfolio_list.map((portfolio, index) => (
-            <Grid item key={index}>
-                <Portfolio portfolio={portfolio}/>
-            </Grid>
-            ))
-            } 
+    function PortfolioList(props) {
+        return (
+            <Grid container
+                direction="column"
+                justify="flex-start"
+                alignItems="flex-start">
+                {props.portfolio_list.map((portfolio, index) => (
+                    <Grid item key={index}>
+                        <Portfolio portfolio={portfolio} />
+                    </Grid>
+                ))
+                }
             </Grid>
         )
     }
 
 
     return (
-        
+
         <div className={classes.portfolio_list_root}>
             <Typography gutterBottom variant="h4">
                 Your Portfolio
@@ -149,10 +149,10 @@ export default function PortfolioList (props) {
             {!portfolio_list || portfolio_list.length === 0 ?
                 (<Typography gutterBottom variant="h6">
                     no published portfolio
-                </Typography>):
-                <PortfolioList portfolio_list={portfolio_list}/>                      
-            }          
+                </Typography>) :
+                <PortfolioList portfolio_list={portfolio_list} />
+            }
         </div>
-        
+
     );
 }
