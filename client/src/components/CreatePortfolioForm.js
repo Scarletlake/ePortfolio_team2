@@ -1,25 +1,25 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useUserProfile } from "../api/userAPI"
 import PortfolioEditor from "../components/PortfolioEditor"
 
-export default function CreatePortfolioform (props){
-  
+export default function CreatePortfolioform(props) {
+
   // load the 
   const { loading, user, error } = useUserProfile();
-    
-    
-    if (loading) {
-        return <p>Loading...</p>;
-    }
-    if (error) {
-        return <p>Something went wrong: {error.message}</p>;
-    }
-    
+
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    return <p>Something went wrong: {error.message}</p>;
+  }
+
 
   // the default content of portfolio
   const defaultPortfolio = {
-    _id : "0",
+    _id: "0",
     portfolioName: "portfolio_name",
     template: props.temp,
     userName: user.firstName + " " + user.lastName,
@@ -30,12 +30,12 @@ export default function CreatePortfolioform (props){
     },
     formalPage: {
       tag: "About",
-      titile: "About Me",
+      title: "About Me",
       sections: []
     },
     leisurePage: {
       tag: "Leisure",
-      titile: "Free Time",
+      title: "Free Time",
       sections: []
     },
     contactPage: {
@@ -47,7 +47,7 @@ export default function CreatePortfolioform (props){
   }
 
   return (
-    <div>      
+    <div>
       <PortfolioEditor portfolio={defaultPortfolio} />
     </div>
   )
