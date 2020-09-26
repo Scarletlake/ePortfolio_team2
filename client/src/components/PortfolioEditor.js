@@ -136,15 +136,10 @@ export default function PortfolioEditor(props) {
   const [leisure_page_sections, setLeisurePageSections] = useState(leisurePage.sections);
 
   const [value, setValue] = useState(0); // Tabs
-  const [anchorEl, setAnchorEl] = useState(null); // Popover
 
 
-  // Tabs
   const handleTabsChange = (event, newValue) => {
     setValue(newValue);
-  };
-  const handleTabsIndex = (index) => {
-    setValue(index);
   };
 
   const onSubmit = () => {
@@ -155,8 +150,25 @@ export default function PortfolioEditor(props) {
     setProfilePhoto(picurl);
   }
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  function handleChange(event) {
+    event.preventDefault();
+    let nam = event.target.name;
+    let val = event.target.value;
+
+    switch (nam) {
+      case "portfolioName":
+        setPortfolioName(val);
+      case "userName":
+        setUserName(val);
+      case "introduction":
+        setIntroduction(val);
+      case "email":
+        setEmail(val);
+      case "phone":
+        setPhone(val);
+      default:
+    }
+  }
 
   async function publishPortfolio() {
     const portfolio = {
@@ -257,7 +269,7 @@ export default function PortfolioEditor(props) {
             name="portfolioName"
             label="portfolio Name"
             defaultValue={portfolio_name_value}
-            onChange={event => { setPortfolioName(event.target.value) }}
+            onChange={event => handleChange(event)}
           />
           <br />
           <TextField
@@ -265,7 +277,7 @@ export default function PortfolioEditor(props) {
             name="userName"
             label="Your Name"
             defaultValue={user_name_value}
-            onChange={event => { setUserName(event.target.value) }}
+            onChange={event => handleChange(event)}
           />
           <br />
           <TextField
@@ -277,7 +289,7 @@ export default function PortfolioEditor(props) {
             name="introduction"
             label="introduction"
             defaultValue={introduction_value}
-            onChange={event => { setPortfolioName(event.target.value) }}
+            onChange={event => handleChange(event)}
           />
         </form>
       </TabPanel>
@@ -312,14 +324,14 @@ export default function PortfolioEditor(props) {
             name="email"
             label="Email"
             defaultValue={email_value}
-            onChange={event => { setEmail(event.target.value) }}
+            onChange={event => handleChange(event)}
           />
           <br />
           <TextField id="phone"
             name="phone"
             label="Phone"
             defaultValue={phone_value}
-            onChange={event => { setPhone(event.target.value) }}
+            onChange={event => handleChange(event)}
           />
         </form>
       </TabPanel>
