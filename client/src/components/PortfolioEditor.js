@@ -1,52 +1,79 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
 
 import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
+// import UploadAvatar from './UploadAvatar';
 import UploadPicture from './UploadPicture';
-import UploadAvatar from './UploadAvatar';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-// import SwipeableViews from 'react-swipeable-views';
 import Container from '@material-ui/core/Container';
-import { AppBar, Tabs, Tab, Typography, Box, Button, TextField, Popover } from '@material-ui/core';
-
+import { AppBar, Tabs, Toolbar, Tab, Typography, Box, Button, TextField, Popover } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-
-  profile_form_root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      marginLeft: theme.spacing(6),
-      width: '40ch',
-    },
-  },
-  buttom_root: {
-    '& > *': {
-      margin: theme.spacing(2),
-    },
+  form: {
+    flexGrow: 1,
+    display: 'flex',
+    height: '580px',
   },
   field_root: {
     '& > *': {
       marginBottom: theme.spacing(2),
     },
   },
-  div_root: {
-    height: '500px',
+  grow: {
+    flexGrow: 1,
   },
   btn: {
-    flexGrow: 1,
-    float: "right",
-    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(1),
   },
   pop: {
     flexGrow: 1,
-    padding: "10px",
+    padding: theme.spacing(1),
   },
   appbar: {
-    // background: "#757ce8",
+    backgroundColor: theme.palette.background.paper,
   },
-
+  tabs: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+  },
 }));
+
+// const useStyles = makeStyles((theme) => ({
+
+//   profile_form_root: {
+//       '& > *': {
+//           margin: theme.spacing(1),
+//           marginLeft: theme.spacing(6),
+//           width: '40ch',
+//       },
+//   },
+//   buttom_root: {
+//       '& > *': {
+//           margin: theme.spacing(2),
+//       },
+//   },
+//   field_root: {
+//       '& > *': {
+//           marginBottom: theme.spacing(2),
+//       },
+//   },
+//   div_root: {
+//       height: '500px',
+//   },
+//   btn: {
+//       flexGrow: 1,
+//       float: "right",
+//       marginRight: theme.spacing(2),
+//   },
+//   pop: {
+//       flexGrow: 1,
+//       padding: "10px",
+//   },
+//   appbar: {
+//       // background: "#757ce8",
+//   },
+
+// }));
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,8 +82,8 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -70,8 +97,8 @@ function TabPanel(props) {
 
 function a11yProps(index) {
   return {
-    id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
   };
 }
 
@@ -120,17 +147,13 @@ export default function PortfolioEditor(props) {
     setValue(index);
   };
 
-  // Popover
-  const handlePopoverClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-  const handlePopoverClickConfirm = () => {
-    setAnchorEl(null);
+  const onSubmit = () => {
     publishPortfolio();
   };
+
+  const uploadPicture = (picurl) => {
+    setProfilePhoto(picurl);
+  }
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
@@ -181,124 +204,125 @@ export default function PortfolioEditor(props) {
     };
   }
 
+
+
   return (
-
-    <Container component="main" maxwidth="xs">
-
-      <div className={classes.div_root}>
-        <AppBar position="static" color="transparent" className={classes.appbar}>
-          <Tabs
-            value={value}
-            onChange={handleTabsChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-            aria-label="full width tabs example"
-          >
-            <Tab label="Home" {...a11yProps(0)} />
-            <Tab label="About" {...a11yProps(1)} />
-            <Tab label="Leisure" {...a11yProps(2)} />
-            <Tab label="Contact" {...a11yProps(3)} />
-          </Tabs>
-        </AppBar>
-        {/* <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={value}
-          onChangeIndex={handleTabsIndex}
-        > */}
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <form noValidate autoComplete="off" className={classes.field_root}>
-            <UploadAvatar user_name_value={userName} />
-            <br />
-            <TextField
-              id="portfolioName"
-              name="portfolioName"
-              label="portfolio Name"
-              defaultValue={portfolio_name_value}
-              onChange={event => { setPortfolioName(event.target.value) }}
-            />
-            <br />
-            <TextField
-              id="userName"
-              name="userName"
-              label="Your Name"
-              defaultValue={user_name_value}
-              onChange={event => { setUserName(event.target.value) }}
-            />
-            <br />
-            <TextField
-              multiline
-              fullWidth
-              margin='normal'
-              variant='outlined'
-              id="introduction"
-              name="introduction"
-              label="introduction"
-              defaultValue={introduction_value}
-              onChange={event => { setPortfolioName(event.target.value) }}
-            />
-          </form>
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          <form noValidate autoComplete="off" className={classes.field_root}>
-
-          </form>
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          <form noValidate autoComplete="off" className={classes.field_root}>
-
-          </form>
-        </TabPanel>
-        <TabPanel value={value} index={3} dir={theme.direction}>
-          <form noValidate autoComplete="off" className={classes.field_root}>
-            <TextField id="email"
-              name="email"
-              label="Email"
-              defaultValue={email_value}
-              onChange={event => { setEmail(event.target.value) }}
-            />
-            <br />
-            <TextField id="phone"
-              name="phone"
-              label="Phone"
-              defaultValue={phone_value}
-              onChange={event => { setPhone(event.target.value) }}
-            />
-          </form>
-        </TabPanel>
-        {/* </SwipeableViews> */}
-      </div>
-
-      <Button aria-describedby={id} variant="contained" color="primary" onClick={handlePopoverClick} className={classes.btn}>
-        Publish
+    <Container>
+      <AppBar position="static" className={classes.appbar}>
+        <Toolbar>
+          <div className={classes.grow} />
+          <Button variant="outlined" color="primary" href={'../user/home'} className={classes.btn}>
+            Cancel
           </Button>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handlePopoverClose}
-        anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'center',
-          horizontal: 'center',
-        }}
-      >
-        <Typography className={classes.pop}>Please publish after finishing all edits
-              <Button variant="contained" color="primary" onClick={handlePopoverClickConfirm}>
+          <Button variant="contained" color="primary" onClick={onSubmit} className={classes.btn}>
             Publish
-              </Button>
-        </Typography>
-      </Popover>
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.form}>
 
-      <Button variant="outlined" color="primary" href={'../user/home'} className={classes.btn}>
-        Cancel
-      </Button>
+        <Tabs
+          orientation="vertical"
+          variant="fullWidth"
+          value={value}
+          onChange={handleTabsChange}
+          aria-label="Vertical tabs example"
+          className={classes.tabs}
+        >
+          <Tab label="Item One" {...a11yProps(0)} />
+          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Item Four" {...a11yProps(3)} />
+        </Tabs>
 
-      <p>&nbsp;</p>
-
+        <HomeEdit />
+        <AboutEdit />
+        <LeisureEdit />
+        <ContactEdit />
+      </div>
     </Container>
-  )
+  );
+
+
+
+
+  function HomeEdit() {
+    return (
+      <TabPanel value={value} index={0}>
+        <form noValidate autoComplete="off" className={classes.field_root}>
+          <UploadPicture uploadPicture={uploadPicture} />
+          {profile_photo_value !== "link to img" ? <p>{profile_photo_value}</p> : <br />}
+          <TextField
+            id="portfolioName"
+            name="portfolioName"
+            label="portfolio Name"
+            defaultValue={portfolio_name_value}
+            onChange={event => { setPortfolioName(event.target.value) }}
+          />
+          <br />
+          <TextField
+            id="userName"
+            name="userName"
+            label="Your Name"
+            defaultValue={user_name_value}
+            onChange={event => { setUserName(event.target.value) }}
+          />
+          <br />
+          <TextField
+            multiline
+            fullWidth
+            margin='normal'
+            variant='outlined'
+            id="introduction"
+            name="introduction"
+            label="introduction"
+            defaultValue={introduction_value}
+            onChange={event => { setPortfolioName(event.target.value) }}
+          />
+        </form>
+      </TabPanel>
+    )
+  }
+
+  function AboutEdit() {
+    return (
+      <TabPanel value={value} index={1} dir={theme.direction}>
+        <form noValidate autoComplete="off" className={classes.field_root}>
+
+        </form>
+      </TabPanel>
+    )
+  }
+
+  function LeisureEdit() {
+    return (
+      <TabPanel value={value} index={2} dir={theme.direction}>
+        <form noValidate autoComplete="off" className={classes.field_root}>
+
+        </form>
+      </TabPanel>
+    )
+  }
+
+  function ContactEdit() {
+    return (
+      <TabPanel value={value} index={3} dir={theme.direction}>
+        <form noValidate autoComplete="off" className={classes.field_root}>
+          <TextField id="email"
+            name="email"
+            label="Email"
+            defaultValue={email_value}
+            onChange={event => { setEmail(event.target.value) }}
+          />
+          <br />
+          <TextField id="phone"
+            name="phone"
+            label="Phone"
+            defaultValue={phone_value}
+            onChange={event => { setPhone(event.target.value) }}
+          />
+        </form>
+      </TabPanel>
+    )
+  }
 }
