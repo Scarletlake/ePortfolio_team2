@@ -6,9 +6,9 @@ import UploadPicture from './UploadPicture';
 import UploadAvatar from './UploadAvatar';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import SwipeableViews from 'react-swipeable-views';
+// import SwipeableViews from 'react-swipeable-views';
 import Container from '@material-ui/core/Container';
-import { AppBar, Tabs, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
+import { AppBar, Tabs, Tab, Typography, Box, Button, TextField, Popover } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +32,15 @@ const useStyles = makeStyles((theme) => ({
   },
   div_root: {
     height: '500px',
+  },
+  btn: {
+    flexGrow: 1,
+    float: "right",
+    marginRight: theme.spacing(2),
+  },
+  pop: {
+    flexGrow: 1,
+    padding: "10px",
   }
 
 }));
@@ -49,7 +58,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -66,6 +75,7 @@ function a11yProps(index) {
 export default function PortfolioEditor(props) {
   const classes = useStyles();
   const theme = useTheme();
+  // console.log(localeCompare("abc", "abc"));
 
   const { _id, portfolioName, template, userName, homePage, formalPage, leisurePage, contactPage } = props.portfolio;
 
@@ -95,15 +105,32 @@ export default function PortfolioEditor(props) {
   const [formal_page_sections, setFormalPageSections] = useState(formalPage.sections);
   const [leisure_page_sections, setLeisurePageSections] = useState(leisurePage.sections);
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0); // Tabs
+  const [anchorEl, setAnchorEl] = useState(null); // Popover
 
-  const handleChange = (event, newValue) => {
+
+  // Tabs
+  const handleTabsChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const handleChangeIndex = (index) => {
+  const handleTabsIndex = (index) => {
     setValue(index);
   };
+
+  // Popover
+  const handlePopoverClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+  const handlePopoverClickConfirm = () => {
+    setAnchorEl(null);
+    publishPortfolio();
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   async function publishPortfolio() {
     const portfolio = {
@@ -152,12 +179,14 @@ export default function PortfolioEditor(props) {
   }
 
   return (
+
     <Container component="main" maxwidth="xs">
+
       <div className={classes.div_root}>
         <AppBar position="static" color="default">
           <Tabs
             value={value}
-            onChange={handleChange}
+            onChange={handleTabsChange}
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth"
@@ -169,77 +198,104 @@ export default function PortfolioEditor(props) {
             <Tab label="Contact" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
-        <SwipeableViews
+        {/* <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={value}
-          onChangeIndex={handleChangeIndex}
-        >
-          <TabPanel value={value} index={0} dir={theme.direction}>
-            <form noValidate autoComplete="off" className={classes.field_root}>
-              <UploadAvatar user_name_value={userName} />
-              <br />
-              <TextField
-                id="portfolioName"
-                name="portfolioName"
-                label="portfolio Name"
-                defaultValue={portfolio_name_value}
-                onChange={event => { setPortfolioName(event.target.value) }}
-              />
-              <br />
-              <TextField
-                id="userName"
-                name="userName"
-                label="Your Name"
-                defaultValue={user_name_value}
-                onChange={event => { setUserName(event.target.value) }}
-              />
-              <br />
-              <TextField
-                multiline
-                fullWidth
-                margin='normal'
-                variant='outlined'
-                id="introduction"
-                name="introduction"
-                label="introduction"
-                defaultValue={introduction_value}
-                onChange={event => { setPortfolioName(event.target.value) }}
-              />
-            </form>
-          </TabPanel>
-          <TabPanel value={value} index={1} dir={theme.direction}>
-            <form noValidate autoComplete="off" className={classes.field_root}>
+          onChangeIndex={handleTabsIndex}
+        > */}
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          <form noValidate autoComplete="off" className={classes.field_root}>
+            <UploadAvatar user_name_value={userName} />
+            <br />
+            <TextField
+              id="portfolioName"
+              name="portfolioName"
+              label="portfolio Name"
+              defaultValue={portfolio_name_value}
+              onChange={event => { setPortfolioName(event.target.value) }}
+            />
+            <br />
+            <TextField
+              id="userName"
+              name="userName"
+              label="Your Name"
+              defaultValue={user_name_value}
+              onChange={event => { setUserName(event.target.value) }}
+            />
+            <br />
+            <TextField
+              multiline
+              fullWidth
+              margin='normal'
+              variant='outlined'
+              id="introduction"
+              name="introduction"
+              label="introduction"
+              defaultValue={introduction_value}
+              onChange={event => { setPortfolioName(event.target.value) }}
+            />
+          </form>
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <form noValidate autoComplete="off" className={classes.field_root}>
 
-            </form>
-          </TabPanel>
-          <TabPanel value={value} index={2} dir={theme.direction}>
-            <form noValidate autoComplete="off" className={classes.field_root}>
+          </form>
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
+          <form noValidate autoComplete="off" className={classes.field_root}>
 
-            </form>
-          </TabPanel>
-          <TabPanel value={value} index={3} dir={theme.direction}>
-            <form noValidate autoComplete="off" className={classes.field_root}>
-              <TextField id="email"
-                name="email"
-                label="Email"
-                defaultValue={email_value}
-                onChange={event => { setEmail(event.target.value) }}
-              />
-              <br />
-              <TextField id="phone"
-                name="phone"
-                label="Phone"
-                defaultValue={phone_value}
-                onChange={event => { setPhone(event.target.value) }}
-              />
-            </form>
-          </TabPanel>
-        </SwipeableViews>
+          </form>
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={theme.direction}>
+          <form noValidate autoComplete="off" className={classes.field_root}>
+            <TextField id="email"
+              name="email"
+              label="Email"
+              defaultValue={email_value}
+              onChange={event => { setEmail(event.target.value) }}
+            />
+            <br />
+            <TextField id="phone"
+              name="phone"
+              label="Phone"
+              defaultValue={phone_value}
+              onChange={event => { setPhone(event.target.value) }}
+            />
+          </form>
+        </TabPanel>
+        {/* </SwipeableViews> */}
       </div>
-      <Button variant="contained" color="primary" onClick={publishPortfolio}>
+
+      <Button aria-describedby={id} variant="contained" color="primary" onClick={handlePopoverClick} className={classes.btn}>
         Publish
+          </Button>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handlePopoverClose}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'center',
+        }}
+      >
+        <Typography className={classes.pop}>Please publish after finishing all edits
+              <Button variant="contained" color="primary" onClick={handlePopoverClickConfirm}>
+            Publish
+              </Button>
+        </Typography>
+      </Popover>
+
+      <Button variant="outlined" color="primary" href={'../user/home'} className={classes.btn}>
+        Cancel
       </Button>
-      <p> {portfolio_url}</p>
+
+      <p>&nbsp;</p>
+
     </Container>
   )
 }
