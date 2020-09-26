@@ -41,7 +41,10 @@ const useStyles = makeStyles((theme) => ({
   pop: {
     flexGrow: 1,
     padding: "10px",
-  }
+  },
+  appbar: {
+    // background: "#757ce8",
+  },
 
 }));
 
@@ -183,7 +186,7 @@ export default function PortfolioEditor(props) {
     <Container component="main" maxwidth="xs">
 
       <div className={classes.div_root}>
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="transparent" className={classes.appbar}>
           <Tabs
             value={value}
             onChange={handleTabsChange}
