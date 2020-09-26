@@ -3,7 +3,6 @@ import { useDropzone } from "react-dropzone";
 import request from "superagent";
 import { FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { deepOrange } from '@material-ui/core/colors';
 
 const CLOUDINARY_UPLOAD_PRESET = "portfolio";
 const CLOUDINARY_UPLOAD_URL =
@@ -11,21 +10,18 @@ const CLOUDINARY_UPLOAD_URL =
 var pictureUrl = "";
 
 const useStyles = makeStyles((theme) => ({
-    // root: {
-    //   display: 'flex',
-    //   '& > *': {
-    //     margin: theme.spacing(1),
-    //     width: theme.spacing(17),
-    //     height: theme.spacing(17),
-    //   },
-    // },
-    orange: {
-        color: theme.palette.getContrastText(deepOrange[500]),
-        backgroundColor: deepOrange[500],
+    root: {
+        width: "500px",
+        height: "500px",
+        border: "Solid 1px black"
     },
+    pic: {
+        maxWidth: "500px",
+        maxHeight: "500px",
+    }
 }));
 
-export default function MyDropzone() {
+export default function UploadPicture(props) {
 
     const classes = useStyles();
 
@@ -47,15 +43,21 @@ export default function MyDropzone() {
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
+    if (pictureUrl === "") {
+
+    } else {
+        props.uploadPicture(pictureUrl);
+    }
+
     return (
         <FormControl>
-            <div {...getRootProps()}>
+            <div {...getRootProps()} className={classes.root}>
                 <input {...getInputProps()} />
                 {pictureUrl === "" ?
                     (<p>Insert pictrue ...</p>) :
                     (
                         <div>
-                            <img src={pictureUrl} alt="Show Picture" />
+                            <img src={pictureUrl} alt="Show Picture" className={classes.pic} />
                         </div>
                     )
                 }
