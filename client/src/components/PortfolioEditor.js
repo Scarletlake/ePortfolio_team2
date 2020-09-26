@@ -87,8 +87,8 @@ export default function PortfolioEditor(props) {
 
   // page titles
   //const [home_page_title, setHomePageTitle] = useState("Home");
-  const [formal_page_title, setFormalPageTitle] = useState(formalPage.titile);
-  const [leisure_page_title, setLeisurePageTitle] = useState(leisurePage.titile);
+  const [formal_page_title, setFormalPageTitle] = useState(formalPage.title);
+  const [leisure_page_title, setLeisurePageTitle] = useState(leisurePage.title);
   const [contact_page_title, setContactPageTitle] = useState(contactPage.title);
 
   // page sections
