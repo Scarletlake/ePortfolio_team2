@@ -1,15 +1,43 @@
-import React from 'react'
-import Button from '@material-ui/core/Button';
+import React from 'react';
+import { Grid, Button, Paper, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles({
+  grid: {
+    marginTop: "20%",
+    textAlign: "center",
+  },
+  btn_style: {
+    background: "linear-gradient(45deg, #5a9cb8 30%, #2d49ba 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px rgba(63, 80, 181, .5)",
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+  },
+});
 
-export default function TemplatePage(){
-
-    return (
-      <div>
-       <h1>CHOOSE THE TEMPLATE YOU WANT</h1>
-       <Button variant="contained" color="primary" href="/portfolio/editor?temp=art&id=0">
-        use this template
-      </Button>
-      </div>
-    )
+export default function TemplatePage() {
+  const classes = useStyles();
+  return (
+    <Grid container className={classes.grid} justifyContent="space-evenly">
+      <Grid item xs={4}>
+        {/* <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+          use this template
+        </Button> */}
+      </Grid>
+      <Grid item xs={4}>
+        <Typography><h1>Art</h1></Typography>
+        <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+          use this template
+        </Button>
+      </Grid>
+      <Grid item xs={4}>
+        {/* <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+          use this template
+        </Button> */}
+      </Grid>
+    </Grid>
+  );
 }
