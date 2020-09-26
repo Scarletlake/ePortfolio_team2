@@ -21,14 +21,14 @@ const useStyles = makeStyles({
 export default function TemplatePage() {
   const classes = useStyles();
   return (
-    <Grid container className={classes.grid} justifyContent="space-evenly">
+    <Grid container className={classes.grid}>
       <Grid item xs={4}>
         {/* <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
           use this template
         </Button> */}
       </Grid>
       <Grid item xs={4}>
-        <Typography><h1>Art</h1></Typography>
+        <h1>Art</h1>
         <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
           use this template
         </Button>
