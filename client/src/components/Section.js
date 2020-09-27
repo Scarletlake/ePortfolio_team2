@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { AppBar, Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
 import UploadPicture from './UploadPicture';
 
-export class addDescription extends Component {
+export default class Section extends Component {
 
-    state = { sections: this.props.sections };
+    state = { 
+        sections: this.props.sections 
+    };
 
     // onChange = () => this.setState()
 
@@ -14,8 +16,8 @@ export class addDescription extends Component {
 
     addOne = () => {
         const max_num = this.state.sections.length + 1;
-        this.props.onClick({ sections: [...this.state.sections, { sectionTitle: max_num.toString(), sectionDescription: "", photo: "" }] });
-        this.setState({ sections: [...this.state.sections, { sectionTitle: max_num.toString(), sectionDescription: "", photo: "" }] });
+        this.props.onClick(this.state.sections.concat({ sectionTitle: max_num.toString(), sectionDescription: "", photo: "" }));
+        this.setState( {sections: this.state.sections.concat({ sectionTitle: max_num.toString(), sectionDescription: "", photo: "" })})
     }
 
     render() {
@@ -36,4 +38,3 @@ export class addDescription extends Component {
     }
 }
 
-export default addDescription

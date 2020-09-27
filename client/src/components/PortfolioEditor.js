@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
 // import UploadAvatar from './UploadAvatar';
 import UploadPicture from './UploadPicture';
-import AddDescription from './addDescription';
+import Section from './Section';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -109,7 +109,7 @@ export default function PortfolioEditor(props) {
   const theme = useTheme();
 
   const { _id, portfolioName, template, userName, homePage, formalPage, leisurePage, contactPage } = props.portfolio;
-  console.log(formalPage);
+  
 
   const [portfolio_url, setPortfolioURL] = useState("");
   const [portfolio_name_value, setPortfolioName] = useState(portfolioName);
@@ -177,7 +177,7 @@ export default function PortfolioEditor(props) {
 
   const onFormalChange = (newValue) => {
     setFormalPageSections(newValue);
-    console.log(newValue)
+    console.log(formal_page_sections)
   }
 
   const onLeisureChange = (newValue) => {
@@ -311,8 +311,7 @@ export default function PortfolioEditor(props) {
         {/* About page editor */}
         <TabPanel value={value} index={1} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-            {console.log(formal_page_sections)}
-            <AddDescription sections={formal_page_sections} onClick={onFormalChange} />
+            <Section sections={formal_page_sections} onClick={onFormalChange} />
           </form>
         </TabPanel>
 
