@@ -141,6 +141,8 @@ export default function PortfolioEditor(props) {
   const [open_publish, setOpenPublish] = useState(false); // Dialog
   const [open_cancel, setOpenCancel] = useState(false);
 
+  //console.log(formal_page_sections.length);
+
 
   const handleTabsChange = (event, newValue) => {
     setValue(newValue);
@@ -259,10 +261,73 @@ export default function PortfolioEditor(props) {
           <Tab label="Item Four" {...a11yProps(3)} />
         </Tabs>
 
-        <HomeEdit />
-        <AboutEdit />
-        <LeisureEdit />
-        <ContactEdit />
+        {/* Home page editor */}
+        <TabPanel value={value} index={0}>
+          <form noValidate autoComplete="off" className={classes.field_root}>
+            <UploadPicture uploadPicture={uploadPicture} pictureUrl={profile_photo_value} />
+            {profile_photo_value !== "link to img" ? <p>{profile_photo_value}</p> : <br />}
+            <TextField
+              id="portfolioName"
+              name="portfolioName"
+              label="portfolio Name"
+              defaultValue={portfolio_name_value}
+              onChange={event => handleChange(event)}
+            />
+            <br />
+            <TextField
+              id="userName"
+              name="userName"
+              label="Your Name"
+              defaultValue={user_name_value}
+              onChange={event => handleChange(event)}
+            />
+            <br />
+            <TextField
+              multiline
+              fullWidth
+              margin='normal'
+              variant='outlined'
+              id="introduction"
+              name="introduction"
+              label="introduction"
+              defaultValue={introduction_value}
+              onChange={event => handleChange(event)}
+            />
+          </form>
+        </TabPanel>
+
+        {/* About page editor */}
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <form noValidate autoComplete="off" className={classes.field_root}>
+
+          </form>
+        </TabPanel>
+
+        {/* Leisure page editor */}
+        <TabPanel value={value} index={2} dir={theme.direction}>
+          <form noValidate autoComplete="off" className={classes.field_root}>
+
+          </form>
+        </TabPanel>
+
+        {/* Contact page editor */}
+        <TabPanel value={value} index={3} dir={theme.direction}>
+          <form noValidate autoComplete="off" className={classes.field_root}>
+            <TextField id="email"
+              name="email"
+              label="Email"
+              defaultValue={email_value}
+              onChange={event => handleChange(event)}
+            />
+            <br />
+            <TextField id="phone"
+              name="phone"
+              label="Phone"
+              defaultValue={phone_value}
+              onChange={event => handleChange(event)}
+            />
+          </form>
+        </TabPanel>
 
       </div>
     </Container>
@@ -325,86 +390,6 @@ export default function PortfolioEditor(props) {
 
         </Toolbar>
       </AppBar>
-    )
-  }
-
-  function HomeEdit() {
-    return (
-      <TabPanel value={value} index={0}>
-        <form noValidate autoComplete="off" className={classes.field_root}>
-          <UploadPicture uploadPicture={uploadPicture} pictureUrl={profile_photo_value} />
-          {profile_photo_value !== "link to img" ? <p>{profile_photo_value}</p> : <br />}
-          <TextField
-            id="portfolioName"
-            name="portfolioName"
-            label="portfolio Name"
-            defaultValue={portfolio_name_value}
-            onChange={event => handleChange(event)}
-          />
-          <br />
-          <TextField
-            id="userName"
-            name="userName"
-            label="Your Name"
-            defaultValue={user_name_value}
-            onChange={event => handleChange(event)}
-          />
-          <br />
-          <TextField
-            multiline
-            fullWidth
-            margin='normal'
-            variant='outlined'
-            id="introduction"
-            name="introduction"
-            label="introduction"
-            defaultValue={introduction_value}
-            onChange={event => handleChange(event)}
-          />
-        </form>
-      </TabPanel>
-    )
-  }
-
-  function AboutEdit() {
-    return (
-      <TabPanel value={value} index={1} dir={theme.direction}>
-        <form noValidate autoComplete="off" className={classes.field_root}>
-
-        </form>
-      </TabPanel>
-    )
-  }
-
-  function LeisureEdit() {
-    return (
-      <TabPanel value={value} index={2} dir={theme.direction}>
-        <form noValidate autoComplete="off" className={classes.field_root}>
-
-        </form>
-      </TabPanel>
-    )
-  }
-
-  function ContactEdit() {
-    return (
-      <TabPanel value={value} index={3} dir={theme.direction}>
-        <form noValidate autoComplete="off" className={classes.field_root}>
-          <TextField id="email"
-            name="email"
-            label="Email"
-            defaultValue={email_value}
-            onChange={event => handleChange(event)}
-          />
-          <br />
-          <TextField id="phone"
-            name="phone"
-            label="Phone"
-            defaultValue={phone_value}
-            onChange={event => handleChange(event)}
-          />
-        </form>
-      </TabPanel>
     )
   }
 }
