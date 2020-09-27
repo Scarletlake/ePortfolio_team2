@@ -7,7 +7,8 @@ import UploadPicture from './UploadPicture';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { AppBar, Tabs, Toolbar, Tab, Typography, Box, Button, TextField, Popover } from '@material-ui/core';
+import { AppBar, Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -137,6 +138,9 @@ export default function PortfolioEditor(props) {
 
   const [value, setValue] = useState(0); // Tabs
 
+  const [open_publish, setOpenPublish] = useState(false); // Dialog
+  const [open_cancel, setOpenCancel] = useState(false);
+
 
   const handleTabsChange = (event, newValue) => {
     setValue(newValue);
@@ -149,6 +153,23 @@ export default function PortfolioEditor(props) {
   const uploadPicture = (picurl) => {
     setProfilePhoto(picurl);
   }
+
+  const handleClickOpenPublish = () => {
+    setOpenPublish(true);
+  };
+
+  const handleClosePublish = () => {
+    setOpenPublish(false);
+  };
+
+  const handleClickOpenCancel = () => {
+    setOpenCancel(true);
+  };
+
+  const handleCloseCancel = () => {
+    setOpenCancel(false);
+  };
+
 
   function handleChange(event) {
     event.preventDefault();
@@ -171,6 +192,7 @@ export default function PortfolioEditor(props) {
   }
 
   async function publishPortfolio() {
+    handleClosePublish();
     const portfolio = {
       portfolioID: _id,
       portfolioName: portfolio_name_value,
@@ -220,17 +242,7 @@ export default function PortfolioEditor(props) {
 
   return (
     <Container>
-      <AppBar position="static" className={classes.appbar}>
-        <Toolbar>
-          <div className={classes.grow} />
-          <Button variant="outlined" color="primary" href={'../user/home'} className={classes.btn}>
-            Cancel
-          </Button>
-          <Button variant="contained" color="primary" onClick={onSubmit} className={classes.btn}>
-            Publish
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <Appbar />
       <div className={classes.form}>
 
         <Tabs
@@ -251,18 +263,76 @@ export default function PortfolioEditor(props) {
         <AboutEdit />
         <LeisureEdit />
         <ContactEdit />
+
       </div>
     </Container>
   );
 
 
+  function Appbar() {
+    return (
+      <AppBar position="static" className={classes.appbar}>
+        <Toolbar>
+          <div className={classes.grow} />
 
+          <Button variant="outlined" color="primary" onClick={handleClickOpenCancel} className={classes.btn}>
+            Cancel
+          </Button>
+
+          <Button variant="contained" color="primary" onClick={handleClickOpenPublish} className={classes.btn}>
+            Publish
+          </Button>
+
+          <Dialog
+            open={open_cancel}
+            onClose={handleCloseCancel}
+          >
+            <DialogTitle>{"Abort this edit?"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                If you choose to abort this edit, all changes will not be saved.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button color="primary" onClick={handleCloseCancel} autoFocus>
+                Continue editing
+              </Button>
+              <Button href={"../user/home"} color="primary">
+                Abort editing
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+          <Dialog
+            open={open_publish}
+            onClose={handleClosePublish}
+          >
+            <DialogTitle>{"Finished all edits?"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                If you are finished editing, you can click the "Continue" button to finish publishing.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClosePublish} color="primary">
+                Back
+              </Button>
+              <Button onClick={onSubmit} color="primary" autoFocus>
+                Continue
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+        </Toolbar>
+      </AppBar>
+    )
+  }
 
   function HomeEdit() {
     return (
       <TabPanel value={value} index={0}>
         <form noValidate autoComplete="off" className={classes.field_root}>
-          <UploadPicture uploadPicture={uploadPicture} />
+          <UploadPicture uploadPicture={uploadPicture} pictureUrl={profile_photo_value} />
           {profile_photo_value !== "link to img" ? <p>{profile_photo_value}</p> : <br />}
           <TextField
             id="portfolioName"
