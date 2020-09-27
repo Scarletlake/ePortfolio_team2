@@ -46,8 +46,7 @@ export async function createPortfolio(portfolio) {
   });
 
   if (res.status === 200) {
-    alert("Your portfolio is published successfully, and you will be redirected to your home page.");
-    window.location.replace("/user/home");
+
   } else if (res.status === 401) {
     alert("Log in first to create your portfolio");
     window.location.replace("/user/signin");
@@ -84,8 +83,7 @@ export async function updatePortfolio(portfolio) {
   });
 
   if (res.status === 200) {
-    alert("Your portfolio is updated successfully, and you will be redirected to your home page.");
-    window.location.replace("/user/home");
+
   } else if (res.status === 401) {
     alert("Log in first to create your portfolio");
     window.location.replace("/user/signin");

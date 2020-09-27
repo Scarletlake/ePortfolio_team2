@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
+    width: '15%',
   },
 }));
 
@@ -140,6 +141,7 @@ export default function PortfolioEditor(props) {
 
   const [open_publish, setOpenPublish] = useState(false); // Dialog
   const [open_cancel, setOpenCancel] = useState(false);
+  const [open_redirect, setOpenRedirect] = useState(false);
 
   //console.log(formal_page_sections.length);
 
@@ -149,6 +151,7 @@ export default function PortfolioEditor(props) {
   };
 
   const onSubmit = () => {
+    handlePublish();
     publishPortfolio();
   };
 
@@ -156,21 +159,19 @@ export default function PortfolioEditor(props) {
     setProfilePhoto(picurl);
   }
 
-  const handleClickOpenPublish = () => {
-    setOpenPublish(true);
+
+
+  const handlePublish = () => {
+    setOpenPublish(!open_publish);
   };
 
-  const handleClosePublish = () => {
-    setOpenPublish(false);
+  const handleCancel = () => {
+    setOpenCancel(!open_cancel);
   };
 
-  const handleClickOpenCancel = () => {
-    setOpenCancel(true);
-  };
-
-  const handleCloseCancel = () => {
-    setOpenCancel(false);
-  };
+  const handleRedirect = () => {
+    setOpenRedirect(!open_redirect);
+  }
 
 
   function handleChange(event) {
@@ -194,7 +195,7 @@ export default function PortfolioEditor(props) {
   }
 
   async function publishPortfolio() {
-    handleClosePublish();
+    handlePublish();
     const portfolio = {
       portfolioID: _id,
       portfolioName: portfolio_name_value,
@@ -228,11 +229,13 @@ export default function PortfolioEditor(props) {
       if (_id === '0') {
         const res = await createPortfolio(portfolio);
         setPortfolioURL(res.portfolioURL);
+        handleRedirect();
       }
       // update the existing portfolio
       else {
         const res = await updatePortfolio(portfolio);
         setPortfolioURL(res.portfolioURL);
+        handleRedirect();
       }
     } catch (error) {
       console.log(error);
@@ -340,17 +343,17 @@ export default function PortfolioEditor(props) {
         <Toolbar>
           <div className={classes.grow} />
 
-          <Button variant="outlined" color="primary" onClick={handleClickOpenCancel} className={classes.btn}>
+          <Button variant="outlined" color="primary" onClick={handleCancel} className={classes.btn}>
             Cancel
           </Button>
 
-          <Button variant="contained" color="primary" onClick={handleClickOpenPublish} className={classes.btn}>
+          <Button variant="contained" color="primary" onClick={handlePublish} className={classes.btn}>
             Publish
           </Button>
 
           <Dialog
             open={open_cancel}
-            onClose={handleCloseCancel}
+            onClose={handleCancel}
           >
             <DialogTitle>{"Abort this edit?"}</DialogTitle>
             <DialogContent>
@@ -359,10 +362,10 @@ export default function PortfolioEditor(props) {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button color="primary" onClick={handleCloseCancel} autoFocus>
+              <Button color="primary" onClick={handleCancel} autoFocus>
                 Continue editing
               </Button>
-              <Button href={"../user/home"} color="primary">
+              <Button href={"./template"} color="primary">
                 Abort editing
               </Button>
             </DialogActions>
@@ -370,7 +373,7 @@ export default function PortfolioEditor(props) {
 
           <Dialog
             open={open_publish}
-            onClose={handleClosePublish}
+            onClose={handlePublish}
           >
             <DialogTitle>{"Finished all edits?"}</DialogTitle>
             <DialogContent>
@@ -379,11 +382,31 @@ export default function PortfolioEditor(props) {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClosePublish} color="primary">
+              <Button onClick={handlePublish} color="primary">
                 Back
               </Button>
               <Button onClick={onSubmit} color="primary" autoFocus>
                 Continue
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+          <Dialog
+            open={open_redirect}
+            onClose={handleRedirect}
+          >
+            <DialogTitle>{"Successfully pubilished!"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Your portfolio is now successfully published!
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button href={"../user/home"} color="primary">
+                Home page
+              </Button>
+              <Button href={portfolio_url} color="primary" autoFocus>
+                Profile page
               </Button>
             </DialogActions>
           </Dialog>
