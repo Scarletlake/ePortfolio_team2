@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
 // import UploadAvatar from './UploadAvatar';
 import UploadPicture from './UploadPicture';
-// import AddDescription from './addDescription';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -107,6 +106,7 @@ function a11yProps(index) {
 export default function PortfolioEditor(props) {
   const classes = useStyles();
   const theme = useTheme();
+  // console.log(localeCompare("abc", "abc"));
 
   const { _id, portfolioName, template, userName, homePage, formalPage, leisurePage, contactPage } = props.portfolio;
 
@@ -134,16 +134,14 @@ export default function PortfolioEditor(props) {
 
   // page sections
   const [formal_page_sections, setFormalPageSections] = useState(formalPage.sections);
-  // const tempory = [
-  //   { sectionTitle: "1", sectionDescription: "des1", photo: "url1" },
-  //   { sectionTitle: "2", sectionDescription: "des2", photo: "url2" }];
-  // const [formal_page_sections, setFormalPageSections] = useState(tempory);
   const [leisure_page_sections, setLeisurePageSections] = useState(leisurePage.sections);
 
   const [value, setValue] = useState(0); // Tabs
 
   const [open_publish, setOpenPublish] = useState(false); // Dialog
   const [open_cancel, setOpenCancel] = useState(false);
+
+  //console.log(formal_page_sections.length);
 
 
   const handleTabsChange = (event, newValue) => {
@@ -173,15 +171,6 @@ export default function PortfolioEditor(props) {
   const handleCloseCancel = () => {
     setOpenCancel(false);
   };
-
-  // const onFormalChange = (newValue) => {
-  //   setFormalPageSections(newValue);
-  //   console.log(newValue)
-  // }
-
-  // const onLeisureChange = (newValue) => {
-  //   setLeisurePageSections(newValue);
-  // }
 
 
   function handleChange(event) {
@@ -310,8 +299,7 @@ export default function PortfolioEditor(props) {
         {/* About page editor */}
         <TabPanel value={value} index={1} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-            {/* {console.log(formal_page_sections)}
-            <AddDescription sections={formal_page_sections} onClick={onFormalChange} /> */}
+
           </form>
         </TabPanel>
 
