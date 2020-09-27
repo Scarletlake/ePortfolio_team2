@@ -5,18 +5,18 @@ const BASE_URL = "http://localhost:5000/api";
 
 // get portfolio
 export default async function getPortfolio(portfolioID) {
-    const endpoint = BASE_URL + "/portfolio/" + portfolioID;
+  const endpoint = BASE_URL + "/portfolio/" + portfolioID;
 
-    const res = await fetch(endpoint,{
-        method: "GET",
-        credentials: 'include',
-        headers:{
-            "credentials": 'include',
-            'content-Type': "application/json"
-        },
-    });
-   
-    return res.json();
+  const res = await fetch(endpoint, {
+    method: "GET",
+    credentials: 'include',
+    headers: {
+      "credentials": 'include',
+      'content-Type': "application/json"
+    },
+  });
+
+  return res.json();
 }
 
 
@@ -43,18 +43,19 @@ export async function createPortfolio(portfolio) {
       leisurePage: leisurePage,
       contactPage: contactPage
     })
-  });    
+  });
 
   if (res.status === 200) {
-    alert("Published");
-  }else if(res.status === 401) {
-    alert ("Log in first to create your portfolio");
+    alert("Your portfolio is published successfully, and you will be redirected to your home page.");
+    window.location.replace("/user/home");
+  } else if (res.status === 401) {
+    alert("Log in first to create your portfolio");
     window.location.replace("/user/signin");
   } else {
-    alert ("Unable to create the portfolio");
+    alert("Unable to create the portfolio");
   }
 
-   return res.json();
+  return res.json();
 }
 
 // create a new portfolio
@@ -74,21 +75,22 @@ export async function updatePortfolio(portfolio) {
     body: JSON.stringify({
       portfolioName: portfolioName,
       template: template,
-      userName: userName, 
+      userName: userName,
       homePage: homePage,
       formalPage: formalPage,
       leisurePage: leisurePage,
       contactPage: contactPage
     })
-   });    
+  });
 
   if (res.status === 200) {
-    alert("Updated");
-  }else if(res.status === 401) {
-    alert ("Log in first to create your portfolio");
+    alert("Your portfolio is updated successfully, and you will be redirected to your home page.");
+    window.location.replace("/user/home");
+  } else if (res.status === 401) {
+    alert("Log in first to create your portfolio");
     window.location.replace("/user/signin");
   } else {
-    alert ("Unable to create the portfolio");
+    alert("Unable to create the portfolio");
   }
 
   return res.json();
@@ -110,28 +112,28 @@ export function deletePortfolioByID(portfolioID) {
   return res;
 }
 
-  
+
 export function usePortfolio(portfolioID) {
-    const [loading, setLoading] = useState(true);
-    const [res, setResponse] = useState([]);
-    const [error, setError] = useState(null);
-  
-    useEffect(() => {
-      getPortfolio(portfolioID)
-        .then(res => {
-          setResponse(res);
-          setLoading(false);
-        })
-        .catch(e => {
-          console.log(e);
-          setError(e);
-          setLoading(false);
-        });
-    },[]);
-  
-    return {
-      loading,
-      res,
-      error
-    };
-  } 
+  const [loading, setLoading] = useState(true);
+  const [res, setResponse] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getPortfolio(portfolioID)
+      .then(res => {
+        setResponse(res);
+        setLoading(false);
+      })
+      .catch(e => {
+        console.log(e);
+        setError(e);
+        setLoading(false);
+      });
+  }, []);
+
+  return {
+    loading,
+    res,
+    error
+  };
+} 
