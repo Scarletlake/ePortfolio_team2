@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const CLOUDINARY_UPLOAD_PRESET = "portfolio";
 const CLOUDINARY_UPLOAD_URL =
     "https://api.cloudinary.com/v1_1/do0ecn2sm/image/upload";
-var pictureUrl = "";
+var pictureUrl = "link to img";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,6 +25,8 @@ export default function UploadPicture(props) {
 
     const classes = useStyles();
 
+    pictureUrl = props.pictureUrl;
+
     const onDrop = useCallback((acceptedFiles) => {
         acceptedFiles.forEach((file) => {
             let upload = request
@@ -36,6 +38,7 @@ export default function UploadPicture(props) {
                     console.error(err);
                 }
                 pictureUrl = response.body.url;
+                props.uploadPicture(pictureUrl);
                 // console.log(pictureUrl);
             });
         });
@@ -43,17 +46,11 @@ export default function UploadPicture(props) {
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
-    if (pictureUrl === "") {
-
-    } else {
-        props.uploadPicture(pictureUrl);
-    }
-
     return (
         <FormControl>
             <div {...getRootProps()} className={classes.root}>
                 <input {...getInputProps()} />
-                {pictureUrl === "" ?
+                {pictureUrl === "link to img" ?
                     (<p>Insert pictrue ...</p>) :
                     (
                         <div>
