@@ -76,7 +76,7 @@ export default function SignInPage() {
     if (nam === "email") {
       setEmail(val);
 
-      if (!validateEmail(email_input)){
+      if (!validateEmail(val)){
         setEmailMsg("Please input a valid email");
       }else{
           setEmailMsg("");
@@ -85,7 +85,7 @@ export default function SignInPage() {
     else if (nam === "password") {
       setPassword(val);
 
-      if (password_input.length < 6 || password_input.length > 16 ){
+      if (val.length < 6 || val.length > 16 ){
         setPasswordMsg("Password length should be between 6 to 16 characters");
       }else{
         setPasswordMsg("");

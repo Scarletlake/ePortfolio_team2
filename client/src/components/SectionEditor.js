@@ -51,7 +51,7 @@ export class Section extends Component {
                             name="sectionDescription"
                             label="sectionDescription title"
                             defaultValue={this.state.sectionDescription}
-                            onChange={event => this.handleChangeTitle(event)}
+                            onChange={event => this.handleChangeDescription(event)}
                         />
                     </Grid>
                     <Grid item xs={6}>

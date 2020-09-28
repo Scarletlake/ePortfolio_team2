@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
 
 import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
-import NavbarEditor from './NavbarEditor'
+import NavbarEditor from './NavbarEditor';
 import UploadPicture from './UploadPicture';
 import SectionsEditor from './SectionsEditor';
+import PortfolioEditorBar from './PortfolioEditorBar'
+
+import InputBase from '@material-ui/core/InputBase';
 import Input from '@material-ui/core/Input';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { AppBar, Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -56,9 +59,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box
-          position="absolute"
-          left={index == 0 || index == 3 ? "44vw" : "32vw"}
+        <Box  position="absolute" 
         >
           {children}
         </Box>
@@ -122,12 +123,6 @@ export default function PortfolioEditor(props) {
     publishPortfolio();
   };
 
-  const uploadPicture = (picurl) => {
-    setProfilePhoto(picurl);
-  }
-
-
-
   const handlePublish = () => {
     setOpenPublish(!open_publish);
   };
@@ -141,13 +136,40 @@ export default function PortfolioEditor(props) {
   }
 
 
-
-  const onFormalChange = (newValue) => {
-    setFormalPageSections(newValue);
+  const changeHomePageTab = (val) => { 
+    if (!val){
+      setHomePageTag("Home");
+    }
+    else {
+      setHomePageTag(val);
+    }
   }
 
-  const onLeisureChange = (newValue) => {
-    setLeisurePageSections(newValue);
+  const changeFormalPageTab = (val) => { 
+    if (!val){
+      setFormalPageTag("About");
+    }
+    else {
+      setFormalPageTag(val);
+    }
+  }
+
+  const changeLeisurePageTab = (val) => { 
+    if (!val){
+      setLeisurePageTag("Leisure");
+    }
+    else {
+      setLeisurePageTag(val);
+    }
+  }
+
+  const changeContactPageTab = (val) => { 
+    if (!val){
+      setContactPageTag("Contact");
+    }
+    else {
+      setContactPageTag(val);
+    }
   }
 
 
@@ -201,10 +223,20 @@ export default function PortfolioEditor(props) {
   }
 
 
-
   return (
     <Container>
-      <Appbar />
+      <PortfolioEditorBar setPortfolioName={setPortfolioName} 
+                          onSubmit={onSubmit} 
+                          handleCancel={handleCancel}
+                          handlePublish={handlePublish}
+                          handleRedirect={handleRedirect}
+                          portfolioName={portfolio_name_value} 
+                          portfolioURL={portfolio_url}
+                          open_cancel={open_cancel}
+                          open_publish={open_publish}
+                          open_redirect={open_redirect}
+                          />
+
       <div className={classes.form}>
 
         <Tabs
@@ -215,12 +247,12 @@ export default function PortfolioEditor(props) {
           aria-label="Vertical tabs example"
           className={classes.tabs}
         >
-          <Tab label="Home" {...a11yProps(0)} />
-          <Tab label="Formal" {...a11yProps(1)} />
-          <Tab label="Leisure" {...a11yProps(2)} />
-          <Tab label="Contact" {...a11yProps(3)} />
+          <Tab label={home_page_tag} {...a11yProps(0)} />
+          <Tab label={formal_page_tag} {...a11yProps(1)} />
+          <Tab label={leisure_page_tag} {...a11yProps(2)} />
+          <Tab label={contact_page_tag} {...a11yProps(3)} />
         </Tabs>
-
+       
         <Grid>
 
           <Grid container
@@ -228,20 +260,24 @@ export default function PortfolioEditor(props) {
                 justify="center"
                 alignItems="center"
           >
-          <Input placeholder="Your Name" defaultValue={user_name_value} 
-              inputProps={{ 'aria-label': 'description' }} onChange={setUserName}/>
+            <InputBase placeholder="Your Name" defaultValue={user_name_value} 
+                inputProps={{ 'aria-label': 'description' }} 
+                onChange={event=> setUserName(event.target.value)}/>
 
-          <NavbarEditor homePageTab={home_page_tag} changeHomePageTab={setHomePageTag}
-                        formalPageTab={formal_page_tag} changeFormalPageTab={setFormalPageTag}
-                        leisurePageTab={leisure_page_tag} changeLeisurePageTab={setLeisurePageTag}
-                        contactPageTab={contact_page_tag} changeContactPageTab={setContactPageTag}
-          />
+            <NavbarEditor homePageTab={home_page_tag} changeHomePageTab={changeHomePageTab}
+                          formalPageTab={formal_page_tag} changeFormalPageTab={changeFormalPageTab}
+                          leisurePageTab={leisure_page_tag} changeLeisurePageTab={changeLeisurePageTab}
+                          contactPageTab={contact_page_tag} changeContactPageTab={changeContactPageTab}/>
           </Grid>
+          <br />
+
+        <Grid>
+
         {/* Home page editor */}
         <TabPanel value={value} index={0}>
           <form noValidate autoComplete="off" className={classes.field_root}>
             
-            <UploadPicture uploadPicture={uploadPicture} pictureUrl={profile_photo_value} />
+            <UploadPicture uploadPicture={setProfilePhoto} pictureUrl={profile_photo_value} />
             {profile_photo_value !== "link to img" ? <p>{profile_photo_value}</p> : <br />}
           
             <br />
@@ -262,20 +298,29 @@ export default function PortfolioEditor(props) {
         {/* About page editor */}
         <TabPanel value={value} index={1} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-            <SectionsEditor sections={formal_page_sections} onClick={onFormalChange} />
+            <InputBase placeholder="About Me" defaultValue={formal_page_title} 
+              inputProps={{ 'aria-label': 'description' }} onChange={event=> setFormalPageTitle(event.target.value)}
+            />
+            <SectionsEditor sections={formal_page_sections} onChange={setFormalPageSections} />
           </form>
         </TabPanel>
 
         {/* Leisure page editor */}
         <TabPanel value={value} index={2} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-            <SectionsEditor sections={leisure_page_sections} onClick={onLeisureChange} />
+            <InputBase placeholder="Free Time" defaultValue={leisure_page_title} 
+              inputProps={{ 'aria-label': 'description' }} onChange={event=> setLeisurePageTitle(event.target.value)}
+            />
+            <SectionsEditor sections={leisure_page_sections} onChange={setLeisurePageSections} />
           </form>
         </TabPanel>
 
         {/* Contact page editor */}
         <TabPanel value={value} index={3} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
+            <InputBase placeholder="Contact Me" defaultValue={contact_page_title} 
+              inputProps={{ 'aria-label': 'description' }} onChange={event=> setContactPageTitle(event.target.value)}
+            />
             <TextField id="email"
               name="email"
               label="Email"
@@ -291,97 +336,11 @@ export default function PortfolioEditor(props) {
             />
           </form>
         </TabPanel>
+        </Grid>
+
       </Grid>
 
       </div>
     </Container>
   );
-
-
-  function Appbar() {
-    return (
-      <AppBar position="static" className={classes.appbar}>
-        <Toolbar>
-          <div className={classes.grow} />
-
-          <Button variant="outlined" color="primary" onClick={handleCancel} className={classes.btn}>
-            Cancel
-          </Button>
-
-          <Button variant="contained" color="primary" onClick={handlePublish} className={classes.btn}>
-            Publish
-          </Button>
-
-          <Dialog
-            open={open_cancel}
-          >
-            <DialogTitle>{"Abort this edit?"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                If you choose to abort this edit, all changes will not be saved.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button color="primary" onClick={handleCancel} autoFocus>
-                Continue editing
-              </Button>
-              <Button href={"./template"} color="secondary">
-                <b>Abort</b>&nbsp;editing
-              </Button>
-            </DialogActions>
-          </Dialog>
-
-          <Dialog
-            open={open_publish}
-            onClose={handlePublish}
-          >
-            <DialogTitle>{"Finished all edits?"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                If you are finished editing, you can click the "Continue" button to finish publishing.
-              </DialogContentText>
-              
-              <TextField
-              id="portfolioName"
-              name="portfolioName"
-              label="portfolio Name"
-              defaultValue={portfolio_name_value}
-              onChange={event => setPortfolioName(event.target.value)}
-            />
-
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handlePublish} color="primary">
-                Back
-              </Button>
-              <Button onClick={onSubmit} color="primary" autoFocus>
-                Continue
-              </Button>
-            </DialogActions>
-          </Dialog>
-
-          <Dialog
-            open={open_redirect}
-            onClose={handleRedirect}
-          >
-            <DialogTitle>{"Successfully pubilished!"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Your portfolio is now successfully published!
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button href={"../user/home"} color="primary">
-                Home page
-              </Button>
-              <Button href={portfolio_url} color="primary" autoFocus>
-                Profile page
-              </Button>
-            </DialogActions>
-          </Dialog>
-
-        </Toolbar>
-      </AppBar>
-    )
-  }
 }

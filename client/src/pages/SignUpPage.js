@@ -86,14 +86,14 @@ export default function SignUpPage() {
       setEmail(val);
     }    
     else if (nam === "password") {
-      if (password_input.length < 6 || password_input.length > 16 ){
+      if (val.length < 6 || val.length > 16 ){
         setPasswordMsg("Password length should be between 6 to 16 characters");
       }else{
         setPasswordMsg("");
       }
       setPassword(val);
     }else if(nam === "re_password"){
-      if(password_input !== confirmPassword){
+      if(val !== password_input){
         setConfirmPasswordMsg("Password does not match");
       } else{
         setConfirmPasswordMsg("");

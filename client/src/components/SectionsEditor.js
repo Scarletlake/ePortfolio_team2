@@ -16,7 +16,7 @@ export default class Sections extends Component {
 
     addOne = () => {
         const max_num = this.state.sections.length + 1;
-        this.props.onClick(this.state.sections.concat({ id: max_num.toString(), sectionTitle: "Section" + max_num.toString(), sectionDescription: "des" + max_num.toString(), photo: "link to img" }));
+        this.props.onChange(this.state.sections.concat({ id: max_num.toString(), sectionTitle: "Section" + max_num.toString(), sectionDescription: "des" + max_num.toString(), photo: "link to img" }));
     }
 
     handleChange = (modified) => {
@@ -27,7 +27,7 @@ export default class Sections extends Component {
                 (section.id == modified.id ? section.photo = modified.photo : section.photo = section.photo)
             ))
         });
-        this.props.onClick(this.state.sections);
+        this.props.onChange(this.state.sections);
     }
 
     render() {

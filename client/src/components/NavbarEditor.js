@@ -1,13 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import isAuthenticated from "../utils/checkAuthToken";
-import {userLogOut} from '../api/userAPI';
-import AppBar from '@material-ui/core/AppBar';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Input from '@material-ui/core/Input';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,22 +8,37 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  input: {
+    textAlign: 'center',
+  },
 }));
 
 export default function NavBarEditor(props) {
 
+  const classes = useStyles();
+
   return (
     <div>
-      <Grid>
-     <Input placeholder="Home" defaultValue={props.homePageTab} 
-            inputProps={{ 'aria-label': 'description' }} onChange={props.changeHomeTab}/>
-     <Input placeholder="About" defaultValue={props.formalPageTab} 
-            inputProps={{ 'aria-label': 'description' }} />
-     <Input placeholder="Leisure" defaultValue={props.leisurePageTab} 
-            inputProps={{ 'aria-label': 'description' }} />
-     <Input placeholder="Contact" defaultValue={props.contactPageTab} 
-            inputProps={{ 'aria-label': 'description' }} />
-     </Grid>
+     <Input classes={{input: classes.input}}
+            placeholder="Home" defaultValue={props.homePageTab} 
+            inputProps={{ 'aria-label': 'description' }} 
+            onChange={event => {props.changeHomePageTab(event.target.value)}}
+      />
+     <Input classes={{input: classes.input}}
+            placeholder="About" defaultValue={props.formalPageTab} 
+            inputProps={{ 'aria-label': 'description' }} 
+            onChange={event => {props.changeFormalPageTab(event.target.value)}} 
+      />
+     <Input classes={{input: classes.input}}
+            placeholder="Leisure" defaultValue={props.leisurePageTab} 
+            inputProps={{ 'aria-label': 'description' }}
+            onChange={event => {props.changeLeisurePageTab(event.target.value)}} 
+      />
+     <Input classes={{input: classes.input}}
+            placeholder="Contact" defaultValue={props.contactPageTab} 
+            inputProps={{ 'aria-label': 'description' }} 
+            onChange={event => {props.changeContactPageTab(event.target.value)}} 
+      />
     </div> 
     );
   
