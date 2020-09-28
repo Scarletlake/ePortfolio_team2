@@ -11,13 +11,13 @@ var pictureUrl = "link to img";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: "500px",
-        height: "500px",
+        width: "25vw",
+        height: "25vw",
         border: "Solid 1px black"
     },
     pic: {
-        maxWidth: "500px",
-        maxHeight: "500px",
+        maxWidth: "25vw",
+        maxHeight: "25vw",
     }
 }));
 

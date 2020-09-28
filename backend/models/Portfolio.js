@@ -23,17 +23,17 @@ const UserSchema = new mongoose.Schema({
     default: '',
     required: true,
   },
-  homePage:{   
-    tag:{
+  homePage: {
+    tag: {
       type: String,
       default: '',
       required: true
     },
-    profilePhoto:{        
+    profilePhoto: {
       type: String,
       default: '',
     },
-    description:{
+    description: {
       type: String,
       default: '',
     }
@@ -42,56 +42,58 @@ const UserSchema = new mongoose.Schema({
     tag: {
       type: String,
       default: '',
-    }, 
+    },
     title: {
       type: String,
-      default: '',   
-    }, 
+      default: '',
+    },
     sections: {
       type: [{
+        id: String,
         sectionTitle: String,
         sectionDescription: String,
         photo: String
       }],
       default: []
-    },    
+    },
   },
   leisurePage: {
     tag: {
       type: String,
-      default: '',       
-    }, 
+      default: '',
+    },
     title: {
       type: String,
-      default: '',    
-    }, 
+      default: '',
+    },
     sections: {
       type: [{
+        id: String,
         sectionTitle: String,
         sectionDescription: String,
         photo: String
       }],
       default: []
-    },    
+    },
   },
 
   contactPage: {
     tag: {
       type: String,
       default: '',
-      required: true          
-    }, 
+      required: true
+    },
     title: {
       type: String,
       default: '',
-      required: true          
+      required: true
     },
     email: {
-      type: String,   
+      type: String,
       default: '',
     },
-    phone:{            
-      type: String,   
+    phone: {
+      type: String,
       default: '',
     },
   }

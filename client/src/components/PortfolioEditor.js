@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
 // import UploadAvatar from './UploadAvatar';
 import UploadPicture from './UploadPicture';
+import Sections from './Sections';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -89,7 +90,10 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box
+          position="absolute"
+          left={index == 0 || index == 3 ? "44vw" : "32vw"}
+        >
           {children}
         </Box>
       )}
@@ -107,7 +111,6 @@ function a11yProps(index) {
 export default function PortfolioEditor(props) {
   const classes = useStyles();
   const theme = useTheme();
-  // console.log(localeCompare("abc", "abc"));
 
   const { _id, portfolioName, template, userName, homePage, formalPage, leisurePage, contactPage } = props.portfolio;
 
@@ -143,8 +146,6 @@ export default function PortfolioEditor(props) {
   const [open_cancel, setOpenCancel] = useState(false);
   const [open_redirect, setOpenRedirect] = useState(false);
 
-  //console.log(formal_page_sections.length);
-
 
   const handleTabsChange = (event, newValue) => {
     setValue(newValue);
@@ -170,9 +171,18 @@ export default function PortfolioEditor(props) {
   };
 
   const handleRedirect = () => {
-    setOpenRedirect(!open_redirect);
+    setOpenRedirect(true);
   }
 
+
+
+  const onFormalChange = (newValue) => {
+    setFormalPageSections(newValue);
+  }
+
+  const onLeisureChange = (newValue) => {
+    setLeisurePageSections(newValue);
+  }
 
   function handleChange(event) {
     event.preventDefault();
@@ -302,14 +312,14 @@ export default function PortfolioEditor(props) {
         {/* About page editor */}
         <TabPanel value={value} index={1} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-
+            <Sections sections={formal_page_sections} onClick={onFormalChange} />
           </form>
         </TabPanel>
 
         {/* Leisure page editor */}
         <TabPanel value={value} index={2} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-
+            <Sections sections={leisure_page_sections} onClick={onLeisureChange} />
           </form>
         </TabPanel>
 
@@ -353,7 +363,6 @@ export default function PortfolioEditor(props) {
 
           <Dialog
             open={open_cancel}
-            onClose={handleCancel}
           >
             <DialogTitle>{"Abort this edit?"}</DialogTitle>
             <DialogContent>
@@ -365,8 +374,8 @@ export default function PortfolioEditor(props) {
               <Button color="primary" onClick={handleCancel} autoFocus>
                 Continue editing
               </Button>
-              <Button href={"./template"} color="primary">
-                Abort editing
+              <Button href={"./template"} color="secondary">
+                <b>Abort</b>&nbsp;editing
               </Button>
             </DialogActions>
           </Dialog>
