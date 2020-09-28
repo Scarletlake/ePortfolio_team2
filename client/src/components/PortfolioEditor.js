@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
 
 import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
-// import UploadAvatar from './UploadAvatar';
+import NavbarEditor from './NavbarEditor'
 import UploadPicture from './UploadPicture';
-import Sections from './Sections';
-
+import SectionsEditor from './SectionsEditor';
+import Input from '@material-ui/core/Input';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { AppBar, Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
@@ -41,42 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const useStyles = makeStyles((theme) => ({
 
-//   profile_form_root: {
-//       '& > *': {
-//           margin: theme.spacing(1),
-//           marginLeft: theme.spacing(6),
-//           width: '40ch',
-//       },
-//   },
-//   buttom_root: {
-//       '& > *': {
-//           margin: theme.spacing(2),
-//       },
-//   },
-//   field_root: {
-//       '& > *': {
-//           marginBottom: theme.spacing(2),
-//       },
-//   },
-//   div_root: {
-//       height: '500px',
-//   },
-//   btn: {
-//       flexGrow: 1,
-//       float: "right",
-//       marginRight: theme.spacing(2),
-//   },
-//   pop: {
-//       flexGrow: 1,
-//       padding: "10px",
-//   },
-//   appbar: {
-//       // background: "#757ce8",
-//   },
-
-// }));
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -184,25 +150,6 @@ export default function PortfolioEditor(props) {
     setLeisurePageSections(newValue);
   }
 
-  function handleChange(event) {
-    event.preventDefault();
-    let nam = event.target.name;
-    let val = event.target.value;
-
-    switch (nam) {
-      case "portfolioName":
-        setPortfolioName(val);
-      case "userName":
-        setUserName(val);
-      case "introduction":
-        setIntroduction(val);
-      case "email":
-        setEmail(val);
-      case "phone":
-        setPhone(val);
-      default:
-    }
-  }
 
   async function publishPortfolio() {
     handlePublish();
@@ -268,32 +215,35 @@ export default function PortfolioEditor(props) {
           aria-label="Vertical tabs example"
           className={classes.tabs}
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
+          <Tab label="Home" {...a11yProps(0)} />
+          <Tab label="Formal" {...a11yProps(1)} />
+          <Tab label="Leisure" {...a11yProps(2)} />
+          <Tab label="Contact" {...a11yProps(3)} />
         </Tabs>
 
+        <Grid>
+
+          <Grid container
+                direction="column"
+                justify="center"
+                alignItems="center"
+          >
+          <Input placeholder="Your Name" defaultValue={user_name_value} 
+              inputProps={{ 'aria-label': 'description' }} onChange={setUserName}/>
+
+          <NavbarEditor homePageTab={home_page_tag} changeHomePageTab={setHomePageTag}
+                        formalPageTab={formal_page_tag} changeFormalPageTab={setFormalPageTag}
+                        leisurePageTab={leisure_page_tag} changeLeisurePageTab={setLeisurePageTag}
+                        contactPageTab={contact_page_tag} changeContactPageTab={setContactPageTag}
+          />
+          </Grid>
         {/* Home page editor */}
         <TabPanel value={value} index={0}>
           <form noValidate autoComplete="off" className={classes.field_root}>
+            
             <UploadPicture uploadPicture={uploadPicture} pictureUrl={profile_photo_value} />
             {profile_photo_value !== "link to img" ? <p>{profile_photo_value}</p> : <br />}
-            <TextField
-              id="portfolioName"
-              name="portfolioName"
-              label="portfolio Name"
-              defaultValue={portfolio_name_value}
-              onChange={event => handleChange(event)}
-            />
-            <br />
-            <TextField
-              id="userName"
-              name="userName"
-              label="Your Name"
-              defaultValue={user_name_value}
-              onChange={event => handleChange(event)}
-            />
+          
             <br />
             <TextField
               multiline
@@ -304,7 +254,7 @@ export default function PortfolioEditor(props) {
               name="introduction"
               label="introduction"
               defaultValue={introduction_value}
-              onChange={event => handleChange(event)}
+              onChange={event => setIntroduction(event.target.value)}
             />
           </form>
         </TabPanel>
@@ -312,14 +262,14 @@ export default function PortfolioEditor(props) {
         {/* About page editor */}
         <TabPanel value={value} index={1} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-            <Sections sections={formal_page_sections} onClick={onFormalChange} />
+            <SectionsEditor sections={formal_page_sections} onClick={onFormalChange} />
           </form>
         </TabPanel>
 
         {/* Leisure page editor */}
         <TabPanel value={value} index={2} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-            <Sections sections={leisure_page_sections} onClick={onLeisureChange} />
+            <SectionsEditor sections={leisure_page_sections} onClick={onLeisureChange} />
           </form>
         </TabPanel>
 
@@ -330,17 +280,18 @@ export default function PortfolioEditor(props) {
               name="email"
               label="Email"
               defaultValue={email_value}
-              onChange={event => handleChange(event)}
+              onChange={event => setEmail(event.target.value)}
             />
             <br />
             <TextField id="phone"
               name="phone"
               label="Phone"
               defaultValue={phone_value}
-              onChange={event => handleChange(event)}
+              onChange={event => setPhone(event.target.value)}
             />
           </form>
         </TabPanel>
+      </Grid>
 
       </div>
     </Container>
@@ -389,6 +340,15 @@ export default function PortfolioEditor(props) {
               <DialogContentText>
                 If you are finished editing, you can click the "Continue" button to finish publishing.
               </DialogContentText>
+              
+              <TextField
+              id="portfolioName"
+              name="portfolioName"
+              label="portfolio Name"
+              defaultValue={portfolio_name_value}
+              onChange={event => setPortfolioName(event.target.value)}
+            />
+
             </DialogContent>
             <DialogActions>
               <Button onClick={handlePublish} color="primary">

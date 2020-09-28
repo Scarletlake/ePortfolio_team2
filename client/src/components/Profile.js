@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import { updateUserProfile } from "../api/userAPI"
+import ProfileEditor  from "./ProfileEditor"
 
 const useStyles = makeStyles((theme) => ({
 
@@ -101,7 +102,6 @@ export default function Profile(props) {
     
 
     function UserProfile() {    
-
         return (
             <div className={classes.field_root}>
                 <ProfileField id="firstName" name="firstName" label="First Name" value={first_name_value} />
@@ -117,63 +117,37 @@ export default function Profile(props) {
         );
     }
 
-    // the form allow users to update their information
-    function UpdateProfileForm() {
-        return (
-        <div className="UpdateProfileForm">
-            <form noValidate autoComplete="off" className={classes.field_root}>
-                <TextField id="firstName" 
-                            name="firstName"
-                            label="First Name" 
-                            defaultValue={first_name_value} 
-                            onChange={event => {setFirstName(event.target.value)}}
-                />
-                <br/>
-                <TextField id="lastName"
-                            name="lastName"  
-                            label="Last Name" 
-                            defaultValue={last_name_value} 
-                            onChange={event => {setLastName(event.target.value)}}
-                />
-                <br/>
-                <RadioButtom gender={gender_value} onChange={event => {setGender(event.target.value)}}/>
-                <br/>
-                <TextField id="phone"
-                            name="phone" 
-                            label="Phone Number" 
-                            defaultValue={phone_value} 
-                            onChange={event => {setPhone(event.target.value)}}
-                />
-                <br/>
-                <TextField id="email_read_only"
-                            name="email" 
-                            label="Email" 
-                            defaultValue={email} 
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                />
-                <br/>
-            </form>
-
-            <div className={classes.buttom_root} >              
-                <Button variant="contained" color="primary" onClick={updateProfile}>
-                    Save
-                </Button>
-
-                <Button variant="contained" onClick={cancelSubmit}>
-                    Cancel
-                </Button>
-            </div>
-
-        </div>
-        );
-    }
+    function handleChange (event) {
+        event.preventDefault(); 
+        let nam = event.target.name;
+        let val = event.target.value;
+    
+        if (nam === "firstName") {
+            setFirstName(val);
+        }   
+        else if (nam === "lastName") {
+            setLastName(val);
+        }
+        else if (nam === "phone") {
+            setPhone(val);
+        }
+      }
 
     return (
       <div className={classes.profile_form_root}>  
         <ProfileAvatar first_name={first_name_value} last_name={last_name_value}/> 
-        {showUpdateForm ? <UpdateProfileForm/> : <UserProfile/>}                  
+        {showUpdateForm ?         
+        <ProfileEditor 
+            firstName={first_name_value}
+            lastName={last_name_value}
+            phone={phone_value}
+            email={email}
+            gender={gender_value}
+            setGender={setGender}
+            handleChange={handleChange} 
+            handleSubmit={updateProfile} 
+            cancelSubmit={cancelSubmit}/> :
+            <UserProfile />}                  
       </div>
     );
 }

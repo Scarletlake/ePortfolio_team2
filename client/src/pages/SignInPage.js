@@ -74,20 +74,22 @@ export default function SignInPage() {
     let val = event.target.value;
 
     if (nam === "email") {
-      if (!validateEmail(val)){
+      setEmail(val);
+
+      if (!validateEmail(email_input)){
         setEmailMsg("Please input a valid email");
       }else{
           setEmailMsg("");
       }
-        setEmail(val);
     }    
     else if (nam === "password") {
+      setPassword(val);
+
       if (password_input.length < 6 || password_input.length > 16 ){
         setPasswordMsg("Password length should be between 6 to 16 characters");
       }else{
         setPasswordMsg("");
-      }
-      setPassword(val);
+      } 
     }
   }
 

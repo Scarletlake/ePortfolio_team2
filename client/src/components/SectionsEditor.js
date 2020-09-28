@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from '@material-ui/core';
-import Section from './Section';
+import SectionEditor from './SectionEditor';
 
 export default class Sections extends Component {
 
@@ -35,7 +35,7 @@ export default class Sections extends Component {
             <div>
                 {
                     this.state.sections.map((section) => (
-                        <Section
+                        <SectionEditor
                             key={section.id}
                             section={section}
                             handleChange={this.handleChange}
