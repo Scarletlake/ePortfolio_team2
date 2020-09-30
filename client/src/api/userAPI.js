@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 //const BASE_URL = "";
 
 export default async function userSignIn(user) {
-    const endpoint = "api/user/signin";
+    const endpoint = "/api/user/signin";
 
     const {email, password} = user;
     
@@ -25,7 +25,7 @@ export default async function userSignIn(user) {
 }
 
 export async function userSignUp(user) {
-    const endpoint = "api/user/signup";
+    const endpoint = "/api/user/signup";
     const {email, password} = user;
   
     const res = await fetch(endpoint, {
@@ -46,7 +46,7 @@ export async function userSignUp(user) {
 
 // get user's profile
 export async function getUserProfile() {
-      const endpoint = `api/user/profile`;
+      const endpoint = `/api/user/profile`;
     
       const res = await fetch(endpoint, {
         method: "GET",
@@ -62,7 +62,7 @@ export async function getUserProfile() {
 
 // get user's published portfolio
 export async function getUserPortfolio() {
-  const endpoint = `api/user/portfolio`;
+  const endpoint = `/api/user/portfolio`;
 
   const res = await fetch(endpoint, {
     method: "GET",
@@ -81,7 +81,7 @@ export async function getUserPortfolio() {
 export async function updateUserProfile(user) {
   const { firstName, lastName, phone, gender } = user;
 
-  const endpoint = `api/user/profile`;
+  const endpoint = `/api/user/profile`;
 
   const res = await fetch(endpoint, {
     method: "POST",
