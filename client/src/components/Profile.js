@@ -1,48 +1,51 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import ProfileAvatar from "../components/ProfileAvatar"
 import RadioButtom from "../components/RadioButtom"
-
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-export default function Profile(props) {
-    const useStyles = makeStyles((theme) => ({
+import { updateUserProfile } from "../api/userAPI"
+import ProfileEditor  from "./ProfileEditor"
 
-        profile_form_root: {
-          '& > *': {
-            margin: theme.spacing(1),
-            marginLeft: theme.spacing(6),
-            width: '40ch',
-          },
+const useStyles = makeStyles((theme) => ({
+
+    profile_form_root: {
+      '& > *': {
+        margin: theme.spacing(1),
+        marginLeft: theme.spacing(6),
+        width: '40ch',
+      },
+    },
+    
+    buttom_root: {
+        '& > *': {
+            margin: theme.spacing(2),
         },
-        
-        buttom_root: {
-            '& > *': {
-                margin: theme.spacing(2),
-            },
+    },
+    field_root: {
+        '& > *': {
+            marginBottom: theme.spacing(2),
         },
-        field_root: {
-            '& > *': {
-                marginBottom: theme.spacing(2),
-            },
-        },
-    }));
+    },
+}));
+
+export default function Profile(props) {
 
     const classes = useStyles();
 
-    const { first_name, last_name, email, phone, gender } = props;
+    const { firstName, lastName, email, phone, gender } = props;
 
-    const [first_name_value, setFirstName] = useState(first_name);
-    const [last_name_value, setLastName] = useState(last_name);
+    const [first_name_value, setFirstName] = useState(firstName);
+    const [last_name_value, setLastName] = useState(lastName);
     const [phone_value, setPhone] = useState(phone);
     const [gender_value, setGender] = useState(gender);
-
+    const [message, setMessage] = useState("");
     const [showUpdateForm, setShowUpdateForm] = useState(false);
 
     function cancelSubmit(){
-        setFirstName(first_name);
-        setLastName(last_name);
+        setFirstName(firstName);
+        setLastName(lastName);
         setPhone(phone);
         setGender(gender);
         setShowUpdateForm(!showUpdateForm);
@@ -50,36 +53,62 @@ export default function Profile(props) {
 
     
     function updateProfile() {
-        
-        setShowUpdateForm(!showUpdateForm);
-                          
+        updateUserProfile ({
+            firstName: first_name_value,
+            lastName: last_name_value, 
+            gender: gender_value,
+            phone: phone_value
+          }).then(res => {
+                if (res.status === 200) {
+                    setMessage ("Updated!");
+                    alert("Updated");
+                }else if(res.status === 401) {
+                    setMessage ("Log in first to update your profile");
+                    alert ("Log in first to update your profile");
+                    window.location.replace("/user/signin");
+                }
+                else {
+                const error = new Error(res.error);
+                throw error;
+                }
+            })
+            .catch(error => {
+                setMessage ("Can't save changes ");
+                alert ("Can't save changes ");
+            });
+
+        setShowUpdateForm(!showUpdateForm);                      
     }
 
     const ProfileField = (props) =>{
-        return(
-            <div>
-                <TextField label={props.label}
-                            defaultValue={props.value}
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                /> 
-                <br/>
-            </div>
-        )
+        if (props.value){
+            return(
+                <div>
+                    <TextField id={props.id}
+                                name={props.name}
+                                label={props.label}
+                                defaultValue={props.value}
+                                InputProps={{
+                                    readOnly: true,
+                                }}
+                    /> 
+                    <br/>
+                </div>
+            )
+        }
+        return null ;
     }
 
     
 
     function UserProfile() {    
-
         return (
             <div className={classes.field_root}>
-                {first_name_value? <ProfileField label="First Name" value={first_name_value} />:{}}
-                {last_name_value? <ProfileField label="Last Name" value={last_name_value} />:{}}
-                {gender_value? <ProfileField label="Gender" value={gender_value} />:{}}
-                {phone_value? <ProfileField label="Phone Number" value={phone_value} />:{}}          
-                <ProfileField label="Email" value={email} />            
+                <ProfileField id="firstName" name="firstName" label="First Name" value={first_name_value} />
+                <ProfileField id="lastName" name="lastName" label="Last Name" value={last_name_value} />
+                <ProfileField id="gender" name="gender" label="Gender" value={gender_value} />
+                <ProfileField id="phone" name="phone" label="Phone Number" value={phone_value} />        
+                <ProfileField id="email_read_only" name="email" label="Email" value={email} />            
                 
                 <Button variant="contained" onClick={()=>setShowUpdateForm(!showUpdateForm)}>
                     Edit my profile
@@ -88,59 +117,37 @@ export default function Profile(props) {
         );
     }
 
-    // the form allow users to update their information
-    function UpdateProfileForm() {
-        return (
-        <div className="UpdateProfileForm">
-            <form noValidate autoComplete="off" className={classes.field_root}>
-                <TextField id="first_name_input" 
-                            label="First Name" 
-                            defaultValue={first_name_value} 
-                            onChange={event => {setFirstName(event.target.value)}}
-                />
-                <br/>
-                <TextField id="last_name_input" 
-                            label="Last Name" 
-                            defaultValue={last_name_value} 
-                            onChange={event => {setLastName(event.target.value)}}
-                />
-                <br/>
-                <RadioButtom gender={gender_value} onChange={event => {setGender(event.target.value)}}/>
-                <br/>
-                <TextField id="phone_input" 
-                            label="Phone Number" 
-                            defaultValue={phone_value} 
-                            onChange={event => {setPhone(event.target.value)}}
-                />
-                <br/>
-                <TextField id="email_read_only" 
-                            label="Email" 
-                            defaultValue={email} 
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                />
-                <br/>
-            </form>
-
-            <div className={classes.buttom_root} >              
-                <Button variant="contained" color="primary" onClick={updateProfile}>
-                    Save
-                </Button>
-
-                <Button variant="contained" onClick={cancelSubmit}>
-                    Cancel
-                </Button>
-            </div>
-
-        </div>
-        );
-    }
+    function handleChange (event) {
+        event.preventDefault(); 
+        let nam = event.target.name;
+        let val = event.target.value;
+    
+        if (nam === "firstName") {
+            setFirstName(val);
+        }   
+        else if (nam === "lastName") {
+            setLastName(val);
+        }
+        else if (nam === "phone") {
+            setPhone(val);
+        }
+      }
 
     return (
-      <div className={classes.profile_form_root}>   
+      <div className={classes.profile_form_root}>  
         <ProfileAvatar first_name={first_name_value} last_name={last_name_value}/> 
-        {showUpdateForm ? <UpdateProfileForm/> : <UserProfile/>}                  
+        {showUpdateForm ?         
+        <ProfileEditor 
+            firstName={first_name_value}
+            lastName={last_name_value}
+            phone={phone_value}
+            email={email}
+            gender={gender_value}
+            setGender={setGender}
+            handleChange={handleChange} 
+            handleSubmit={updateProfile} 
+            cancelSubmit={cancelSubmit}/> :
+            <UserProfile />}                  
       </div>
     );
 }

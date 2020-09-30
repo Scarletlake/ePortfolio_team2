@@ -1,32 +1,10 @@
-// import React, { Fragment, Component } from 'react'
-// import { Link } from 'react-router-dom';
-
-// class LandingPage extends Component {
-//   render() {
-//     return (
-//       <Fragment>
-//       <h1 className="landing-title">
-//       ePortfolio
-//       </h1>
-
-//       <img></img>
-
-//       <Link to='/' className="btn" >See Examples</Link>
-//       <br />
-//       <Link to='/user/signup' className="btn" >Start Now</Link>
-//     </Fragment>
-//     )
-//   }
-// }
-
-// export default LandingPage
-
-import React, { Component } from 'react'
-// import { Link } from 'react-router-dom';
-
-import { Button, Typography, Container, Grid } from '@material-ui/core';
+import React from 'react'
+import { Redirect } from 'react-router-dom';
+import { Button, Typography, Container } from '@material-ui/core';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import { makeStyles } from "@material-ui/core/styles";
+
+import isAuthenticated from "../utils/checkAuthToken";
 
 const useStyles = makeStyles((theme) => ({
   landing: {
@@ -45,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
     width: "30%",
   },
   block: {
-    marginTop: theme.spacing(20),
+    marginTop: theme.spacing(40),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginBottom: theme.spacing(35),
+
   },
 }));
 
@@ -57,9 +35,13 @@ export default function LandingPage() {
 
   const classes = useStyles();
 
+  if (isAuthenticated("Authorization") ){
+    return <Redirect to="/user/home" /> 
+  }
+
   return (
-    
-    <Container component="main" maxwidth="xs">
+   
+      <Container component="main" maxwidth="xs">
 
       <CssBaseLine />
       <div className={classes.block}>
@@ -92,7 +74,5 @@ export default function LandingPage() {
 
       </div>
     </Container>
-
-    
   )
 }

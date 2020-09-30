@@ -2,67 +2,165 @@ import { useState, useEffect } from "react";
 
 const BASE_URL = "http://localhost:5000/api";
 
-export default function userSignin(user) {
+export default async function userSignIn(user) {
     const endpoint = BASE_URL + "/user/signin";
 
     const {email, password} = user;
-
-    const res = fetch(endpoint,{
+    
+    const res = await fetch(endpoint,{
 
         method: "POST",
+        credentials: 'include',
         headers:{
             "credentials": 'include',
-            'content-Type': "application/jsn"
+            'content-Type': "application/json"
         },
         body: JSON.stringify({
             email,
             password
         })
     });
+   
     return res;
 }
 
-export function userSignUp(user){
+export async function userSignUp(user) {
     const endpoint = BASE_URL + "/user/signup";
-
     const {email, password} = user;
-
-    const res = fetch(endpoint, {
+  
+    const res = await fetch(endpoint, {
         method: "POST",
+        credentials: 'include',
         headers: {
-            "credentials": 'include',
-            "Content-Type": "application/json"
+        "credentials": 'include',
+        "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            email,
-            password
+        email,
+        password
         })
     });
-
+   
     return res;
 }
 
-
+// get user's profile
 export async function getUserProfile() {
-      const endpoint = `/users/profile`;
+      const endpoint = BASE_URL + `/user/profile`;
     
       const res = await fetch(endpoint, {
         method: "GET",
+        credentials: 'include',
         headers: {
           "credentials": 'include',
           "Accept": 'application/json'
         }
       });
-      
+   
       return res.json();
 }
 
+// get user's published portfolio
+export async function getUserPortfolio() {
+  const endpoint = BASE_URL + `/user/portfolio`;
+
+  const res = await fetch(endpoint, {
+    method: "GET",
+    credentials: 'include',
+    headers: {
+      "credentials": 'include',
+      "Accept": 'application/json'
+    }
+  });
+  
+  return res.json();
+}
+
+
+// update user profile
+export async function updateUserProfile(user) {
+  const { firstName, lastName, phone, gender } = user;
+
+  const endpoint = BASE_URL + `/user/profile`;
+
+  const res = await fetch(endpoint, {
+    method: "POST",
+    credentials: 'include',
+    headers: {
+      "credentials": 'include',
+      "Accept": 'application/json',
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      phone,
+      gender
+      })
+  });
+  console.log(res);
+  return res;
+}
+
+
 // logout by clearing cookie
 export function userLogOut() {      
-    var d = new Date();
-    d.setTime(d.getTime() - 1);
-    var expires = "expires="+d.toUTCString();
-    document.cookie = "Authorization" + "=" + "" + "; " + expires;
+    document.cookie.split(";").forEach((c) => {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      });
     alert("logout!");
+    window.location.replace("/");
 }
   
+
+export function useUserProfile() {
+    const [loading, setLoading] = useState(true);
+    const [user, setResponse] = useState([]);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      getUserProfile()
+        .then(user => {
+          setResponse(user);
+          setLoading(false);
+        })
+        .catch(e => {
+          console.log(e);
+          setError(e);
+          setLoading(false);
+        });
+    },[]);
+  
+    return {
+      loading,
+      user,
+      error
+    };
+  }
+
+export function useUserPortfolio() {
+    const [loading, setLoading] = useState(true);
+    const [res, setResponse] = useState([]);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      getUserPortfolio()
+        .then(res => {
+          setResponse(res);
+          setLoading(false);
+        })
+        .catch(e => {
+          console.log(e);
+          setError(e);
+          setLoading(false);
+        });
+    },[]);
+  
+    return {
+      loading,
+      res,
+      error
+    };
+  } 

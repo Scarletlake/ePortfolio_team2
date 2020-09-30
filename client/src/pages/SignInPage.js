@@ -1,8 +1,6 @@
+import React, { useState } from 'react';
 
-
-import React, { Fragment, useState } from 'react';
-
-import userSignin from "../api/userAPI";
+import userSignIn from "../api/userAPI";
 import validateEmail from "../utils/validateEmail";
 
 import Button from '@material-ui/core/Button';
@@ -59,11 +57,63 @@ const useStyles = makeStyles((theme) => ({
 export default function SignInPage() {
 
   const classes = useStyles();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email_input, setEmail] = useState("");
+  const [password_input, setPassword] = useState("");
+
+  const [email_message, setEmailMsg] = useState("");
+  const [password_message, setPasswordMsg] = useState("");
+  const [message, setMessage] = useState("");
 
   function validateForm() {
-    return validateEmail(email) && password.length > 0;
+    return validateEmail(email_input) && password_input.length >= 6;
+  }
+
+  function handleChange (event) {
+    event.preventDefault(); 
+    let nam = event.target.name;
+    let val = event.target.value;
+
+    if (nam === "email") {
+      setEmail(val);
+
+      if (!validateEmail(val)){
+        setEmailMsg("Please input a valid email");
+      }else{
+          setEmailMsg("");
+      }
+    }    
+    else if (nam === "password") {
+      setPassword(val);
+
+      if (val.length < 6 || val.length > 16 ){
+        setPasswordMsg("Password length should be between 6 to 16 characters");
+      }else{
+        setPasswordMsg("");
+      } 
+    }
+  }
+
+  function onSubmit (event) {
+    event.preventDefault();
+
+    userSignIn ({
+      email: email_input,
+      password: password_input   
+    }).then(res => {
+      if (res.status === 200) {
+        setMessage ("Login successful!");
+        window.location.replace("/user/home");
+      }else if(res.status === 401) {
+        setMessage ("Wrong password or email!");
+      }
+      else {
+        const error = new Error(res.error);
+        throw error;
+      }
+    })
+    .catch(error => {
+      setMessage ('Error logging please try again');
+    });
   }
 
   return (
@@ -77,8 +127,16 @@ export default function SignInPage() {
           ePortfolio
         </Typography>
         <br />
-
-        <form className={classes.form} onSubmit={userSignin}>
+        <Typography component="h3" variant="h4" >
+          Sign in to ePortfolio
+        </Typography>
+        <form className={classes.form}>
+          <br />
+          <div className={classes.inneralign}>
+            <Typography component="h2" variant="h6" >
+              {message}
+            </Typography>
+          </div>
           <br />
           <div className={classes.inneralign}>
             <Typography component="h2" variant="h6" >
@@ -92,7 +150,9 @@ export default function SignInPage() {
               id="email"
               label="Email Address"
               name="email"
-              onChange={e => setEmail(e.target.value)}
+              autoComplete="email"
+              helperText={email_message}
+              onChange={event => handleChange(event)}
             />
 
             <Typography component="h2" variant="h6" >
@@ -101,13 +161,16 @@ export default function SignInPage() {
             <TextField
               required
               fullWidth
+              type="password"
               margin = 'normal'
               variant = 'outlined'
               id="password"
+              name="password"
               label="password"
-              onChange={e => setPassword(e.target.value)}
+              autoComplete="password"
+              helperText={password_message}
+              onChange={event => handleChange(event)}
               autoFocus />
-
 
             <br />
             <br />
@@ -118,6 +181,8 @@ export default function SignInPage() {
                 variant="contained"
                 className={classes.submit}
                 disabled={!validateForm()}
+                onClick={onSubmit}
+                    color="primary"
               >
                 Sign In
               </Button>
@@ -136,7 +201,7 @@ export default function SignInPage() {
               justify="center"
             >
               <Grid item xs={5} >
-                <Link href="/user/signup" variant='body1'>
+                <Link href="/user/signup" variant='body1' style={{textDecoration: 'none'}}>
                 Click here to create an account
               </Link>
             </Grid>

@@ -25,7 +25,7 @@ describe('User Login Integration test:', function() {
           .post('/api/user/signin')
           .send(newUser)
           .end(function(err, res) {
-            expect(res.statusCode).to.equal(400);
+            expect(res.statusCode).to.equal(401);
             expect(res.text).to.be.equal('{"errors":[{"msg":"Invalid Credentials"}]}'); 
           });
           done();  
@@ -39,7 +39,7 @@ describe('User Login Integration test:', function() {
             .post('/api/user/signin')
             .send(newUser)
             .end(function(err, res) {
-              expect(res.statusCode).to.equal(400);
+              expect(res.statusCode).to.equal(401);
               expect(res.text).to.be.equal('{"errors":[{"msg":"Invalid Credentials"}]}'); 
             }); 
             done();

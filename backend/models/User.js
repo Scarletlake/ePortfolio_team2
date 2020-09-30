@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  first_name: {
+  _id: mongoose.Schema.Types.ObjectId,
+  firstName: {
     type: String,
+    default: '',
     //required: true
   },
-  last_name: {
+  lastName: {
     type: String,
+    default: '',
     //required: true
   },
   email: {
@@ -17,27 +20,26 @@ const UserSchema = new mongoose.Schema({
   phone:{
     type: String,
     default: '',
-    //required: true
+   
   },
   gender: {
     type: String,
-    enum : ['male','female', 'other'],    
-    default: 'other',
-    //required: true
+    enum : ['male','female',''],    
+    default: '',    
   },
   password: {
     type: String,
     required: true
   },
-  avatar: {
-    type: String,
-    default: '',
-  },
-  portfolio: {
+  portfolios: {
     type: [{
       portfolioID: mongoose.Schema.Types.ObjectId,
+      portfolioName: String,
+      portfolioURL: String,
+      template: String
     }],
-    default: []
+    default: [],   
+    required: true 
   }
 });
 

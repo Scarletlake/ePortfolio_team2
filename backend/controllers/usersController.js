@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -13,7 +14,6 @@ const userSignUp = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-  
     const { email, password } = req.body;
   
     try {
@@ -21,14 +21,16 @@ const userSignUp = async (req, res) => {
   
       if (user) {
         return res
-          .status(400)
+          .status(409)
           .json({ errors: [{ msg: 'User already exists' }] });
       }
       
       // add the user to database
       user = new User({
+        _id: new mongoose.Types.ObjectId(),
         email,
-        password
+        password,
+        portfolios: []
       });
       
       // hash the password
@@ -39,24 +41,21 @@ const userSignUp = async (req, res) => {
   
       const payload = {
         user: {
-          id: user.id
+          id: user._id
         }
       };
   
       // generate a token
-      jwt.sign(
+      token = jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: '5 days' },
-        (err, token) => {
-          if (err) throw err;
-          //res.json({ token });
-          res.cookie("Authorization", token, { maxAge: 3600000 });
-          return res.status(200).json({
-            message: "Authentication succeeded.",
-          });
-        }
+        { expiresIn: "1h" },
       );
+      res.cookie("Authorization", token, { maxAge: 3600000 });
+      return res.status(200).json({
+        message: "Authentication succeeded.",
+      });
+       
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -66,74 +65,127 @@ const userSignUp = async (req, res) => {
 
 // Sign in
 const userSignIn = async (req, res) => {
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
+    
     const { email, password } = req.body;
-
+    
     try {
-      let user = await User.findOne({ email });
+      let user = await User.findOne({ email: email });
+      
 
       if (!user) {
         return res
-          .status(400)
+          .status(401)
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
+      
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
         return res
-          .status(400)
+          .status(401)
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
       const payload = {
         user: {
-          id: user.id
+          id: user._id
         }
       };
 
-      // generate a token
-      jwt.sign(
+      token = jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: '5 days' },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-          res.cookie("Authorization", token, { maxAge: 3600000 });
-          return res.status(200).json({
-            message: "Authentication succeeded.",
-          });
-        }
+        { expiresIn: "1h" },
       );
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server error');
-    }
+      res.cookie("Authorization", token, { maxAge: 3600000 });
+      return res.status(200).json({
+        message: "Authentication succeeded.",
+      });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 }
 
 
-// Get user by token
-const getUser = async (req, res) => {
-    try {
-      const user = await User.findById(req.user.id).select('-password -__v -_id');
 
-      if (!user) {
-        return res.status(500).json({
+
+// Get user by token
+const getUserProfile = async (req, res) => {
+    try {
+      const user = await User.findOne({ _id: req.userInfo.user.id });
+      if (!user) {        
+        return res.status(500).json({         
           message: "User Not Found",
         });
       }else {
-        res.json(user);
+        return res.status(200).json({
+          firstName: user.firstName,
+          lastName: user.lastName, 
+          email: user.email,
+          phone: user.phone, 
+          gender: user.gender
+        });
       }
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
     }
 }
+
+// Get user by token
+const getUserPortfolio = async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.userInfo.user.id });
+    if (!user) {        
+      return res.status(500).json({         
+        message: "User Not Found",
+      });
+    }else {
+      return res.status(200).json({
+        portfolios: user.portfolios,    
+      });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+}
+
+
+// Update user profile
+const updateUserProfile = async (req, res) => {
+  
+  const { firstName, lastName, phone, gender } = req.body;
+  
+  try {
+    await User.findOneAndUpdate(
+      { _id: req.userInfo.user.id },
+      { $set: { 
+        firstName: firstName,
+        lastName: lastName,      
+        phone: phone, 
+        gender: gender},
+      },
+      { returnOriginal: false }
+    );
+    
+    res.status(200).json({
+        message: "Update successful!",
+    });
+   
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+}
+
 
 
 // Delete user by email
@@ -153,6 +205,8 @@ const deleteUser = async (req, res) => {
 module.exports = {
     userSignUp,   
     userSignIn,
-    getUser,
-    deleteUser
-};  
+    getUserProfile,
+    getUserPortfolio,
+    deleteUser,
+    updateUserProfile
+}; 

@@ -3,16 +3,26 @@ const connectDB = require('./config/db');
 const path = require('path');
 const http = require('http');
 const app = express();
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 // Connect Database
 connectDB();
 
 // Init Middleware
 app.use(express.json());
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+
+
 
 // Define Routes
 app.use('/api/user', require('./backend/routes/usersRouter'));
-//app.use('/api/portfolio', require('./backend/routes/portfolioRouter'));
+app.use('/api/portfolio', require('./backend/routes/portfolioRouter'));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

@@ -29,16 +29,31 @@ router.post(
   '/signin',
   [
     check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password is required').exists()
+    check(
+      'password',
+      'Please enter a password between 6 to 16 characters'
+    ).isLength({ min: 6, max: 16})
   ],
   usersController.userSignIn
 );
 
 
-// @route    GET api/user
-// @desc     Get user by token
+// @route    GET api/user/profile
+// @desc     Check user's authentication by token then get user's profile
 // @access   Private
-router.get('/profile', auth, usersController.getUser);
+router.get('/profile', auth, usersController.getUserProfile);
+
+
+// @route    GET api/user/portfolio
+// @desc     Check user's authentication by token then get user's portfolio
+// @access   Private
+router.get('/portfolio', auth, usersController.getUserPortfolio);
+
+
+// @route    POST api/user/profile
+// @desc     Check user's authentication by token then update user's profile
+// @access   Private
+router.post('/profile', auth ,usersController.updateUserProfile);
 
 
 // @route    GET api/user/delete

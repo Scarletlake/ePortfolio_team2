@@ -42,7 +42,7 @@ describe('User Register Integration test:', function() {
           .post('/api/user/signup')
           .send(newUser)
           .end(function(err, res) {
-            expect(res.statusCode).to.equal(400);
+            expect(res.statusCode).to.equal(409);
             expect(res.text).to.be.equal('{"errors":[{"msg":"User already exists"}]}');  
           });
 

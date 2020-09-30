@@ -44,7 +44,7 @@ export default function StickyFooter() {
       <CssBaseline />
       <footer className={classes.footer}>
         <Container maxWidth="sm">
-          <Typography variant="body1"> E-Portfolio | This website is developed by xxx</Typography>
+          <Typography variant="body1"> E-Portfolio | This website is developed by Panda</Typography>
           <Copyright />
         </Container>
       </footer>
