@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 // get portfolio
 export default async function getPortfolio(portfolioID) {
-  const endpoint = "/portfolio/" + portfolioID;
+  const endpoint = "api/portfolio/" + portfolioID;
 
   const res = await fetch(endpoint, {
     method: "GET",
@@ -23,7 +23,7 @@ export default async function getPortfolio(portfolioID) {
 // create a new portfolio
 export async function createPortfolio(portfolio) {
 
-  const endpoint = `/portfolio/new`;
+  const endpoint = `api/portfolio/new`;
   const { portfolioName, template, userName, homePage, formalPage, leisurePage, contactPage } = portfolio;
 
   const res = await fetch(endpoint, {
@@ -60,7 +60,7 @@ export async function createPortfolio(portfolio) {
 // create a new portfolio
 export async function updatePortfolio(portfolio) {
 
-  const endpoint = `/portfolio/`;
+  const endpoint = `api/portfolio/`;
   const { portfolioID, portfolioName, template, userName, homePage, formalPage, leisurePage, contactPage } = portfolio;
 
   const res = await fetch(endpoint + portfolioID, {
@@ -97,7 +97,7 @@ export async function updatePortfolio(portfolio) {
 
 // delete the portfolio
 export function deletePortfolioByID(portfolioID) {
-  const endpoint = `/portfolio/`;
+  const endpoint = `api/portfolio/`;
 
   const res = fetch(endpoint + portfolioID, {
     credentials: 'include',
