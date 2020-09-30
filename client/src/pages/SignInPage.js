@@ -6,57 +6,14 @@ import validateEmail from "../utils/validateEmail";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 
-
-const useStyles = makeStyles((theme) => ({
-  form: {
-    width: '50%',
-    marginTop: theme.spacing(1),
-    border: 'solid',
-
-  },
-
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    marginTop: theme.spacing(1),
-  },
-
-  center_button: {
-    justifyContent: 'center',
-    display: 'flex',
-    alignItems: 'center'
-  },
-
-  block: {
-    marginTop: theme.spacing(5),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-
-  linkstyle: {
-    margin: 'auto',
-  },
-
-  inneralign: {
-    width: '90%',
-    alignItems: 'center',
-    margin: 'auto'
-  },
-
-  
-}));
-
-
+import '../styles.css'
 
 export default function SignInPage() {
 
-  const classes = useStyles();
   const [email_input, setEmail] = useState("");
   const [password_input, setPassword] = useState("");
 
@@ -74,22 +31,20 @@ export default function SignInPage() {
     let val = event.target.value;
 
     if (nam === "email") {
-      setEmail(val);
-
       if (!validateEmail(val)){
         setEmailMsg("Please input a valid email");
       }else{
           setEmailMsg("");
       }
+        setEmail(val);
     }    
     else if (nam === "password") {
-      setPassword(val);
-
-      if (val.length < 6 || val.length > 16 ){
+      if (password_input.length < 6 || password_input.length > 16 ){
         setPasswordMsg("Password length should be between 6 to 16 characters");
       }else{
         setPasswordMsg("");
-      } 
+      }
+      setPassword(val);
     }
   }
 
@@ -117,107 +72,91 @@ export default function SignInPage() {
   }
 
   return (
+    <div className='PageContainer'>
+      <Container component="main" maxwidth="xs">
 
-    <Container component="main" maxwidth="xs">
+        <CssBaseLine />
+        <div className='SignBlock'>
 
-      <CssBaseLine />
-      <div className={classes.block}>
-
-        <Typography component="h1" variant="h3" >
-          ePortfolio
-        </Typography>
-        <br />
-        <Typography component="h3" variant="h4" >
-          Sign in to ePortfolio
-        </Typography>
-        <form className={classes.form}>
+          <Typography component="h1" variant="h3" >
+            ePortfolio
+          </Typography>
           <br />
-          <div className={classes.inneralign}>
-            <Typography component="h2" variant="h6" >
-              {message}
-            </Typography>
-          </div>
-          <br />
-          <div className={classes.inneralign}>
-            <Typography component="h2" variant="h6" >
-              Email:
-            </Typography>
-            <TextField
-              required
-              fullWidth
-              margin = 'normal'
-              variant = 'outlined'
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              helperText={email_message}
-              onChange={event => handleChange(event)}
-            />
-
-            <Typography component="h2" variant="h6" >
-              Password:
-            </Typography>
-            <TextField
-              required
-              fullWidth
-              type="password"
-              margin = 'normal'
-              variant = 'outlined'
-              id="password"
-              name="password"
-              label="password"
-              autoComplete="password"
-              helperText={password_message}
-              onChange={event => handleChange(event)}
-              autoFocus />
-
+          <Typography component="h3" variant="h4" >
+            Sign in
+          </Typography>
+          <br/>
+          
+          <form className='SignForm'>
             <br />
-            <br />
+            <div className='SignTextBox'>
+              <Typography component="h2" variant="h6" >
+                {message}
+                Email:
+              </Typography>
+              <TextField className='SignInputBox'
+                required
+                variant = 'outlined'
+                id="email"
+                label="Email Address"
+                name="email"
+                helperText={email_message}
+                onChange={event => handleChange(event)}
+              />
+              <br />
+              <br />
 
-            <div className={classes.center_button}>
-              <Button
-                type="submit"
-                variant="contained"
-                className={classes.submit}
-                disabled={!validateForm()}
-                onClick={onSubmit}
-                    color="primary"
-              >
-                Sign In
-              </Button>
+              <Typography component="h2" variant="h6" >
+                Password:
+              </Typography>
+              <TextField className='SignInputBox'
+                required
+                type="password"
+                variant = 'outlined'
+                id="password"
+                name="password"
+                label="password"
+                helperText={password_message}
+                onChange={event => handleChange(event)}
+                autoFocus />
+
+              <br />
+              <br />
+              <br />
+
+              <div className='SignSubmit'>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  disabled={!validateForm()}
+                  onClick={onSubmit}
+                >
+                  Sign In
+                </Button>
             </div>
             <br />
+
 
 
             <Typography align="center">
               New to ePortfolio?
             </Typography>
 
-            <Grid
-              container
-              spacing={0}
-              alignItems="center"
-              justify="center"
-            >
-              <Grid item xs={5} >
-                <Link href="/user/signup" variant='body1' style={{textDecoration: 'none'}}>
-                Click here to create an account
-              </Link>
-            </Grid>
-           </Grid>
+            
+            <Link href="/user/signup" variant='body1' className='TextCenter'>
+              Click here to create an account
+            </Link>
 
-           <br />
-          <br />
+            <br />
+            <br />
 
-
-
-
-          </div>
-        </form>
-      </div>
-      <br />
-    </Container>
+            </div>
+          </form>
+        </div>
+        <br />
+      </Container>
+    
+  </div>
 
 
 
