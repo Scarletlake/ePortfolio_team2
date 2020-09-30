@@ -8,14 +8,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
-import Link from '@material-ui/core/Link';
-import MenuList from '@material-ui/core/MenuList';
 
 const useStyles=makeStyles((theme) => ({
   logoButton: {
@@ -91,6 +88,8 @@ const AuthNavBar =()=> {
                   </IconButton>
                   <Menu id="menu-appbar" anchorEl={anchorEl} anchorOrigin={{vertical: 'top', horizontal: 'right',}} keepMounted transformOrigin={{vertical: 'top',  horizontal: 'right',}} open={open} onClose={handleClose}>
                     <MenuItem onClick={handleClose} color="inherit"><a href="/user/profile" style={{ color:'black',textDecoration: 'none', backgroundColor: 'none'}}>Profile</a ></MenuItem>
+                    <MenuItem onClick={handleClose} color="inherit"><a href="/user/home" style={{ color:'black',textDecoration: 'none', backgroundColor: 'none'}}>Dashboard</a ></MenuItem>
+                    <MenuItem onClick={handleClose} color="inherit"><a href="/portfolio/template" style={{ color:'black',textDecoration: 'none', backgroundColor: 'none'}}>Create a new portfolio</a ></MenuItem>
                     <MenuItem onClick={userLogOut}>Sign Out</MenuItem>
                   </Menu>
                 </div>

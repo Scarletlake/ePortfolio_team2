@@ -1,50 +1,75 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Button } from '@material-ui/core';
+import Icon from '@material-ui/core/Icon';
+import Grid from '@material-ui/core/Grid';
+
 import SectionEditor from './SectionEditor';
 
-export default class Sections extends Component {
+export default function SectionsEditor(props) {
 
-    state = {
-        sections: this.props.sections
-    };
 
-    static getDerivedStateFromProps(props) {
-        return {
-            sections: props.sections,
+    const addOne = () => {
+        const max_num = props.sections.length;
+        if (max_num > 0){
+            props.onChange(props.sections.concat({ 
+                id: (parseInt(props.sections[max_num-1].id) + 1).toString(),
+                sectionTitle: "Section" + max_num.toString(), 
+                sectionDescription: "des" + max_num.toString(), 
+                photo: "link to img" 
+            }));
+        } else{
+            props.onChange(props.sections.concat({ 
+                id: max_num.toString(), 
+                sectionTitle: "Section" + max_num.toString(), 
+                sectionDescription: "des" + max_num.toString(), 
+                photo: "link to img" 
+            }));
         }
     }
-
-    addOne = () => {
-        const max_num = this.state.sections.length + 1;
-        this.props.onChange(this.state.sections.concat({ id: max_num.toString(), sectionTitle: "Section" + max_num.toString(), sectionDescription: "des" + max_num.toString(), photo: "link to img" }));
+    
+    const deleteOne = (index) =>{
+        const newSections = props.sections.filter((section) => section.id !== index);
+        props.onChange(newSections);
     }
 
-    handleChange = (modified) => {
-        this.setState({
-            sections: this.state.sections.map((section) => (
-                (section.id == modified.id ? section.sectionTitle = modified.sectionTitle : section.sectionTitle = section.sectionTitle) &&
-                (section.id == modified.id ? section.sectionDescription = modified.sectionDescription : section.sectionDescription = section.sectionDescription) &&
-                (section.id == modified.id ? section.photo = modified.photo : section.photo = section.photo)
-            ))
-        });
-        this.props.onChange(this.state.sections);
+    const updateOne = (modified) => {
+        const index = props.sections.findIndex(section => section.id === modified.id);
+        const newSections = [...props.sections];
+        //console.log(newSections);
+        newSections[index] = modified;
+        //console.log(newSections);
+        props.onChange(newSections);
     }
 
-    render() {
-        return (
-            <div>
+    
+    return (
+        <Grid spacing={10}
+            container
+            direction="column"
+            justify="center"
+            alignItems="center">
+
+            <Grid container item spacing={3}
+                direction="column"
+                justify="center"
+                alignItems="center">
                 {
-                    this.state.sections.map((section) => (
+                    props.sections.map((section) => (
                         <SectionEditor
                             key={section.id}
                             section={section}
-                            handleChange={this.handleChange}
+                            handleChange={updateOne}
+                            handleRemove={deleteOne}
                         />
                     ))
                 }
-                <Button variant="outlined" color="primary" onClick={this.addOne} >Add section</Button>
-            </div>
+            </Grid>
+
+            <Grid>             
+                <Icon color="primary" onClick={addOne} >add_circle</Icon>      
+            </Grid>
+
+        </Grid>
         )
-    }
 }
 

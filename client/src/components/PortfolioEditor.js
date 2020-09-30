@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
 
 import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
-import NavbarEditor from './NavbarEditor';
+import PortfolioHeaderEditor from './PortfolioHeaderEditor';
 import UploadPicture from './UploadPicture';
 import SectionsEditor from './SectionsEditor';
 import PortfolioEditorBar from './PortfolioEditorBar'
@@ -14,12 +14,14 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
 
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
+
   form: {
     flexGrow: 1,
     display: 'flex',
-    height: '580px',
+    height: '100%',
   },
   field_root: {
     '& > *': {
@@ -36,13 +38,56 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(1),
   },
-  appbar: {
-    backgroundColor: theme.palette.background.paper,
-  },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
     width: '15%',
+    paddingTop: 45,
   },
+  inputCenter: {
+    textAlign: 'center',
+  },
+  username_input: {
+    background: "transparent",
+    '&:hover': {
+      background: "#f1f1f1",
+    }
+  },
+  introduction_input: {
+    background: "transparent",
+    '&:hover': {
+      background: "#f1f1f1",
+    }
+  },
+  formal_title_input: {
+    background: "transparent",
+    '&:hover': {
+      background: "#f1f1f1",
+    }
+  },
+  leisure_title_input: {
+    background: "transparent",
+    '&:hover': {
+      background: "#f1f1f1",
+    }
+  },
+  contact_title_input: {
+    background: "transparent",
+    '&:hover': {
+      background: "#f1f1f1",
+    }
+  },
+  paper: {
+    width: "80%",
+    height: "100%",
+    paddingTop: 45,
+    backgroundColor: "#fff"
+  },
+  editor: {
+    width: "100%",
+    height: "100%",
+    paddingTop: 45,
+    backgroundColor: "transparent"
+  }
 }));
 
 
@@ -51,6 +96,7 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
+    <Grid>
     <div
       role="tabpanel"
       hidden={value !== index}
@@ -59,12 +105,13 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box  position="absolute" 
+        <Box  position="center" 
         >
           {children}
         </Box>
       )}
     </div>
+    </Grid>
   );
 }
 
@@ -224,7 +271,7 @@ export default function PortfolioEditor(props) {
 
 
   return (
-    <Container>
+   <Grid>
       <PortfolioEditorBar setPortfolioName={setPortfolioName} 
                           onSubmit={onSubmit} 
                           handleCancel={handleCancel}
@@ -238,7 +285,6 @@ export default function PortfolioEditor(props) {
                           />
 
       <div className={classes.form}>
-
         <Tabs
           orientation="vertical"
           variant="fullWidth"
@@ -247,100 +293,154 @@ export default function PortfolioEditor(props) {
           aria-label="Vertical tabs example"
           className={classes.tabs}
         >
+          
           <Tab label={home_page_tag} {...a11yProps(0)} />
           <Tab label={formal_page_tag} {...a11yProps(1)} />
           <Tab label={leisure_page_tag} {...a11yProps(2)} />
           <Tab label={contact_page_tag} {...a11yProps(3)} />
         </Tabs>
        
-        <Grid>
+        <Grid className={classes.editor}
+              container
+              direction="column"
+              justify="center"
+              alignItems="center">
+          <Paper className={classes.paper}>
+            <Grid container
+                    direction="column"
+                    justify="center"
+                    alignItems="center">
 
-          <Grid container
-                direction="column"
-                justify="center"
-                alignItems="center"
-          >
-            <InputBase placeholder="Your Name" defaultValue={user_name_value} 
-                inputProps={{ 'aria-label': 'description' }} 
-                onChange={event=> setUserName(event.target.value)}/>
+              <Grid container
+                    direction="column"
+                    justify="center"
+                    alignItems="center">
 
-            <NavbarEditor homePageTab={home_page_tag} changeHomePageTab={changeHomePageTab}
-                          formalPageTab={formal_page_tag} changeFormalPageTab={changeFormalPageTab}
-                          leisurePageTab={leisure_page_tag} changeLeisurePageTab={changeLeisurePageTab}
-                          contactPageTab={contact_page_tag} changeContactPageTab={changeContactPageTab}/>
-          </Grid>
+                <InputBase className={classes.username_input}
+                          classes={{input: classes.inputCenter}}
+                          placeholder="Your Name" 
+                          defaultValue={user_name_value} 
+                          inputProps={{ 'aria-label': 'description' },{style: {fontSize: 30}}} 
+                          onChange={event=> setUserName(event.target.value)}/>
+                    
+                <br />
+                <PortfolioHeaderEditor homePageTab={home_page_tag} changeHomePageTab={changeHomePageTab}
+                              formalPageTab={formal_page_tag} changeFormalPageTab={changeFormalPageTab}
+                              leisurePageTab={leisure_page_tag} changeLeisurePageTab={changeLeisurePageTab}
+                              contactPageTab={contact_page_tag} changeContactPageTab={changeContactPageTab}/>
+              </Grid>
           <br />
 
-        <Grid>
-
+       
         {/* Home page editor */}
+
         <TabPanel value={value} index={0}>
-          <form noValidate autoComplete="off" className={classes.field_root}>
+        
+          <form noValidate autoComplete="off" className={classes.field_root}> 
+            <Grid container
+                    direction="column"
+                    justify="center"
+                    alignItems="center">
             
             <UploadPicture uploadPicture={setProfilePhoto} pictureUrl={profile_photo_value} />
-            {profile_photo_value !== "link to img" ? <p>{profile_photo_value}</p> : <br />}
           
             <br />
-            <TextField
+            <InputBase
               multiline
               fullWidth
-              margin='normal'
+              className={classes.introduction_input} 
               variant='outlined'
               id="introduction"
               name="introduction"
               label="introduction"
+              inputProps={{ 'aria-label': 'description' },{style: {fontSize: 20}}}  
               defaultValue={introduction_value}
               onChange={event => setIntroduction(event.target.value)}
             />
+            </Grid>
           </form>
         </TabPanel>
-
+       
         {/* About page editor */}
         <TabPanel value={value} index={1} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-            <InputBase placeholder="About Me" defaultValue={formal_page_title} 
-              inputProps={{ 'aria-label': 'description' }} onChange={event=> setFormalPageTitle(event.target.value)}
-            />
-            <SectionsEditor sections={formal_page_sections} onChange={setFormalPageSections} />
+            <Grid>
+              <Grid container
+                  direction="column"
+                  justify="center"
+                  alignItems="center">
+                <InputBase className={classes.formal_title_input} 
+                          classes={{input: classes.inputCenter}}
+                          placeholder="About Me" 
+                          defaultValue={formal_page_title} 
+                          inputProps={{ 'aria-label': 'description' },{style: {fontSize: 20}}}  
+                          onChange={event=> setFormalPageTitle(event.target.value)}/>
+              </Grid>
+              <SectionsEditor sections={formal_page_sections} onChange={setFormalPageSections} />
+            </Grid>
           </form>
         </TabPanel>
 
         {/* Leisure page editor */}
         <TabPanel value={value} index={2} dir={theme.direction}>
           <form noValidate autoComplete="off" className={classes.field_root}>
-            <InputBase placeholder="Free Time" defaultValue={leisure_page_title} 
-              inputProps={{ 'aria-label': 'description' }} onChange={event=> setLeisurePageTitle(event.target.value)}
-            />
-            <SectionsEditor sections={leisure_page_sections} onChange={setLeisurePageSections} />
+            <Grid>
+              <Grid container
+                  direction="column"
+                  justify="center"
+                  alignItems="center">
+                <InputBase className={classes.leisure_title_input} 
+                          classes={{input: classes.inputCenter}}
+                          placeholder="Free Time" 
+                          defaultValue={leisure_page_title} 
+                          inputProps={{ 'aria-label': 'description' },{style: {fontSize: 20}}}  
+                          onChange={event=> setLeisurePageTitle(event.target.value)}/>
+              </Grid>
+              <SectionsEditor sections={leisure_page_sections} onChange={setLeisurePageSections} />
+            </Grid>
           </form>
         </TabPanel>
 
         {/* Contact page editor */}
         <TabPanel value={value} index={3} dir={theme.direction}>
-          <form noValidate autoComplete="off" className={classes.field_root}>
-            <InputBase placeholder="Contact Me" defaultValue={contact_page_title} 
-              inputProps={{ 'aria-label': 'description' }} onChange={event=> setContactPageTitle(event.target.value)}
-            />
-            <TextField id="email"
-              name="email"
-              label="Email"
-              defaultValue={email_value}
-              onChange={event => setEmail(event.target.value)}
-            />
-            <br />
-            <TextField id="phone"
-              name="phone"
-              label="Phone"
-              defaultValue={phone_value}
-              onChange={event => setPhone(event.target.value)}
-            />
-          </form>
+         
+            <form noValidate autoComplete="off" className={classes.field_root}>
+              
+            <Grid container
+                  justify="center"
+                  alignItems="flex-end"
+                 direction="column">
+              <InputBase className={classes.contact_title_input} 
+                        classes={{input: classes.inputCenter}}
+                        placeholder="Contact Me" 
+                        defaultValue={contact_page_title} 
+                        inputProps={{ 'aria-label': 'description' },{style: {fontSize: 20}}}  
+                        onChange={event=> setContactPageTitle(event.target.value)}/>
+
+              <TextField id="email"
+                name="email"
+                label="Email"
+                defaultValue={email_value}
+                inputProps={{style: {fontSize: 20}}}
+                onChange={event => setEmail(event.target.value)}
+              />
+              <br />
+              <TextField id="phone"
+                name="phone"
+                label="Phone"
+                defaultValue={phone_value}
+                inputProps={{style: {fontSize: 20}}}
+                onChange={event => setPhone(event.target.value)}
+              />
+            </Grid>
+            </form>
+          
         </TabPanel>
         </Grid>
-
-      </Grid>
-
+        </Paper>
+        </Grid>
       </div>
-    </Container>
+    </Grid>
+
   );
 }

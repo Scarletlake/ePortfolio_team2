@@ -1,66 +1,129 @@
-import React, { Component } from 'react'
-import { Typography, Box, Button, TextField, Grid } from '@material-ui/core';
+import React, { useState } from 'react'
+
+import InputBase from '@material-ui/core/InputBase';
+import { Typography, Box, Button, Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import UploadPicture from './UploadPicture';
+import Paper from '@material-ui/core/Paper';
+import Icon from '@material-ui/core/Icon';
 
-export class Section extends Component {
+const useStyles = makeStyles((theme) => ({
+    root: {
+      padding: theme.spacing(4),
+      background: "transparent",
+        '&:hover': {
+      background: "#fafafa",
+    },
+    input: {
+        background: "transparent",
+        '&:hover': {
+          background: "#f1f1f1",
+        }
+      },
+    },
+    image: {
+      width: 128,
+      height: 128,
+    },
+    img: {
+      margin: 'auto',
+      display: 'block',
+      maxWidth: '100%',
+      maxHeight: '100%',
+    },
+  }));
 
-    state = {
-        changed: false,
-        id: this.props.section.id,
-        sectionTitle: this.props.section.sectionTitle,
-        sectionDescription: this.props.section.sectionDescription,
-        photo: this.props.section.photo,
-    };
 
-    handleChangeTitle = (event) => {
-        this.state.sectionTitle = event.target.value;
-        this.state.changed = true;
-        this.props.handleChange(this.state);
+export default function SectionEditor(props) {
+
+    const classes = useStyles();
+
+    const [section_title, setTitle] = useState(props.section.sectionTitle);
+    const [section_description, setDescription] = useState(props.section.sectionDescription);
+    const [section_photo, setPhoto] = useState(props.section.photo);
+
+    const [isHover, setIsHover] = useState(false);
+
+    
+    const handleChange = (event) => {
+        event.preventDefault(); 
+        let nam = event.target.name;
+        let val = event.target.value;
+    
+        if (nam === "sectionTitle") {
+            setTitle(val);
+            props.handleChange({
+                id:props.section.id,
+                sectionTitle: val,
+                sectionDescription: section_description,
+                photo: section_photo
+            });
+        }    
+        else if (nam === "sectionDescription") {
+            setDescription(val);
+            props.handleChange({
+                id:props.section.id,
+                sectionTitle: section_title,
+                sectionDescription: val,
+                photo: section_photo
+            });
+        }      
     }
 
-    handleChangeDescription = (event) => {
-        this.state.sectionDescription = event.target.value;
-        this.state.changed = true;
-    }
 
-    handleChangePhoto = (imgUrl) => {
-        this.state.photo = imgUrl;
-        this.state.changed = true;
-        this.props.handleChange(this.state);
+    const uploadPicture = (url) =>{
+        setPhoto(url);
+        props.handleChange({
+            id:props.section.id,
+            sectionTitle: section_title,
+            sectionDescription: section_description,
+            photo: url
+        });
     }
+    
 
-    render() {
-        return (
-            <div >
-                <Grid container spacing={3}>
-                    <Grid item xs={6}>
-                        <TextField
+    return (
+            <Grid className={classes.root}
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}>
+                <Grid container spacing={5} direction="row">
+                    <Grid item xs={5}>
+                        {props.section.id}
+                        <InputBase 
+                            className={classes.input}
                             fullWidth
-                            id="sectionTitle"
                             name="sectionTitle"
-                            label="Section title"
-                            defaultValue={this.state.sectionTitle}
-                            onChange={event => this.handleChangeTitle(event)}
+                            placeholder="sectionDescription"
+                            defaultValue={section_title}
+                            inputProps={{ 'aria-label': 'description' } , {style: {fontSize: 20}}} 
+                            onChange={event => handleChange(event)}                        
                         />
-                        <br />
-                        <TextField
+                        
+                        <InputBase 
+                            className={classes.input}
                             fullWidth
                             multiline
                             rows="5"
-                            id="sectionDescription"
                             name="sectionDescription"
-                            label="sectionDescription title"
-                            defaultValue={this.state.sectionDescription}
-                            onChange={event => this.handleChangeDescription(event)}
+                            placeholder="sectionDescription"
+                            defaultValue={section_description}
+                            inputProps={{ 'aria-label': 'description' },{style: {fontSize: 15}}} 
+                            onChange={event => handleChange(event)}
                         />
                     </Grid>
+
                     <Grid item xs={6}>
-                        <UploadPicture uploadPicture={this.handleChangePhoto} pictureUrl={this.state.photo} />
+                        <UploadPicture uploadPicture={uploadPicture} pictureUrl={section_photo} />
                     </Grid>
+                    
+                    <Grid item xs={1}>
+                        {isHover?
+                        (<Grid>
+                            <Icon color="primary" onClick={()=>props.handleRemove(props.section.id)} >delete</Icon>      
+                        </Grid>): null}
+                    </Grid>
+                  </Grid>
                 </Grid>
-            </div >
         )
-    }
 }
 
-export default Section

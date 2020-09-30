@@ -48,7 +48,6 @@ export default function MyDropzone(props) {
                     console.error(err);
                 }
                 pictureUrl = response.body.url;
-                // console.log(pictureUrl);
             });
         });
     }, []);
