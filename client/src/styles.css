@@ -35,9 +35,6 @@
     justify-content: center;
     vertical-align: middle;
     margin-top: 20vh;
-
-    
-
 }
 
 .SignForm {
@@ -96,6 +93,15 @@
     justify-content: center;
 }
 
+.VerticalAlign {
+    flex-direction: column;
+}
+
+.HorizontalAlign {
+    flex-direction: row;
+    align-self: center;
+}
+
 /* PortfolioList.js styles */
 .PortfolioImage {
     width: 128;
@@ -132,3 +138,28 @@
     margin: 2vh;
     flex-direction: row;
 }
+
+/*profile edit styles*/
+.ProfileForm {
+    margin: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+.ProfileRoot {
+    margin: 10px;
+}
+
+.PorfileFieldRoot {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.ProfileButton {
+    margin-top: 5px;
+
+}
+
