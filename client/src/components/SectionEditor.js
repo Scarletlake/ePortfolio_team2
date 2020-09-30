@@ -9,27 +9,40 @@ import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      padding: theme.spacing(4),
-      background: "transparent",
+        flexGrow: 1,
+    },
+    section: {
+        width: 1000,
+        height: 'fit-content',
+        padding: theme.spacing(2),
+        background: "transparent",
         '&:hover': {
-      background: "#fafafa",
+            background: "#fafafa",
+        }  
+    },
+    content: {
+        width: 850,
+        height: 'fit-content',
     },
     input: {
-        background: "transparent",
+        width: 350,
+        background: "#transparent",
         '&:hover': {
           background: "#f1f1f1",
         }
-      },
+    },
+    text: {
+        width: 400,
+        height: '100%',
     },
     image: {
-      width: 128,
-      height: 128,
+        paddingLeft: theme.spacing(2),
+        width: 500,
+        height: 250,
     },
-    img: {
-      margin: 'auto',
-      display: 'block',
-      maxWidth: '100%',
-      maxHeight: '100%',
+    icon: {
+        width: 75,
+        height: '100%',
     },
   }));
 
@@ -51,7 +64,7 @@ export default function SectionEditor(props) {
         let val = event.target.value;
     
         if (nam === "sectionTitle") {
-            setTitle(val);
+            //setTitle(val);
             props.handleChange({
                 id:props.section.id,
                 sectionTitle: val,
@@ -60,7 +73,7 @@ export default function SectionEditor(props) {
             });
         }    
         else if (nam === "sectionDescription") {
-            setDescription(val);
+            //setDescription(val);
             props.handleChange({
                 id:props.section.id,
                 sectionTitle: section_title,
@@ -72,7 +85,6 @@ export default function SectionEditor(props) {
 
 
     const uploadPicture = (url) =>{
-        setPhoto(url);
         props.handleChange({
             id:props.section.id,
             sectionTitle: section_title,
@@ -81,49 +93,63 @@ export default function SectionEditor(props) {
         });
     }
     
-
+    
     return (
-            <Grid className={classes.root}
+        <div className={classes.root}>
+            <Grid className={classes.section}
+                container
+                direction="row"
+                justify="center"
+                alignItems="baseline"
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}>
-                <Grid container spacing={5} direction="row">
-                    <Grid item xs={5}>
-                        {props.section.id}
+                
+                <Grid container item
+                    className={classes.text}
+                    spacing={2}
+                    direction="column"
+                    justify="flex-start"
+                    alignItems="flex-start"
+                    >
+                    <Grid item >
                         <InputBase 
                             className={classes.input}
-                            fullWidth
                             name="sectionTitle"
                             placeholder="sectionDescription"
-                            defaultValue={section_title}
+                            defaultValue={props.section.sectionTitle}
                             inputProps={{ 'aria-label': 'description' } , {style: {fontSize: 20}}} 
                             onChange={event => handleChange(event)}                        
                         />
-                        
+                    </Grid>
+
+                    <Grid item >                
                         <InputBase 
                             className={classes.input}
                             fullWidth
                             multiline
-                            rows="5"
+                            rows="10"
                             name="sectionDescription"
                             placeholder="sectionDescription"
-                            defaultValue={section_description}
+                            defaultValue={props.section.sectionDescription}
                             inputProps={{ 'aria-label': 'description' },{style: {fontSize: 15}}} 
                             onChange={event => handleChange(event)}
                         />
                     </Grid>
-
-                    <Grid item xs={6}>
-                        <UploadPicture uploadPicture={uploadPicture} pictureUrl={section_photo} />
-                    </Grid>
-                    
-                    <Grid item xs={1}>
-                        {isHover?
-                        (<Grid>
-                            <Icon color="primary" onClick={()=>props.handleRemove(props.section.id)} >delete</Icon>      
-                        </Grid>): null}
-                    </Grid>
-                  </Grid>
                 </Grid>
+
+                <Grid item className={classes.image}>
+                    <UploadPicture uploadPicture={uploadPicture} pictureUrl={props.section.photo}/>
+                </Grid>
+            
+                <Grid container item className={classes.icon} justify = "flex-end" alignItems="center">
+                    {isHover?
+                    (<Grid>
+                        <Icon color="primary" onClick={()=>props.handleRemove(props.section.id)} >delete</Icon>      
+                    </Grid>): null}
+                </Grid>
+
+            </Grid>
+        </div>
         )
 }
 
