@@ -291,6 +291,7 @@ export default function PortfolioEditor(props) {
 
 
   return (
+   <div className='PageContainer'>
    <Grid>
       <PortfolioEditorBar setPortfolioName={setPortfolioName} 
                           onSubmit={onSubmit} 
@@ -519,6 +520,7 @@ export default function PortfolioEditor(props) {
         </Grid>
       </div>
     </Grid>
+  </div>
 
   );
 }
