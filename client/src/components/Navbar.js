@@ -56,7 +56,6 @@ const GuestNavBar =()=>{
 const AuthNavBar =()=> {
 
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -85,8 +84,6 @@ const AuthNavBar =()=> {
                   </IconButton>
                   <Menu id="menu-appbar" anchorEl={anchorEl} anchorOrigin={{vertical: 'top', horizontal: 'right',}} keepMounted transformOrigin={{vertical: 'top',  horizontal: 'right',}} open={open} onClose={handleClose}>
                     <MenuItem onClick={handleClose} color="inherit"><a href="/user/profile" style={{ color:'black',textDecoration: 'none', backgroundColor: 'none'}}>Profile</a ></MenuItem>
-                    <MenuItem onClick={handleClose} color="inherit"><a href="/user/home" style={{ color:'black',textDecoration: 'none', backgroundColor: 'none'}}>Dashboard</a ></MenuItem>
-                    <MenuItem onClick={handleClose} color="inherit"><a href="/portfolio/template" style={{ color:'black',textDecoration: 'none', backgroundColor: 'none'}}>Create a new portfolio</a ></MenuItem>
                     <MenuItem onClick={userLogOut}>Sign Out</MenuItem>
                   </Menu>
                 </div>

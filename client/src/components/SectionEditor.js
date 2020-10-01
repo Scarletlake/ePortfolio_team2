@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React, { Component  } from 'react'
 
 import InputBase from '@material-ui/core/InputBase';
-import { Typography, Box, Button, Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 import UploadPicture from './UploadPicture';
-import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 
-const useStyles = makeStyles((theme) => ({
+const styles = (theme) => ({
     root: {
         flexGrow: 1,
     },
@@ -44,112 +43,96 @@ const useStyles = makeStyles((theme) => ({
         width: 75,
         height: '100%',
     },
-  }));
+  });
 
+class SectionEditor extends Component {
 
-export default function SectionEditor(props) {
+    state = {
+        isHover: false,
+        changed: false,
+        id: this.props.section.id,
+        sectionTitle: this.props.section.sectionTitle,
+        sectionDescription: this.props.section.sectionDescription,
+        photo: this.props.section.photo,
+    };
 
-    const classes = useStyles();
-
-    const [section_title, setTitle] = useState(props.section.sectionTitle);
-    const [section_description, setDescription] = useState(props.section.sectionDescription);
-    const [section_photo, setPhoto] = useState(props.section.photo);
-
-    const [isHover, setIsHover] = useState(false);
-
-    
-    const handleChange = (event) => {
-        event.preventDefault(); 
-        let nam = event.target.name;
-        let val = event.target.value;
-    
-        if (nam === "sectionTitle") {
-            //setTitle(val);
-            props.handleChange({
-                id:props.section.id,
-                sectionTitle: val,
-                sectionDescription: section_description,
-                photo: section_photo
-            });
-        }    
-        else if (nam === "sectionDescription") {
-            //setDescription(val);
-            props.handleChange({
-                id:props.section.id,
-                sectionTitle: section_title,
-                sectionDescription: val,
-                photo: section_photo
-            });
-        }      
+    handleChangeTitle = (val) => {
+        this.setState({sectionTitle: val})
+        this.setState({changed: true});
+        this.props.handleChange(this.state);
     }
 
-
-    const uploadPicture = (url) =>{
-        props.handleChange({
-            id:props.section.id,
-            sectionTitle: section_title,
-            sectionDescription: section_description,
-            photo: url
-        });
+    handleChangeDescription = (val) => {
+        this.setState({sectionDescription: val});
+        this.setState({changed: true});
+        this.props.handleChange(this.state);
     }
+
+    handleChangePhoto = (imgUrl) => {
+        this.setState({photo: imgUrl});
+        this.setState({changed: true});
+        this.props.handleChange(this.state);
+    }
+
+    render() {
+        const { classes } = this.props;
+        return (
+            <div className={classes.root}>
+                <Grid className={classes.section}
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="baseline"
+                    onMouseEnter={() => this.setState({isHover: true})}
+                    onMouseLeave={() => this.setState({isHover: false})}>
+                    
+                    <Grid container item
+                        className={classes.text}
+                        spacing={2}
+                        direction="column"
+                        justify="flex-start"
+                        alignItems="flex-start"
+                        >
+                        <Grid item >
+                            <InputBase 
+                                className={classes.input}
+                                name="sectionTitle"
+                                placeholder="sectionDescription"
+                                defaultValue={this.props.section.sectionTitle}
+                                inputProps={{ 'aria-label': 'description' } , {style: {fontSize: 20}}} 
+                                onChange={event => this.handleChangeTitle(event.target.value)}                        
+                            />
+                        </Grid>
     
+                        <Grid item >                
+                            <InputBase 
+                                className={classes.input}
+                                fullWidth
+                                multiline
+                                rows="10"
+                                name="sectionDescription"
+                                placeholder="sectionDescription"
+                                defaultValue={this.props.section.sectionDescription}
+                                inputProps={{ 'aria-label': 'description' },{style: {fontSize: 15}}} 
+                                onChange={event => this.handleChangeDescription(event.target.value)}
+                            />
+                        </Grid>
+                    </Grid>
     
-    return (
-        <div className={classes.root}>
-            <Grid className={classes.section}
-                container
-                direction="row"
-                justify="center"
-                alignItems="baseline"
-                onMouseEnter={() => setIsHover(true)}
-                onMouseLeave={() => setIsHover(false)}>
+                    <Grid item className={classes.image}>
+                        <UploadPicture uploadPicture={this.handleChangePhoto} pictureUrl={this.props.section.photo}/>
+                    </Grid>
                 
-                <Grid container item
-                    className={classes.text}
-                    spacing={2}
-                    direction="column"
-                    justify="flex-start"
-                    alignItems="flex-start"
-                    >
-                    <Grid item >
-                        <InputBase 
-                            className={classes.input}
-                            name="sectionTitle"
-                            placeholder="sectionDescription"
-                            defaultValue={props.section.sectionTitle}
-                            inputProps={{ 'aria-label': 'description' } , {style: {fontSize: 20}}} 
-                            onChange={event => handleChange(event)}                        
-                        />
-                    </Grid>
-
-                    <Grid item >                
-                        <InputBase 
-                            className={classes.input}
-                            fullWidth
-                            multiline
-                            rows="10"
-                            name="sectionDescription"
-                            placeholder="sectionDescription"
-                            defaultValue={props.section.sectionDescription}
-                            inputProps={{ 'aria-label': 'description' },{style: {fontSize: 15}}} 
-                            onChange={event => handleChange(event)}
-                        />
+                    <Grid container item className={classes.icon} justify = "flex-end" alignItems="center">
+                        {this.state.isHover?
+                        (<Grid>
+                            <Icon color="primary" onClick={()=>this.props.handleRemove(this.props.section.id)} >delete</Icon>      
+                        </Grid>): null}
                     </Grid>
                 </Grid>
-
-                <Grid item className={classes.image}>
-                    <UploadPicture uploadPicture={uploadPicture} pictureUrl={props.section.photo}/>
-                </Grid>
-            
-                <Grid container item className={classes.icon} justify = "flex-end" alignItems="center">
-                    {isHover?
-                    (<Grid>
-                        <Icon color="primary" onClick={()=>props.handleRemove(props.section.id)} >delete</Icon>      
-                    </Grid>): null}
-                </Grid>
-
-            </Grid>
-        </div>
-        )
+            </div>
+            )
+    }
 }
 
+export default withStyles(styles)(SectionEditor);

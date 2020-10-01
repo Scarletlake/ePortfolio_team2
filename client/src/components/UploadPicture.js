@@ -49,6 +49,7 @@ export default function UploadPicture(props) {
                     console.error(err);
                 }
                 setPictureUrl(response.body.url);
+                console.log(pictureUrl);
                 props.uploadPicture(response.body.url);
             });
         });

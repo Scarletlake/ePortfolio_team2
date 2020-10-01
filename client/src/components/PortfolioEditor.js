@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useLocation } from "react-router-dom";
 
 import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
 import PortfolioHeaderEditor from './PortfolioHeaderEditor';
@@ -8,10 +7,8 @@ import SectionsEditor from './SectionsEditor';
 import PortfolioEditorBar from './PortfolioEditorBar'
 
 import InputBase from '@material-ui/core/InputBase';
-import Input from '@material-ui/core/Input';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
 
 import Paper from '@material-ui/core/Paper';
@@ -289,6 +286,8 @@ export default function PortfolioEditor(props) {
       alert("Server Error");
     };
   }
+
+  console.log(formal_page_sections);
 
 
   return (
