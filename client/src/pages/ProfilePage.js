@@ -1,9 +1,20 @@
 import React, { Fragment } from 'react'
 import Profile from '../components/Profile'
 import { useUserProfile} from '../api/userAPI'
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    block: {
+        marginTop: theme.spacing(20),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+}));
 
 export default function ProfilePage (){
- 
+    const classes = useStyles();
     const { loading, user, error } = useUserProfile();
     
     
@@ -13,18 +24,20 @@ export default function ProfilePage (){
     if (error) {
         return <p>Something went wrong: {error.message}</p>;
     }
-    
-  
+
+
     const {  firstName, lastName, email, phone, gender } = user;
   
   
     return (
-      <div>
-        <Profile firstName ={firstName} 
+
+            <div className={classes.block}>
+                <Profile firstName ={firstName}
                 lastName={lastName} 
                 email={email} 
                 phone={phone} 
                 gender={gender} />
-      </div>
+            </div>
+
     )
 }
