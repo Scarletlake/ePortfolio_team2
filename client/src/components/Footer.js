@@ -1,14 +1,15 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import '../styles.css';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" className='TextCenter'>
+    <Typography variant="body2" color="textSecondary">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit">
       E-Portfolio
       </Link>{' '}
       {new Date().getFullYear()}
@@ -17,21 +18,35 @@ function Copyright() {
   );
 }
 
-
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+  main: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(2),
+  },
+  footer: {
+    padding: theme.spacing(3, 2),
+    marginTop: 'auto',
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+  },
+}));
 
 export default function StickyFooter() {
-
+  const classes = useStyles();
 
   return (
-    <div className='FooterRoot'>
+    <div className={classes.root}>
       <CssBaseline />
-      <footer className='Footer'>
-    
-        <div >
-          <div className='TextCenter'>E-Portfolio | This website is developed by Panda</div>
-          <Copyright/>
-        </div>
-
+      <footer className={classes.footer}>
+        <Container maxWidth="sm">
+          <Typography variant="body1"> E-Portfolio | This website is developed by Panda</Typography>
+          <Copyright />
+        </Container>
       </footer>
     </div>
   );
