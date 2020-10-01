@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useRef, useState }from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -35,17 +35,20 @@ export default function PortfolioList (props) {
             alert ("Can't delete ");
          
         });     
-
-
-        
-
-        
     }
 
+
+
+
     function Portfolio(props) {   
+        const portfolioURLRef = useRef(null);
 
         const { portfolioID, portfolioName, portfolioURL, template} = props.portfolio;
         const editor_url = "/portfolio/editor?temp="+template+"&id="+portfolioID;
+        
+        function copyToClipboard() {
+            navigator.clipboard.writeText(portfolioURL);
+        }
 
         return (
             <div>
@@ -83,15 +86,19 @@ export default function PortfolioList (props) {
                                             spacing={5} 
                                             justify="center"
                                             alignItems="center">
-                                        <Grid item >
-                                            <Link href={portfolioURL}>
+                                        <Grid item >                                      
+                                            <Link ref={portfolioURLRef} href={portfolioURL}>
                                                 {portfolioURL}
-                                            </Link>
+                                            </Link>                                                     
                                         </Grid>   
 
                                         <Grid item >
-                                           
-                                                <Button variant="outlined" color="primary"> Copy Link </Button>                                            
+                                            {
+                                            document.queryCommandSupported('copy') &&
+                                                <div>
+                                                    <Button variant="outlined" color="primary" onClick={copyToClipboard}> Copy Link </Button>  
+                                                </div>
+                                            }                                                                                         
                                                                                        
                                         </Grid> 
 
