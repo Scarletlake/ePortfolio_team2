@@ -1,8 +1,14 @@
 /*HomePage*/
 .FixedHeightContainer {
-    overflow: scroll;
-    height: 1000px;
-    border: solid;
+    overflow-y: scroll;
+    width: 1000px;
+    height: 700px;
+    background: #fff;
+    padding-top: 15px;
+}
+
+.PortfolioContainer {
+    padding: 50px;
 }
 
 /*LandingPage*/
@@ -123,7 +129,7 @@
 }
 
 .PortfolioListPaper {
-    width: 100%;
+    width: fit-content;
     max-width: 2000px;
     padding: 6vh;
     margin: auto;
@@ -131,14 +137,24 @@
 }
 
 .PortfolioListRoot {
+	width: 100%;
     margin: 1vh;
-
+    padding: 30;
 }
 
-.PortfolioBottomRoot {
+.PortfolioBottonRoot {
+    width: fit-content;
+}
+
+
+.PortfolioRow {
+	width:fit-content;
+    max-width: 2000px;
+	padding: 45px;
     margin: 2vh;
-    flex-direction: row;
+    background-color: aliceblue;
 }
+
 
 /*profile edit styles*/
 .ProfileForm {
