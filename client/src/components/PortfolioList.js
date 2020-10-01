@@ -1,5 +1,4 @@
 import React, { useState }from 'react';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -91,9 +90,9 @@ export default function PortfolioList (props) {
                                         </Grid>   
 
                                         <Grid item >
-                                            <CopyToClipboard text={portfolioURL}>
+                                           
                                                 <Button variant="outlined" color="primary"> Copy Link </Button>                                            
-                                            </CopyToClipboard>                                                
+                                                                                       
                                         </Grid> 
 
                                     </Grid>

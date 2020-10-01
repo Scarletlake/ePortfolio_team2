@@ -30,7 +30,6 @@
     position: sticky;
     max-height: calc(100vh - 10rem);
     max-width: 100%;
-    overflow: scroll;
     
 }
 
@@ -177,9 +176,7 @@
 
 .ProfileButton {
     margin-top: 5px;
-
 }
-
 /*PortfolioPage*/
 .PortfolioForm {
     flex-grow: 1;
@@ -225,7 +222,3 @@
     width: 800px;
     height: 150px;
 }
-
-
-
-
