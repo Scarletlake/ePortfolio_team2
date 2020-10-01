@@ -8,14 +8,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
-import Link from '@material-ui/core/Link';
-import MenuList from '@material-ui/core/MenuList';
 
 const useStyles=makeStyles((theme) => ({
   logoButton: {
@@ -59,14 +56,10 @@ const GuestNavBar =()=>{
 const AuthNavBar =()=> {
 
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked)
-  }
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };

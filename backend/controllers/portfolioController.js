@@ -89,7 +89,7 @@ const createPortfolio = async (req, res) => {
 
 // Update user profile
 const updatePortfolio = async (req, res) => {
-  const { portfolioName, userName, homePage, formalPage, leisurePage } = req.body;
+  const { portfolioName, userName, homePage, formalPage, leisurePage, contactPage} = req.body;
   const portfolioID = mongoose.Types.ObjectId( req.params.id );
   
   try {
@@ -117,7 +117,8 @@ const updatePortfolio = async (req, res) => {
             userName: userName,
             homePage: homePage,
             formalPage: formalPage,
-            leisurePage: leisurePage
+            leisurePage: leisurePage,
+            contactPage: contactPage
           },
         },
         { returnOriginal: false }
