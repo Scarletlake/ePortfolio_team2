@@ -8,6 +8,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import LandingPage from "./pages/LandingPage";
 import ProfilePage from "./pages/ProfilePage";
+import InitPorfilePage from "./pages/InitProfilePage";
 import TemplatePage from "./pages/TemplatePage";
 import PortfolioPage from "./pages/PortfolioPage";
 import PortfolioEditorPage from "./pages/PortfolioEditorPage";
@@ -24,6 +25,7 @@ const App = () => {
             <Route exact path="/user/signup" component={SignUpPage} />          
             <PrivateRoute exact path="/user/home" component={HomePage} />
             <PrivateRoute exact path="/user/profile" component={ProfilePage} />
+            <PrivateRoute exact path="/user/initprofile" component={InitPorfilePage} />
             <PrivateRoute exact path="/portfolio/editor" component={PortfolioEditorPage} />
             <PrivateRoute exact path="/portfolio/template" component={TemplatePage} />
             <Route exact path="/portfolio/:id" component={PortfolioPage} />
