@@ -11,6 +11,7 @@ import DeletionAlert from "./DeletionAlert"
 import '../styles.css';
 
 export default function PortfolioList (props) {
+    
     const {portfolios} = props;
     const [portfolio_list, setPortfolioList] = useState(portfolios);
 

@@ -251,12 +251,12 @@ export default function PortfolioEditor(props) {
       },
       formalPage: {
         tag: formal_page_tag,
-        titile: formal_page_title,
+        title: formal_page_title,
         sections: formal_page_sections
       },
       leisurePage: {
         tag: leisure_page_tag,
-        titile: leisure_page_title,
+        title: leisure_page_title,
         sections: leisure_page_sections
       },
       contactPage: {
@@ -432,14 +432,15 @@ export default function PortfolioEditor(props) {
                     justify="center"
                     alignItems="center">
                 <Grid item>
+                  
                   <InputBase className={classes.leisure_title_input} 
-                            classes={{input: classes.inputCenter}}
-                            placeholder="Free Time" 
-                            name="leisure_page_title"
-                            defaultValue={leisure_page_title} 
-                            inputProps={{ 'aria-label': 'description' },{style: {fontSize: 25}}}  
-                            onChange={event => setLeisurePageTitle(event.target.value)}/>
-                </Grid>
+                                classes={{input: classes.inputCenter}}
+                                name="contact_page_title"
+                                placeholder="Free Time" 
+                                defaultValue={leisure_page_title} 
+                                inputProps={{ 'aria-label': 'description' },{style: {fontSize: 25}}}  
+                                onChange={event => setLeisurePageTitle(event.target.value)}/>
+                    </Grid>
 
                 <Grid item>
                   <SectionsEditor sections={leisure_page_sections} onChange={setLeisurePageSections} />
@@ -482,10 +483,10 @@ export default function PortfolioEditor(props) {
                     <Grid item>
                       <InputBase className={classes.contact_title_input} 
                                 classes={{input: classes.inputCenter}}
-                                contact="contact_page_title"
+                                name="contact_page_title"
                                 placeholder="Contact Me" 
                                 defaultValue={contact_page_title} 
-                                inputProps={{ 'aria-label': 'description' },{style: {fontSize: 20}}}  
+                                inputProps={{ 'aria-label': 'description' },{style: {fontSize: 25}}}  
                                 onChange={event=> setContactPageTitle(event.target.value)}/>
                     </Grid>
 
