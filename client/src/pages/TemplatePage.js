@@ -1,8 +1,16 @@
 import React from 'react';
 import { Grid, Button, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Img from './envelope.png';
+require('./template.css');
 
 const useStyles = makeStyles({
+  root: {
+    width: "80%",
+    margin: "auto",
+    marginTop: "8%",
+    textAlign: "center",
+  },
   grid: {
     marginTop: "20%",
     textAlign: "center",
@@ -15,29 +23,74 @@ const useStyles = makeStyles({
     color: "white",
     height: 48,
     padding: "0 30px",
+    marginTop: "5px",
+    width: "80%",
   },
 });
 
 export default function TemplatePage() {
   const classes = useStyles();
   return (
-    <Grid container className={classes.grid}>
-      <Grid item xs={4}>
-        {/* <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
-          use this template
-        </Button> */}
+    <div className={classes.root} >
+
+
+      <Typography variant="h2">CHOOSE THE TEMPLATE YOU WANT TO USE</Typography>
+
+
+      <Grid container className={classes.grid}>
+
+        <Grid item xs={4}>
+          <div className="container" >
+            <img src={Img} className="image" />
+            <div className="middle" >
+              <Button className={classes.btn_style} href="#">
+                Under development
+              </Button>
+              {/* <Button className={classes.btn_style} href="#">
+                View example
+              </Button>
+              <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+                Use this template
+              </Button> */}
+            </div>
+          </div>
+          <h1>Business</h1>
+        </Grid>
+
+        <Grid item xs={4}>
+          <div className="container" >
+            <img src={Img} className="image" />
+            <div className="middle" >
+              <Button className={classes.btn_style} href="#">
+                View example
+              </Button>
+              <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+                Use this template
+              </Button>
+            </div>
+          </div>
+          <h1>Art</h1>
+        </Grid>
+
+        <Grid item xs={4}>
+          <div className="container" >
+            <img src={Img} className="image" />
+            <div className="middle" >
+              <Button className={classes.btn_style} href="#">
+                Under development
+              </Button>
+              {/* <Button className={classes.btn_style} href="#">
+                View example
+              </Button>
+              <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+                Use this template
+              </Button> */}
+            </div>
+          </div>
+          <h1>Minimal</h1>
+        </Grid>
+
       </Grid>
-      <Grid item xs={4}>
-        <h1>Art</h1>
-        <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
-          use this template
-        </Button>
-      </Grid>
-      <Grid item xs={4}>
-        {/* <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
-          use this template
-        </Button> */}
-      </Grid>
-    </Grid>
+    </div>
   );
 }

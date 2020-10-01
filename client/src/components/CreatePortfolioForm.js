@@ -25,24 +25,47 @@ export default function CreatePortfolioform(props) {
     userName: user.firstName + " " + user.lastName,
     homePage: {
       tag: "Home",
-      profilePhoto: "link to img",
+      profilePhoto: "",
       description: "Hi"
     },
     formalPage: {
       tag: "About",
       title: "About Me",
-      sections: []
+      sections: [{
+        id: "0",
+        sectionTitle: "University",
+        sectionDescription: "Description",
+        photo: ""
+      },
+      {
+        id: "1",
+        sectionTitle: "Working",
+        sectionDescription: "Description",
+        photo: ""
+      }]
     },
     leisurePage: {
       tag: "Leisure",
       title: "Free Time",
-      sections: []
+      sections: [{
+        id: "0",
+        sectionTitle: "Arts",
+        sectionDescription: "Description",
+        photo: ""
+      },
+      {
+        id: "1",
+        sectionTitle: "Sports",
+        sectionDescription: "Description",
+        photo: ""
+      }]
     },
     contactPage: {
       tag: "Contact",
       title: "Contact Me",
       email: user.email,
-      phone: user.phone
+      phone: user.phone,
+      photo: ""
     }
   }
 

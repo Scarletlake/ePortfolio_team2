@@ -20,7 +20,6 @@ module.exports = function (req, res, next) {
     next();
        
   } catch (err) {
-    console.error('Error cheking Auth');
     res.status(401).json({ msg: 'Authentication failed' });
   }
 };

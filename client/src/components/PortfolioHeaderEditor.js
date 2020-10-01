@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBarEditor(props) {
+export default function PortfolioHeaderEditor(props) {
 
   const classes = useStyles();
 

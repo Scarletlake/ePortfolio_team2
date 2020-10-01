@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { AppBar, Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { AppBar, Toolbar, Button, TextField } from '@material-ui/core';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
 
@@ -10,11 +10,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     display: 'flex',
     height: '580px',
-  },
-  field_root: {
-    '& > *': {
-      marginBottom: theme.spacing(2),
-    },
   },
   grow: {
     flexGrow: 1,
@@ -28,10 +23,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appbar: {
     backgroundColor: theme.palette.background.paper,
-  },
-  tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`,
-    width: '15%',
   },
 }));
 
