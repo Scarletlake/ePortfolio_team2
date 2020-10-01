@@ -9,21 +9,24 @@ describe('User Register Integration test:', function() {
       it('Normal Registration test', function(done) {
         let newUser = {"email":"simplesignup@gmail.com",
                        "password":"Example"};
+
         supertest(app)
           .post('/api/user/signup')
           .send(newUser)
           .end(function(err, res) {
-            expect(res.statusCode).to.equal(200);
+            expect(res.statusCode).to.equal(200);   
+            supertest(app)
+              .delete('/api/user/delete')
+              .send(newUser)
+              .end(function(err, res) {
+                expect(res.statusCode).to.equal(200);
+                expect(res.text).to.be.equal('{"message":"user deleted"}');
+              });
+            done();    
           });
-        supertest(app)
-          .delete('/api/user/delete')
-          .send(newUser)
-          .end(function(err, res) {
-            expect(res.statusCode).to.equal(200);
-            expect(res.text).to.be.equal('{"message":"user deleted"}');
-          });
+        
 
-        done();
+
       });
 
       it('Duplicate registration detection', function(done) {
@@ -35,27 +38,23 @@ describe('User Register Integration test:', function() {
           .send(newUser)
           .end(function(err, res) {
             expect(res.statusCode).to.equal(200);
-          });
-
-
-        supertest(app)
-          .post('/api/user/signup')
-          .send(newUser)
-          .end(function(err, res) {
-            expect(res.statusCode).to.equal(409);
-            expect(res.text).to.be.equal('{"errors":[{"msg":"User already exists"}]}');  
-          });
-
-        supertest(app)
-          .delete('/api/user/delete')
-          .send(newUser)
-          .end(function(err, res) {
-            expect(res.statusCode).to.equal(200);
-            expect(res.text).to.be.equal('{"message":"user deleted"}');
-          });
-          
-          done();
-                
+            supertest(app)
+              .post('/api/user/signup')
+              .send(newUser)
+              .end(function(err, res) {
+                expect(res.statusCode).to.equal(409);
+                expect(res.text).to.be.equal('{"errors":[{"msg":"User already exists"}]}');  
+                supertest(app)
+                  .delete('/api/user/delete')
+                  .send(newUser)
+                  .end(function(err, res) {
+                    expect(res.statusCode).to.equal(200);
+                    expect(res.text).to.be.equal('{"message":"user deleted"}');
+            
+                  });
+                done();
+              });
+          });              
       });
 
       it('Invalid Email Registration test (Without suffix)', function(done) {
@@ -67,25 +66,20 @@ describe('User Register Integration test:', function() {
           .end(function(err, res) {
             expect(res.statusCode).to.equal(400);
             expect(res.text).to.be.equal('{"errors":[{"value":"invalidemail","msg":"Please include a valid email","param":"email","location":"body"}]}');   
-          });
-        
-          done();
-          
+            done();
+          });     
       });
 
       it('Invalid Email Registration test (Invalid username)', function(done) {
-        let newUser = {"email":"compa&tible@gmail.com",
+        let newUser = {"email":"哈哈哈@gmail.com",
                        "password":"Example"};
         supertest(app)
           .post('/api/user/signup')
           .send(newUser)
           .end(function(err, res) {
-            expect(res.statusCode).to.equal(400);
-            expect(res.text).to.be.equal('{"errors":[{"value":"compa&tible@gmail.com","msg":"Please include a valid email","param":"email","location":"body"}]}');   
+            expect(res.statusCode).to.equal(409);
+            done();
           });
-
-          done();
-        
       });
 
       it('Invalid Email Registration test (Double @)', function(done) {
@@ -97,10 +91,8 @@ describe('User Register Integration test:', function() {
           .end(function(err, res) {
             expect(res.statusCode).to.equal(400);
             expect(res.text).to.be.equal('{"errors":[{"value":"invalidemail@@gmail.com","msg":"Please include a valid email","param":"email","location":"body"}]}');   
-          });
-        
-          done();
-          
+            done();
+          }); 
       });
 
 
@@ -113,10 +105,8 @@ describe('User Register Integration test:', function() {
           .end(function(err, res) {
             expect(res.statusCode).to.equal(400);
             expect(res.text).to.be.equal('{"errors":[{"value":".invalidemail@gmail.com","msg":"Please include a valid email","param":"email","location":"body"}]}');   
-          });
-        
-          done();
-          
+            done();
+          });   
       });
 
       it('Invalid Email Registration test (Finish with dot)', function(done) {
@@ -128,10 +118,8 @@ describe('User Register Integration test:', function() {
           .end(function(err, res) {
             expect(res.statusCode).to.equal(400);
             expect(res.text).to.be.equal('{"errors":[{"value":"invalidemail.@gmail.com","msg":"Please include a valid email","param":"email","location":"body"}]}');   
+            done(); 
           });
-        
-          done();
-          
       });
 
       it('Incompatible password test (Below 6 digits)', function(done) {
@@ -143,10 +131,8 @@ describe('User Register Integration test:', function() {
           .end(function(err, res) {
             expect(res.statusCode).to.equal(400);
             expect(res.text).to.be.equal('{"errors":[{"value":"12345","msg":"Please enter a password between 6 to 16 characters","param":"password","location":"body"}]}');     
+            done();
           });
-
-          done();
-        
       });
 
       it('Incompatible password test (Above 16 digits)', function(done) {
@@ -158,10 +144,8 @@ describe('User Register Integration test:', function() {
           .end(function(err, res) {
             expect(res.statusCode).to.equal(400);
             expect(res.text).to.be.equal('{"errors":[{"value":"12345678910111213","msg":"Please enter a password between 6 to 16 characters","param":"password","location":"body"}]}');     
+            done();
           });
-
-          done();
-        
       });
     });
   });

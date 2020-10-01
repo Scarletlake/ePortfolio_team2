@@ -76,6 +76,7 @@ const createPortfolio = async (req, res) => {
       await portfolio.save();
    
       return res.status(200).json({
+        id:portfolio._id,
         portfolioURL: portfolio.portfolioURL
       });
     } catch (err) {

@@ -13,8 +13,8 @@ describe('User Login Integration test:', function() {
           .send(newUser)
           .end(function(err, res) {
             expect(res.statusCode).to.equal(200);
+            done();
           });
-          done();
       });
 
       it('Wrong email', function(done) {
@@ -27,8 +27,8 @@ describe('User Login Integration test:', function() {
           .end(function(err, res) {
             expect(res.statusCode).to.equal(401);
             expect(res.text).to.be.equal('{"errors":[{"msg":"Invalid Credentials"}]}'); 
+            done(); 
           });
-          done();  
       });
 
       it('Wrong password', function(done) {
@@ -41,9 +41,9 @@ describe('User Login Integration test:', function() {
             .end(function(err, res) {
               expect(res.statusCode).to.equal(401);
               expect(res.text).to.be.equal('{"errors":[{"msg":"Invalid Credentials"}]}'); 
+              done();
             }); 
-            done();
-        });
+      });
     });
   });
   
