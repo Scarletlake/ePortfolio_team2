@@ -24,6 +24,7 @@
     position: sticky;
     max-height: calc(100vh - 10rem);
     max-width: 100%;
+    overflow: scroll;
     
 }
 
@@ -104,8 +105,8 @@
 
 /* PortfolioList.js styles */
 .PortfolioImage {
-    width: 128;
-    height: 128;
+    width: 800px;
+    height: 600px;
 }
 
 .PortfolioImg {
@@ -162,4 +163,53 @@
     margin-top: 5px;
 
 }
+
+/*PortfolioPage*/
+.PortfolioForm {
+    flex-grow: 1;
+    display: flex;
+    height: 100%;
+}
+
+.PortfolioTabs {
+    border-bottom: 1px;
+    
+}
+
+.PortfolioHeader {
+    width: 80%;
+    border-bottom:solid;
+    border-bottom-width: 1px;
+
+}
+
+.PortfolioFullName {
+    padding-top: 20px;
+}
+
+.PortfolioField {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.PortfolioText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    padding: 5px;
+
+}
+
+.PortfolioContactImg {
+    width: 550px;
+    height: 800px;
+    align-content: center;
+}
+
+.PortfolioDescBox {
+    width: 800px;
+    height: 150px;
+}
+
+
+
 

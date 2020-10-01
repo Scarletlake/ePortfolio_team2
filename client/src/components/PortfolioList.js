@@ -62,7 +62,7 @@ export default function PortfolioList (props) {
                                 {portfolioName}
                             </Typography>
                             <br/>
-                            <Link>
+                            <Link href={portfolioURL}>
                                 {portfolioURL}
                             </Link>
                         </Grid>
