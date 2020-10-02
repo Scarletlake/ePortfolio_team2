@@ -467,7 +467,7 @@ export default function PortfolioEditor(props) {
                     alignItems="baseline">
 
                   <Grid item className={classes.contact_photo}>
-                    <UploadPicture uploadPicture={setContactPhotoTag} pictureUrl={profile_photo_value}/>
+                    <UploadPicture uploadPicture={setContactPhotoTag} pictureUrl={contact_page_photo}/>
                   </Grid>
                   
                   <Grid container item
