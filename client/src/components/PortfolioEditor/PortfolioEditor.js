@@ -287,9 +287,6 @@ export default function PortfolioEditor(props) {
     };
   }
 
-  console.log(formal_page_sections);
-
-
   return (
    <div className='PageContainer'>
    <Grid>
@@ -344,7 +341,7 @@ export default function PortfolioEditor(props) {
                           classes={{input: classes.inputCenter}}
                           placeholder="Your Name" 
                           defaultValue={user_name_value} 
-                          inputProps={{ 'aria-label': 'description' },{style: {fontSize: 30}}} 
+                          inputProps={{style: {fontSize: 30}}} 
                           onChange={event=> setUserName(event.target.value)}/>
                     
                 </Grid>
@@ -386,7 +383,7 @@ export default function PortfolioEditor(props) {
                     id="introduction"
                     name="introduction"
                     label="introduction"
-                    inputProps={{ 'aria-label': 'description' },{style: {fontSize: 25}}}  
+                    inputProps={{style: {fontSize: 25}}}
                     defaultValue={introduction_value}
                     onChange={event => setIntroduction(event.target.value)}
                   />
@@ -410,7 +407,7 @@ export default function PortfolioEditor(props) {
                             name="formal_page_title"
                             placeholder="About Me" 
                             defaultValue={formal_page_title} 
-                            inputProps={{ 'aria-label': 'description' },{style: {fontSize: 25}}}  
+                            inputProps={{style: {fontSize: 25}}}  
                             onChange={event=> setFormalPageTitle(event.target.value)}/>
                 </Grid>
 
@@ -438,7 +435,7 @@ export default function PortfolioEditor(props) {
                                 name="contact_page_title"
                                 placeholder="Free Time" 
                                 defaultValue={leisure_page_title} 
-                                inputProps={{ 'aria-label': 'description' },{style: {fontSize: 25}}}  
+                                inputProps={{style: {fontSize: 25}}}  
                                 onChange={event => setLeisurePageTitle(event.target.value)}/>
                     </Grid>
 
@@ -486,7 +483,7 @@ export default function PortfolioEditor(props) {
                                 name="contact_page_title"
                                 placeholder="Contact Me" 
                                 defaultValue={contact_page_title} 
-                                inputProps={{ 'aria-label': 'description' },{style: {fontSize: 25}}}  
+                                inputProps={{style: {fontSize: 25}}}  
                                 onChange={event=> setContactPageTitle(event.target.value)}/>
                     </Grid>
 

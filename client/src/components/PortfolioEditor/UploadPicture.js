@@ -53,7 +53,7 @@ export default function UploadPicture(props) {
                 props.uploadPicture(response.body.url);
             });
         });
-    }, []);
+    }, [props]);
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 

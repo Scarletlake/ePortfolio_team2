@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Button, Paper, Typography } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 require('../views/templatePage.css');
 

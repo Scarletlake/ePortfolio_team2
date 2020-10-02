@@ -15,7 +15,6 @@ export default function Profile(props) {
     const [last_name_value, setLastName] = useState(lastName);
     const [phone_value, setPhone] = useState(phone);
     const [gender_value, setGender] = useState(gender);
-    const [message, setMessage] = useState("");
     const [showUpdateForm, setShowUpdateForm] = useState(false);
 
     function cancelSubmit(){
@@ -36,10 +35,10 @@ export default function Profile(props) {
             phone: phone_value
           }).then(res => {
                 if (res.status === 200) {
-                    setMessage ("Updated!");
+                    
                     alert("Updated");
                 }else if(res.status === 401) {
-                    setMessage ("Log in first to update your profile");
+                    
                     alert ("Log in first to update your profile");
                     window.location.replace("/user/signin");
                 }
@@ -49,7 +48,7 @@ export default function Profile(props) {
                 }
             })
             .catch(error => {
-                setMessage ("Can't save changes ");
+                
                 alert ("Can't save changes ");
             });
 

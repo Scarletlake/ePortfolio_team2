@@ -10,7 +10,7 @@ import '../views/styles.css'
 
 export default function PortfolioPage() {
 
-  const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601620748/vtdnrfjdkbrfj7vfwudd.jpg";
+  const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
   const { id } = useParams();
   const { loading, res, error } = usePortfolio(id);
   const [value, setValue] = useState(0); // Tabs
@@ -91,7 +91,11 @@ export default function PortfolioPage() {
         <TabPanel value={value} index={0}>
 
         <div className='PortfolioField TextCenter VerticalAlign'>
-          <img src={portfolio.homePage.profilePhoto} alt={defaultHomePhoto}/>
+          {portfolio.homePage.profilePhoto?
+            <img className='HomePagePhoto' src={portfolio.homePage.profilePhoto} alt="Unable to load" /> :
+            <img className='HomePagePhoto' src={defaultHomePhoto} alt="Unable to load" />
+          }
+          
           <div className='PortfolioText'>{portfolio.homePage.description}</div>
         </div>
 
@@ -118,7 +122,10 @@ export default function PortfolioPage() {
         <TabPanel value={value} index={3}>
 
         <div className='PortfolioField TextCenter HorizontalAlign'>
-          <img className='PortfolioContactImg'src={portfolio.contactPage.photo} alt={defaultHomePhoto}/>
+          {portfolio.contactPage.photo?
+            <img className='PortfolioContactImg' src={portfolio.contactPage.photo} alt="Unable to load"/> :           
+            <img className='PortfolioContactImg' src={defaultHomePhoto} alt="Unable to load" />
+          }
           <div className='PortfolioContactImg VerticalAlign'>
             <div className='PortfolioText'>{portfolio.contactPage.email}</div>
             <div className='PortfolioText'>{portfolio.contactPage.phone}</div>

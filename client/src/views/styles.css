@@ -108,10 +108,15 @@
     align-self: center;
 }
 
+.HomePagePhoto {
+	width: 500px;
+    height: 500px;
+}
+
 /* PortfolioList.js styles */
 .PortfolioImage {
-    width: 128;
-    height: 128;
+    width: 600px;
+    height: 300px;
 }
 
 .PortfolioImg {
@@ -213,8 +218,8 @@
 }
 
 .PortfolioContactImg {
-    width: 550px;
-    height: 800px;
+    width: 350px;
+    height: 600px;
     align-content: center;
 }
 
