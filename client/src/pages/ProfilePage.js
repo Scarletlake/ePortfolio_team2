@@ -2,6 +2,7 @@ import React from 'react'
 import Profile from '../components/App/Profile'
 import { useUserProfile} from '../api/userAPI'
 import {makeStyles} from "@material-ui/core/styles";
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
     block: {
@@ -32,11 +33,13 @@ export default function ProfilePage (){
     return (
 
             <div className={classes.block}>
-                <Profile firstName ={firstName}
-                lastName={lastName} 
-                email={email} 
-                phone={phone} 
-                gender={gender} />
+                <Paper elevation={3}>
+                    <Profile firstName ={firstName}
+                    lastName={lastName}
+                    email={email}
+                    phone={phone}
+                    gender={gender} />
+                </Paper>
             </div>
 
     )
