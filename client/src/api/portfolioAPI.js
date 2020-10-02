@@ -112,6 +112,7 @@ export function deletePortfolioByID(portfolioID) {
 
 
 export function usePortfolio(portfolioID) {
+
   const [loading, setLoading] = useState(true);
   const [res, setResponse] = useState([]);
   const [error, setError] = useState(null);
@@ -127,7 +128,7 @@ export function usePortfolio(portfolioID) {
         setError(e);
         setLoading(false);
       });
-  }, []);
+  }, [portfolioID]);
 
   return {
     loading,

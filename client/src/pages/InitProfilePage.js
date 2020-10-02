@@ -9,7 +9,7 @@ import { updateUserProfile } from "../api/userAPI"
 
 export default function InitProfilePage(props) {
 
-    const { firstName, lastName, email, phone, gender } = props;
+    const { firstName, lastName, phone, gender } = props;
 
     const [first_name_value, setFirstName] = useState(firstName);
     const [last_name_value, setLastName] = useState(lastName);
@@ -68,6 +68,7 @@ export default function InitProfilePage(props) {
     return (
       <div className='ProfileForm' >
         <div >  
+            {message}
             <div className='TextCenter'>
                 <ProfileAvatar 
                     first_name={first_name_value} 

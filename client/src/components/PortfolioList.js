@@ -58,7 +58,6 @@ export default function PortfolioList (props) {
                     container item
                     direction="row" 
                     spacing={3}
-                    direction="row"
                     justify="space-around"
                     alignItems="baseline"
                     >

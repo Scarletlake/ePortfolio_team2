@@ -66,7 +66,7 @@ export default function UploadPicture(props) {
                 {pictureUrl?
                     (
                         <div>
-                            <img src={pictureUrl} alt="Default picture" className={classes.pic} />
+                            <img src={pictureUrl} alt="Default" className={classes.pic} />
                         </div>
                     ):
                     null                          
