@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         '& > *': {
             width: theme.spacing(50),
-            height: theme.spacing(60),
         },
         alignItems: 'center',
+        justifyContent: 'center',
     },
 }));
 
