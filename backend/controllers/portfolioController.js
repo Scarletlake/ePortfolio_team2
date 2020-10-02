@@ -160,7 +160,8 @@ const deletePortfolio = async (req, res) => {
         });
       }
       // delete from portfolio database   
-      const portfolio = await Portfolio.findById(req.params.id);
+      const portfolio = await Portfolio.findById(id);
+
       if(portfolio){
         await portfolio.remove();
       }
