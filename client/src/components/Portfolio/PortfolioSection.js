@@ -15,8 +15,8 @@ export default class PortfolioSection extends Component {
                 {this.state.sections.map((section) => (
                   <div className='HorizontalAlign'>
                     {section.photo?
-                        <img className='PortfolioImage' src={section.photo} alt="Unable to load" />:
-                        <img className='PortfolioImage' src={defaulPhoto} alt="Unable to load" />
+                        <img className='SectionImage' src={section.photo} alt="Unable to load" />:
+                        <img className='SectionImage' src={defaulPhoto} alt="Unable to load" />
                     }
                     <div className='PortfolioDescBox'>
                         {section.sectionDescription}
