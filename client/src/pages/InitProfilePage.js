@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import ProfileAvatar from "../components/ProfileAvatar"
-import RadioButtom from "../components/RadioButtom"
+import ProfileAvatar from "../components/App/ProfileAvatar"
+import RadioButtom from "../components/App/RadioButtom"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import '../styles.css'
+import '../views/styles.css'
 
 import { updateUserProfile } from "../api/userAPI"
 
 export default function InitProfilePage(props) {
 
-    const { firstName, lastName, email, phone, gender } = props;
+    const { firstName, lastName, phone, gender } = props;
 
     const [first_name_value, setFirstName] = useState(firstName);
     const [last_name_value, setLastName] = useState(lastName);
@@ -68,6 +68,7 @@ export default function InitProfilePage(props) {
     return (
       <div className='ProfileForm' >
         <div >  
+            {message}
             <div className='TextCenter'>
                 <ProfileAvatar 
                     first_name={first_name_value} 

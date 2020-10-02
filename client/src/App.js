@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"
-import PrivateRoute from "./components/PrivateRoute"
+import Navbar from "./components/App/Navbar";
+import Footer from "./components/App/Footer"
+import PrivateRoute from "./components/App/PrivateRoute"
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import isAuthenticated from "../utils/checkAuthToken";
-import {userLogOut} from '../api/userAPI';
+import isAuthenticated from "../../utils/checkAuthToken";
+import {userLogOut} from '../../api/userAPI';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';

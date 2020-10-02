@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import Profile from '../components/Profile'
+import React from 'react'
+import Profile from '../components/App/Profile'
 import { useUserProfile} from '../api/userAPI'
 import {makeStyles} from "@material-ui/core/styles";
 

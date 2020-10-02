@@ -6,9 +6,9 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
-import { deletePortfolioByID } from "../api/portfolioAPI"
+import { deletePortfolioByID } from "../../api/portfolioAPI"
 import DeletionAlert from "./DeletionAlert"
-import '../styles.css';
+import '../../views/styles.css';
 
 export default function PortfolioList (props) {
     
@@ -58,7 +58,6 @@ export default function PortfolioList (props) {
                     container item
                     direction="row" 
                     spacing={3}
-                    direction="row"
                     justify="space-around"
                     alignItems="baseline"
                     >

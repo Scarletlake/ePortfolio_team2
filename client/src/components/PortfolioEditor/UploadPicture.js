@@ -49,11 +49,11 @@ export default function UploadPicture(props) {
                     console.error(err);
                 }
                 setPictureUrl(response.body.url);
-                console.log(pictureUrl);
+                //console.log(pictureUrl);
                 props.uploadPicture(response.body.url);
             });
         });
-    }, []);
+    }, [props]);
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
@@ -66,7 +66,7 @@ export default function UploadPicture(props) {
                 {pictureUrl?
                     (
                         <div>
-                            <img src={pictureUrl} alt="Default picture" className={classes.pic} />
+                            <img src={pictureUrl} alt="Default" className={classes.pic} />
                         </div>
                     ):
                     null                          

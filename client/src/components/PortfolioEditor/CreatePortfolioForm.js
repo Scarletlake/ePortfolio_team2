@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-import { useUserProfile } from "../api/userAPI"
-import PortfolioEditor from "../components/PortfolioEditor"
+import { useUserProfile } from "../../api/userAPI"
+import PortfolioEditor from "./PortfolioEditor"
 
 export default function CreatePortfolioform(props) {
 

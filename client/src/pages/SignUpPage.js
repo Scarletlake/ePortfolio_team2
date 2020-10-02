@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 
-import '../styles.css'
+import '../views/styles.css'
 
 export default function SignUpPage() {
   
@@ -44,14 +44,14 @@ export default function SignUpPage() {
       setEmail(val);
     }    
     else if (nam === "password") {
-      if (password_input.length < 6 || password_input.length > 16 ){
+      if (val.length < 6 || val.length > 16 ){
         setPasswordMsg("Password length should be between 6 to 16 characters");
       }else{
         setPasswordMsg("");
       }
       setPassword(val);
     }else if(nam === "re_password"){
-      if(password_input !== confirmPassword){
+      if(password_input !== val){
         setConfirmPasswordMsg("Password does not match");
       } else{
         setConfirmPasswordMsg("");

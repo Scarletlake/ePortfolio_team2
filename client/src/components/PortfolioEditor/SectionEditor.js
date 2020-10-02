@@ -99,7 +99,7 @@ class SectionEditor extends Component {
                                 name="sectionTitle"
                                 placeholder="sectionDescription"
                                 defaultValue={this.props.section.sectionTitle}
-                                inputProps={{ 'aria-label': 'description' } , {style: {fontSize: 20}}} 
+                                inputProps={{style: {fontSize: 20}}} 
                                 onChange={event => this.handleChangeTitle(event.target.value)}                        
                             />
                         </Grid>
@@ -113,7 +113,7 @@ class SectionEditor extends Component {
                                 name="sectionDescription"
                                 placeholder="sectionDescription"
                                 defaultValue={this.props.section.sectionDescription}
-                                inputProps={{ 'aria-label': 'description' },{style: {fontSize: 15}}} 
+                                inputProps={{style: {fontSize: 15}}} 
                                 onChange={event => this.handleChangeDescription(event.target.value)}
                             />
                         </Grid>

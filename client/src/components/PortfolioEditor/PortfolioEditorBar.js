@@ -58,7 +58,7 @@ export default function PortfolioEditorBar(props) {
             <Button color="primary" onClick={props.handleCancel} autoFocus>
               Continue editing
             </Button>
-            <Button href={"./template"} color="secondary">
+            <Button href={"/user/home"} color="secondary">
               <b>Abort</b>&nbsp;editing
             </Button>
           </DialogActions>

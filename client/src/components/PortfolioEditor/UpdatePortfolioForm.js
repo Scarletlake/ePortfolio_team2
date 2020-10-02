@@ -1,6 +1,6 @@
 import React from 'react'
-import {usePortfolio} from "../api/portfolioAPI"
-import PortfolioEditor from "../components/PortfolioEditor"
+import {usePortfolio} from "../../api/portfolioAPI"
+import PortfolioEditor from "./PortfolioEditor"
 
 export default function UpdatePortfolioForm (props){
   

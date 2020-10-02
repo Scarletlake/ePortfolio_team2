@@ -1,8 +1,7 @@
 import React from 'react';
-import { Grid, Button, Paper, Typography } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Img from './envelope.png';
-require('./template.css');
+require('../views/templatePage.css');
 
 const useStyles = makeStyles({
   root: {
@@ -41,7 +40,7 @@ export default function TemplatePage() {
 
         <Grid item xs={4}>
           <div className="container" >
-            <img src={Img} className="image" />
+            <img src="/envelope.png" className="image" alt="Template Page"/>
             <div className="middle" >
               <Button className={classes.btn_style} href="#">
                 Under development
@@ -49,7 +48,7 @@ export default function TemplatePage() {
               {/* <Button className={classes.btn_style} href="#">
                 View example
               </Button>
-              <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+              <Button className={classes.btn_style} href="/portfolio/editor?temp=business&id=0">
                 Use this template
               </Button> */}
             </div>
@@ -59,22 +58,22 @@ export default function TemplatePage() {
 
         <Grid item xs={4}>
           <div className="container" >
-            <img src={Img} className="image" />
+            <img src="/envelope.png" className="image" alt="Template Page"/>
             <div className="middle" >
               <Button className={classes.btn_style} href="#">
                 View example
               </Button>
-              <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+              <Button className={classes.btn_style} href="/portfolio/editor?temp=minimal&id=0">
                 Use this template
               </Button>
             </div>
           </div>
-          <h1>Art</h1>
+          <h1>Minimal</h1>
         </Grid>
 
         <Grid item xs={4}>
           <div className="container" >
-            <img src={Img} className="image" />
+            <img src="/envelope.png" className="image" alt="Template Page"/>
             <div className="middle" >
               <Button className={classes.btn_style} href="#">
                 Under development
@@ -87,7 +86,7 @@ export default function TemplatePage() {
               </Button> */}
             </div>
           </div>
-          <h1>Minimal</h1>
+          <h1>Art</h1>
         </Grid>
 
       </Grid>
