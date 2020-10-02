@@ -1,0 +1,64 @@
+
+/*PortfolioPage*/
+
+.SectionRoot {
+    flexGrow: 1,
+}
+
+.HomePagePhoto {
+	width: 500px;
+    height: 500px;
+}
+
+.SectionImage {
+    width: 300;
+    height: 150;
+}
+
+.Section {
+    width: fit-content;
+    height: fit-content;
+}
+
+.PortfolioForm {
+    flex-grow: 1;
+    display: flex;
+    height: 100%;
+}
+
+.PortfolioTabs {
+    border-bottom: 1px;
+}
+
+.PortfolioHeader {
+    width: 80%;
+    border-bottom:solid;
+    border-bottom-width: 1px;
+
+}
+
+.PortfolioFullName {
+    padding-top: 20px;
+}
+
+.PortfolioField {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.PortfolioText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    padding: 5px;
+}
+
+.PortfolioContactImg {
+    width: 350px;
+    height: 500px;
+    align-content: center;
+}
+
+.PortfolioDescBox {
+    width: 200;
+    height: 300;
+}

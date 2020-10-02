@@ -1,5 +1,7 @@
 import React , { Component  } from 'react';
+import { Grid, Typography } from '@material-ui/core';
 import '../../views/styles.css'
+import '../../views/minimalTemplate.css'
 
 
 export default class PortfolioSection extends Component {
@@ -13,14 +15,49 @@ export default class PortfolioSection extends Component {
         return (
             <div>
                 {this.state.sections.map((section) => (
-                  <div className='HorizontalAlign'>
-                    {section.photo?
-                        <img className='SectionImage' src={section.photo} alt="Unable to load" />:
-                        <img className='SectionImage' src={defaulPhoto} alt="Unable to load" />
-                    }
-                    <div className='PortfolioDescBox'>
-                        {section.sectionDescription}
-                    </div>
+                  <div key={section.id} className="SectionRoot">
+                    
+                    <Grid className="Section"
+                        container
+                        spacing={6}
+                        direction="row"
+                        justify="center"
+                        alignItems="center">
+                       
+                       <Grid item className='PortfolioDescBox'>
+                            <Grid container className='PortfolioDescBox'
+                                spacing={3}
+                                direction="column"
+                                justify="flex-start"
+                                alignItems="flex-start"
+                                >
+                                <Grid item className='PortfolioDescBox'>
+                                    <Typography 
+                                    className='PortfolioDescBox'
+                                        variant="h5" 
+                                        component="h5">
+                                        {section.sectionTitle} 
+                                    </Typography> 
+                                </Grid>
+                               
+                                <Grid item className='PortfolioDescBox'>     
+                                    <Typography 
+                                    className='PortfolioDescBox'
+                                        variant="h6" 
+                                        component="h6">
+                                        {section.sectionDescription}
+                                    </Typography>           
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <Grid item className='SectionImage'>
+                            {section.photo?
+                                <img width="600" height="300" src={section.photo} alt="Unable to load" />:
+                                <img width="600" height="300" src={defaulPhoto} alt="Unable to load" />
+                            }
+                        </Grid>
+                    </Grid>
                   </div>
                 ))
                 }

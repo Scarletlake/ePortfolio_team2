@@ -109,27 +109,15 @@
 }
 
 .HomePagePhoto {
-	width: 500px;
-    height: 500px;
-}
-
-.SectionImage {
-    width: 600px;
-    height: 300px;
+	width: 450px;
+    height: 450px;
 }
 
 
 /* PortfolioList.js styles */
 .PortfolioImage {
-    width: 128;
-    height: 128;
-}
-
-.PortfolioImg {
-    margin: auto;
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 128;
+    max-height: 128;
 }
 
 .PortfolioRoot {
@@ -187,49 +175,4 @@
 
 .ProfileButton {
     margin-top: 5px;
-}
-/*PortfolioPage*/
-.PortfolioForm {
-    flex-grow: 1;
-    display: flex;
-    height: 100%;
-}
-
-.PortfolioTabs {
-    border-bottom: 1px;
-    
-}
-
-.PortfolioHeader {
-    width: 80%;
-    border-bottom:solid;
-    border-bottom-width: 1px;
-
-}
-
-.PortfolioFullName {
-    padding-top: 20px;
-}
-
-.PortfolioField {
-    margin-top: 20px;
-    width: 100%;
-}
-
-.PortfolioText {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: x-large;
-    padding: 5px;
-
-}
-
-.PortfolioContactImg {
-    width: 350px;
-    height: 500px;
-    align-content: center;
-}
-
-.PortfolioDescBox {
-    width: 800px;
-    height: 150px;
 }

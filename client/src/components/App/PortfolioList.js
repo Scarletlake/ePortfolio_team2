@@ -2,7 +2,6 @@ import React, { useRef, useState }from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
@@ -67,12 +66,10 @@ export default function PortfolioList (props) {
                             <Grid container 
                                 direction="row" 
                                 justify="center"
-                                alignItems="baseline" 
+                                alignItems="center" 
                                 spacing={5}>
                                 <Grid item>
-                                    <ButtonBase className="PortfolioImage">
-                                    <img className="PortfolioImg" alt="complex" src="/static/images/grid/complex.jpg" />
-                                    </ButtonBase>
+                                    <img width="100" height="100" src="/envelope.png" alt="default" />                                
                                 </Grid>
 
                                 <Grid container item xs={10} sm direction="column" spacing={3} >
