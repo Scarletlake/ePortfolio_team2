@@ -12,6 +12,16 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    root: {
+        marginTop: theme.spacing(20),
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > *': {
+            width: theme.spacing(50),
+            height: theme.spacing(60),
+        },
+        alignItems: 'center',
+    },
 }));
 
 export default function ProfilePage (){
@@ -32,7 +42,7 @@ export default function ProfilePage (){
   
     return (
 
-            <div className={classes.block}>
+            <div className={classes.root}>
                 <Paper elevation={3}>
                     <Profile firstName ={firstName}
                     lastName={lastName}
