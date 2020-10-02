@@ -143,7 +143,7 @@ export default function SignInPage() {
             </Typography>
 
             
-            <Link href="/user/signup" variant='body1' className='TextCenter'>
+            <Link href="/user/signup" variant='body1' className='TextCenter' style={{textDecoration: 'none'}}>
               Click here to create an account
             </Link>
 

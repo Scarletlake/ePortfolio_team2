@@ -174,7 +174,7 @@ export default function SignUpPage() {
                 Already have an account?
               </Typography>
 
-              <Link href="/user/signin" variant='body1' className='TextCenter'>
+              <Link href="/user/signin" variant='body1' className='TextCenter' style={{textDecoration: 'none'}}>
                 Click here to sign in
               </Link>
 
