@@ -18,8 +18,8 @@ export default class SectionsEditor extends Component {
         if (length > 0){
             const newSections = this.state.sections.concat({ 
                 id: (parseInt(this.state.sections[length-1].id) + 1).toString(),
-                sectionTitle: "Section" + length.toString(), 
-                sectionDescription: "des" + length.toString(), 
+                sectionTitle: "Title",
+                sectionDescription: "Description",
                 photo: ""
             });
             this.setState({sections: newSections});
@@ -27,8 +27,8 @@ export default class SectionsEditor extends Component {
         } else{
             const newSections = this.state.sections.concat({ 
                 id: length.toString(), 
-                sectionTitle: "Section" + length.toString(), 
-                sectionDescription: "des" + length.toString(), 
+                sectionTitle: "Title",
+                sectionDescription: "Description",
                 photo: "" 
             });
             this.setState({sections: newSections});

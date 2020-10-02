@@ -26,7 +26,8 @@ class TestNav(unittest.TestCase):
         driver.find_element(By.ID, "password").send_keys("Example")
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
         time.sleep(1)
-        driver.find_element(By.CSS_SELECTOR, ".MuiButtonGroup-grouped:nth-child(1) > .MuiButton-label").click()
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root path").click()
+        driver.find_element(By.CSS_SELECTOR, ".MuiButtonBase-root:nth-child(2)").click()
         Alert(driver).dismiss()
         self.assertEqual("http://localhost:3000/", driver.current_url)
 

@@ -7,6 +7,7 @@ import { usePortfolio } from "../api/portfolioAPI"
 import PortfolioSection from '../components/Portfolio/PortfolioSection.js';
 
 import '../views/styles.css'
+import '../views/minimalTemplate.css'
 
 export default function PortfolioPage() {
 
@@ -88,6 +89,7 @@ export default function PortfolioPage() {
           </Tabs>
         </div>
 
+        {/* Home page */}
         <TabPanel value={value} index={0}>
 
         <div className='PortfolioField TextCenter VerticalAlign'>
@@ -101,24 +103,37 @@ export default function PortfolioPage() {
 
         </TabPanel>
 
+        {/* Formal page */}
         <TabPanel value={value} index={1}>
 
         <div className='PortfolioField TextCenter VerticalAlign'>
-          <div className='PortfolioText'>{portfolio.homePage.title}</div>
+          <Typography 
+              variant="h4" 
+              component="h4"
+              className='PortfolioFullName'>
+                  {portfolio.formalPage.title}
+          </Typography>
           <PortfolioSection sections={portfolio.formalPage.sections} />
         </div>
         </TabPanel>
 
+        {/* Leisure page */}
         <TabPanel value={value} index={2}>
-
+        
         <div>
           <div className='PortfolioField TextCenter VerticalAlign'>
-          <div className='PortfolioText'>{portfolio.homePage.title}</div>
+          <Typography 
+              variant="h4" 
+              component="h4"
+              className='PortfolioFullName'>
+                  {portfolio.leisurePage.title}
+          </Typography>
           <PortfolioSection sections={portfolio.leisurePage.sections} />
           </div>
         </div>
         </TabPanel>
 
+        {/* Contact page */}
         <TabPanel value={value} index={3}>
 
         <div className='PortfolioField TextCenter HorizontalAlign'>
@@ -126,9 +141,17 @@ export default function PortfolioPage() {
             <img className='PortfolioContactImg' src={portfolio.contactPage.photo} alt="Unable to load"/> :           
             <img className='PortfolioContactImg' src={defaultHomePhoto} alt="Unable to load" />
           }
-          <div className='PortfolioContactImg VerticalAlign'>
-            <div className='PortfolioText'>{portfolio.contactPage.email}</div>
-            <div className='PortfolioText'>{portfolio.contactPage.phone}</div>
+         
+          <div className='VerticalAlign'>
+            <Typography 
+              variant="h4" 
+              component="h4"
+              className='PortfolioFullName'>
+                  {portfolio.contactPage.title}
+            </Typography>
+
+            <div className='PortfolioText'> Email: {portfolio.contactPage.email}</div>
+            <div className='PortfolioText'> Phone: {portfolio.contactPage.phone}</div>
           </div>
         </div>
         
