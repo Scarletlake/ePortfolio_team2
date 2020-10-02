@@ -19,7 +19,7 @@ class TestLanding(unittest.TestCase):
         driver = self.driver
         driver.get(self.base_url + "/")
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
-        self.assertEqual(u"http://localhost:3000/user/signup", driver.current_url)
+        self.assertEqual(u"http://localhost:3000/user/signin", driver.current_url)
 
     def test_signIn(self):
         driver = self.driver

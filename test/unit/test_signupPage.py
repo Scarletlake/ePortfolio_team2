@@ -29,11 +29,8 @@ class TestSignup(unittest.TestCase):
         actions.move_to_element(element).perform()
         driver.find_element(By.ID, "re_password").send_keys("example")
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained").click()
-        element = driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(driver)
-        actions.move_to_element(element).perform()
-        driver.find_element(By.CSS_SELECTOR, ".makeStyles-profile_form_root-1").click()
-        self.assertEqual(u"http://localhost:3000/user/home", driver.current_url)
+        time.sleep(1)
+        self.assertEqual(u"http://localhost:3000/user/initprofile", driver.current_url)
 
 
     def test_signupInsignup(self):
@@ -60,7 +57,7 @@ class TestSignup(unittest.TestCase):
     def test_goLanding(self):
         driver = self.driver
         driver.get(self.base_url + "/")
-        driver.find_element(By.CSS_SELECTOR, ".MuiButton-label > .MuiTypography-root").click()
+        driver.find_element(By.CSS_SELECTOR, "path").click()
         self.assertEqual(u"http://localhost:3000/", driver.current_url)
 
         
