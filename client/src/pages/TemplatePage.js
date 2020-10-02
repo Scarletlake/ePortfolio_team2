@@ -3,16 +3,11 @@ import { Grid, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 require('../views/templatePage.css');
 
-const useStyles = makeStyles((theme) =>({
+const useStyles = makeStyles({
   root: {
-      marginTop: theme.spacing(20),
-      display: 'flex',
-      flexWrap: 'wrap',
-      '& > *': {
-        width: theme.spacing(90),
-      },
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "60%",
+    margin: "auto",
+    marginTop: "8%",
     textAlign: "center",
   },
   grid: {
@@ -30,7 +25,7 @@ const useStyles = makeStyles((theme) =>({
     marginTop: "5px",
     width: "80%",
   },
-}));
+});
 
 export default function TemplatePage() {
   const classes = useStyles();
