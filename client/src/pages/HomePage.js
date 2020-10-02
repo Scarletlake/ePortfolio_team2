@@ -3,15 +3,28 @@ import PortfolioList from '../components/App/PortfolioList'
 import { useUserPortfolio} from '../api/userAPI'
 import Button from '@material-ui/core/Button';
 import '../views/styles.css'
-
+import {makeStyles} from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+const useStyles = makeStyles((theme) => ({
+    loading: {
+        display: 'flex',
+        marginTop: theme.spacing(20),
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+}));
 
 export default function HomePage (){
-
+    const classes = useStyles();
 
     const { loading, res, error } = useUserPortfolio();
-    
+
     if (loading) {
-        return <p>Loading...</p>;
+        return (
+            <div className={classes.loading}>
+                <CircularProgress/>
+            </div>
+        )
     }
     if (error) {
         return <p>Something went wrong: {error.message}</p>;

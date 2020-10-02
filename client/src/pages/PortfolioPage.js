@@ -1,24 +1,37 @@
 import React, { useState } from 'react'
 import { Tabs, Tab, Typography, Box } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-
 import { useParams } from "react-router-dom";
 import { usePortfolio } from "../api/portfolioAPI"
 import PortfolioSection from '../components/Portfolio/PortfolioSection.js';
-
+import {makeStyles} from "@material-ui/core/styles";
 import '../views/styles.css'
 import '../views/minimalTemplate.css'
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+const useStyles = makeStyles((theme) => ({
+  loading: {
+    display: 'flex',
+    marginTop: theme.spacing(20),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
 
 export default function PortfolioPage() {
-
+  const classes = useStyles();
   const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
   const { id } = useParams();
   const { loading, res, error } = usePortfolio(id);
   const [value, setValue] = useState(0); // Tabs
-  
+
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+        <div className={classes.loading}>
+          <CircularProgress/>
+        </div>
+    )
   }
   if (error) {
     return <p>Something went wrong: {error.message}</p>;
