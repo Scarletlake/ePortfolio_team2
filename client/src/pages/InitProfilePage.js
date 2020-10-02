@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import ProfileAvatar from "../components/ProfileAvatar"
-import RadioButtom from "../components/RadioButtom"
+import ProfileAvatar from "../components/App/ProfileAvatar"
+import RadioButtom from "../components/App/RadioButtom"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import '../styles.css'
+import '../views/styles.css'
 
 import { updateUserProfile } from "../api/userAPI"
 

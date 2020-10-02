@@ -1,8 +1,8 @@
 import React from 'react'
 import { useLocation } from "react-router-dom";
 
-import CreatePortfolioform from "../components/CreatePortfolioForm"
-import UpdatePortfolioForm from "../components/UpdatePortfolioForm"
+import CreatePortfolioform from "../components/PortfolioEditor/CreatePortfolioForm"
+import UpdatePortfolioForm from "../components/PortfolioEditor/UpdatePortfolioForm"
 
 
 export default function PortfolioEditorPage(props) {

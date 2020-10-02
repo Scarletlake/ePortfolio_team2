@@ -1,5 +1,5 @@
 import React , { Component  } from 'react';
-import '../styles.css'
+import '../../views/styles.css'
 
 
 export default class PortfolioSection extends Component {

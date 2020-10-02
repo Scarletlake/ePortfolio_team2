@@ -4,9 +4,9 @@ import Grid from '@material-ui/core/Grid';
 
 import { useParams } from "react-router-dom";
 import { usePortfolio } from "../api/portfolioAPI"
-import PortfolioSection from '../components/PortfolioSection.js';
+import PortfolioSection from '../components/Portfolio/PortfolioSection.js';
 
-import '../styles.css'
+import '../views/styles.css'
 
 export default function PortfolioPage() {
 

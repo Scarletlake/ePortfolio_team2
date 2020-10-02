@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { createPortfolio, updatePortfolio } from '../api/portfolioAPI';
+import { createPortfolio, updatePortfolio } from '../../api/portfolioAPI';
 import PortfolioHeaderEditor from './PortfolioHeaderEditor';
 import UploadPicture from './UploadPicture';
 import SectionsEditor from './SectionsEditor';
@@ -9,7 +9,7 @@ import PortfolioEditorBar from './PortfolioEditorBar'
 import InputBase from '@material-ui/core/InputBase';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
+import { Tabs, Tab, Box, TextField } from '@material-ui/core';
 
 import Paper from '@material-ui/core/Paper';
 

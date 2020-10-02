@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom';
 import { Button, Typography, Container } from '@material-ui/core';
 import CssBaseLine from '@material-ui/core/CssBaseline';
-import '../styles.css'
+import '../views/styles.css'
 
 import isAuthenticated from "../utils/checkAuthToken";
 

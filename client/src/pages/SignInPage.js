@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 
-import '../styles.css'
+import '../views/styles.css'
 
 export default function SignInPage() {
 

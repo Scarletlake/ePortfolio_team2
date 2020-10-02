@@ -1,8 +1,8 @@
 import React from 'react';
-import RadioButtom from "../components/RadioButtom"
+import RadioButtom from "./RadioButtom"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import '../styles.css'
+import '../../views/styles.css'
 
 
 export default function ProfileEditor(props) {
