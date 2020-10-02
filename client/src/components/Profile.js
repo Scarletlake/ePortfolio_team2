@@ -28,6 +28,7 @@ export default function Profile(props) {
 
     
     function updateProfile() {
+        
         updateUserProfile ({
             firstName: first_name_value,
             lastName: last_name_value, 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Profile from '../components/Profile'
 import { useUserProfile} from '../api/userAPI'
 

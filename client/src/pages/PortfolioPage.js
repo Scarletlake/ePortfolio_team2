@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Tabs, Toolbar, Tab, Typography, Box, Button, TextField } from '@material-ui/core';
+import { Tabs, Tab, Typography, Box } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
 import { useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ import '../styles.css'
 
 export default function PortfolioPage() {
 
+  const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601620748/vtdnrfjdkbrfj7vfwudd.jpg";
   const { id } = useParams();
   const { loading, res, error } = usePortfolio(id);
   const [value, setValue] = useState(0); // Tabs
@@ -90,7 +91,7 @@ export default function PortfolioPage() {
         <TabPanel value={value} index={0}>
 
         <div className='PortfolioField TextCenter VerticalAlign'>
-          <img src={portfolio.homePage.profilePhoto} />
+          <img src={portfolio.homePage.profilePhoto} alt={defaultHomePhoto}/>
           <div className='PortfolioText'>{portfolio.homePage.description}</div>
         </div>
 
@@ -117,7 +118,7 @@ export default function PortfolioPage() {
         <TabPanel value={value} index={3}>
 
         <div className='PortfolioField TextCenter HorizontalAlign'>
-          <img className='PortfolioContactImg'src={portfolio.contactPage.photo} />
+          <img className='PortfolioContactImg'src={portfolio.contactPage.photo} alt={defaultHomePhoto}/>
           <div className='PortfolioContactImg VerticalAlign'>
             <div className='PortfolioText'>{portfolio.contactPage.email}</div>
             <div className='PortfolioText'>{portfolio.contactPage.phone}</div>

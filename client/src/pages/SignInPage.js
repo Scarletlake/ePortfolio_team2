@@ -39,7 +39,7 @@ export default function SignInPage() {
         setEmail(val);
     }    
     else if (nam === "password") {
-      if (password_input.length < 6 || password_input.length > 16 ){
+      if (val.length < 6 || val.length > 16 ){
         setPasswordMsg("Password length should be between 6 to 16 characters");
       }else{
         setPasswordMsg("");
