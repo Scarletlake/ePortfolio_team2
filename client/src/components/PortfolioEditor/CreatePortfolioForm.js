@@ -1,16 +1,28 @@
 import React from 'react'
-
 import { useUserProfile } from "../../api/userAPI"
 import PortfolioEditor from "./PortfolioEditor"
-
+import {makeStyles} from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+const useStyles = makeStyles((theme) => ({
+  loading: {
+    display: 'flex',
+    marginTop: theme.spacing(20),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
 export default function CreatePortfolioform(props) {
-
+  const classes = useStyles();
   // load the 
   const { loading, user, error } = useUserProfile();
 
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+        <div className={classes.loading}>
+          <CircularProgress/>
+        </div>
+    )
   }
   if (error) {
     return <p>Something went wrong: {error.message}</p>;
