@@ -113,10 +113,16 @@
     height: 500px;
 }
 
-/* PortfolioList.js styles */
-.PortfolioImage {
+.SectionImage {
     width: 600px;
     height: 300px;
+}
+
+
+/* PortfolioList.js styles */
+.PortfolioImage {
+    width: 128;
+    height: 128;
 }
 
 .PortfolioImg {
@@ -219,7 +225,7 @@
 
 .PortfolioContactImg {
     width: 350px;
-    height: 600px;
+    height: 500px;
     align-content: center;
 }
 
