@@ -51,7 +51,7 @@ class TestSignIn(unittest.TestCase):
     def test_goLanding(self):
         driver = self.driver
         driver.get(self.base_url + "/")
-        driver.find_element(By.CSS_SELECTOR, ".MuiButton-label > .MuiTypography-root").click()
+        driver.find_element(By.CSS_SELECTOR, "path").click()
         self.assertEqual(u"http://localhost:3000/", driver.current_url)
 
     def teardown(self):

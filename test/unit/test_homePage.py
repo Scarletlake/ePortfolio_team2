@@ -22,7 +22,31 @@ class TestHome(unittest.TestCase):
         driver.get(self.base_url + "/")
         self.assertEqual(u"http://localhost:3000/user/signin", driver.current_url)
 
+    def test_edit(self):
+        driver = self.driver
+        driver.get("http://localhost:3000/user/signin")
+        driver.find_element(By.ID, "email").click()
+        driver.find_element(By.ID, "email").send_keys("simplesignin@gmail.com")
+        driver.find_element(By.ID, "password").click()
+        driver.find_element(By.ID, "password").send_keys("Example")
+        driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
+        time.sleep(1)
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root > .MuiButton-root").click()
+        self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=art&id=5f75bfc213f487001756b6a9", driver.current_url)
 
+
+    def test_createnew(self):
+        driver = self.driver
+        driver.get("http://localhost:3000/user/signin")
+        driver.find_element(By.ID, "email").click()
+        driver.find_element(By.ID, "email").send_keys("simplesignin@gmail.com")
+        driver.find_element(By.ID, "password").click()
+        driver.find_element(By.ID, "password").send_keys("Example")
+        driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
+        time.sleep(1)
+        driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
+        self.assertEqual(u"http://localhost:3000/portfolio/template", driver.current_url)
+        
     def teardown(self):
        self.driver.quit()
        self.assertEqual([], self.verificationErrors)
