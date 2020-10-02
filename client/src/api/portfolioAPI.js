@@ -127,7 +127,7 @@ export function usePortfolio(portfolioID) {
         setError(e);
         setLoading(false);
       });
-  }, []);
+  }, [portfolioID]);
 
   return {
     loading,
