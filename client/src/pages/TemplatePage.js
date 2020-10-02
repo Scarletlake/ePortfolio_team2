@@ -5,7 +5,7 @@ require('../views/templatePage.css');
 
 const useStyles = makeStyles({
   root: {
-    width: "50%",
+    width: "60%",
     margin: "auto",
     marginTop: "8%",
     textAlign: "center",
