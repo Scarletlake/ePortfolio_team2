@@ -47,7 +47,7 @@ const createPortfolio = async (req, res) => {
         contactPage: contactPage
       });
 
-      portfolio.portfolioURL = "http://pandaeportfolio.herokuapp.com/portfolio/" + portfolio._id;
+      portfolio.portfolioURL = "http://localhost:3000/portfolio/" + portfolio._id;
  
       // add the new portfolio to the array           
       const user = await User.findOneAndUpdate(
@@ -89,7 +89,7 @@ const createPortfolio = async (req, res) => {
 
 // Update user profile
 const updatePortfolio = async (req, res) => {
-  const { portfolioName, userName, homePage, formalPage, leisurePage } = req.body;
+  const { portfolioName, userName, homePage, formalPage, leisurePage, contactPage } = req.body;
   const portfolioID = mongoose.Types.ObjectId( req.params.id );
   
   try {
@@ -117,7 +117,8 @@ const updatePortfolio = async (req, res) => {
             userName: userName,
             homePage: homePage,
             formalPage: formalPage,
-            leisurePage: leisurePage
+            leisurePage: leisurePage,
+            contactPage: contactPage
           },
         },
         { returnOriginal: false }
@@ -160,7 +161,8 @@ const deletePortfolio = async (req, res) => {
         });
       }
       // delete from portfolio database   
-      const portfolio = await Portfolio.findById(req.params.id);
+      const portfolio = await Portfolio.findById(id);
+
       if(portfolio){
         await portfolio.remove();
       }

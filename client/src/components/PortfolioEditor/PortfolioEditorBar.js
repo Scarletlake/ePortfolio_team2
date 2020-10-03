@@ -36,7 +36,7 @@ export default function PortfolioEditorBar(props) {
     <AppBar position="static" className={classes.appbar}>
       <Toolbar>
         <div className={classes.grow} />
-        
+
         <Button variant="outlined" color="primary" onClick={props.handleCancel} className={classes.btn}>
           Cancel
         </Button>
@@ -66,20 +66,19 @@ export default function PortfolioEditorBar(props) {
 
         <Dialog
           open={props.open_publish}
-          onClose={props.handlePublish}
         >
           <DialogTitle>{"Finished all edits?"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              If you are finished editing, you can click the "Continue" button to finish publishing.
+              If you finished editing, you can click the "Continue" button to finish publishing.
             </DialogContentText>
             <TextField
-            id="portfolioName"
-            name="portfolioName"
-            label="portfolio Name"
-            placeholder="Portfolio Name"
-            defaultValue={props.portfolioName}
-            onChange={event => props.setPortfolioName(event.target.value)}
+              id="portfolioName"
+              name="portfolioName"
+              label="portfolio Name"
+              placeholder="Portfolio Name"
+              defaultValue={props.portfolioName}
+              onChange={event => props.setPortfolioName(event.target.value)}
             />
           </DialogContent>
           <DialogActions>
@@ -112,7 +111,7 @@ export default function PortfolioEditorBar(props) {
             </Button>
           </DialogActions>
         </Dialog>
-      
+
       </Toolbar>
     </AppBar>
   )
