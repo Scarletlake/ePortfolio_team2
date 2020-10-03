@@ -71,7 +71,7 @@ export default function PortfolioEditorBar(props) {
           <DialogTitle>{"Finished all edits?"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              If you are finished editing, you can click the "Continue" button to finish publishing.
+              If you finished editing, you can click the "Continue" button to finish publishing.
             </DialogContentText>
             <TextField
             id="portfolioName"
