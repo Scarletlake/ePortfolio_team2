@@ -9,19 +9,21 @@ import ProfileEditor  from "./ProfileEditor"
 
 export default function Profile(props) {
 
-    const { firstName, lastName, email, phone, gender } = props;
+    const [first_name, setFirstName] = useState(props.firstName);
+    const [last_name, setLastName] = useState(props.lastName);
+    const [avatar, setAvatar] = useState(props.avatar);
+    const [phone, setPhone] = useState(props.phone);
+    const [gender, setGender] = useState(props.gender);
 
-    const [first_name_value, setFirstName] = useState(firstName);
-    const [last_name_value, setLastName] = useState(lastName);
-    const [phone_value, setPhone] = useState(phone);
-    const [gender_value, setGender] = useState(gender);
+    const [first_name_value, setFirstNameValue] = useState(props.firstName);
+    const [last_name_value, setLastNameValue] = useState(props.lastName);
+    const [avatar_value, setAvatarValue] = useState(props.avatar);
+    const [phone_value, setPhoneValue] = useState(props.phone);
+    const [gender_value, setGenderValue] = useState(props.gender);
+
     const [showUpdateForm, setShowUpdateForm] = useState(false);
 
     function cancelSubmit(){
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhone(phone);
-        setGender(gender);
         setShowUpdateForm(!showUpdateForm);
     }
 
@@ -31,12 +33,17 @@ export default function Profile(props) {
         updateUserProfile ({
             firstName: first_name_value,
             lastName: last_name_value, 
+            avatar: avatar_value,
             gender: gender_value,
             phone: phone_value
           }).then(res => {
-                if (res.status === 200) {
+                if (res.status === 200) {  
+                    setFirstName(first_name_value);
+                    setLastName(last_name_value);
+                    setAvatar(avatar_value);
+                    setPhone(phone_value);
+                    setGender(gender_value);                
                     
-                    alert("Updated");
                 }else if(res.status === 401) {
                     
                     alert ("Log in first to update your profile");
@@ -79,11 +86,12 @@ export default function Profile(props) {
     function UserProfile() {    
         return (
             <div>
-                <ProfileField id="firstName" name="firstName" label="First Name" value={first_name_value} />
-                <ProfileField id="lastName" name="lastName" label="Last Name" value={last_name_value} />
-                <ProfileField id="gender" name="gender" label="Gender" value={gender_value} />
-                <ProfileField id="phone" name="phone" label="Phone Number" value={phone_value} />        
-                <ProfileField id="email_read_only" name="email" label="Email" value={email} />            
+                <ProfileAvatar avatar={avatar} />
+                <ProfileField id="firstName" name="firstName" label="First Name" value={first_name} />
+                <ProfileField id="lastName" name="lastName" label="Last Name" value={last_name} />
+                <ProfileField id="gender" name="gender" label="Gender" value={gender} />
+                <ProfileField id="phone" name="phone" label="Phone Number" value={phone} />        
+                <ProfileField id="email_read_only" name="email" label="Email" value={props.email} />            
                 
                 <div className='ProfileButton'>
                     <Button variant="contained" onClick={()=>setShowUpdateForm(!showUpdateForm)}>
@@ -100,38 +108,59 @@ export default function Profile(props) {
         let val = event.target.value;
     
         if (nam === "firstName") {
-            setFirstName(val);
+            setFirstNameValue(val);
         }   
         else if (nam === "lastName") {
-            setLastName(val);
+            setLastNameValue(val);
         }
         else if (nam === "phone") {
-            setPhone(val);
+            setPhoneValue(val);
         }
       }
 
     return (
       <div className='ProfileForm' >
-        <div >  
-            <div className='TextCenter'>
-                <ProfileAvatar 
-                    first_name={first_name_value} 
-                    last_name={last_name_value}
-                /> 
-            </div>
+        <div className='TextCenter'>
             {showUpdateForm ?         
-            <ProfileEditor 
-                firstName={first_name_value}
-                lastName={last_name_value}
-                phone={phone_value}
-                email={email}
-                gender={gender_value}
-                setGender={setGender}
+            (<div> 
+                <ProfileEditor 
+                firstName={first_name}
+                lastName={last_name}
+                avatar={avatar}
+                phone={phone}
+                email={props.email}
+                gender={gender}
+                setGender={setGenderValue}
+                uploadPicture={setAvatarValue}
                 handleChange={handleChange} 
-                handleSubmit={updateProfile} 
-                cancelSubmit={cancelSubmit}
-                className='TextCenter'/> :
-                <UserProfile />}                  
+                className='TextCenter'/>
+                
+                <div className=' TextCenter HortizontalAlign'>              
+                    <div className='ProfileButton'>
+                        <Button 
+                            variant="contained" 
+                            color="primary" 
+                            onClick={updateProfile}>
+                            Save
+                        </Button>
+                    </div>
+
+                    <div className='ProfileButton'>
+                        <Button 
+                            variant="contained" 
+                            onClick={cancelSubmit}>
+                            Cancel
+                        </Button>
+                    </div>
+                </div>
+            </div>):
+            (
+            <div>
+                <UserProfile />
+            </div>
+            )
+               
+            }                  
         </div>
       </div>
     );

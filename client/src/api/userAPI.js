@@ -79,7 +79,7 @@ export async function getUserPortfolio() {
 
 // update user profile
 export async function updateUserProfile(user) {
-  const { firstName, lastName, phone, gender } = user;
+  const { firstName, lastName, avatar, phone, gender } = user;
 
   const endpoint = `/api/user/profile`;
 
@@ -94,6 +94,7 @@ export async function updateUserProfile(user) {
     body: JSON.stringify({
       firstName,
       lastName,
+      avatar,
       phone,
       gender
       })

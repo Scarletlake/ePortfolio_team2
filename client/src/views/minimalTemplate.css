@@ -8,8 +8,9 @@
 
 
 .HomePagePhoto {
-    width: 100vw;
-    height: 70vh;
+	width: 500px;
+    height: 500px;
+    border-radius: 50%;
 }
 
 .SectionImage {
@@ -157,4 +158,3 @@
     width: 100%;
     z-index: 2;
 }
-

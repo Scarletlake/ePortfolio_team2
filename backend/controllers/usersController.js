@@ -128,6 +128,7 @@ const getUserProfile = async (req, res) => {
         return res.status(200).json({
           firstName: user.firstName,
           lastName: user.lastName, 
+          avatar: user.avatar,
           email: user.email,
           phone: user.phone, 
           gender: user.gender
@@ -162,14 +163,15 @@ const getUserPortfolio = async (req, res) => {
 // Update user profile
 const updateUserProfile = async (req, res) => {
   
-  const { firstName, lastName, phone, gender } = req.body;
+  const { firstName, lastName, avatar, phone, gender } = req.body;
   
   try {
     await User.findOneAndUpdate(
       { _id: req.userInfo.user.id },
       { $set: { 
         firstName: firstName,
-        lastName: lastName,      
+        lastName: lastName,  
+        avatar: avatar,    
         phone: phone, 
         gender: gender},
       },
