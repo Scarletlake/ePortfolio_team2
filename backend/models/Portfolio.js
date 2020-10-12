@@ -8,21 +8,35 @@ const UserSchema = new mongoose.Schema({
     default: '',
     required: true
   },
+
   portfolioURL: {
     type: String,
     default: '',
     required: true,
   },
+
   template: {
     type: String,
     default: '',
     required: true,
   },
+
   userName: {
     type: String,
     default: '',
     required: true,
   },
+
+  backgoundImage: {
+    type: String,
+    default: '',
+  },
+
+  descriptionBackground: {
+    type: String,
+    default: '',
+  },
+
   homePage: {
     tag: {
       type: String,
@@ -38,12 +52,17 @@ const UserSchema = new mongoose.Schema({
       default: '',
     }
   },
+
   formalPage: {
     tag: {
       type: String,
       default: '',
     },
     title: {
+      type: String,
+      default: '',
+    },
+    pagePhoto :{
       type: String,
       default: '',
     },
@@ -57,12 +76,17 @@ const UserSchema = new mongoose.Schema({
       default: []
     },
   },
+
   leisurePage: {
     tag: {
       type: String,
       default: '',
     },
     title: {
+      type: String,
+      default: '',
+    },
+    pagePhoto: {
       type: String,
       default: '',
     },

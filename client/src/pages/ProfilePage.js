@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     root: {
-        marginTop: theme.spacing(20),
+        paddingTop: theme.spacing(20),
         display: 'flex',
         flexWrap: 'wrap',
         '& > *': {
@@ -52,6 +52,7 @@ export default function ProfilePage (){
   
   
     return (
+        <div className='PageContainer'>
 
             <div className={classes.root}>
                 <Paper elevation={3}>
@@ -62,6 +63,7 @@ export default function ProfilePage (){
                     gender={gender} />
                 </Paper>
             </div>
+        </div>
 
     )
 }

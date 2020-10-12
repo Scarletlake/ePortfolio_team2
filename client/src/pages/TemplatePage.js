@@ -30,66 +30,68 @@ const useStyles = makeStyles({
 export default function TemplatePage() {
   const classes = useStyles();
   return (
-    <div className={classes.root} >
+    <div className='PageContainer'>
+      < div className={classes.root}>
 
 
-      <Typography variant="h2">CHOOSE THE TEMPLATE YOU WANT TO USE</Typography>
+        <Typography variant="h2">CHOOSE THE TEMPLATE YOU WANT TO USE</Typography>
 
 
-      <Grid container className={classes.grid}>
+        <Grid container className={classes.grid}>
 
-        <Grid item xs={4}>
-          <div className="container" >
-            <img src="/envelope.png" className="image" alt="Template Page"/>
-            <div className="middle" >
-              <Button className={classes.btn_style} href="#">
-                Under development
-              </Button>
-              {/* <Button className={classes.btn_style} href="#">
-                View example
-              </Button>
-              <Button className={classes.btn_style} href="/portfolio/editor?temp=business&id=0">
-                Use this template
-              </Button> */}
+          <Grid item xs={4}>
+            <div className="container" >
+              <img src="/envelope.png" className="image" alt="Template Page"/>
+              <div className="middle" >
+                <Button className={classes.btn_style} href="#">
+                  Under development
+                </Button>
+                {/* <Button className={classes.btn_style} href="#">
+                  View example
+                </Button>
+                <Button className={classes.btn_style} href="/portfolio/editor?temp=business&id=0">
+                  Use this template
+                </Button> */}
+              </div>
             </div>
-          </div>
-          <h1>Business</h1>
-        </Grid>
+            <h1>Business</h1>
+          </Grid>
 
-        <Grid item xs={4}>
-          <div className="container" >
-            <img src="/envelope.png" className="image" alt="Template Page"/>
-            <div className="middle" >
-              <Button className={classes.btn_style} href="#">
-                View example
-              </Button>
-              <Button className={classes.btn_style} href="/portfolio/editor?temp=minimal&id=0">
-                Use this template
-              </Button>
+          <Grid item xs={4}>
+            <div className="container" >
+              <img src="/envelope.png" className="image" alt="Template Page"/>
+              <div className="middle" >
+                <Button className={classes.btn_style} href="#">
+                  View example
+                </Button>
+                <Button className={classes.btn_style} href="/portfolio/editor?temp=minimal&id=0">
+                  Use this template
+                </Button>
+              </div>
             </div>
-          </div>
-          <h1>Minimal</h1>
-        </Grid>
+            <h1>Minimal</h1>
+          </Grid>
 
-        <Grid item xs={4}>
-          <div className="container" >
-            <img src="/envelope.png" className="image" alt="Template Page"/>
-            <div className="middle" >
-              <Button className={classes.btn_style} href="#">
-                Under development
-              </Button>
-              {/* <Button className={classes.btn_style} href="#">
-                View example
-              </Button>
-              <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
-                Use this template
-              </Button> */}
+          <Grid item xs={4}>
+            <div className="container" >
+              <img src="/envelope.png" className="image" alt="Template Page"/>
+              <div className="middle" >
+                <Button className={classes.btn_style} href="#">
+                  Under development
+                </Button>
+                {/* <Button className={classes.btn_style} href="#">
+                  View example
+                </Button>
+                <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
+                  Use this template
+                </Button> */}
+              </div>
             </div>
-          </div>
-          <h1>Art</h1>
-        </Grid>
+            <h1>Art</h1>
+          </Grid>
 
-      </Grid>
+        </Grid>
+      </ div>
     </div>
   );
 }

@@ -40,9 +40,9 @@ export default function StickyFooter() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className='Footer'>
       <CssBaseline />
-      <footer className={classes.footer}>
+      <footer className='FooterRoot'>
         <Container maxWidth="sm">
           <Typography variant="body1"> E-Portfolio | This website is developed by Panda</Typography>
           <Copyright />

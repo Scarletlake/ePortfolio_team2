@@ -33,17 +33,18 @@ export default function HomePage (){
     const {portfolios} = res;
     
     return (
-      <div className='ContentWrap PageContainer'>
-        <div>
-          <PortfolioList portfolios={portfolios} />
-        </div>
+      <div className='PageContainer'>
 
-        <br/><br/>
-        <div className='SignSubmit'>
-          <Button variant="contained" color="primary" href="/portfolio/template">
-          Create a new portfolio
-          </Button>
+          <div>
+            <PortfolioList portfolios={portfolios} />
+          </div>
+
+          <br/>
+          <div className='SignSubmit'>
+            <Button variant="contained" color="primary" href="/portfolio/template">
+            Create a new portfolio
+            </Button>
+          </div>
         </div>
-      </div>
     )
 }

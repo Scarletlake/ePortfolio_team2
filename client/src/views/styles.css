@@ -22,18 +22,16 @@
 
 /*All pages (for footer position)*/
 .ContentWrap {
-    padding-bottom: 3.5rem;
+    padding-bottom: 3.5rem; 
 
 }
 
 .PageContainer {
-    position: sticky;
-    max-height: calc(100vh - 10rem);
+    position: relative;
     max-width: 100%;
-    
+    min-height: calc(100vh - 7rem);
 }
 
-/*signin and signup styles*/
 .SignBlock {
     display: flex;
     flex-direction: column;
@@ -82,9 +80,11 @@
     height: 3.5rem;
     width: 100%;
     bottom: 0;
-    position: absolute;
+    position: static;
     background: #D9D4D2;
     padding: 5px;
+    clear: both;
+
 }
 
 .FooterRoot {
@@ -111,6 +111,10 @@
 .HomePagePhoto {
 	width: 450px;
     height: 450px;
+}
+
+.white {
+    color: white
 }
 
 
@@ -176,3 +180,12 @@
 .ProfileButton {
     margin-top: 5px;
 }
+
+.PortfolioPageContent {
+    width: 100vmax;
+    padding: 5vh;
+    margin: 5vh;
+    background-color: #f7f7f7;
+}
+
+

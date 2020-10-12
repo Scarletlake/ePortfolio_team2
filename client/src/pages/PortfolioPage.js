@@ -21,6 +21,11 @@ const useStyles = makeStyles((theme) => ({
 export default function PortfolioPage() {
   const classes = useStyles();
   const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
+  const defaultFormalPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png";
+  const defaultLeisurePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602443847/wk4tyawn3posmcw9tq65.png";
+  const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+  const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
+  const defaultContactPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg";
   const { id } = useParams();
   const { loading, res, error } = usePortfolio(id);
   const [value, setValue] = useState(0); // Tabs
@@ -77,41 +82,37 @@ export default function PortfolioPage() {
 
   return (
     <div className='PageContainer'>
-      <div className='PortfolioForm TextCenter VerticalAlign'>
-        <Typography 
-          variant="h2" 
-          component="h2"
-          className='PortfolioFullName'>
-              {portfolio.userName}
-        </Typography>
+      <img className='PortfolioBackgroundImg' src={defaultBackgroundPhoto}/>
+      <div className='PortfolioForm TextCenter VerticalAlign PortfolioBackgroundWrap'>
+        <div className='PortfolioFullName'> {portfolio.userName} </div>
         <div className='PortfolioHeader'>
-
-          
+ 
           <Tabs
             value={value}
             onChange={handleTabsChange}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorColor={"white"}
             centered
             className='PortfolioTabs'
           >
-            <Tab label={portfolio.homePage.tag} {...a11yProps(0)} />
-            <Tab label={portfolio.formalPage.tag} {...a11yProps(1)} />
-            <Tab label={portfolio.leisurePage.tag} {...a11yProps(2)} />
-            <Tab label={portfolio.contactPage.tag} {...a11yProps(3)} />
+            <Tab label={<span className='PortfolioTabsFont'>{portfolio.homePage.tag}</span>} {...a11yProps(0)} />
+            <Tab label={<span className='PortfolioTabsFont'>{portfolio.formalPage.tag}</span>}{...a11yProps(1)} />
+            <Tab label={<span className='PortfolioTabsFont'>{portfolio.leisurePage.tag}</span>} {...a11yProps(2)} />
+            <Tab label={<span className='PortfolioTabsFont'>{portfolio.contactPage.tag}</span>} {...a11yProps(3)} />
           </Tabs>
         </div>
 
         {/* Home page */}
         <TabPanel value={value} index={0}>
 
-        <div className='PortfolioField TextCenter VerticalAlign'>
-          {portfolio.homePage.profilePhoto?
-            <img className='HomePagePhoto' src={portfolio.homePage.profilePhoto} alt="Unable to load" /> :
-            <img className='HomePagePhoto' src={defaultHomePhoto} alt="Unable to load" />
-          }
-          
-          <div className='PortfolioText'>{portfolio.homePage.description}</div>
+        <div className='TextCenter VerticalAlign'>
+          <div>
+            {portfolio.homePage.profilePhoto?
+              <img className='HomePagePhoto' src={portfolio.homePage.profilePhoto} alt="HomePagePhoto" /> :
+              <img className='HomePagePhoto' src={defaultHomePhoto} alt="HomePagePhoto" />
+            }
+            
+            <div className='PortfolioText PortfolioHomeDesc'>{portfolio.homePage.description}</div>
+          </div>
         </div>
 
         </TabPanel>
@@ -119,13 +120,12 @@ export default function PortfolioPage() {
         {/* Formal page */}
         <TabPanel value={value} index={1}>
 
-        <div className='PortfolioField TextCenter VerticalAlign'>
-          <Typography 
-              variant="h4" 
-              component="h4"
-              className='PortfolioFullName'>
-                  {portfolio.formalPage.title}
-          </Typography>
+        <div className='TextCenter VerticalAlign'>
+          <div className='PortfolioFormalPhoto white'>
+            <img className='PortfolioFormalPhoto' src={defaultFormalPhoto} alt='FormalPagePhoto'/>
+            <div className='PortfolioText PortfolioTitle'>{portfolio.formalPage.title}</div>  
+          </div>
+
           <PortfolioSection sections={portfolio.formalPage.sections} />
         </div>
         </TabPanel>
@@ -133,38 +133,35 @@ export default function PortfolioPage() {
         {/* Leisure page */}
         <TabPanel value={value} index={2}>
         
-        <div>
-          <div className='PortfolioField TextCenter VerticalAlign'>
-          <Typography 
-              variant="h4" 
-              component="h4"
-              className='PortfolioFullName'>
-                  {portfolio.leisurePage.title}
-          </Typography>
-          <PortfolioSection sections={portfolio.leisurePage.sections} />
+        <div className='TextCenter VerticalAlign'>
+          <div className='PortfolioFormalPhoto'>
+            {portfolio.leisurePage.photo?
+              <img className='PortfolioFormalPhoto' src={portfolio.leisurePage.photo} alt='LeisurePagePhoto'/> :
+              <img className='PortfolioFormalPhoto' src={defaultLeisurePhoto} alt='LeisurePagePhoto'/>
+            }   
+            <div className='PortfolioText PortfolioTitle'>{portfolio.leisurePage.title}</div>  
           </div>
+          <PortfolioSection sections={portfolio.leisurePage.sections} />
         </div>
         </TabPanel>
 
         {/* Contact page */}
         <TabPanel value={value} index={3}>
 
-        <div className='PortfolioField TextCenter HorizontalAlign'>
+        <div className='TextCenter HorizontalAlign'>
           {portfolio.contactPage.photo?
-            <img className='PortfolioContactImg' src={portfolio.contactPage.photo} alt="Unable to load"/> :           
-            <img className='PortfolioContactImg' src={defaultHomePhoto} alt="Unable to load" />
+            <img className='PortfolioContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
+            <img className='PortfolioContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
           }
          
           <div className='VerticalAlign'>
-            <Typography 
-              variant="h4" 
-              component="h4"
-              className='PortfolioFullName'>
-                  {portfolio.contactPage.title}
-            </Typography>
-
-            <div className='PortfolioText'> Email: {portfolio.contactPage.email}</div>
-            <div className='PortfolioText'> Phone: {portfolio.contactPage.phone}</div>
+            <div className='ContactContainer'>
+              <img className='PortfolioContactImg' src={defaultDescPhoto}/>
+              <div>
+                <div className='ContactTitle'>{portfolio.contactPage.title}</div>
+                <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
+              </div>
+            </div>
           </div>
         </div>
         

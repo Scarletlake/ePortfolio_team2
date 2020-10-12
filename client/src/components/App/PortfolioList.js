@@ -169,7 +169,7 @@ export default function PortfolioList (props) {
                     (<Typography gutterBottom variant="h6">
                         no published portfolio
                     </Typography>):
-                    <PortfolioList portfolio_list={portfolio_list} />                      
+                    <PortfolioList portfolio_list={portfolio_list}/>                      
                 }  
             </Grid>        
         </Grid>

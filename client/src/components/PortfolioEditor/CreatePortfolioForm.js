@@ -35,49 +35,52 @@ export default function CreatePortfolioform(props) {
     portfolioName: "portfolio_name",
     template: props.temp,
     userName: user.firstName + " " + user.lastName,
+    backgroungImage: "",
     homePage: {
-      tag: "Home",
-      profilePhoto: "",
-      description: "Hi"
+      tag: "HOME",
+      profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602394611/kqwiwuxyi0dbncbi6x8s.png",
+      description: "Introduction"
     },
     formalPage: {
       tag: "About",
-      title: "About Me",
+      title: "ABOUT ME",
+      pagePhoto: "",
       sections: [{
         id: "0",
         sectionTitle: "University",
         sectionDescription: "Description",
-        photo: ""
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439900/bok5qj4uu6gs6s8tv2f4.png"
       },
       {
         id: "1",
         sectionTitle: "Working",
         sectionDescription: "Description",
-        photo: ""
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439929/h2suzoyvdxkfm2stjood.png"
       }]
     },
     leisurePage: {
-      tag: "Leisure",
+      tag: "LEISURE",
       title: "Free Time",
+      pagePhoto: '',
       sections: [{
         id: "0",
         sectionTitle: "Arts",
         sectionDescription: "Description",
-        photo: ""
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602306349/w0eswzu5rddg7iejg2tx.jpg"
       },
       {
         id: "1",
         sectionTitle: "Sports",
         sectionDescription: "Description",
-        photo: ""
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602306364/dpm0u0lydqfgcvhdiewb.jpg"
       }]
     },
     contactPage: {
-      tag: "Contact",
+      tag: "CONTACT",
       title: "Contact Me",
       email: user.email,
       phone: user.phone,
-      photo: ""
+      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg"
     }
   }
 
