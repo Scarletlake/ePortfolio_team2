@@ -1,7 +1,7 @@
 import React , { Component  } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import '../../views/styles.css'
-import '../../views/minimalTemplate.css'
+import '../../views/artTemplate.css'
 
 
 export default class PortfolioSection extends Component {
@@ -11,7 +11,7 @@ export default class PortfolioSection extends Component {
     };
 
     render() {
-        const defaulPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
+        const defaultPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
         const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
         return (
             <div className='SectionContent'>
@@ -45,7 +45,7 @@ export default class PortfolioSection extends Component {
                         <Grid item xs={6} className='SectionImage'>
                             {section.photo?
                                 <img width="600" height="500" src={section.photo} alt="Unable to load" />:
-                                <img width="600" height="300" src={defaulPhoto} alt="Unable to load" />
+                                <img width="600" height="300" src={defaultPhoto} alt="Unable to load" />
                             }
                         </Grid>
                     </Grid>
