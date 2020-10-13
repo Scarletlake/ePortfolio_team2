@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 
-  backgoundImage: {
+  backgroundImage: {
     type: String,
     default: '',
   },

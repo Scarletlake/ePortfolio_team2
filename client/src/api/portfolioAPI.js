@@ -24,7 +24,7 @@ export default async function getPortfolio(portfolioID) {
 export async function createPortfolio(portfolio) {
 
   const endpoint = `/api/portfolio/new`;
-  const { portfolioName, template, userName, backgoundImage, homePage, formalPage, leisurePage, contactPage } = portfolio;
+  const { portfolioName, template, userName, backgroundImage, homePage, formalPage, leisurePage, contactPage } = portfolio;
 
   const res = await fetch(endpoint, {
     method: "POST",
@@ -38,7 +38,7 @@ export async function createPortfolio(portfolio) {
       portfolioName: portfolioName,
       template: template,
       userName: userName,
-      backgoundImage: backgoundImage, 
+      backgroundImage: backgroundImage, 
       homePage: homePage,
       formalPage: formalPage,
       leisurePage: leisurePage,
@@ -62,7 +62,7 @@ export async function createPortfolio(portfolio) {
 export async function updatePortfolio(portfolio) {
 
   const endpoint = `/api/portfolio/`;
-  const { portfolioID, portfolioName, template, userName, backgoundImage, homePage, formalPage, leisurePage, contactPage } = portfolio;
+  const { portfolioID, portfolioName, template, userName, backgroundImage, homePage, formalPage, leisurePage, contactPage } = portfolio;
 
   const res = await fetch(endpoint + portfolioID, {
     method: "POST",
@@ -77,7 +77,7 @@ export async function updatePortfolio(portfolio) {
       template: template,
       userName: userName,
       homePage: homePage,
-      backgoundImage: backgoundImage,
+      backgroundImage: backgroundImage,
       formalPage: formalPage,
       leisurePage: leisurePage,
       contactPage: contactPage

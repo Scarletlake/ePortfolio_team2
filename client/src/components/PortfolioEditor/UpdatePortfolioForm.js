@@ -31,13 +31,16 @@ export default function UpdatePortfolioForm (props){
 
   const { portfolio } = res;
  
-  if (portfolio.temp === "art"){
+  if (portfolio.template === "art"){
     return <ArtPortfolioEditor portfolio={portfolio} />
   }
-  else if (props.temp === "minimal"){
+  else if (portfolio.template === "minimal"){
     return <ArtPortfolioEditor portfolio={portfolio} />
   }
-  else if (props.temp === "business"){
+  else if (portfolio.template === "business"){
+    return <ArtPortfolioEditor portfolio={portfolio} />
+  }
+  else {
     return <ArtPortfolioEditor portfolio={portfolio} />
   }
 }

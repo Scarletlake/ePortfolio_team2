@@ -100,4 +100,7 @@ export default function CreatePortfolioform(props) {
   else if (props.temp === "business"){
     return <ArtPortfolioEditor portfolio={defaultPortfolio} />
   }
+  else {
+    return <ArtPortfolioEditor portfolio={defaultPortfolio} />
+  }
 }
