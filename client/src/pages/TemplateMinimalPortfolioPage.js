@@ -9,7 +9,6 @@ export default function ArtTemplatePortfolioPage(props) {
 
     const  portfolio  = props.portfolio;
     const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526464/h1vr5pkcq7tmuof2qzar.png";
-
     const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
     const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
     const defaultContactPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg";
@@ -114,13 +113,13 @@ export default function ArtTemplatePortfolioPage(props) {
 
             <div className='TextCenter HorizontalAlign HomeContainer'>
             {portfolio.contactPage.photo?
-                <img className='PortfolioContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
-                <img className='PortfolioContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
+                <img className='MContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
+                <img className='MContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
             }
             
             <div className='VerticalAlign'>
                 <div className='ContactContainer'>
-                <img className='PortfolioContactImg' src={defaultDescPhoto}/>
+                <img className='MContactImg' src={defaultDescPhoto}/>
                 <div>
                     <div className='ContactTitle'>{portfolio.contactPage.title}</div>
                     <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>

@@ -31,7 +31,7 @@ export default function CreatePortfolioform(props) {
   const defaultPortfolio = {};
   if (props.temp == 'art') 
   {
-  // the default content of portfolio
+  // the default content of art portfolio
     const defaultPortfolio = {
       _id: "0",
       portfolioName: "portfolio_name",
@@ -93,7 +93,7 @@ export default function CreatePortfolioform(props) {
   }
   if (props.temp == 'minimal') 
   {
-  // the default content of portfolio
+  // the default content of minimal portfolio
     const defaultPortfolio = {
       _id: "0",
       portfolioName: "portfolio_name",
@@ -145,6 +145,69 @@ export default function CreatePortfolioform(props) {
         email: user.email,
         phone: user.phone,
         photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527938/zsmjqjvssdm5ivt78bqw.jpg"
+      }
+    }
+    return (
+        <div>
+          <PortfolioEditor portfolio={defaultPortfolio} />
+        </div>
+      )
+  }
+
+  if (props.temp == 'business') 
+  {
+  // the default content of business portfolio
+    const defaultPortfolio = {
+      _id: "0",
+      portfolioName: "portfolio_name",
+      template: props.temp,
+      userName: user.firstName + " " + user.lastName,
+      backgroungImage: "",
+      homePage: {
+        tag: "HOME",
+        profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557613/fmkeeuionhrx8gfnxh5l.png",
+        description: "Introduction"
+      },
+      formalPage: {
+        tag: "About",
+        title: "ABOUT ME",
+        pagePhoto: "",
+        sections: [{
+          id: "0",
+          sectionTitle: "EXPERIENCE",
+          sectionDescription: "Description",
+          photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557629/fjevxds6c5h7vcqjyib5.png",
+        },
+        {
+          id: "1",
+          sectionTitle: "EDUCATION",
+          sectionDescription: "Description",
+          photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557645/aywlzommatqnbcbi9cnm.png"
+        }]
+      },
+      leisurePage: {
+        tag: "LEISURE",
+        title: "Free Time",
+        pagePhoto: '',
+        sections: [{
+          id: "0",
+          sectionTitle: "SKILLS",
+          sectionDescription: "Description",
+          photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557663/g3suhljonzg0cybjzec8.png"
+        },
+        {
+          id: "1",
+          sectionTitle: "EXPERTISE",
+          sectionDescription: "Description",
+          photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557669/tlb7peienpp5rphyut47.jpg",
+        }]
+      },
+      contactPage: {
+        tag: "CONTACT",
+        title: "Contact Me",
+        email: user.email,
+        phone: user.phone,
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557688/snd6vsb4cihgwjrd2x7j.png"
       }
     }
     return (

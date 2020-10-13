@@ -1,0 +1,20 @@
+.BackgroundColor {
+    background-color: rgb(39, 37, 37);
+}
+
+.BTabFont {
+    color: white;
+    font-family: monospace, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.white {
+    color: white;
+}
+
+.SectionColor {
+    background-color: rgb(70, 68, 68);
+    width: 100vw;
+
+}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useParams } from "react-router-dom";
 import { usePortfolio } from "../api/portfolioAPI"
-import ArtTemplatePortfolio from '../pages/ArtTemplatePortfolioPage';
-import MinimalTemplatePortfolio from '../pages/MinimalTemplatePortfolioPage';
+import ArtTemplatePortfolio from '../pages/TemplateArtPortfolioPage';
+import MinimalTemplatePortfolio from '../pages/TemplateMinimalPortfolioPage';
+import BusinessTemplatePortfolio from '../pages/TemplateBusinessPortfolioPage';
 import {makeStyles} from "@material-ui/core/styles";
 import '../views/styles.css'
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -47,6 +48,14 @@ export default function PortfolioPage() {
     return (
       <div>
         <MinimalTemplatePortfolio portfolio = {portfolio}/>
+      </div>
+    )
+  }
+
+  if (portfolio.template == 'business') {
+    return (
+      <div>
+        <BusinessTemplatePortfolio portfolio = {portfolio}/>
       </div>
     )
   }
