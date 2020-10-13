@@ -32,11 +32,6 @@ const UserSchema = new mongoose.Schema({
     default: '',
   },
 
-  descriptionBackground: {
-    type: String,
-    default: '',
-  },
-
   homePage: {
     tag: {
       type: String,
@@ -66,6 +61,10 @@ const UserSchema = new mongoose.Schema({
       type: String,
       default: '',
     },
+    textBackground: {
+      type: String,
+      default: '',
+    },
     sections: {
       type: [{
         id: String,
@@ -87,6 +86,10 @@ const UserSchema = new mongoose.Schema({
       default: '',
     },
     pagePhoto: {
+      type: String,
+      default: '',
+    },
+    textBackground: {
       type: String,
       default: '',
     },
@@ -121,6 +124,10 @@ const UserSchema = new mongoose.Schema({
       default: '',
     },
     photo: {
+      type: String,
+      default: '',
+    },
+    textBackground: {
       type: String,
       default: '',
     },

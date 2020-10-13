@@ -43,15 +43,13 @@ export default function TemplatePage() {
             <div className="container" >
               <img src="/envelope.png" className="image" alt="Template Page"/>
               <div className="middle" >
+                
                 <Button className={classes.btn_style} href="#">
-                  Under development
-                </Button>
-                {/* <Button className={classes.btn_style} href="#">
                   View example
                 </Button>
                 <Button className={classes.btn_style} href="/portfolio/editor?temp=business&id=0">
                   Use this template
-                </Button> */}
+                </Button>
               </div>
             </div>
             <h1>Business</h1>
@@ -77,14 +75,11 @@ export default function TemplatePage() {
               <img src="/envelope.png" className="image" alt="Template Page"/>
               <div className="middle" >
                 <Button className={classes.btn_style} href="#">
-                  Under development
-                </Button>
-                {/* <Button className={classes.btn_style} href="#">
                   View example
                 </Button>
                 <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
                   Use this template
-                </Button> */}
+                </Button>
               </div>
             </div>
             <h1>Art</h1>

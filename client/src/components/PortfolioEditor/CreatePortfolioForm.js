@@ -1,6 +1,8 @@
 import React from 'react'
 import { useUserProfile } from "../../api/userAPI"
-import PortfolioEditor from "./PortfolioEditor"
+import ArtPortfolioEditor from "./ArtTemplateEditor/ArtPortfolioEditor";
+//import MinimalPortfolioEditor from "./MinimalTemplateEditor/MinimalPortfolioEditor";
+//import BusinessPortfolioEditor from "./BusinsessTemplateEditor/BusinessPortfolioEditor";
 import {makeStyles} from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +37,7 @@ export default function CreatePortfolioform(props) {
     portfolioName: "portfolio_name",
     template: props.temp,
     userName: user.firstName + " " + user.lastName,
-    backgroungImage: "",
+    backgroundImage: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg",
     homePage: {
       tag: "HOME",
       profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602394611/kqwiwuxyi0dbncbi6x8s.png",
@@ -44,7 +46,8 @@ export default function CreatePortfolioform(props) {
     formalPage: {
       tag: "About",
       title: "ABOUT ME",
-      pagePhoto: "",
+      pagePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png",
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",
       sections: [{
         id: "0",
         sectionTitle: "University",
@@ -61,7 +64,8 @@ export default function CreatePortfolioform(props) {
     leisurePage: {
       tag: "LEISURE",
       title: "Free Time",
-      pagePhoto: '',
+      pagePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602443847/wk4tyawn3posmcw9tq65.png",
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",
       sections: [{
         id: "0",
         sectionTitle: "Arts",
@@ -80,13 +84,20 @@ export default function CreatePortfolioform(props) {
       title: "Contact Me",
       email: user.email,
       phone: user.phone,
-      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg"
+      //photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg",
+      photo: user.avatar,
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",
     }
   }
 
-  return (
-    <div>
-      <PortfolioEditor portfolio={defaultPortfolio} />
-    </div>
-  )
+
+  if (props.temp === "art"){
+    return <ArtPortfolioEditor portfolio={defaultPortfolio} />
+  }
+  else if (props.temp === "minimal"){
+    return <ArtPortfolioEditor portfolio={defaultPortfolio} />
+  }
+  else if (props.temp === "business"){
+    return <ArtPortfolioEditor portfolio={defaultPortfolio} />
+  }
 }
