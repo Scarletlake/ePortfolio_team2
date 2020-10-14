@@ -5,12 +5,13 @@ import ArtPortfolioHeaderEditor from './ArtPortfolioHeaderEditor';
 import UploadPicture from '../UploadPicture';
 import ArtSectionsEditor from './ArtSectionsEditor';
 import PortfolioEditorBar from '../PortfolioEditorBar'
-
+import Icon from '@material-ui/core/Icon';
 import InputBase from '@material-ui/core/InputBase';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Tabs, Tab, Box, TextField } from '@material-ui/core';
+import { Tabs, Tab, Box, TextField,Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import '../../../views/artTemplate.css'
 
@@ -111,7 +112,12 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: 1000,
     height: 'fit-content',
-  }
+  },
+  icon: {
+    width: '100%',
+    height: '100%',
+    position: "absolute",
+  },
 }));
 
 
@@ -195,7 +201,7 @@ export default function ArtPortfolioEditor(props) {
   const [open_publish, setOpenPublish] = useState(false); // Dialog
   const [open_cancel, setOpenCancel] = useState(false);
   const [open_redirect, setOpenRedirect] = useState(false);
-
+  const [open_edit_header, setEditHeader] = useState(false);
   
 
   const handleTabsChange = (event, newValue) => {
@@ -256,6 +262,9 @@ export default function ArtPortfolioEditor(props) {
     }
   }
 
+  const handleOpenHeaderEditor = () => {
+    setEditHeader(open_edit_header => !open_edit_header);
+  };
 
   async function publishPortfolio() {
     handlePublish();
@@ -330,20 +339,69 @@ export default function ArtPortfolioEditor(props) {
 
       <div className={classes.form}>
       
-        <Tabs
-          orientation="vertical"
+        <Grid    
           variant="fullWidth"
-          value={value}
-          onChange={handleTabsChange}
-          aria-label="Vertical tabs example"
           className={classes.tabs}
         >
+         
+          <Grid container 
+                  spacing={5}
+                  direction="column"
+                  justify="center"
+                  alignItems="center"> 
           
-          <Tab label={home_page_tag} {...a11yProps(0)} />
-          <Tab label={formal_page_tag} {...a11yProps(1)} />
-          <Tab label={leisure_page_tag} {...a11yProps(2)} />
-          <Tab label={contact_page_tag} {...a11yProps(3)} />
-        </Tabs>
+          
+
+          {value === 0?
+            (<Grid item> 
+              <Grid item>
+                <Typography>Change Background</Typography>
+                  <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
+              </Grid>
+            </Grid>):null
+          }
+
+          {value === 1?
+            (<Grid item> 
+              <Grid item>
+                <Typography>Change Background</Typography>
+                  <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
+              </Grid>
+              <Grid item>
+                <Typography>Change Text Background</Typography>
+                <UploadPicture uploadPicture={setFormalTextBackground} pictureUrl={formal_text_background} height={100} width={100}/>
+              </Grid>
+              </Grid>):null
+          }
+
+          {value === 2?
+            (<Grid item> 
+              <Grid item>
+                <Typography>Change Background</Typography>
+                  <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
+              </Grid>
+              <Grid item>
+                <Typography>Change Text Background</Typography>
+                <UploadPicture uploadPicture={setLeisureTextBackground} pictureUrl={leisure_text_background} height={100} width={100}/>
+              </Grid>
+              </Grid>):null
+          }
+          {value === 3?
+            (<Grid item> 
+              <Grid item>
+                <Typography>Change Background</Typography>
+                  <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
+              </Grid>
+              <Grid item>
+                <Typography>Change Text Background</Typography>
+                <UploadPicture uploadPicture={setContactTextBackground} pictureUrl={contact_text_background} height={100} width={100}/>
+              </Grid>
+              </Grid>):null
+          }
+          
+
+          </Grid>  
+        </Grid>
        
         <Grid className={classes.editor}
               container
@@ -357,32 +415,71 @@ export default function ArtPortfolioEditor(props) {
                   justify="center"
                   alignItems="center">
 
-              <Grid container
-                    spacing={3}
-                    direction="column"
-                    justify="center"
-                    alignItems="center">
+             
+               {/* Header editor */}
+                <Grid item >
+                
+                  <Grid container
+                        spacing={3}
+                        direction="column"
+                        justify="center"
+                        alignItems="center">
+                        <Grid item>
+                          <InputBase className={classes.username_input}
+                                  classes={{input: classes.inputCenter}}
+                                  placeholder="Your Name" 
+                                  defaultValue={user_name_value} 
+                                  inputProps={{style: {fontSize: 30}}} 
+                                  onChange={event=> setUserName(event.target.value)}/>
+                            
+                        </Grid>
 
-                <Grid item>
-                  <InputBase className={classes.username_input}
-                          classes={{input: classes.inputCenter}}
-                          placeholder="Your Name" 
-                          defaultValue={user_name_value} 
-                          inputProps={{style: {fontSize: 30}}} 
-                          onChange={event=> setUserName(event.target.value)}/>
-                    
+                        <Grid item>
+                        <Grid item className={classes.header}>
+                          {open_edit_header?              
+                            (
+                              
+                            <div className='PortfolioTabs'>
+                              <ArtPortfolioHeaderEditor username={user_name_value} setUserName={setUserName}
+                                          homePageTab={home_page_tag} changeHomePageTab={changeHomePageTab}
+                                          formalPageTab={formal_page_tag} changeFormalPageTab={changeFormalPageTab}
+                                          leisurePageTab={leisure_page_tag} changeLeisurePageTab={changeLeisurePageTab}
+                                          contactPageTab={contact_page_tag} changeContactPageTab={changeContactPageTab}/>
+                              <Grid item>
+                                <Icon className={classes.icon} color="black" onClick={handleOpenHeaderEditor}>done</Icon> 
+                              </Grid>
+                           
+                            </div>
+                            ):
+                            (
+                              <div>
+                              <Tabs
+                                value={value}
+                                onChange={handleTabsChange}
+                                indicatorColor={"white"}
+                                centered
+                                className='PortfolioTabs'
+                              >
+                                <Tab label={<span className='PortfolioTabsFont'>{home_page_tag}</span>} {...a11yProps(0)} />
+                                <Tab label={<span className='PortfolioTabsFont'>{formal_page_tag}</span>}{...a11yProps(1)} />
+                                <Tab label={<span className='PortfolioTabsFont'>{leisure_page_tag}</span>} {...a11yProps(2)} />
+                                <Tab label={<span className='PortfolioTabsFont'>{contact_page_tag}</span>} {...a11yProps(3)} />
+                              </Tabs>
+
+                              <Grid item>
+                                <Icon className={classes.icon} color="black" onClick={handleOpenHeaderEditor}>edit</Icon> 
+                              </Grid>
+                           
+                              </div>
+                            )              
+                          }
+                          
+                      </Grid>
+                    </Grid>    
+                  </Grid>                  
                 </Grid>
 
-                <Grid item>
-                  <ArtPortfolioHeaderEditor homePageTab={home_page_tag} changeHomePageTab={changeHomePageTab}
-                              formalPageTab={formal_page_tag} changeFormalPageTab={changeFormalPageTab}
-                              leisurePageTab={leisure_page_tag} changeLeisurePageTab={changeLeisurePageTab}
-                              contactPageTab={contact_page_tag} changeContactPageTab={changeContactPageTab}/>
-                </Grid>
-
-              </Grid>
-         
-
+            
        
         {/* Home page editor */}
 
@@ -397,7 +494,7 @@ export default function ArtPortfolioEditor(props) {
                     alignItems="center">
 
                 <Grid item>
-                  <UploadPicture uploadPicture={setProfilePhoto} pictureUrl={profile_photo_value}/>
+                  <UploadPicture uploadPicture={setProfilePhoto} pictureUrl={profile_photo_value} height={500} width={500}/>
                 </Grid>
 
                 <Grid item>
@@ -442,7 +539,8 @@ export default function ArtPortfolioEditor(props) {
                 <Grid item>
                   <ArtSectionsEditor sections={formal_page_sections} 
                                     sectionBackground={formal_text_background} 
-                                    onChange={setFormalPageSections} />
+                                    onChange={setFormalPageSections} 
+                                    photoHeight={250} photoWidth={500}/>
                 </Grid>
 
               </Grid>
@@ -470,7 +568,10 @@ export default function ArtPortfolioEditor(props) {
                     </Grid>
 
                 <Grid item>
-                  <ArtSectionsEditor sections={leisure_page_sections} onChange={setLeisurePageSections} />
+                  <ArtSectionsEditor sections={leisure_page_sections} 
+                                    sectionBackground={leisure_text_background} 
+                                    onChange={setLeisurePageSections} 
+                                    photoHeight={250} photoWidth={500}/>
                 </Grid>
 
               </Grid>
@@ -498,7 +599,7 @@ export default function ArtPortfolioEditor(props) {
                   
 
                   <Grid item className={classes.contact_photo}>
-                    <UploadPicture uploadPicture={setContactPhoto} pictureUrl={contact_page_photo}/>
+                    <UploadPicture uploadPicture={setContactPhoto} pictureUrl={contact_page_photo} height={400} width={300}/>
                   </Grid>
                   
                   <Grid container item
@@ -524,6 +625,7 @@ export default function ArtPortfolioEditor(props) {
                       id="email"
                       name="email"
                       label="Email"
+                      placeholder="email" 
                       defaultValue={email_value}
                       inputProps={{style: {fontSize: 20}}}
                       onChange={event => setEmail(event.target.value)}
@@ -534,6 +636,7 @@ export default function ArtPortfolioEditor(props) {
                     <TextField fullWidth id="phone"
                       name="phone"
                       label="Phone"
+                      placeholder="Phone" 
                       defaultValue={phone_value}
                       inputProps={{style: {fontSize: 20}}}
                       onChange={event => setPhone(event.target.value)}
@@ -542,6 +645,8 @@ export default function ArtPortfolioEditor(props) {
                   </Grid>
                 </Grid>
               </div>
+
+              
               </Grid>
             </form>            
           </TabPanel>

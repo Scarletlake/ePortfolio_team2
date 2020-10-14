@@ -1,4 +1,4 @@
-import React, { Component  } from 'react'
+import React, { Component } from 'react'
 
 import InputBase from '@material-ui/core/InputBase';
 import { Grid } from '@material-ui/core';
@@ -15,7 +15,6 @@ const styles = (theme) => ({
     section: {
         width: 1000,
         height: 'fit-content',
-        padding: theme.spacing(2),
         background: "transparent",
         '&:hover': {
             background: "#fafafa",
@@ -37,13 +36,13 @@ const styles = (theme) => ({
         height: '100%',
     },
     image: {
-        paddingLeft: theme.spacing(2),
         width: 500,
         height: 250,
     },
     icon: {
-        width: 75,
+        width: '100%',
         height: '100%',
+        position: "absolute",
     },
   });
 
@@ -75,6 +74,14 @@ class ArtSectionEditor extends Component {
         this.setState({photo: imgUrl});
         this.setState({changed: true});
         this.props.handleChange(this.state);
+    }
+    
+    componentDidUpdate(prevProps){
+        if(prevProps.sectionBackground !== this.props.sectionBackground){
+            this.setState({          
+                sectionBackground: this.props.sectionBackground
+            });
+        }
     }
 
     render() {
@@ -124,15 +131,16 @@ class ArtSectionEditor extends Component {
                     </Grid>
     
                     <Grid item className={classes.image}>
-                        <UploadPicture uploadPicture={this.handleChangePhoto} pictureUrl={this.props.section.photo}/>
+                        <UploadPicture uploadPicture={this.handleChangePhoto} 
+                                    pictureUrl={this.props.section.photo} 
+                                    height={this.props.photoHeight} width={this.props.photoWidth}/>
                     </Grid>
                 
-                    <Grid container item className={classes.icon} justify = "flex-end" alignItems="center">
-                        {this.state.isHover?
-                        (<Grid>
-                            <Icon color="primary" onClick={()=>this.props.handleRemove(this.props.section.id)} >delete</Icon>      
-                        </Grid>): null}
-                    </Grid>
+                    {this.state.isHover?
+                    (<Grid item>
+                            <Icon className={classes.icon} color="primary" onClick={()=>this.props.handleRemove(this.props.section.id)}>delete</Icon>      
+                    </Grid>): null}
+                    
                 </Grid>
             </div>
             )

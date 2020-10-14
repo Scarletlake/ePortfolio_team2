@@ -52,15 +52,23 @@ export default class SectionsEditor extends Component {
         this.props.onChange(this.state.sections);
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.sectionBackground !== this.props.sectionBackground){
+            this.setState({          
+                sectionBackground: this.props.sectionBackground
+            });
+        }
+    }
+
     render() {
         return (
-            <Grid spacing={10}
+            <Grid
                 container
                 direction="column"
                 justify="center"
                 alignItems="center">
     
-                <Grid container item spacing={3}
+                <Grid container item
                     direction="column"
                     justify="center"
                     alignItems="center">
@@ -72,6 +80,7 @@ export default class SectionsEditor extends Component {
                                 handleChange={this.updateOne}
                                 handleRemove={this.deleteOne}
                                 sectionBackground={this.state.sectionBackground}
+                                photoHeight={this.props.photoHeight} photoWidth={this.props.photoWidth}
                             />
                         ))
                     }
