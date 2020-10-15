@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import request from "superagent";
 import { FormControl, Grid} from '@material-ui/core';
@@ -51,14 +51,19 @@ export default function UploadPicture(props) {
                 if (err) {
                     console.error(err);
                 }
-                setPictureUrl(response.body.url);
+                //setPictureUrl(response.body.url);
                 //console.log(pictureUrl);
                 props.uploadPicture(response.body.url);
             });
         });
     }, [props]);
 
+    
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
+    
+    useEffect (()=>{
+        setPictureUrl(props.pictureUrl)
+    }, [props.pictureUrl])
 
     return (
         <FormControl>

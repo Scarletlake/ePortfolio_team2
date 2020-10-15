@@ -44,7 +44,7 @@ export default function CreatePortfolioform(props) {
       description: "Introduction"
     },
     formalPage: {
-      tag: "About",
+      tag: "ABOUT",
       title: "ABOUT ME",
       pagePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png",
       textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",

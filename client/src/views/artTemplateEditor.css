@@ -35,11 +35,14 @@
 
 .PortfolioTabs {
     border-top: 1px;
+    indicator: {
+    backgroundColor: '#FFF';
+    };
 }
 
 .PortfolioTabsFont {
     font-family: monospace, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 

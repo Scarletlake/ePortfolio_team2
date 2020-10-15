@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
     width: '15%',
-    paddingTop: 45,
+    padding: theme.spacing(3),
   },
   inputCenter: {
     textAlign: 'center',
@@ -112,11 +112,6 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: 1000,
     height: 'fit-content',
-  },
-  icon: {
-    width: '100%',
-    height: '100%',
-    position: "absolute",
   },
 }));
 
@@ -265,6 +260,10 @@ export default function ArtPortfolioEditor(props) {
   const handleOpenHeaderEditor = () => {
     setEditHeader(open_edit_header => !open_edit_header);
   };
+  
+  const handleClickAwayHeader = () => {
+    setEditHeader(false);
+  };
 
   async function publishPortfolio() {
     handlePublish();
@@ -344,38 +343,78 @@ export default function ArtPortfolioEditor(props) {
           className={classes.tabs}
         >
          
-          <Grid container 
-                  spacing={5}
-                  direction="column"
-                  justify="center"
-                  alignItems="center"> 
-          
-          
-
           {value === 0?
-            (<Grid item> 
+            (<Grid container 
+              spacing={5}
+              direction="column"
+              justify="center"
+              alignItems="baseline"> 
               <Grid item>
-                <Typography>Change Background</Typography>
-                  <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
+                <Typography>Page: {home_page_tag}</Typography>
+              </Grid>
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
+                  <Typography>Change Background</Typography>
+                </Grid>
+                <Grid item>
+                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                </Grid>
+                <Grid item>
+                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                </Grid>
+                <Grid item>
+                  <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
+                </Grid>
               </Grid>
             </Grid>):null
           }
 
           {value === 1?
-            (<Grid item> 
+            (<Grid container 
+              spacing={5}
+              direction="column"
+              justify="center"
+              alignItems="baseline"> 
               <Grid item>
-                <Typography>Change Background</Typography>
-                  <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
+                <Typography>Page: {formal_page_tag}</Typography>
               </Grid>
-              <Grid item>
-                <Typography>Change Text Background</Typography>
-                <UploadPicture uploadPicture={setFormalTextBackground} pictureUrl={formal_text_background} height={100} width={100}/>
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
+                  <Typography>Change Background</Typography>
+                </Grid>
+                <Grid item>
+                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                </Grid>
+                <Grid item>
+                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                </Grid>
+                <Grid item>
+                  <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
+                </Grid>
+              </Grid>
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
+                  <Typography>Change Text Background</Typography>
+                  </Grid>
+                <Grid item>
+                  <img src={formalPage.textBackground} onClick={()=>setFormalTextBackground(formalPage.textBackground)} alt="Default" height={100} width={100} />
+                </Grid>  
+                <Grid item>
+                  <UploadPicture uploadPicture={setFormalTextBackground} height={100} width={100}/>
+                </Grid>
               </Grid>
               </Grid>):null
           }
 
           {value === 2?
-            (<Grid item> 
+            (<Grid container 
+              spacing={5}
+              direction="column"
+              justify="center"
+              alignItems="baseline"> 
+              <Grid item>
+                <Typography>Page: {leisure_page_tag}</Typography>
+              </Grid>
               <Grid item>
                 <Typography>Change Background</Typography>
                   <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
@@ -387,7 +426,14 @@ export default function ArtPortfolioEditor(props) {
               </Grid>):null
           }
           {value === 3?
-            (<Grid item> 
+            (<Grid container 
+              spacing={5}
+              direction="column"
+              justify="center"
+              alignItems="baseline"> 
+              <Grid item>
+                <Typography>Page: {contact_page_tag}</Typography>
+              </Grid> 
               <Grid item>
                 <Typography>Change Background</Typography>
                   <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
@@ -399,8 +445,6 @@ export default function ArtPortfolioEditor(props) {
               </Grid>):null
           }
           
-
-          </Grid>  
         </Grid>
        
         <Grid className={classes.editor}
@@ -435,6 +479,7 @@ export default function ArtPortfolioEditor(props) {
                         </Grid>
 
                         <Grid item>
+                        <ClickAwayListener onClickAway={handleClickAwayHeader}>
                         <Grid item className={classes.header}>
                           {open_edit_header?              
                             (
@@ -445,10 +490,6 @@ export default function ArtPortfolioEditor(props) {
                                           formalPageTab={formal_page_tag} changeFormalPageTab={changeFormalPageTab}
                                           leisurePageTab={leisure_page_tag} changeLeisurePageTab={changeLeisurePageTab}
                                           contactPageTab={contact_page_tag} changeContactPageTab={changeContactPageTab}/>
-                              <Grid item>
-                                <Icon className={classes.icon} color="black" onClick={handleOpenHeaderEditor}>done</Icon> 
-                              </Grid>
-                           
                             </div>
                             ):
                             (
@@ -458,7 +499,7 @@ export default function ArtPortfolioEditor(props) {
                                 onChange={handleTabsChange}
                                 indicatorColor={"white"}
                                 centered
-                                className='PortfolioTabs'
+                                className="PortfolioTabs"
                               >
                                 <Tab label={<span className='PortfolioTabsFont'>{home_page_tag}</span>} {...a11yProps(0)} />
                                 <Tab label={<span className='PortfolioTabsFont'>{formal_page_tag}</span>}{...a11yProps(1)} />
@@ -467,14 +508,13 @@ export default function ArtPortfolioEditor(props) {
                               </Tabs>
 
                               <Grid item>
-                                <Icon className={classes.icon} color="black" onClick={handleOpenHeaderEditor}>edit</Icon> 
+                                <Icon className={classes.icon} onClick={handleOpenHeaderEditor}>edit</Icon> 
                               </Grid>
-                           
                               </div>
                             )              
-                          }
-                          
-                      </Grid>
+                          }   
+                        </Grid>
+                      </ClickAwayListener>
                     </Grid>    
                   </Grid>                  
                 </Grid>
