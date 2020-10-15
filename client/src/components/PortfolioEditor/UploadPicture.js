@@ -22,8 +22,10 @@ export default function UploadPicture(props) {
         },
         pic: {
             position: "absolute",
-            height: "100%",
-            width: "100%",
+            width: props.width,
+            height: props.height,
+            display: "block",
+            "object-fit": "cover"
         },
         overlay: {
             position: "absolute",
@@ -32,7 +34,7 @@ export default function UploadPicture(props) {
             opacity: 0.5,
             transition: "1.5s ease",
             background: "#008CBA"
-          }
+        }
           
     }));
 
