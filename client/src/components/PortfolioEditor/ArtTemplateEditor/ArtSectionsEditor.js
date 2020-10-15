@@ -87,7 +87,7 @@ export default class SectionsEditor extends Component {
                 </Grid>
     
                 <Grid>             
-                    <Icon color="primary" onClick={this.addOne} >add_circle</Icon>      
+                    <Icon onClick={this.addOne} >add_circle</Icon>      
                 </Grid>
     
             </Grid>

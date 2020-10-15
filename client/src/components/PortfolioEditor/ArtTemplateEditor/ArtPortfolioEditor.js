@@ -105,7 +105,6 @@ const useStyles = makeStyles((theme) => ({
   editor_form: {
     width: "100%",
     height: "100%",
-    padding: theme.spacing(5),
     backgroundColor: "transparent"
   },
   text_background: {
@@ -113,6 +112,10 @@ const useStyles = makeStyles((theme) => ({
     width: 1000,
     height: 'fit-content',
   },
+  formal_page_photo: {
+    width: "100%",
+    height: 'fit-content',
+  }
 }));
 
 
@@ -378,6 +381,7 @@ export default function ArtPortfolioEditor(props) {
               <Grid item>
                 <Typography>Page: {formal_page_tag}</Typography>
               </Grid>
+
               <Grid container direction="row" spacing={1} item>
                 <Grid item>
                   <Typography>Change Background</Typography>
@@ -392,6 +396,7 @@ export default function ArtPortfolioEditor(props) {
                   <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
                 </Grid>
               </Grid>
+
               <Grid container direction="row" spacing={1} item>
                 <Grid item>
                   <Typography>Change Text Background</Typography>
@@ -415,13 +420,32 @@ export default function ArtPortfolioEditor(props) {
               <Grid item>
                 <Typography>Page: {leisure_page_tag}</Typography>
               </Grid>
-              <Grid item>
-                <Typography>Change Background</Typography>
-                  <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
+
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
+                  <Typography>Change Background</Typography>
+                </Grid>
+                <Grid item>
+                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                </Grid>
+                <Grid item>
+                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                </Grid>
+                <Grid item>
+                  <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Typography>Change Text Background</Typography>
-                <UploadPicture uploadPicture={setLeisureTextBackground} pictureUrl={leisure_text_background} height={100} width={100}/>
+
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
+                  <Typography>Change Text Background</Typography>
+                  </Grid>
+                <Grid item>
+                  <img src={leisurePage.textBackground} onClick={()=>setLeisureTextBackground(leisurePage.textBackground)} alt="Default" height={100} width={100} />
+                </Grid>  
+                <Grid item>
+                  <UploadPicture uploadPicture={setLeisureTextBackground} height={100} width={100}/>
+                </Grid>
               </Grid>
               </Grid>):null
           }
@@ -434,13 +458,32 @@ export default function ArtPortfolioEditor(props) {
               <Grid item>
                 <Typography>Page: {contact_page_tag}</Typography>
               </Grid> 
-              <Grid item>
-                <Typography>Change Background</Typography>
-                  <UploadPicture uploadPicture={setBackground} pictureUrl={background_image} height={100} width={100}/>
+
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
+                  <Typography>Change Background</Typography>
+                </Grid>
+                <Grid item>
+                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                </Grid>
+                <Grid item>
+                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                </Grid>
+                <Grid item>
+                  <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Typography>Change Text Background</Typography>
-                <UploadPicture uploadPicture={setContactTextBackground} pictureUrl={contact_text_background} height={100} width={100}/>
+
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
+                  <Typography>Change Text Background</Typography>
+                  </Grid>
+                <Grid item>
+                  <img src={contactPage.textBackground} onClick={()=>setContactTextBackground(contactPage.textBackground)} alt="Default" height={100} width={100} />
+                </Grid>  
+                <Grid item>
+                  <UploadPicture uploadPicture={setContactTextBackground} height={100} width={100}/>
+                </Grid>
               </Grid>
               </Grid>):null
           }
@@ -565,7 +608,8 @@ export default function ArtPortfolioEditor(props) {
                     direction="column"
                     justify="center"
                     alignItems="center">
-                <Grid item>
+                <Grid container item className={classes.formal_page_photo} style={{ backgroundImage:`url(${formal_page_photo})`}} >
+                 
                   <InputBase className={classes.formal_title_input} 
                             classes={{input: classes.inputCenter}}
                             name="formal_page_title"

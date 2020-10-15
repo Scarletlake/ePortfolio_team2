@@ -35,9 +35,6 @@
 
 .PortfolioTabs {
     border-top: 1px;
-    indicator: {
-    backgroundColor: '#FFF';
-    };
 }
 
 .PortfolioTabsFont {

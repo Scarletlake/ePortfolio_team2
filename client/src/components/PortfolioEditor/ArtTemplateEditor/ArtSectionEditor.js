@@ -138,7 +138,7 @@ class ArtSectionEditor extends Component {
                 
                     {this.state.isHover?
                     (<Grid item>
-                            <Icon className={classes.icon} color="primary" onClick={()=>this.props.handleRemove(this.props.section.id)}>delete</Icon>      
+                            <Icon className={classes.icon} onClick={()=>this.props.handleRemove(this.props.section.id)}>delete</Icon>      
                     </Grid>): null}
                     
                 </Grid>
