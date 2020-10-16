@@ -53,34 +53,34 @@ resFont = responsiveFontSizes(resFont);
 const tileData1 = [
   {
     img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
-    title: 'dd',
+    title: 'first',
   },
   {
     img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
-    title: 'dd',
+    title: 'second',
   },
   {
     img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
-    title: 'dd',
+    title: 'third',
   },
 ]
 
 const tileData2 = [
   {
     img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
-    title: 'dd',
+    title: 'first',
+  },
+  {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    title: 'second',
   },
 ]
 
 const tileData3 = [
   {
     img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
-    title: 'dd',
-  },
-  {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
-    title: 'dd',
-  },
+    title: 'first',
+  }
 ]
 
 export default function TemplatePage() {
