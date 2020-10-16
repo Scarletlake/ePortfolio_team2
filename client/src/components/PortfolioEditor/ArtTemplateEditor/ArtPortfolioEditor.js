@@ -13,7 +13,7 @@ import { Tabs, Tab, Box, TextField,Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-import '../../../views/artTemplate.css'
+import '../../../views/artTemplateEditor.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       marginBottom: theme.spacing(2),
     },
+    width: "fullWidth",
+    height: "100%",
   },
   grow: {
     flexGrow: 1,
@@ -50,7 +52,8 @@ const useStyles = makeStyles((theme) => ({
     background: "transparent",
     '&:hover': {
       background: "#fafafa",
-    }
+    },
+    "font-family": "monospace, sans-serif",
   },
   introduction_input: {
     background: "transparent",
@@ -62,39 +65,45 @@ const useStyles = makeStyles((theme) => ({
     background: "transparent",
     '&:hover': {
       background: "#fafafa",
-    }
+    },
+    "font-family": "monospace, sans-serif",
   },
   leisure_title_input: {
     background: "transparent",
     '&:hover': {
       background: "#fafafa",
-    }
+    },
+    "font-family": "monospace, sans-serif",
   },
   contact_title_input: {
     background: "transparent",
     '&:hover': {
       background: "#fafafa",
-    }
+    },
+    "font-family": "monospace, sans-serif",
+  },
+  contact_input:{
+    "font-family": "monospace, sans-serif",
   },
   contact_content: {
-    width: 1000,
-    height: 'fit-content',
-    padding: theme.spacing(2),
+    width: 'fit-content',
+    height: 'fit-content'
   },
   contact_input: {
-    width: 350,
+    width: 450,
     height: 'fit-content',
-    
+    margin: theme.spacing(2),
   },
   contact_photo: {
-    width: 550,
-    height: 'fit-content',
+    width: 500,
+    height: 700,
   },
   paper: {
     width: "80%",
     height: "100%",
     paddingTop: 65,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    "background-size": "cover",
   },
   editor: {
     width: "100%",
@@ -105,16 +114,31 @@ const useStyles = makeStyles((theme) => ({
   editor_form: {
     width: "100%",
     height: "100%",
-    backgroundColor: "transparent"
   },
   text_background: {
     position: "absolute",
     width: 1000,
     height: 'fit-content',
   },
-  formal_page_photo: {
-    width: "100%",
-    height: 'fit-content',
+  page_photo: {
+    width: 1200,
+    height: 350,
+    "background-size": "cover",
+    "background-position": "center",
+    "background-repeat": "no-repeat",
+  },
+  header: {
+    width: 1000,
+    height: 100,
+  },
+  img: {
+    width: 100,
+    height: 100,
+  },
+  tabs_font: {
+    "font-family": "monospace, sans-serif",
+    "font-size": "16px",
+    "font-weight": "bold",
   }
 }));
 
@@ -360,10 +384,10 @@ export default function ArtPortfolioEditor(props) {
                   <Typography>Change Background</Typography>
                 </Grid>
                 <Grid item>
-                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
                   <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
@@ -387,10 +411,10 @@ export default function ArtPortfolioEditor(props) {
                   <Typography>Change Background</Typography>
                 </Grid>
                 <Grid item>
-                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
                   <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
@@ -399,10 +423,22 @@ export default function ArtPortfolioEditor(props) {
 
               <Grid container direction="row" spacing={1} item>
                 <Grid item>
+                  <Typography>Change Title Background</Typography>
+                </Grid>
+                <Grid item>
+                  <img className={classes.img} src={formalPage.pagePhoto} onClick={()=>setFormalPhoto(formalPage.pagePhoto)} alt="Default" />
+                </Grid>
+                <Grid item>
+                  <UploadPicture uploadPicture={setFormalPhoto} height={100} width={100}/>
+                </Grid>
+              </Grid>
+
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
                   <Typography>Change Text Background</Typography>
                   </Grid>
                 <Grid item>
-                  <img src={formalPage.textBackground} onClick={()=>setFormalTextBackground(formalPage.textBackground)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={formalPage.textBackground} onClick={()=>setFormalTextBackground(formalPage.textBackground)} alt="Default" height={100} width={100} />
                 </Grid>  
                 <Grid item>
                   <UploadPicture uploadPicture={setFormalTextBackground} height={100} width={100}/>
@@ -426,10 +462,10 @@ export default function ArtPortfolioEditor(props) {
                   <Typography>Change Background</Typography>
                 </Grid>
                 <Grid item>
-                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                  <img className={classes.img}  src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default"  />
                 </Grid>
                 <Grid item>
                   <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
@@ -438,10 +474,22 @@ export default function ArtPortfolioEditor(props) {
 
               <Grid container direction="row" spacing={1} item>
                 <Grid item>
+                  <Typography>Change Title Background</Typography>
+                </Grid>
+                <Grid item>
+                  <img className={classes.img} src={leisurePage.pagePhoto} onClick={()=>setLeisurePhoto(leisurePage.pagePhoto)} alt="Default" />
+                </Grid>
+                <Grid item>
+                  <UploadPicture uploadPicture={setLeisurePhoto} height={100} width={100}/>
+                </Grid>
+              </Grid>
+
+              <Grid container direction="row" spacing={1} item>
+                <Grid item>
                   <Typography>Change Text Background</Typography>
                   </Grid>
                 <Grid item>
-                  <img src={leisurePage.textBackground} onClick={()=>setLeisureTextBackground(leisurePage.textBackground)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={leisurePage.textBackground} onClick={()=>setLeisureTextBackground(leisurePage.textBackground)} alt="Default" />
                 </Grid>  
                 <Grid item>
                   <UploadPicture uploadPicture={setLeisureTextBackground} height={100} width={100}/>
@@ -464,10 +512,10 @@ export default function ArtPortfolioEditor(props) {
                   <Typography>Change Background</Typography>
                 </Grid>
                 <Grid item>
-                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <img src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
                   <UploadPicture uploadPicture={setBackground} height={100} width={100}/>
@@ -479,7 +527,7 @@ export default function ArtPortfolioEditor(props) {
                   <Typography>Change Text Background</Typography>
                   </Grid>
                 <Grid item>
-                  <img src={contactPage.textBackground} onClick={()=>setContactTextBackground(contactPage.textBackground)} alt="Default" height={100} width={100} />
+                  <img className={classes.img} src={contactPage.textBackground} onClick={()=>setContactTextBackground(contactPage.textBackground)} alt="Default" />
                 </Grid>  
                 <Grid item>
                   <UploadPicture uploadPicture={setContactTextBackground} height={100} width={100}/>
@@ -495,7 +543,11 @@ export default function ArtPortfolioEditor(props) {
               direction="column"
               justify="center"
               alignItems="center">
-          <Paper className={classes.paper} style={{ backgroundImage:`url(${background_image})`}}>
+          <Paper className={classes.paper} 
+                style={{ backgroundImage:`url(${background_image})`, 
+                        backgroundRepeat: "no-repeat", 
+                        backgroungSize: "cover"}}>
+            
             <Grid container 
                   spacing={5}
                   direction="column"
@@ -504,8 +556,7 @@ export default function ArtPortfolioEditor(props) {
 
              
                {/* Header editor */}
-                <Grid item >
-                
+              <Grid item >                
                   <Grid container
                         spacing={3}
                         direction="column"
@@ -516,227 +567,252 @@ export default function ArtPortfolioEditor(props) {
                                   classes={{input: classes.inputCenter}}
                                   placeholder="Your Name" 
                                   defaultValue={user_name_value} 
-                                  inputProps={{style: {fontSize: 30}}} 
+                                  inputProps={{style: {fontSize: 40}}} 
                                   onChange={event=> setUserName(event.target.value)}/>
                             
                         </Grid>
 
                         <Grid item>
-                        <ClickAwayListener onClickAway={handleClickAwayHeader}>
-                        <Grid item className={classes.header}>
+                        
+
+                        <Grid container item 
+                              alignItems="center"
+                              direction="row"
+                              justify="center"
+                              className={classes.header}>
+                          <ClickAwayListener onClickAway={handleClickAwayHeader}>
                           {open_edit_header?              
                             (
-                              
-                            <div className='PortfolioTabs'>
-                              <ArtPortfolioHeaderEditor username={user_name_value} setUserName={setUserName}
+                             <Grid container
+                              alignItems="center"
+                              direction="row"
+                              justify="center">
+
+                               <ArtPortfolioHeaderEditor
                                           homePageTab={home_page_tag} changeHomePageTab={changeHomePageTab}
                                           formalPageTab={formal_page_tag} changeFormalPageTab={changeFormalPageTab}
                                           leisurePageTab={leisure_page_tag} changeLeisurePageTab={changeLeisurePageTab}
                                           contactPageTab={contact_page_tag} changeContactPageTab={changeContactPageTab}/>
-                            </div>
+                             </Grid>
                             ):
                             (
-                              <div>
+                              <Grid container
+                                    alignItems="center"
+                                    direction="row"
+                                    justify="center">
+                              
                               <Tabs
                                 value={value}
                                 onChange={handleTabsChange}
                                 indicatorColor={"white"}
                                 centered
-                                className="PortfolioTabs"
                               >
-                                <Tab label={<span className='PortfolioTabsFont'>{home_page_tag}</span>} {...a11yProps(0)} />
-                                <Tab label={<span className='PortfolioTabsFont'>{formal_page_tag}</span>}{...a11yProps(1)} />
-                                <Tab label={<span className='PortfolioTabsFont'>{leisure_page_tag}</span>} {...a11yProps(2)} />
-                                <Tab label={<span className='PortfolioTabsFont'>{contact_page_tag}</span>} {...a11yProps(3)} />
+                                <Tab label={<span className={classes.tabs_font}>{home_page_tag}</span>} {...a11yProps(0)} />
+                                <Tab label={<span className={classes.tabs_font}>{formal_page_tag}</span>}{...a11yProps(1)} />
+                                <Tab label={<span className={classes.tabs_font}>{leisure_page_tag}</span>} {...a11yProps(2)} />
+                                <Tab label={<span className={classes.tabs_font}>{contact_page_tag}</span>} {...a11yProps(3)} />
                               </Tabs>
 
                               <Grid item>
                                 <Icon className={classes.icon} onClick={handleOpenHeaderEditor}>edit</Icon> 
                               </Grid>
-                              </div>
+                            </Grid>                              
                             )              
                           }   
+                          </ClickAwayListener>
                         </Grid>
-                      </ClickAwayListener>
+                      
                     </Grid>    
                   </Grid>                  
-                </Grid>
-
-            
+              </Grid>       
        
-        {/* Home page editor */}
-
-        <Grid item>
-          <TabPanel value={value} index={0}>        
-            <form noValidate autoComplete="off" className={classes.field_root}> 
-              <Grid container
-                    className={classes.editor_form}
-                    spacing={3}
-                    direction="column"
-                    justify="center"
-                    alignItems="center">
-
-                <Grid item>
-                  <UploadPicture uploadPicture={setProfilePhoto} pictureUrl={profile_photo_value} height={500} width={500}/>
-                </Grid>
-
-                <Grid item>
-                  <InputBase
-                    multiline
-                    fullWidth
-                    classes={{input: classes.inputCenter}}
-                    className={classes.introduction_input} 
-                    variant='outlined'
-                    id="introduction"
-                    name="introduction"
-                    label="introduction"
-                    inputProps={{style: {fontSize: 25}}}
-                    defaultValue={introduction_value}
-                    onChange={event => setIntroduction(event.target.value)}
-                  />
-                </Grid>       
-              </Grid>
-            </form>
-          </TabPanel>
-        
-          {/* About page editor */}
-          <TabPanel value={value} index={1} dir={theme.direction}>
-            <form noValidate autoComplete="off" className={classes.field_root}>
-              <Grid container
-                    className={classes.editor_form}
-                    spacing={5}
-                    direction="column"
-                    justify="center"
-                    alignItems="center">
-                <Grid container item className={classes.formal_page_photo} style={{ backgroundImage:`url(${formal_page_photo})`}} >
-                 
-                  <InputBase className={classes.formal_title_input} 
-                            classes={{input: classes.inputCenter}}
-                            name="formal_page_title"
-                            placeholder="About Me" 
-                            defaultValue={formal_page_title} 
-                            inputProps={{style: {fontSize: 25}}}  
-                            onChange={event=> setFormalPageTitle(event.target.value)}
-                            />
-                </Grid>
-
-                <Grid item>
-                  <ArtSectionsEditor sections={formal_page_sections} 
-                                    sectionBackground={formal_text_background} 
-                                    onChange={setFormalPageSections} 
-                                    photoHeight={250} photoWidth={500}/>
-                </Grid>
-
-              </Grid>
-            </form>
-          </TabPanel>
-
-          {/* Leisure page editor */}
-          <TabPanel value={value} index={2} dir={theme.direction}>
-            <form noValidate autoComplete="off" className={classes.field_root}>
-              <Grid container
-                    className={classes.editor_form}
-                    spacing={5}
-                    direction="column"
-                    justify="center"
-                    alignItems="center">
-                <Grid item>
-                  
-                  <InputBase className={classes.leisure_title_input} 
-                                classes={{input: classes.inputCenter}}
-                                name="contact_page_title"
-                                placeholder="Free Time" 
-                                defaultValue={leisure_page_title} 
-                                inputProps={{style: {fontSize: 25}}}  
-                                onChange={event => setLeisurePageTitle(event.target.value)}/>
-                    </Grid>
-
-                <Grid item>
-                  <ArtSectionsEditor sections={leisure_page_sections} 
-                                    sectionBackground={leisure_text_background} 
-                                    onChange={setLeisurePageSections} 
-                                    photoHeight={250} photoWidth={500}/>
-                </Grid>
-
-              </Grid>
-            </form>
-          </TabPanel>
-
-          {/* Contact page editor */}
-          <TabPanel value={value} index={3} dir={theme.direction}>
-          
-              <form noValidate autoComplete="off" className={classes.field_root}>
-                
-              <Grid container
-                    className={classes.editor_form}
-                    spacing={5}
-                    direction="column"
-                    justify="center"
-                    alignItems="center">
-
-               <div style={{ backgroundImage:`url(${contact_text_background})`}} >
-                <Grid container item className={classes.contact_content} 
-                    spacing={2}
-                    direction="row"
-                    justify="center"
-                    alignItems="baseline">
-                  
-
-                  <Grid item className={classes.contact_photo}>
-                    <UploadPicture uploadPicture={setContactPhoto} pictureUrl={contact_page_photo} height={400} width={300}/>
-                  </Grid>
-                  
-                  <Grid container item
-                      className={classes.contact_input}
-                      spacing={2}
-                      direction="column"
-                      justify="flex-start"
-                      alignItems="flex-start"
-                      >
-
-                    <Grid item>
-                      <InputBase className={classes.contact_title_input} 
-                                classes={{input: classes.inputCenter}}
-                                name="contact_page_title"
-                                placeholder="Contact Me" 
-                                defaultValue={contact_page_title} 
-                                inputProps={{style: {fontSize: 25}}}  
-                                onChange={event=> setContactPageTitle(event.target.value)}/>
-                    </Grid>
-
-                    <Grid item>
-                      <TextField fullWidth 
-                      id="email"
-                      name="email"
-                      label="Email"
-                      placeholder="email" 
-                      defaultValue={email_value}
-                      inputProps={{style: {fontSize: 20}}}
-                      onChange={event => setEmail(event.target.value)}
-                      />
-                    </Grid>
-
-                    <Grid item>
-                    <TextField fullWidth id="phone"
-                      name="phone"
-                      label="Phone"
-                      placeholder="Phone" 
-                      defaultValue={phone_value}
-                      inputProps={{style: {fontSize: 20}}}
-                      onChange={event => setPhone(event.target.value)}
-                    />
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </div>
-
+                                      
               
-              </Grid>
-            </form>            
-          </TabPanel>
-        </Grid>
-        </Grid>
-        </Paper>
+              <Grid className={classes.editor_form}
+                    container item
+                    direction="column"
+                    justify="center"
+                    alignItems="center">
+
+                {/* Home page editor */}
+                <TabPanel value={value} index={0}>              
+                  <form noValidate autoComplete="off" className={classes.field_root}> 
+                    <Grid container
+                          spacing={3}
+                          direction="column"
+                          justify="center"
+                          alignItems="center">
+
+                      <Grid item>
+                        <UploadPicture uploadPicture={setProfilePhoto} 
+                                      pictureUrl={profile_photo_value} 
+                                      height={500} width={500}/>
+                      </Grid>
+
+                      <Grid item>
+                        <InputBase
+                          multiline
+                          fullWidth
+                          classes={{input: classes.inputCenter}}
+                          className={classes.introduction_input} 
+                          variant='outlined'
+                          id="introduction"
+                          name="introduction"
+                          label="introduction"
+                          inputProps={{style: {fontSize: 25}}}
+                          defaultValue={introduction_value}
+                          onChange={event => setIntroduction(event.target.value)}
+                        />
+                      </Grid>       
+                    </Grid>
+                  </form>                 
+                </TabPanel>
+                
+                {/* About page editor */}
+                <TabPanel value={value} index={1} dir={theme.direction}>
+                  <form noValidate autoComplete="off" className={classes.field_root}>
+                    <Grid container
+                          spacing={3}
+                          direction="column"
+                          justify="center"
+                          alignItems="center">
+                      <Grid container item 
+                            justify="center"
+                            alignItems="center"
+                            className={classes.page_photo} 
+                            style={{ backgroundImage:`url(${formal_page_photo})`, backgroundRepeat: "no-repeat", backgroungSize: "cover"}} >
+                      
+                        <InputBase className={classes.formal_title_input} 
+                                  classes={{input: classes.inputCenter}}
+                                  name="formal_page_title"
+                                  placeholder="About Me" 
+                                  defaultValue={formal_page_title} 
+                                  inputProps={{style: {fontSize: 30}}}  
+                                  onChange={event=> setFormalPageTitle(event.target.value)}
+                                  />
+                      </Grid>
+
+                      <Grid item>
+                        <ArtSectionsEditor sections={formal_page_sections} 
+                                          sectionBackground={formal_text_background} 
+                                          onChange={setFormalPageSections} 
+                                          photoHeight={425} photoWidth={510}/>
+                      </Grid>
+
+                    </Grid>
+                  </form>
+                </TabPanel>
+
+                {/* Leisure page editor */}
+                <TabPanel value={value} index={2} dir={theme.direction}>
+                  <form noValidate autoComplete="off" className={classes.field_root}>
+                    <Grid container
+                          className={classes.editor_form}
+                          spacing={5}
+                          direction="column"
+                          justify="center"
+                          alignItems="center">
+                      <Grid container item 
+                            justify="center"
+                            alignItems="center"
+                            className={classes.page_photo} 
+                            style={{ backgroundImage:`url(${leisure_page_photo})`}} >
+                      
+                        <InputBase className={classes.leisure_title_input} 
+                                      classes={{input: classes.inputCenter}}
+                                      name="contact_page_title"
+                                      placeholder="Free Time" 
+                                      defaultValue={leisure_page_title} 
+                                      inputProps={{style: {fontSize: 35}}}  
+                                      onChange={event => setLeisurePageTitle(event.target.value)}/>
+                          </Grid>
+
+                      <Grid item>
+                        <ArtSectionsEditor sections={leisure_page_sections} 
+                                          sectionBackground={leisure_text_background} 
+                                          onChange={setLeisurePageSections} 
+                                          photoHeight={425} photoWidth={510}/>
+                      </Grid>
+
+                    </Grid>
+                  </form>
+                </TabPanel>
+
+                {/* Contact page editor */}
+                <TabPanel value={value} index={3} dir={theme.direction}>
+                
+                    <form noValidate autoComplete="off" className={classes.field_root}>
+                      
+                    <Grid container
+                          className={classes.editor_form}
+                          direction="column"
+                          justify="center"
+                          alignItems="center">
+
+                 
+                      <Grid container item className={classes.contact_content}                           
+                          direction="row"
+                          justify="center"
+                          alignItems="center"
+                          style={{ backgroundImage:`url(${contact_text_background})`}}>                        
+
+                        <Grid item className={classes.contact_photo}>
+                          <UploadPicture uploadPicture={setContactPhoto} 
+                                        pictureUrl={contact_page_photo} 
+                                        height={700} width={500}/>
+                        </Grid>
+                        
+                        <Grid container item
+                            className={classes.contact_input}
+                            spacing={2}
+                            direction="column"
+                            justify="flex-start"
+                            alignItems="flex-start"
+                            >
+
+                          <Grid item>
+                            <InputBase className={classes.contact_title_input}                                       
+                                      name="contact_page_title"
+                                      placeholder="Contact Me" 
+                                      defaultValue={contact_page_title} 
+                                      inputProps={{style: {fontSize: 35}}}  
+                                      onChange={event=> setContactPageTitle(event.target.value)}/>
+                          </Grid>
+
+                          <Grid item>
+                            <TextField fullWidth className={classes.contact_input}     
+                            id="email"
+                            name="email"
+                            label="Email"
+                            placeholder="email" 
+                            defaultValue={email_value}
+                            inputProps={{style: {fontSize: 20}}}
+                            onChange={event => setEmail(event.target.value)}
+                            />
+                          </Grid>
+
+                          <Grid item>
+                          <TextField fullWidth className={classes.contact_input}     
+                            id="phone"
+                            name="phone"
+                            label="Phone"
+                            placeholder="Phone" 
+                            defaultValue={phone_value}
+                            inputProps={{style: {fontSize: 20}}}
+                            onChange={event => setPhone(event.target.value)}
+                          />
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                   
+                    </Grid>
+                  </form>            
+                </TabPanel>
+               
+              </Grid>         
+            </Grid>
+        
+          </Paper>
         </Grid>
       </div>
     </Grid>

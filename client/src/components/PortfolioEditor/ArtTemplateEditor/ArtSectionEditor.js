@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 
 
+import '../../../views/artTemplateEditor.css'
 import UploadPicture from '../UploadPicture';
 
 const styles = (theme) => ({
@@ -13,35 +14,41 @@ const styles = (theme) => ({
         flexGrow: 1,
     },
     section: {
-        width: 1000,
+        width: 'fit-content',
         height: 'fit-content',
+        paddingTop: theme.spacing(1),
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
         background: "transparent",
-        '&:hover': {
-            background: "#fafafa",
-        }  
     },
     content: {
-        width: 850,
+        width: 'fit-content',
         height: 'fit-content',
+        "background-size": "cover",
+        "background-repeat": "no-repeat", 
     },
     input: {
-        width: 350,
+        width: 450,
+        height: '100%',
         background: "#transparent",
         '&:hover': {
           background: "#f1f1f1",
-        }
+        },
+        "font-family": "Arial, Helvetica, sans-serif"
+    },
+    inputCenter: {
+        textAlign: 'center',
     },
     text: {
-        width: 400,
-        height: '100%',
+        width: 510,
+        height: 'fit-content',
+        paddingTop: theme.spacing(20),
     },
     image: {
-        width: 500,
-        height: 250,
+        width: 'fit-content',
+        height: 'fit-content',
     },
     icon: {
-        width: '100%',
-        height: '100%',
         position: "absolute",
     },
   });
@@ -92,55 +99,62 @@ class ArtSectionEditor extends Component {
                     container
                     direction="row"
                     justify="center"
-                    alignItems="baseline"
+                    alignItems="flex-start"
                     onMouseEnter={() => this.setState({isHover: true})}
                     onMouseLeave={() => this.setState({isHover: false})}
-                    style={{ backgroundImage:`url(${this.state.sectionBackground})`}}>
-                    
-                    <Grid container item
-                        className={classes.text}
-                        spacing={2}
-                        direction="column"
-                        justify="flex-start"
-                        alignItems="flex-start"
-                        >
-                        <Grid item >
-                            <InputBase 
-                                className={classes.input}
-                                name="sectionTitle"
-                                placeholder="sectionDescription"
-                                defaultValue={this.props.section.sectionTitle}
-                                inputProps={{style: {fontSize: 20}}} 
-                                onChange={event => this.handleChangeTitle(event.target.value)}                        
-                            />
+                    >
+                    <Grid className={classes.content} 
+                        container item
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                        style={{ backgroundImage:`url(${this.state.sectionBackground})`}}>
+                        
+                        <Grid container item
+                            className={classes.text}
+                            spacing={2}
+                            direction="column"
+                            justify="center"
+                            alignItems="center"
+                            >
+                            <Grid item >
+                                <InputBase 
+                                    className={classes.input}
+                                    classes={{input: classes.inputCenter}}
+                                    name="sectionTitle"
+                                    placeholder="sectionDescription"
+                                    defaultValue={this.props.section.sectionTitle}
+                                    inputProps={{style: {fontSize: 20}}} 
+                                    onChange={event => this.handleChangeTitle(event.target.value)}                        
+                                />
+                            </Grid>
+        
+                            <Grid item >                
+                                <InputBase 
+                                    className={classes.input}
+                                    classes={{input: classes.inputCenter}}
+                                    fullWidth
+                                    multiline
+                                    rows="10"
+                                    name="sectionDescription"
+                                    placeholder="sectionDescription"
+                                    defaultValue={this.props.section.sectionDescription}
+                                    inputProps={{style: {fontSize: 15}}} 
+                                    onChange={event => this.handleChangeDescription(event.target.value)}
+                                />
+                            </Grid>
                         </Grid>
-    
-                        <Grid item >                
-                            <InputBase 
-                                className={classes.input}
-                                fullWidth
-                                multiline
-                                rows="10"
-                                name="sectionDescription"
-                                placeholder="sectionDescription"
-                                defaultValue={this.props.section.sectionDescription}
-                                inputProps={{style: {fontSize: 15}}} 
-                                onChange={event => this.handleChangeDescription(event.target.value)}
-                            />
+        
+                        <Grid item className={classes.image}>
+                            <UploadPicture uploadPicture={this.handleChangePhoto} 
+                                        pictureUrl={this.props.section.photo} 
+                                        height={this.props.photoHeight} width={this.props.photoWidth}/>
                         </Grid>
                     </Grid>
-    
-                    <Grid item className={classes.image}>
-                        <UploadPicture uploadPicture={this.handleChangePhoto} 
-                                    pictureUrl={this.props.section.photo} 
-                                    height={this.props.photoHeight} width={this.props.photoWidth}/>
-                    </Grid>
-                
                     {this.state.isHover?
-                    (<Grid item>
-                            <Icon className={classes.icon} onClick={()=>this.props.handleRemove(this.props.section.id)}>delete</Icon>      
-                    </Grid>): null}
-                    
+                        (<Grid item>
+                                <Icon className={classes.icon} onClick={()=>this.props.handleRemove(this.props.section.id)}>delete</Icon>      
+                        </Grid>): null}
                 </Grid>
             </div>
             )
