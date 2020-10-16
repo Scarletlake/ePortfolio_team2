@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "font-family": "monospace, sans-serif",
   },
-  contact_input:{
+  contact_detail:{
     "font-family": "monospace, sans-serif",
   },
   contact_content: {
@@ -780,7 +780,7 @@ export default function ArtPortfolioEditor(props) {
                           </Grid>
 
                           <Grid item>
-                            <TextField fullWidth className={classes.contact_input}     
+                            <TextField fullWidth className={classes.contact_detail}     
                             id="email"
                             name="email"
                             label="Email"
@@ -792,7 +792,7 @@ export default function ArtPortfolioEditor(props) {
                           </Grid>
 
                           <Grid item>
-                          <TextField fullWidth className={classes.contact_input}     
+                          <TextField fullWidth className={classes.contact_detail}     
                             id="phone"
                             name="phone"
                             label="Phone"
