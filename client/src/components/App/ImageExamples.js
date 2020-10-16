@@ -14,12 +14,12 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
     },
     gridList: {
-        width: (size) => (size.width * 0.7),
-        height: (size) => (size.height * 0.7)
+        width: (size) => (size.width * 0.8),
+        height: (size) => (size.height * 0.8)
     },
     image: {
-        width: (size) => (size.width * 0.7),
-        height: (size) => (size.height * 0.7)
+        width: (size) => (size.width * 0.8),
+        height: (size) => (size.width * 0.8 * (1080 / 1920))
     }
 }));
 

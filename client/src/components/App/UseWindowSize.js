@@ -1,3 +1,6 @@
+// Source: https://usehooks.com/useWindowSize/
+// Source code: https://codesandbox.io/s/jj61r2w6z5?file=/src/use-window-size.js:0-970
+
 import { useState, useEffect } from "react";
 
 export default function UseWindowSize() {
