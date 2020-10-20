@@ -41,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
-    width: '15%',
-    padding: theme.spacing(3),
+    width: "fit-content",
+    padding: theme.spacing(2),
   },
   inputCenter: {
     textAlign: 'center',
@@ -137,8 +137,8 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     //1:1
-    width: (size) => (size.width * 0.1),
-    height: (size) => (size.width * 0.1),
+    width: (size) => (size.width * 0.06),
+    height: (size) => (size.width * 0.06),
   },
   tabs_font: {
     "font-family": "monospace, sans-serif",
@@ -398,18 +398,26 @@ export default function ArtPortfolioEditor(props) {
               <Grid item>
                 <MuiThemeProvider theme={resFont}><Typography>Page: {home_page_tag}</Typography></MuiThemeProvider>
               </Grid>
-              <Grid container direction="row" spacing={1} className={classes.typ}>
+
+              <Grid container item
+                  spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
                 <Grid item theme={theme}>
-                  <MuiThemeProvider theme={resFont}><Typography>Change Background</Typography></MuiThemeProvider>
+                    <MuiThemeProvider theme={resFont}><Typography>Change Background</Typography></MuiThemeProvider>
                 </Grid>
-                <Grid item>
-                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
-                </Grid>
-                <Grid item>
-                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
-                </Grid>
-                <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.1} width={size.width*0.1}/>
+
+                <Grid container item direction="row" spacing={1}>                  
+                  <Grid item>
+                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>):null
@@ -420,46 +428,66 @@ export default function ArtPortfolioEditor(props) {
               direction="column"
               justify="center"
               alignItems="baseline"> 
+
               <Grid item>
                 <MuiThemeProvider theme={resFont}><Typography>Page: {formal_page_tag}</Typography></MuiThemeProvider>
               </Grid>
-              <Grid container direction="row" spacing={1} item>
+              
+              <Grid container item spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
                 <Grid item>
-                  <MuiThemeProvider theme={resFont}><Typography>Change Background</Typography></MuiThemeProvider>
+                    <MuiThemeProvider theme={resFont}><Typography>Change Background</Typography></MuiThemeProvider>
                 </Grid>
-                <Grid item>
-                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
-                </Grid>
-                <Grid item>
-                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
-                </Grid>
-                <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.1} width={size.width*0.1}/>
-                </Grid>
-              </Grid>
-              <Grid container direction="row" spacing={1} item>
-                <Grid item>
-                  <MuiThemeProvider theme={resFont}><Typography>Change Title Background</Typography></MuiThemeProvider>
-                </Grid>
-                <Grid item>
-                  <img className={classes.img} src={formalPage.pagePhoto} onClick={()=>setFormalPhoto(formalPage.pagePhoto)} alt="Default" />
-                </Grid>
-                <Grid item>
-                  <UploadPicture uploadPicture={setFormalPhoto} height={size.width*0.1} width={size.width*0.1}/>
+                <Grid container item direction="row" spacing={1}>                  
+                  <Grid item>
+                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
+                  </Grid>
                 </Grid>
               </Grid>
-              <Grid container direction="row" spacing={1} item>
+
+              <Grid container item spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
+                <Grid item>
+                    <MuiThemeProvider theme={resFont}><Typography>Change Title Background</Typography></MuiThemeProvider>
+                </Grid>
+                <Grid container item direction="row" spacing={1}>                  
+                  <Grid item>
+                    <img className={classes.img} src={formalPage.pagePhoto} onClick={()=>setFormalPhoto(formalPage.pagePhoto)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <UploadPicture uploadPicture={setFormalPhoto} height={size.width*0.06} width={size.width*0.06}/>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid container item spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
                 <Grid item>
                   <MuiThemeProvider theme={resFont}><Typography>Change Text Background</Typography></MuiThemeProvider>
+                </Grid>
+
+                <Grid container item direction="row" spacing={1}>                
+                  <Grid item>
+                    <img className={classes.img} src={formalPage.textBackground} onClick={()=>setFormalTextBackground(formalPage.textBackground)} alt="Default" height={100} width={100} />
+                  </Grid>  
+                  <Grid item>
+                    <UploadPicture uploadPicture={setFormalTextBackground} height={size.width*0.06} width={size.width*0.06}/>
                   </Grid>
-                <Grid item>
-                  <img className={classes.img} src={formalPage.textBackground} onClick={()=>setFormalTextBackground(formalPage.textBackground)} alt="Default" height={100} width={100} />
-                </Grid>  
-                <Grid item>
-                  <UploadPicture uploadPicture={setFormalTextBackground} height={size.width*0.1} width={size.width*0.1}/>
                 </Grid>
               </Grid>
-              </Grid>):null
+            </Grid>):null
           }
 
           {value === 2?
@@ -471,11 +499,15 @@ export default function ArtPortfolioEditor(props) {
               <Grid item>
                 <MuiThemeProvider theme={resFont}><Typography>Page: {leisure_page_tag}</Typography></MuiThemeProvider>
               </Grid>
-
-              <Grid container direction="row" spacing={1} item>
-                <Grid item>
+              
+              <Grid container item spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
+              <Grid item>
                   <MuiThemeProvider theme={resFont}><Typography>Change Background</Typography></MuiThemeProvider>
-                </Grid>
+              </Grid>
+              <Grid container item direction="row" spacing={1} >                
                 <Grid item>
                   <img className={classes.img}  src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
@@ -483,34 +515,46 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default"  />
                 </Grid>
                 <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
-
-              <Grid container direction="row" spacing={1} item>
+   
+              </Grid>
+              
+              <Grid container item spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
                 <Grid item>
-                  <MuiThemeProvider theme={resFont}><Typography>Change Title Background</Typography></MuiThemeProvider>
+                    <MuiThemeProvider theme={resFont}><Typography>Change Title Background</Typography></MuiThemeProvider>
                 </Grid>
-                <Grid item>
-                  <img className={classes.img} src={leisurePage.pagePhoto} onClick={()=>setLeisurePhoto(leisurePage.pagePhoto)} alt="Default" />
-                </Grid>
-                <Grid item>
-                  <UploadPicture uploadPicture={setLeisurePhoto} height={size.width*0.1} width={size.width*0.1}/>
+                <Grid container item direction="row" spacing={1}>                  
+                  <Grid item>
+                    <img className={classes.img} src={leisurePage.pagePhoto} onClick={()=>setLeisurePhoto(leisurePage.pagePhoto)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <UploadPicture uploadPicture={setLeisurePhoto} height={size.width*0.06} width={size.width*0.06}/>
+                  </Grid>
                 </Grid>
               </Grid>
-
-              <Grid container direction="row" spacing={1} item>
+              
+              <Grid container item spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
                 <Grid item>
                   <MuiThemeProvider theme={resFont}><Typography>Change Text Background</Typography></MuiThemeProvider>
+                </Grid>
+                <Grid container item direction="row" spacing={1}>                  
+                  <Grid item>
+                    <img className={classes.img} src={leisurePage.textBackground} onClick={()=>setLeisureTextBackground(leisurePage.textBackground)} alt="Default" />
+                  </Grid>  
+                  <Grid item>
+                    <UploadPicture uploadPicture={setLeisureTextBackground} height={size.width*0.06} width={size.width*0.06}/>
                   </Grid>
-                <Grid item>
-                  <img className={classes.img} src={leisurePage.textBackground} onClick={()=>setLeisureTextBackground(leisurePage.textBackground)} alt="Default" />
-                </Grid>  
-                <Grid item>
-                  <UploadPicture uploadPicture={setLeisureTextBackground} height={size.width*0.1} width={size.width*0.1}/>
                 </Grid>
               </Grid>
-              </Grid>):null
+            </Grid>):null
           }
           {value === 3?
             (<Grid container 
@@ -522,33 +566,43 @@ export default function ArtPortfolioEditor(props) {
                 <MuiThemeProvider theme={resFont}><Typography>Page: {contact_page_tag}</Typography></MuiThemeProvider>
               </Grid> 
 
-              <Grid container direction="row" spacing={1} item>
+              <Grid container item spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
                 <Grid item>
                   <MuiThemeProvider theme={resFont}><Typography>Change Background</Typography></MuiThemeProvider>
                 </Grid>
-                <Grid item>
-                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                <Grid container item direction="row" spacing={1} >
+                  <Grid item>
+                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
+                  </Grid>
                 </Grid>
-                <Grid item>
-                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
-                </Grid>
-                <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.1} width={size.width*0.1}/>
-                </Grid>
-              </Grid>
+              </Grid> 
 
-              <Grid container direction="row" spacing={1} item>
+              <Grid container item spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">                
                 <Grid item>
                   <MuiThemeProvider theme={resFont}><Typography>Change Text Background</Typography></MuiThemeProvider>
+                </Grid>
+                <Grid container item direction="row" spacing={1} >
+                  <Grid item>
+                    <img className={classes.img} src={contactPage.textBackground} onClick={()=>setContactTextBackground(contactPage.textBackground)} alt="Default" />
+                  </Grid>  
+                  <Grid item>
+                    <UploadPicture uploadPicture={setContactTextBackground} height={size.width*0.06} width={size.width*0.06}/>
                   </Grid>
-                <Grid item>
-                  <img className={classes.img} src={contactPage.textBackground} onClick={()=>setContactTextBackground(contactPage.textBackground)} alt="Default" />
-                </Grid>  
-                <Grid item>
-                  <UploadPicture uploadPicture={setContactTextBackground} height={size.width*0.1} width={size.width*0.1}/>
                 </Grid>
               </Grid>
-              </Grid>):null
+            </Grid>):null
           }
         </Grid>
        
