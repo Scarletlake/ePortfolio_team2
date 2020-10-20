@@ -124,7 +124,6 @@ export default function TemplatePage() {
         </MuiThemeProvider>
 
         <Grid container className={classes.grid} spacing={2} >
-
           <Grid item xs={12} sm={12} md={12} lg={4} xl={4} >
             <Card className={classes.card} className="container">
               <CardActionArea className="image" >
@@ -133,8 +132,7 @@ export default function TemplatePage() {
                   alt="Template Page"
                   height='300'
                   image="/envelope.png"
-                  title="Contemplative Reptile"
-                />
+                  title="Contemplative Reptile"/>
                 <CardContent>
                   <MuiThemeProvider theme={resFont}>
                     <Typography gutterBottom variant="h5" component="h2">
