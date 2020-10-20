@@ -116,7 +116,6 @@ const useStyles = makeStyles((theme) => ({
   editor_form: {
     //1:1
     width: (size) => (size.width * 0.6),
-    
   },
   text_background: {
     //width:100%
