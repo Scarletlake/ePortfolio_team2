@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom';
-import { Button, Typography, Container, Grid } from '@material-ui/core';
+import { Button, Typography, Grid, } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -25,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "5%",
     marginBottom: "5%",
   },
+  member: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    marginTop: 20,
+    marginBottom: 20,
+  }
 }));
 
 export default function LandingPage() {
@@ -131,27 +137,36 @@ export default function LandingPage() {
 
             <Typography variant="h4" color="primary">Team</Typography>
 
-            <Grid container style={{ marginTop: 20 }}>
+            <Grid container style={{ marginTop: 20 }} >
 
-              <Grid item xs={4}>
-                Jielin Zheng
+              <Grid item xs={4} className={classes.member} container>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><Typography variant="h6">Heitong Chan</Typography></Grid>
               </Grid>
 
-              <Grid item xs={4}>
-                Jiashuai Yu
+              <Grid item xs={4} className={classes.member} container>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><Typography variant="h6">Ouyang Hui</Typography></Grid>
               </Grid>
 
-              <Grid item xs={4}>
-                Heitong Chan
+              <Grid item xs={4} className={classes.member} container>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><Typography variant="h6">Jielin Zheng</Typography></Grid>
               </Grid>
 
-              <Grid item xs={6}>
-                Ouyang Hui
+              <Grid item xs={2}></Grid>
+
+              <Grid item xs={4} className={classes.member} container>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><Typography variant="h6">Zhuolun Wu</Typography></Grid>
               </Grid>
 
-              <Grid item xs={6}>
-                Zhuolun Wu
+              <Grid item xs={4} className={classes.member} container>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><Typography variant="h6">Jiashuai Yu</Typography></Grid>
               </Grid>
+
+              <Grid item xs={2}></Grid>
 
             </Grid>
           </div>
@@ -159,6 +174,6 @@ export default function LandingPage() {
 
       </div>
 
-    </div>
+    </div >
   )
 }
