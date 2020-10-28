@@ -126,7 +126,18 @@ const useStyles = makeStyles((theme) => ({
   },
   page_photo: {
     //24:7
-    width:"96.6%",
+    [theme.breakpoints.down('sm')]: {
+      width:(size) => (size.width * 0.33+150),
+      height:80
+    },
+    [theme.breakpoints.up('md')]: {
+      width:(size) => (size.width * 0.33+300),
+      height:150
+    },
+    [theme.breakpoints.up('lg')]: {
+      width:(size) => (size.width * 0.33+440),
+      height:200,
+    },
     height:200,
     "background-size": "cover",
     "background-position": "center",
