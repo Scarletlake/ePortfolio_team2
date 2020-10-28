@@ -27,8 +27,19 @@ const styles = (theme) => ({
         "background-repeat": "no-repeat", 
     },
     input: {
-        width: 450,
-        height: '100%',
+        [theme.breakpoints.down('sm')]: {
+           width:150,
+            height:"80%"
+        },
+        [theme.breakpoints.up('md')]: {
+            width:300,
+            height:"100%"
+        },
+        [theme.breakpoints.up('lg')]: {
+            width:440,
+            height:"100%"
+        },
+
         background: "#transparent",
         '&:hover': {
           background: "#f1f1f1",
@@ -39,9 +50,9 @@ const styles = (theme) => ({
         textAlign: 'center',
     },
     text: {
-        width: 'fit-content',
+        width:'fit-content',
         height: 'fit-content',
-        paddingTop: theme.spacing(20),
+        paddingTop: theme.spacing(10),
     },
     image: {
         width: 'fit-content',
@@ -111,7 +122,7 @@ class ArtSectionEditor extends Component {
                         alignItems="center"
                         style={{ backgroundImage:`url(${this.state.sectionBackground})`}}>
                         
-                        <Grid container item
+                        <Grid container
                             className={classes.text}
                             spacing={2}
                             direction="column"
@@ -148,7 +159,7 @@ class ArtSectionEditor extends Component {
         
                         <Grid item className={classes.image}>
                             <UploadPicture uploadPicture={this.handleChangePhoto} 
-                                        pictureUrl={this.props.section.photo} 
+                                        pictureUrl={this.props.section.photo}
                                         height={this.props.photoHeight} width={this.props.photoWidth}/>
                         </Grid>
                     </Grid>

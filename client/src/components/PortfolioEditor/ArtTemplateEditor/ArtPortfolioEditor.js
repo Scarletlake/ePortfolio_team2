@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
   },
   page_photo: {
     //24:7
-    width:"96.66%",
+    width:"96.6%",
     height:200,
     "background-size": "cover",
     "background-position": "center",
