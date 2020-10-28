@@ -32,7 +32,7 @@ export default function CreatePortfolioform(props) {
 
 
   // the default content of portfolio
-  const defaultPortfolio = {
+  const defaultArtPortfolio = {
     _id: "0",
     portfolioName: "portfolio_name",
     template: props.temp,
@@ -90,17 +90,125 @@ export default function CreatePortfolioform(props) {
     }
   }
 
+  const defaultMinimalPortfolio = {
+    _id: "0",
+    portfolioName: "portfolio_name",
+    template: props.temp,
+    userName: user.firstName + " " + user.lastName,
+    backgroungImage: "",
+    homePage: {
+      tag: "HOME",
+      profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526464/h1vr5pkcq7tmuof2qzar.png",
+      description: "Introduction"
+    },
+    formalPage: {
+      tag: "About",
+      title: "ABOUT ME",
+      pagePhoto: "",
+      sections: [{
+        id: "0",
+        sectionTitle: "UNIVERSITY",
+        sectionDescription: "Description",
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526818/fowd8oi6lv4r4ehym2we.jpg",
+      },
+      {
+        id: "1",
+        sectionTitle: "WORK EXPERIENCE",
+        sectionDescription: "Description",
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526812/xltqyw5lebmhbmawk9y4.jpg"
+      }]
+    },
+    leisurePage: {
+      tag: "LEISURE",
+      title: "Free Time",
+      pagePhoto: '',
+      sections: [{
+        id: "0",
+        sectionTitle: "MUSIC",
+        sectionDescription: "Description",
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527076/dmhb4kzeuworzfnw2h5n.jpg"
+      },
+      {
+        id: "1",
+        sectionTitle: "PHOTO",
+        sectionDescription: "Description",
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527805/eo9ectdhvplfh3pt2qbz.jpg"
+      }]
+    },
+    contactPage: {
+      tag: "CONTACT",
+      title: "Contact Me",
+      email: user.email,
+      phone: user.phone,
+      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527938/zsmjqjvssdm5ivt78bqw.jpg"
+    }
+  }
+
+  const defaultBusinessPortfolio = {
+    _id: "0",
+    portfolioName: "portfolio_name",
+    template: props.temp,
+    userName: user.firstName + " " + user.lastName,
+    backgroungImage: "",
+    homePage: {
+      tag: "HOME",
+      profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557613/fmkeeuionhrx8gfnxh5l.png",
+      description: "Introduction"
+    },
+    formalPage: {
+      tag: "About",
+      title: "ABOUT ME",
+      pagePhoto: "",
+      sections: [{
+        id: "0",
+        sectionTitle: "EXPERIENCE",
+        sectionDescription: "Description",
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557629/fjevxds6c5h7vcqjyib5.png",
+      },
+      {
+        id: "1",
+        sectionTitle: "EDUCATION",
+        sectionDescription: "Description",
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557645/aywlzommatqnbcbi9cnm.png"
+      }]
+    },
+    leisurePage: {
+      tag: "LEISURE",
+      title: "Free Time",
+      pagePhoto: '',
+      sections: [{
+        id: "0",
+        sectionTitle: "SKILLS",
+        sectionDescription: "Description",
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557663/g3suhljonzg0cybjzec8.png"
+      },
+      {
+        id: "1",
+        sectionTitle: "EXPERTISE",
+        sectionDescription: "Description",
+        photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557669/tlb7peienpp5rphyut47.jpg",
+      }]
+    },
+    contactPage: {
+      tag: "CONTACT",
+      title: "Contact Me",
+      email: user.email,
+      phone: user.phone,
+      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557688/snd6vsb4cihgwjrd2x7j.png"
+    }
+  }
+
 
   if (props.temp === "art"){
-    return <ArtPortfolioEditor portfolio={defaultPortfolio} />
+    return <ArtPortfolioEditor portfolio={defaultArtPortfolio} />
   }
   else if (props.temp === "minimal"){
-    return <ArtPortfolioEditor portfolio={defaultPortfolio} />
+    return <ArtPortfolioEditor portfolio={defaultMinimalPortfolio} />
   }
   else if (props.temp === "business"){
-    return <ArtPortfolioEditor portfolio={defaultPortfolio} />
+    return <ArtPortfolioEditor portfolio={defaultBusinessPortfolio} />
   }
   else {
-    return <ArtPortfolioEditor portfolio={defaultPortfolio} />
+    return <ArtPortfolioEditor portfolio={defaultArtPortfolio} />
   }
 }
