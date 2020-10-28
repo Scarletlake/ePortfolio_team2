@@ -12,7 +12,7 @@ export default function TemplateBusinessPortfolioPage(props) {
     const defaultFormalPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png";
     const defaultLeisurePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602443847/wk4tyawn3posmcw9tq65.png";
     const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
-    const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
+    const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg";
     const defaultContactPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg";
 
     const [value, setValue] = useState(0); // Tabs
@@ -53,8 +53,10 @@ export default function TemplateBusinessPortfolioPage(props) {
 
 
     return (
-        <div className='PageContainer BackgroundColor'>
-        <div className='PortfolioForm TextCenter VerticalAlign'>
+        <div className='PageContainer'>
+        <img className='PortfolioBackgroundImg' src={defaultBackgroundPhoto}/>
+        <div className='PortfolioForm TextCenter VerticalAlign PortfolioBackgroundWrap'>
+          <div className='PortfolioForm TextCenter VerticalAlign'>
             <div className='PortfolioFullName white'> {portfolio.userName} </div>
             <div className='PortfolioHeader white'>
     
@@ -76,14 +78,14 @@ export default function TemplateBusinessPortfolioPage(props) {
             <TabPanel value={value} index={0}>
 
             <div className='TextCenter VerticalAlign'>
-            <div>
+           
                 {portfolio.homePage.profilePhoto?
-                <img className='HomePagePhoto' src={portfolio.homePage.profilePhoto} alt="HomePagePhoto" /> :
-                <img className='HomePagePhoto' src={defaultHomePhoto} alt="HomePagePhoto" />
+                <img className='BusinessHomePic' src={portfolio.homePage.profilePhoto} alt="HomePagePhoto" /> :
+                <img className='BusinessHomePic' src={defaultHomePhoto} alt="HomePagePhoto" />
                 }
                 
                 <div className='PortfolioText PortfolioHomeDesc'>{portfolio.homePage.description}</div>
-            </div>
+         
             </div>
 
             </TabPanel>
@@ -91,7 +93,7 @@ export default function TemplateBusinessPortfolioPage(props) {
             {/* Formal page */}
             <TabPanel value={value} index={1}>
 
-            <div className='TextCenter VerticalAlign SectionColor'>
+            <div className='TextCenter VerticalAlign'>
             <div className='PortfolioText PortfolioTitle'>{portfolio.formalPage.title}</div>  
             <PortfolioSection sections={portfolio.formalPage.sections} />
             </div>
@@ -100,35 +102,37 @@ export default function TemplateBusinessPortfolioPage(props) {
             {/* Leisure page */}
             <TabPanel value={value} index={2}>
             
-            <div className='TextCenter VerticalAlign SectionColor'>
+            <div className='TextCenter VerticalAlign'>
             <div className='PortfolioText PortfolioTitle'>{portfolio.leisurePage.title}</div>  
 
-            <PortfolioSection sections={portfolio.leisurePage.sections} />
+            <PortfolioSection sections={portfolio.leisurePage.sections} background={portfolio.leisurePage.textBackground} />
             </div>
             </TabPanel>
 
             {/* Contact page */}
             <TabPanel value={value} index={3}>
 
-            <div className='TextCenter HorizontalAlign SectionColor'>
-            {portfolio.contactPage.photo?
-                <img className='PortfolioContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
-                <img className='PortfolioContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
-            }
-            
-            <div className='VerticalAlign'>
-                <div className='ContactContainer'>
-                <img className='PortfolioContactImg' src={defaultDescPhoto}/>
-                <div>
-                    <div className='ContactTitle'>{portfolio.contactPage.title}</div>
-                    <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
+            <div className=' BusinessContactContainer TextCenter'>
+              <div className='BusinessContactForm TextCenter HorizontalAlign '>
+                {portfolio.contactPage.photo?
+                    <img className='PortfolioContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
+                    <img className='PortfolioContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
+                }
+                
+                <div className='VerticalAlign'>
+                    <div className='ContactContainer'>
+                    <img className='PortfolioContactImg' src={defaultDescPhoto}/>
+                    <div>
+                        <div className='ContactTitle'>{portfolio.contactPage.title}</div>
+                        <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
+              </div>
             </div>
             
             </TabPanel>
-
+          </div>
             
         </div>
         </div>

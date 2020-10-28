@@ -149,7 +149,7 @@ export default function CreatePortfolioform(props) {
     portfolioName: "portfolio_name",
     template: props.temp,
     userName: user.firstName + " " + user.lastName,
-    backgroungImage: "",
+    backgroungImage: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg",
     homePage: {
       tag: "HOME",
       profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557613/fmkeeuionhrx8gfnxh5l.png",
