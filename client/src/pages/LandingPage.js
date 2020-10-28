@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   showcase: {
     textAlign: "center",
-    marginTop: "20%",
+    marginTop: "10%",
   },
   team: {
     textAlign: "center",
@@ -141,7 +141,7 @@ export default function LandingPage() {
 
               <Grid item xs={4} className={classes.member} container>
                 <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
-                <Grid item xs={12}><Typography variant="h6">Heitong Chan</Typography></Grid>
+                <Grid item xs={12}><Typography variant="h6">HeiTong Chan</Typography></Grid>
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
