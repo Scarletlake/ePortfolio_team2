@@ -91,8 +91,8 @@ export default function ArtPortfolio(props) {
         <div className='TextCenter VerticalAlign'>
           <div>
             {portfolio.homePage.profilePhoto?
-              <img className='HomePagePhoto' src={portfolio.homePage.profilePhoto} alt="HomePagePhoto" /> :
-              <img className='HomePagePhoto' src={defaultHomePhoto} alt="HomePagePhoto" />
+              <img className='ArtHomePagePhoto' src={portfolio.homePage.profilePhoto} alt="HomePagePhoto" /> :
+              <img className='ArtHomePagePhoto' src={defaultHomePhoto} alt="HomePagePhoto" />
             }
             
             <div className='PortfolioText PortfolioHomeDesc'>{portfolio.homePage.description}</div>
@@ -105,8 +105,11 @@ export default function ArtPortfolio(props) {
         <TabPanel value={value} index={1}>
 
         <div className='TextCenter VerticalAlign'>
-          <div className='PortfolioFormalPhoto white'>
-            <img className='PortfolioFormalPhoto' src={defaultFormalPhoto} alt='FormalPagePhoto'/>
+          <div className='PortfolioFormalPhoto white TextCenter'>
+            {portfolio.formalPage.photo?
+            <img className='ArtPortfolioFormalPhoto' src={portfolio.formalPage.photo} alt='FormalPagePhoto'/>:
+            <img className='ArtPortfolioFormalPhoto' src={defaultFormalPhoto} alt='FormalPagePhoto'/>
+            }
             <div className='PortfolioText PortfolioTitle'>{portfolio.formalPage.title}</div>  
           </div>
 
@@ -118,10 +121,10 @@ export default function ArtPortfolio(props) {
         <TabPanel value={value} index={2}>
         
         <div className='TextCenter VerticalAlign'>
-          <div className='PortfolioFormalPhoto'>
+          <div className='PortfolioFormalPhoto TextCenter'>
             {portfolio.leisurePage.photo?
-              <img className='PortfolioFormalPhoto' src={portfolio.leisurePage.photo} alt='LeisurePagePhoto'/> :
-              <img className='PortfolioFormalPhoto' src={defaultLeisurePhoto} alt='LeisurePagePhoto'/>
+              <img className='ArtPortfolioFormalPhoto' src={portfolio.leisurePage.photo} alt='LeisurePagePhoto'/> :
+              <img className='ArtPortfolioFormalPhoto' src={defaultLeisurePhoto} alt='LeisurePagePhoto'/>
             }   
             <div className='PortfolioText PortfolioTitle'>{portfolio.leisurePage.title}</div>  
           </div>

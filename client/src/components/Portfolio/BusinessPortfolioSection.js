@@ -14,7 +14,7 @@ export default class PortfolioSection extends Component {
     render() {
         const textBackground = this.props.background
         const defaultPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
-        const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+        const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg";
         return (
             <div className='BusinessSectionContent'>
                 {this.state.sections.map((section) => (
@@ -32,7 +32,7 @@ export default class PortfolioSection extends Component {
                                     <img className='SectionImage' src={textBackground}/>:
                                     <img className='SectionImage' src={defaultDescPhoto}/>
                                 }
-                                <div className='PortfolioDesc'>
+                                <div className='BusinessPortfolioDesc'>
                                     <Typography 
                                         variant="h5" 
                                         component="h5">

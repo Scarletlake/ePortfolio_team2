@@ -9,9 +9,7 @@ export default function TemplateBusinessPortfolioPage(props) {
 
     const  portfolio  = props.portfolio;
     const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602528379/uauqeyyjvqcofbltokwg.png";
-    const defaultFormalPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png";
-    const defaultLeisurePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602443847/wk4tyawn3posmcw9tq65.png";
-    const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+    const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg";
     const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg";
     const defaultContactPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg";
 
@@ -94,8 +92,8 @@ export default function TemplateBusinessPortfolioPage(props) {
             <TabPanel value={value} index={1}>
 
             <div className='TextCenter VerticalAlign'>
-            <div className='PortfolioText PortfolioTitle'>{portfolio.formalPage.title}</div>  
-            <PortfolioSection sections={portfolio.formalPage.sections} />
+            <div className='BusinessPortfolioTitle white'>{portfolio.formalPage.title}</div>  
+            <PortfolioSection sections={portfolio.formalPage.sections} background={portfolio.formalPage.textBackground} /> 
             </div>
             </TabPanel>
 
@@ -103,7 +101,7 @@ export default function TemplateBusinessPortfolioPage(props) {
             <TabPanel value={value} index={2}>
             
             <div className='TextCenter VerticalAlign'>
-            <div className='PortfolioText PortfolioTitle'>{portfolio.leisurePage.title}</div>  
+            <div className='BusinessPortfolioTitle white'>{portfolio.leisurePage.title}</div>  
 
             <PortfolioSection sections={portfolio.leisurePage.sections} background={portfolio.leisurePage.textBackground} />
             </div>
@@ -112,23 +110,24 @@ export default function TemplateBusinessPortfolioPage(props) {
             {/* Contact page */}
             <TabPanel value={value} index={3}>
 
-            <div className=' BusinessContactContainer TextCenter'>
-              <div className='BusinessContactForm TextCenter HorizontalAlign '>
+            <div className=' BusinessContactContainer HorizontalAlign TextCenter'>
+            
                 {portfolio.contactPage.photo?
-                    <img className='PortfolioContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
-                    <img className='PortfolioContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
+                    <img className='BusinessPortfolioContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
+                    <img className='BusinessPortfolioContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
                 }
                 
                 <div className='VerticalAlign'>
                     <div className='ContactContainer'>
-                    <img className='PortfolioContactImg' src={defaultDescPhoto}/>
+                    <img className='BusinessPortfolioContactImg' src={defaultDescPhoto}/>
+                    <br/>
                     <div>
-                        <div className='ContactTitle'>{portfolio.contactPage.title}</div>
-                        <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
+                        <div className='ContactTitle white'>{portfolio.contactPage.title}</div>
+                        <div className='ContactDesc white'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
                     </div>
                     </div>
                 </div>
-              </div>
+              
             </div>
             
             </TabPanel>

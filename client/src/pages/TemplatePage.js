@@ -52,7 +52,7 @@ resFont = responsiveFontSizes(resFont);
 
 const tileData1 = [
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908745/dtsp8csymx6h7pjmnj9g.png",
     title: 'first',
   },
   {
@@ -67,7 +67,7 @@ const tileData1 = [
 
 const tileData2 = [
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908806/awbltb3htbnozmk64myu.png",
     title: 'first',
   },
   {
@@ -78,7 +78,7 @@ const tileData2 = [
 
 const tileData3 = [
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908880/xlsrzf2dgpubdb6hj2nj.png",
     title: 'first',
   }
 ]

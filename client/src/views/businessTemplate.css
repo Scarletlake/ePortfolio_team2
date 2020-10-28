@@ -60,5 +60,29 @@
 .BusinessContactForm {
     padding: 10px;
     background-color: rgb(70, 68, 68); 
-    width: 77vw;
+    width: 50vw;
+}
+
+.BusinessPortfolioTitle {
+
+    font-family: monospace, sans-serif;
+    font-size: 5vh;
+}
+
+.BusinessPortfolioDesc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: monospace, sans-serif;
+    color: white;
+}
+
+.BusinessPortfolioContactImg {
+    width: 500px;
+    height: 700px;
+    align-content: center;
+    padding: 5px;
+
+
 }
