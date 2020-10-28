@@ -126,8 +126,8 @@ const useStyles = makeStyles((theme) => ({
   },
   page_photo: {
     //24:7
-    width:"96.6%",
-    height:150,
+    width:"96.66%",
+    height:200,
     "background-size": "cover",
     "background-position": "center",
     "background-repeat": "no-repeat",
@@ -138,8 +138,8 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     //1:1
-    width: (size) => (size.width * 0.1),
-    height: (size) => (size.width * 0.1),
+    width: (size) => (size.width * 0.06),
+    height: (size) => (size.width * 0.06),
   },
   tabs_font: {
     "font-family": "monospace, sans-serif",
