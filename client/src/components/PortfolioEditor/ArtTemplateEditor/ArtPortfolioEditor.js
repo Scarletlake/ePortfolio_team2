@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       marginBottom: theme.spacing(3),
     },
-    width: (size) => (size.width * 0.6),
+    width: "fit-content",
   },
   grow: {
     flexGrow: 1,
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     "font-family": "monospace, sans-serif",
   },
   contact_content: {
-    width: (size) => (size.width * 0.6),
+    width: "fit-content",
 
   },
   contact_input: {
@@ -115,7 +115,8 @@ const useStyles = makeStyles((theme) => ({
   },
   editor_form: {
     //1:1
-    width: (size) => (size.width * 0.6),
+    width: "fit-content",
+    height:"fit_content"
   },
   text_background: {
     //width:100%
@@ -125,15 +126,15 @@ const useStyles = makeStyles((theme) => ({
   },
   page_photo: {
     //24:7
-    width: (size) => (size.width * 0.6),
-    height: (size) => (size.width * 0.6*(7/24)),
+    width:"96.6%",
+    height:150,
     "background-size": "cover",
     "background-position": "center",
     "background-repeat": "no-repeat",
   },
   header: {
     width: "100%",
-    height: 100,//fit content
+    //fit content
   },
   img: {
     //1:1
@@ -145,15 +146,6 @@ const useStyles = makeStyles((theme) => ({
     "font-size": "16px",
     "font-weight": "bold",
   },
-  gridList: {
-    width: (size) => (size.width * 0.8),
-    height: (size) => (size.height * 0.8)
-  },
-  image: {
-    width: (size) => (size.width * 0.8),
-    height: (size) => (size.width * 0.8 * (1080 / 1920))
-  },
-
 }));
 
 function TabPanel(props) {
@@ -409,7 +401,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
             </Grid>):null
@@ -434,7 +426,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
               <Grid container direction="row" spacing={1} item>
@@ -445,7 +437,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={formalPage.pagePhoto} onClick={()=>setFormalPhoto(formalPage.pagePhoto)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <UploadPicture uploadPicture={setFormalPhoto} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setFormalPhoto} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
               <Grid container direction="row" spacing={1} item>
@@ -456,7 +448,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={formalPage.textBackground} onClick={()=>setFormalTextBackground(formalPage.textBackground)} alt="Default" height={100} width={100} />
                 </Grid>  
                 <Grid item>
-                  <UploadPicture uploadPicture={setFormalTextBackground} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setFormalTextBackground} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
               </Grid>):null
@@ -483,7 +475,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default"  />
                 </Grid>
                 <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
 
@@ -495,7 +487,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={leisurePage.pagePhoto} onClick={()=>setLeisurePhoto(leisurePage.pagePhoto)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <UploadPicture uploadPicture={setLeisurePhoto} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setLeisurePhoto} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
 
@@ -507,7 +499,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={leisurePage.textBackground} onClick={()=>setLeisureTextBackground(leisurePage.textBackground)} alt="Default" />
                 </Grid>  
                 <Grid item>
-                  <UploadPicture uploadPicture={setLeisureTextBackground} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setLeisureTextBackground} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
               </Grid>):null
@@ -533,7 +525,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
 
@@ -545,7 +537,7 @@ export default function ArtPortfolioEditor(props) {
                   <img className={classes.img} src={contactPage.textBackground} onClick={()=>setContactTextBackground(contactPage.textBackground)} alt="Default" />
                 </Grid>  
                 <Grid item>
-                  <UploadPicture uploadPicture={setContactTextBackground} height={size.width*0.1} width={size.width*0.1}/>
+                  <UploadPicture uploadPicture={setContactTextBackground} height={size.width*0.06} width={size.width*0.06}/>
                 </Grid>
               </Grid>
               </Grid>):null
@@ -554,7 +546,7 @@ export default function ArtPortfolioEditor(props) {
        
         <Grid className={classes.editor}
               container
-              direction="column"
+
               justify="center"
               alignItems="center">
           <Paper className={classes.paper} 
@@ -569,13 +561,17 @@ export default function ArtPortfolioEditor(props) {
                   alignItems="center">
 
                {/* Header editor */}
-              <Grid item >                
-                  <Grid con tainer
-                        spacing={3}
+              <Grid item
+                    justify="center"
+                    alignItems="center">
+                  <Grid container
+                        spacing={0}
                         direction="column"
                         justify="center"
                         alignItems="center">
-                        <Grid item>
+                        <Grid item
+                              justify="center"
+                              alignItems="center">
                           <InputBase className={classes.username_input}
                                   classes={{input: classes.inputCenter}}
                                   placeholder="Your Name"
@@ -584,7 +580,9 @@ export default function ArtPortfolioEditor(props) {
                                   onChange={event=> setUserName(event.target.value)}/>
                         </Grid>
 
-                    <Grid item>
+                    <Grid item
+                          justify="center"
+                          alignItems="center">
                         <Grid container item 
                               alignItems="center"
                               direction="row"
@@ -606,7 +604,7 @@ export default function ArtPortfolioEditor(props) {
                             ):
                             (
                               <Grid container
-                                    alignItems="center"
+                                    alignItems="center"z
                                     direction="row"
                                     justify="center">
                               <Tabs
@@ -684,7 +682,7 @@ export default function ArtPortfolioEditor(props) {
                 <TabPanel value={value} index={1} dir={theme.direction}>
                   <form noValidate autoComplete="off" className={classes.field_root}>
                     <Grid container
-                          spacing={3}
+                          spacing={0}
                           direction="column"
                           justify="center"
                           alignItems="center">
@@ -694,7 +692,7 @@ export default function ArtPortfolioEditor(props) {
                             className={classes.page_photo}
                             style={{ backgroundImage:`url(${formal_page_photo})`,
                                      backgroundRepeat: "no-repeat",
-                                     backgroungSize: "cover"
+
                                 }}>
                         <InputBase className={classes.formal_title_input} 
                                   classes={{input: classes.inputCenter}}
@@ -706,11 +704,11 @@ export default function ArtPortfolioEditor(props) {
                       </Grid>
 
                       <Grid item>
-                        <ArtSectionsEditor sections={formal_page_sections} 
+                        <ArtSectionsEditor sections={formal_page_sections}
                                           sectionBackground={formal_text_background} 
                                           onChange={setFormalPageSections}
-                                          photoHeight={size.width*0.4*(85/102)}
-                                          photoWidth={size.width*0.4}/>
+                                          photoHeight={size.width*0.33*(85/102)}
+                                          photoWidth={size.width*0.33}/>
                       </Grid>
 
                     </Grid>
@@ -739,7 +737,7 @@ export default function ArtPortfolioEditor(props) {
                                       defaultValue={leisure_page_title} 
                                       inputProps={{style: {fontSize: 35}}}  
                                       onChange={event => setLeisurePageTitle(event.target.value)}/>
-                          </Grid>
+                      </Grid>
 
                       <Grid item
                             justify="center"
@@ -747,8 +745,8 @@ export default function ArtPortfolioEditor(props) {
                         <ArtSectionsEditor sections={leisure_page_sections} 
                                           sectionBackground={leisure_text_background} 
                                           onChange={setLeisurePageSections}
-                                           photoHeight={size.width*0.4*(85/102)}
-                                           photoWidth={size.width*0.4}/>
+                                           photoHeight={size.width*0.33*(85/102)}
+                                           photoWidth={size.width*0.33}/>
                       </Grid>
 
                     </Grid>
@@ -778,7 +776,7 @@ export default function ArtPortfolioEditor(props) {
                           <UploadPicture uploadPicture={setContactPhoto} 
                                         pictureUrl={contact_page_photo}
                                          width={smalleredge*0.4}
-                                         height={smalleredge*0.4}/>
+                                         height={smalleredge*0.4*7/5}/>
                         </Grid>
                         
                         <Grid container item

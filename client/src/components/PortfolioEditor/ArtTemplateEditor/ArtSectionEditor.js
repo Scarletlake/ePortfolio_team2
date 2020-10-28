@@ -8,14 +8,13 @@ import Icon from '@material-ui/core/Icon';
 
 import '../../../views/artTemplateEditor.css'
 import UploadPicture from '../UploadPicture';
-
+import UseWindowSize from '../../App/UseWindowSize';
 const styles = (theme) => ({
     root: {
         flexGrow: 1,
     },
     section: {
-        width: 'fit-content',
-        height: 'fit-content',
+
         paddingTop: theme.spacing(1),
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(2),
@@ -40,7 +39,7 @@ const styles = (theme) => ({
         textAlign: 'center',
     },
     text: {
-        width: 510,
+        width: 'fit-content',
         height: 'fit-content',
         paddingTop: theme.spacing(20),
     },
@@ -92,20 +91,22 @@ class ArtSectionEditor extends Component {
     }
 
     render() {
+
+
         const { classes } = this.props;
         return (
             <div className={classes.root}>
-                <Grid className={classes.section} 
-                    container
-                    direction="row"
-                    justify="center"
-                    alignItems="flex-start"
-                    onMouseEnter={() => this.setState({isHover: true})}
-                    onMouseLeave={() => this.setState({isHover: false})}
+                <Grid container
+                      className={classes.section}
+                      direction="row"
+                      justify="center"
+                      alignItems="flex-start"
+                      onMouseEnter={() => this.setState({isHover: true})}
+                      onMouseLeave={() => this.setState({isHover: false})}
                     >
-                    <Grid className={classes.content} 
-                        container item
-                        direction="row"
+                    <Grid container
+                          className={classes.content}
+                          direction="row"
                         justify="center"
                         alignItems="center"
                         style={{ backgroundImage:`url(${this.state.sectionBackground})`}}>
