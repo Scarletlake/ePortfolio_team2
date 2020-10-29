@@ -22,7 +22,7 @@ const styles = (theme) => ({
     },
     content: {
         width: 'fit-content',
-        height: 'fit-content',
+        height: 'fit-content',        
         "background-size": "cover",
         "background-repeat": "no-repeat", 
     },
@@ -52,7 +52,8 @@ const styles = (theme) => ({
     text: {
         width:'fit-content',
         height: 'fit-content',
-        paddingTop: theme.spacing(10),
+        padding: theme.spacing(5),
+        paddingTop: theme.spacing(15),
     },
     image: {
         width: 'fit-content',
