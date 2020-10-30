@@ -732,6 +732,7 @@ export default function PortfolioEditor(props) {
                         <InputBase
                           multiline
                           fullWidth
+                          rows="10"
                           classes={{input: classes.inputCenter}}
                           className={classes.introduction_input} 
                           variant='outlined'

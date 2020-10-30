@@ -55,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
     "font-family": "monospace, sans-serif",
   },
   introduction_input: {
+    width: "50%",
+    height: "50%",
     background: "transparent",
     '&:hover': {
       background: "#fafafa",
@@ -152,6 +154,12 @@ const useStyles = makeStyles((theme) => ({
     "font-size": "16px",
     "font-weight": "bold",
   },
+  home_page_photo: {
+    padding: theme.spacing(1),   
+    width: (size) => (size.width * 0.6),
+    height: (size) => (size.width * 0.24), 
+    "background-size": "cover",
+  }
 }));
 
 function TabPanel(props) {
@@ -189,6 +197,7 @@ export default function PortfolioEditor(props) {
   const defaultFormalPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png";
   const defaultLeisurePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602443847/wk4tyawn3posmcw9tq65.png";
   const defaultTextBackground = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+  const defaultIntroductionPhoto= "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602394611/kqwiwuxyi0dbncbi6x8s.png";
 
   const size = UseWindowSize();
   const classes = useStyles(size);
@@ -423,6 +432,26 @@ export default function PortfolioEditor(props) {
                   </Grid>
                 </Grid>
               </Grid>
+
+              <Grid container item
+                  spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
+                <Grid item theme={theme}>
+                    <MuiThemeProvider theme={resFont}><Typography>Change Introduction Background </Typography></MuiThemeProvider>
+                </Grid>
+
+                <Grid container item direction="row" spacing={1}>                  
+                  <Grid item>
+                    <img className={classes.img} src={defaultIntroductionPhoto} onClick={()=>setProfilePhoto(defaultIntroductionPhoto)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <UploadPicture uploadPicture={setProfilePhoto} height={size.width*0.06} width={size.width*0.06}/>
+                  </Grid>
+                </Grid>
+              </Grid>   
+
             </Grid>):null
           }
           {value === 1?
@@ -715,30 +744,27 @@ export default function PortfolioEditor(props) {
                     >
 
                       <Grid item>
-                        <UploadPicture uploadPicture={setProfilePhoto} 
-                                      pictureUrl={profile_photo_value}
-                                      onChange={compareEdge()}
-                                      width={smalleredge*1}
-                                      height={smalleredge*0.4}/>
-                      </Grid>
-
-                      <Grid item>
-                        <InputBase
-                          multiline
-                          fullWidth
-                          classes={{input: classes.inputCenter}}
-                          className={classes.introduction_input} 
-                          variant='outlined'
-                          id="introduction"
-                          name="introduction"
-                          label="introduction"
-                          justify="center"
-                          alignItems="center"
-                          inputProps={{style: {fontSize: 25}}}
-                          defaultValue={introduction_value}
-                          onChange={event => setIntroduction(event.target.value)}
-                        />
-                      </Grid>       
+                        <Grid container item 
+                              justify="center"
+                              alignItems="center"
+                              className={classes.home_page_photo}
+                              style={{ backgroundImage:`url(${profile_photo_value})`,
+                              backgroundRepeat: "no-repeat",backgroungSize: "cover"}}>
+                          <InputBase
+                            multiline
+                            fullWidth
+                            classes={{input: classes.inputCenter}}
+                            className={classes.introduction_input}                           
+                            rows="10"
+                            id="introduction"
+                            name="introduction"
+                            label="introduction"
+                            inputProps={{style: {fontSize: 20}}}
+                            defaultValue={introduction_value}
+                            onChange={event => setIntroduction(event.target.value)}
+                          />
+                        </Grid>  
+                      </Grid>     
                     </Grid>
                   </form>                 
                 </TabPanel>
