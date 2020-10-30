@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   showcase: {
     textAlign: "center",
-    marginTop: "20%",
+    marginTop: "10%",
   },
   team: {
     textAlign: "center",
@@ -107,7 +107,7 @@ export default function LandingPage() {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={9} xl={9} style={{ marginBottom: "20px" }}>
-                <img alt="Business" width={size.width < 1280 ? size.width * 0.7 : size.width * 0.4} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg"></img>
+                <img alt="Business" width={size.width < 1280 ? size.width * 0.7 : size.width * 0.4} src="http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908745/dtsp8csymx6h7pjmnj9g.png"></img>
               </Grid>
 
               <Grid item xs={12} sm={12} md={12} lg={3} xl={3} style={{ margin: "auto" }}>
@@ -117,7 +117,7 @@ export default function LandingPage() {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={9} xl={9} >
-                <img alt="Minimal" width={size.width < 1280 ? size.width * 0.7 : size.width * 0.4} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg"></img>
+                <img alt="Minimal" width={size.width < 1280 ? size.width * 0.7 : size.width * 0.4} src="http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908806/awbltb3htbnozmk64myu.png"></img>
               </Grid>
 
               <Grid item xs={12} sm={12} md={12} lg={3} xl={3} style={{ margin: "auto" }}>
@@ -127,7 +127,7 @@ export default function LandingPage() {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={9} xl={9} >
-                <img alt="Art" width={size.width < 1280 ? size.width * 0.7 : size.width * 0.4} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg"></img>
+                <img alt="Art" width={size.width < 1280 ? size.width * 0.7 : size.width * 0.4} src="http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908880/xlsrzf2dgpubdb6hj2nj.png"></img>
               </Grid>
 
             </Grid>
@@ -141,7 +141,7 @@ export default function LandingPage() {
 
               <Grid item xs={4} className={classes.member} container>
                 <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
-                <Grid item xs={12}><Typography variant="h6">Heitong Chan</Typography></Grid>
+                <Grid item xs={12}><Typography variant="h6">HeiTong Chan</Typography></Grid>
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>

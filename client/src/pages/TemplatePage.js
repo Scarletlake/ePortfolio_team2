@@ -52,34 +52,46 @@ resFont = responsiveFontSizes(resFont);
 
 const tileData1 = [
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908745/dtsp8csymx6h7pjmnj9g.png",
     title: 'first',
   },
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603909821/xhc7bhsmnsb8aicgqg4x.png",
     title: 'second',
   },
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603909844/bwxobha281divultswsj.png",
     title: 'third',
   },
 ]
 
 const tileData2 = [
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908806/awbltb3htbnozmk64myu.png",
     title: 'first',
   },
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603909948/cp2fnno8gumalcyzst7o.png",
     title: 'second',
   },
+  {
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603909964/iy7w0lpjekqydrfwfxyv.png",
+    title: 'third',
+  }
 ]
 
 const tileData3 = [
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg',
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908880/xlsrzf2dgpubdb6hj2nj.png",
     title: 'first',
+  },
+  {
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603910103/k0h1opuwae3y5drotkji.png",
+    title: 'second',
+  },
+  {
+    img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603910162/fp4ol4oi983zp5oejt6p.png",
+    title: 'third',
   }
 ]
 

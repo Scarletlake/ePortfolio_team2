@@ -7,9 +7,10 @@
 }
 
 
-.HomePagePhoto {
-	width: 500px;
-    height: 500px;
+.ArtHomePagePhoto {
+
+	width: 90vw;
+    height: 60vh;
 }
 
 .SectionImage {
@@ -105,9 +106,9 @@
     transform: translate(-50%, -50%);
 }
 
-.PortfolioFormalPhoto {
-    width: 100vw;
-    height: 800px;
+.ArtPortfolioFormalPhoto {
+    width: 80vw;
+    height: 50vh;
     align-self: center;
     position: relative;
 }

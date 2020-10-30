@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
+import '../../views/styles.css'
 
 const useStyles=makeStyles((theme) => ({
   logoButton: {
@@ -29,15 +30,13 @@ const useStyles=makeStyles((theme) => ({
 const GuestNavBar =()=>{
   return (
       <div>
-        <AppBar position="static">
+        <AppBar position="static" style={{ background: 'black' }}>
           <Toolbar>
               <IconButton href="/" color="inherit">
                 <HomeIcon/>
               </IconButton>
 
-                <Typography variant="h6" >
-                  ePortfolio
-                </Typography>
+                <img src="/LogoWhite.png" width="100px"></img>
 
 
             <Grid container direction="row" justify = "flex-end" alignItems="center">
@@ -68,14 +67,13 @@ const AuthNavBar =()=> {
   }
   return(
       <div>
-        <AppBar position="static">
+        <AppBar position="static" style={{ background: 'black' }}>
           <Toolbar>
               <IconButton href="/user/home" color="inherit">
                 <HomeIcon/>
               </IconButton>
-              <Typography variant="h6" className={classes.title}>
-                ePortfolio
-              </Typography>
+
+              <img src="/LogoWhite.png" width="100px"></img>
 
             <Grid container direction="row" justify = "flex-end" alignItems="center">
                 <div>

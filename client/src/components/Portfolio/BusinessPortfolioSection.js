@@ -1,7 +1,7 @@
 import React , { Component  } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import '../../views/styles.css'
-import '../../views/minimalTemplate.css'
+import '../../views/businessTemplate.css'
 
 
 export default class PortfolioSection extends Component {
@@ -10,11 +10,13 @@ export default class PortfolioSection extends Component {
         sections: this.props.sections
     };
 
+
     render() {
-        const defaulPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
-        const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+        const textBackground = this.props.background
+        const defaultPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
+        const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg";
         return (
-            <div className='SectionContent'>
+            <div className='BusinessSectionContent'>
                 {this.state.sections.map((section) => (
                   <div key={section.id} className="SectionRoot">
                     
@@ -26,8 +28,11 @@ export default class PortfolioSection extends Component {
                        
                        <Grid item xs={6} >
                            <div className='SectionContainer'>
-                                <img className='SectionImage' src={defaultDescPhoto}/>
-                                <div className='PortfolioDesc'>
+                               {textBackground?
+                                    <img className='SectionImage' src={textBackground}/>:
+                                    <img className='SectionImage' src={defaultDescPhoto}/>
+                                }
+                                <div className='BusinessPortfolioDesc'>
                                     <Typography 
                                         variant="h5" 
                                         component="h5">
@@ -44,8 +49,8 @@ export default class PortfolioSection extends Component {
 
                         <Grid item xs={6} className='SectionImage'>
                             {section.photo?
-                                <img width="600" height="500" src={section.photo} alt="Unable to load" />:
-                                <img width="600" height="300" src={defaulPhoto} alt="Unable to load" />
+                                <img width="590" height="500" src={section.photo} alt="Unable to load" />:
+                                <img width="590" height="300" src={defaultPhoto} alt="Unable to load" />
                             }
                         </Grid>
                     </Grid>

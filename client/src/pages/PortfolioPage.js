@@ -43,10 +43,10 @@ export default function PortfolioPage() {
   if (res.portfolio.template === "art"){
     return <ArtPortfolio portfolio={res.portfolio}/>
   }
-  else if (res.portfolio.template === "art"){
+  else if (res.portfolio.template === "minimal"){
     return <MinimalPortfolio portfolio={res.portfolio}/>
   }
-  else if (res.portfolio.template === "art"){
+  else if (res.portfolio.template === "business"){
     return <BusinessPortfolio portfolio={res.portfolio}/>
   }
   else {
