@@ -756,9 +756,7 @@ export default function PortfolioEditor(props) {
                             alignItems="center"
                             className={classes.page_photo}
                             style={{ backgroundImage:`url(${formal_page_photo})`,
-                                     backgroundRepeat: "no-repeat",
-
-                                }}>
+                                     backgroundRepeat: "no-repeat",backgroungSize: "cover"}}>
                         <InputBase className={classes.formal_title_input} 
                                   classes={{input: classes.inputCenter}}
                                   name="formal_page_title"

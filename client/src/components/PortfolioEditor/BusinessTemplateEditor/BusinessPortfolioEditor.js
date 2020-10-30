@@ -60,6 +60,8 @@ const useStyles = makeStyles((theme) => ({
     "font-family": "monospace, sans-serif",
   },
   introduction_input: {
+    width: "50%",
+    height: "50%",
     background: "transparent",
     '&:hover': {
       background: "#fafafa",
@@ -102,6 +104,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contact_content: {
     width: "fit-content",
+    "background-size": "cover",
   },
   contact_input: {
     width: (size) => (size.width * 0.195),
@@ -169,9 +172,15 @@ const useStyles = makeStyles((theme) => ({
     "font-size": "16px",
     "font-weight": "bold",
   },
-  home_page_photo: {
+  home_page_content: {
     padding: theme.spacing(1),    
     background: "rgb(39, 37, 37)",
+  },
+  home_page_photo: {
+    padding: theme.spacing(1),   
+    width: (size) => (size.width * 0.5),
+    height: (size) => (size.width * 0.3), 
+    "background-size": "cover",
   }
 }));
 
@@ -208,10 +217,12 @@ function a11yProps(index) {
 export default function PortfolioEditor(props) {
   // default background
   const defaultBackground1 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg";
-  const defaultBackground2 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604059253/rfw1ejngp2ctzrxdgg5s.jpg";
+  const defaultBackground2 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604073686/liwmmzagiilgvwutllsi.jpg";
 
  // text background
-  const defaultTextBackground = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+  const defaultTextBackground = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg";
+  const defaultIntroductionPhoto= "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557613/fmkeeuionhrx8gfnxh5l.png";
+
 
   const size = UseWindowSize();
   const classes = useStyles(size);
@@ -442,6 +453,25 @@ export default function PortfolioEditor(props) {
                     <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
                   </Grid>
                 </Grid>
+              </Grid> 
+
+              <Grid container item
+                  spacing={3}
+                  direction="column"
+                  justify="flex-start"
+                  alignItems="flex-start">
+                <Grid item theme={theme}>
+                    <MuiThemeProvider theme={resFont}><Typography>Change Introduction Background </Typography></MuiThemeProvider>
+                </Grid>
+
+                <Grid container item direction="row" spacing={1}>                  
+                  <Grid item>
+                    <img className={classes.img} src={defaultIntroductionPhoto} onClick={()=>setProfilePhoto(defaultIntroductionPhoto)} alt="Default" />
+                  </Grid>
+                  <Grid item>
+                    <UploadPicture uploadPicture={setProfilePhoto} height={size.width*0.06} width={size.width*0.06}/>
+                  </Grid>
+                </Grid>
               </Grid>            
 
               
@@ -471,10 +501,7 @@ export default function PortfolioEditor(props) {
                   </Grid>
                   <Grid item>
                     <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
-                  </Grid>
-                  <Grid item>
-                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
-                  </Grid>
+                  </Grid>                 
                 </Grid>
               </Grid>
 
@@ -488,7 +515,7 @@ export default function PortfolioEditor(props) {
 
                 <Grid container item direction="row" spacing={1}>                
                   <Grid item>
-                    <img className={classes.img} src={formalPage.textBackground} onClick={()=>setFormalTextBackground(formalPage.textBackground)} alt="Default" height={100} width={100} />
+                    <img className={classes.img} src={defaultTextBackground} onClick={()=>setFormalTextBackground(defaultTextBackground)} alt="Default" height={100} width={100} />
                   </Grid>  
                   <Grid item>
                     <UploadPicture uploadPicture={setFormalTextBackground} height={size.width*0.06} width={size.width*0.06}/>
@@ -521,10 +548,7 @@ export default function PortfolioEditor(props) {
                   </Grid>
                   <Grid item>
                     <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default"  />
-                  </Grid>
-                  <Grid item>
-                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
-                  </Grid>
+                  </Grid>                  
                 </Grid>   
               </Grid>                           
               
@@ -537,7 +561,7 @@ export default function PortfolioEditor(props) {
                 </Grid>
                 <Grid container item direction="row" spacing={1}>                  
                   <Grid item>
-                    <img className={classes.img} src={leisurePage.textBackground} onClick={()=>setLeisureTextBackground(leisurePage.textBackground)} alt="Default" />
+                    <img className={classes.img} src={defaultTextBackground} onClick={()=>setLeisureTextBackground(defaultTextBackground)} alt="Default" />
                   </Grid>  
                   <Grid item>
                     <UploadPicture uploadPicture={setLeisureTextBackground} height={size.width*0.06} width={size.width*0.06}/>
@@ -569,10 +593,7 @@ export default function PortfolioEditor(props) {
                   </Grid>
                   <Grid item>
                     <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
-                  </Grid>
-                  <Grid item>
-                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
-                  </Grid>
+                  </Grid>                  
                 </Grid>
               </Grid> 
 
@@ -585,7 +606,7 @@ export default function PortfolioEditor(props) {
                 </Grid>
                 <Grid container item direction="row" spacing={1} >
                   <Grid item>
-                    <img className={classes.img} src={contactPage.textBackground} onClick={()=>setContactTextBackground(contactPage.textBackground)} alt="Default" />
+                    <img className={classes.img} src={defaultTextBackground} onClick={()=>setContactTextBackground(defaultTextBackground)} alt="Default" />
                   </Grid>  
                   <Grid item>
                     <UploadPicture uploadPicture={setContactTextBackground} height={size.width*0.06} width={size.width*0.06}/>
@@ -701,15 +722,13 @@ export default function PortfolioEditor(props) {
                           alignItems="center"
                     >
 
-                      <Grid item className={classes.home_page_photo}>
-                        <UploadPicture uploadPicture={setProfilePhoto} 
-                                      pictureUrl={profile_photo_value}
-                                      onChange={compareEdge()}
-                                      width={smalleredge*1}
-                                      height={smalleredge*0.6}/>
-                      </Grid>
-
-                      <Grid item>
+                      <Grid item className={classes.home_page_content}>
+                        <Grid container item 
+                            justify="center"
+                            alignItems="center"
+                            className={classes.home_page_photo}
+                            style={{ backgroundImage:`url(${profile_photo_value})`,
+                            backgroundRepeat: "no-repeat",backgroungSize: "cover"}}>
                         <InputBase
                           multiline
                           fullWidth
@@ -719,11 +738,14 @@ export default function PortfolioEditor(props) {
                           id="introduction"
                           name="introduction"
                           label="introduction"
-                          inputProps={{style: {fontSize: 25}}}
+                          inputProps={{style: {fontSize: 20}}}
                           defaultValue={introduction_value}
                           onChange={event => setIntroduction(event.target.value)}
                         />
-                      </Grid>       
+                      </Grid>  
+                      </Grid>
+
+                           
                     </Grid>
                   </form>                 
                 </TabPanel>
