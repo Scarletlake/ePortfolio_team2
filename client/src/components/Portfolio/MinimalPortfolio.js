@@ -7,7 +7,7 @@ import PortfolioSection from '../../components/Portfolio/MinimalPortfolioSection
 
 export default function ArtTemplatePortfolioPage(props) {
 
-    const  portfolio  = props.portfolio;
+    const portfolio  = props.portfolio;
     const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526464/h1vr5pkcq7tmuof2qzar.png";
     const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
     const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";

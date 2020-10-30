@@ -95,7 +95,7 @@ export default function CreatePortfolioform(props) {
     portfolioName: "portfolio_name",
     template: props.temp,
     userName: user.firstName + " " + user.lastName,
-    backgroungImage: "",
+    backgroungImage: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png",
     homePage: {
       tag: "HOME",
       profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526464/h1vr5pkcq7tmuof2qzar.png",
@@ -203,10 +203,10 @@ export default function CreatePortfolioform(props) {
     return <ArtPortfolioEditor portfolio={defaultArtPortfolio} />
   }
   else if (props.temp === "minimal"){
-    return <ArtPortfolioEditor portfolio={defaultMinimalPortfolio} />
+    return <MinimalPortfolioEditor portfolio={defaultMinimalPortfolio} />
   }
   else if (props.temp === "business"){
-    return <MinimalPortfolioEditor portfolio={defaultBusinessPortfolio} />
+    return <BusinessPortfolioEditor portfolio={defaultBusinessPortfolio} />
   }
   else {
     return <ArtPortfolioEditor portfolio={defaultArtPortfolio} />

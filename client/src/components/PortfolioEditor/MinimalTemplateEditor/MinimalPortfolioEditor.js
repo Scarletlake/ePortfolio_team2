@@ -101,16 +101,17 @@ const useStyles = makeStyles((theme) => ({
     "background-size": "cover",
   },
   editor: {
-    //1:1
     width: "100%",
     height: "100%",
     paddingTop: 45,
     backgroundColor: "transparent"
   },
   editor_form: {
-    //1:1
     width: "fit-content",
     height:"fit_content"
+  },
+  portfolio_content: {
+    width: "100%",
   },
   text_background: {
     //width:100%
@@ -184,6 +185,15 @@ function a11yProps(index) {
 }
 
 export default function PortfolioEditor(props) {
+  // default background
+  const defaultBackground1 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
+  const defaultBackground2 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
+
+  const defaultFormalPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png";
+  const defaultLeisurePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602443847/wk4tyawn3posmcw9tq65.png";
+  const defaultTextBackground = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+
+
   const size = UseWindowSize();
   const classes = useStyles(size);
   const theme = useTheme();
@@ -407,13 +417,10 @@ export default function PortfolioEditor(props) {
 
                 <Grid container item direction="row" spacing={1}>                  
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground1} onClick={()=>setBackground(defaultBackground1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
-                  </Grid>
-                  <Grid item>
-                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
+                    <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
                   </Grid>
                 </Grid>
               </Grid>
@@ -439,14 +446,11 @@ export default function PortfolioEditor(props) {
                 </Grid>
                 <Grid container item direction="row" spacing={1}>                  
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground1} onClick={()=>setBackground(defaultBackground1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
-                  </Grid>
-                  <Grid item>
-                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
-                  </Grid>
+                    <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
+                  </Grid>                  
                 </Grid>
               </Grid>
 
@@ -506,14 +510,11 @@ export default function PortfolioEditor(props) {
               </Grid>
               <Grid container item direction="row" spacing={1} >                
                 <Grid item>
-                  <img className={classes.img}  src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                  <img className={classes.img}  src={defaultBackground1} onClick={()=>setBackground(defaultBackground1)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default"  />
-                </Grid>
-                <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
-                </Grid>
+                  <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default"  />
+                </Grid>                
               </Grid>
    
               </Grid>
@@ -572,10 +573,10 @@ export default function PortfolioEditor(props) {
                 </Grid>
                 <Grid container item direction="row" spacing={1} >
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground1} onClick={()=>setBackground(defaultBackground1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
                   </Grid>
                   <Grid item>
                     <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
@@ -608,10 +609,7 @@ export default function PortfolioEditor(props) {
 
               justify="center"
               alignItems="center">
-          <Paper className={classes.paper} 
-                style={{ backgroundImage:`url(${background_image})`, 
-                        backgroundRepeat: "no-repeat", 
-                        backgroungSize: "cover"}}>
+          <Paper className={classes.paper}>
             
             <Grid container 
                   spacing={5}
@@ -692,11 +690,14 @@ export default function PortfolioEditor(props) {
                   </Grid>                  
               </Grid>
               
-              <Grid className={classes.editor_form}
+              <Grid className={classes.portfolio_content}
                     container item
                     direction="column"
                     justify="center"
-                    alignItems="center">
+                    alignItems="center"
+                    style={{ backgroundImage:`url(${background_image})`, 
+                        backgroundRepeat: "no-repeat", 
+                        backgroungSize: "cover"}}>
 
                 {/* Home page editor */}
                 <TabPanel value={value} index={0}>              
@@ -834,8 +835,8 @@ export default function PortfolioEditor(props) {
                               >
                           <UploadPicture uploadPicture={setContactPhoto} 
                                         pictureUrl={contact_page_photo}
-                                         width={smalleredge*0.36}
-                                         height={smalleredge*0.36*7/5}/>
+                                         width={smalleredge*0.5}
+                                         height={smalleredge*0.5}/>
                         </Grid>
                         
                         <Grid container item
