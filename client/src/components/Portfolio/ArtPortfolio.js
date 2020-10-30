@@ -66,7 +66,10 @@ export default function ArtPortfolio(props) {
 
   return (
     <div className='PageContainer'>
-      <img className='PortfolioBackgroundImg' src={defaultBackgroundPhoto}/>
+      {portfolio.backgroundImage?
+        <img className='PortfolioBackgroundImg' src={portfolio.backgroundImage}/>:
+        <img className='PortfolioBackgroundImg' src={defaultBackgroundPhoto}/>
+      }      
       <div className='PortfolioForm TextCenter VerticalAlign PortfolioBackgroundWrap'>
         <div className='PortfolioFullName'> {portfolio.userName} </div>
         <div className='PortfolioHeader'>
@@ -113,7 +116,7 @@ export default function ArtPortfolio(props) {
             <div className='PortfolioText PortfolioTitle'>{portfolio.formalPage.title}</div>  
           </div>
 
-          <ArtPortfolioSection sections={portfolio.formalPage.sections} />
+          <ArtPortfolioSection sectionsTextBackround={portfolio.formalPage.textBackground} sections={portfolio.formalPage.sections} />
         </div>
         </TabPanel>
 
@@ -128,7 +131,7 @@ export default function ArtPortfolio(props) {
             }   
             <div className='PortfolioText PortfolioTitle'>{portfolio.leisurePage.title}</div>  
           </div>
-          <ArtPortfolioSection sections={portfolio.leisurePage.sections} />
+          <ArtPortfolioSection sectionsTextBackround={portfolio.leisurePage.textBackground} sections={portfolio.leisurePage.sections} />
         </div>
         </TabPanel>
 
@@ -143,7 +146,11 @@ export default function ArtPortfolio(props) {
          
           <div className='VerticalAlign'>
             <div className='ContactContainer'>
-              <img className='PortfolioContactImg' src={defaultDescPhoto}/>
+              {portfolio.contactPage.textBackground?
+                <img className='PortfolioContactImg' src={portfolio.contactPage.textBackground}/> :           
+                <img className='PortfolioContactImg' src={defaultDescPhoto}/>
+              }
+              
               <div>
                 <div className='ContactTitle'>{portfolio.contactPage.title}</div>
                 <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
