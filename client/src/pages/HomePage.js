@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState }from 'react';
 import PortfolioList from '../components/App/PortfolioList'
 import { useUserPortfolio} from '../api/userAPI'
 import Button from '@material-ui/core/Button';
@@ -31,6 +31,7 @@ export default function HomePage (){
     }
     
     const {portfolios} = res;
+    const [portfolio_list, setPortfolioList] = portfolios
     
     return (
       <div className='PageContainer'>
@@ -39,12 +40,14 @@ export default function HomePage (){
             <PortfolioList portfolios={portfolios} />
           </div>
 
-          <br/>
-          <div className='SignSubmit'>
-            <Button variant="contained" color="primary" href="/portfolio/template">
-            Create a new portfolio
-            </Button>
-          </div>
-        </div>
+    
+          {portfolio_list ?
+            <div className='SignSubmit'>
+                <Button variant="contained" color="primary" href="/portfolio/template">
+                Create a new portfolio
+                </Button>
+            </div> : <div> </div>
+          }
+      </div>
     )
 }
