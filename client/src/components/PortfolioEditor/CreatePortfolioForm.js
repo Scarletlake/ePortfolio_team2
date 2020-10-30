@@ -151,7 +151,7 @@ export default function CreatePortfolioform(props) {
     portfolioName: "portfolio_name",
     template: props.temp,
     userName: user.firstName + " " + user.lastName,
-    backgroungImage: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg",
+    backgroundImage: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg",
     homePage: {
       tag: "HOME",
       profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557613/fmkeeuionhrx8gfnxh5l.png",
@@ -161,6 +161,7 @@ export default function CreatePortfolioform(props) {
       tag: "About",
       title: "ABOUT ME",
       pagePhoto: "",
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg",
       sections: [{
         id: "0",
         sectionTitle: "EXPERIENCE",
@@ -178,6 +179,7 @@ export default function CreatePortfolioform(props) {
       tag: "LEISURE",
       title: "Free Time",
       pagePhoto: '',
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg",
       sections: [{
         id: "0",
         sectionTitle: "SKILLS",
@@ -196,7 +198,8 @@ export default function CreatePortfolioform(props) {
       title: "Contact Me",
       email: user.email,
       phone: user.phone,
-      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557688/snd6vsb4cihgwjrd2x7j.png"
+      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557688/snd6vsb4cihgwjrd2x7j.png",
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg",
     }
   }
 
@@ -211,6 +214,6 @@ export default function CreatePortfolioform(props) {
     return <BusinessPortfolioEditor portfolio={defaultBusinessPortfolio} />
   }
   else {
-    return <ArtPortfolioEditor portfolio={defaultArtPortfolio} />
+    return <MinimalPortfolioEditor portfolio={defaultMinimalPortfolio} />
   }
 }

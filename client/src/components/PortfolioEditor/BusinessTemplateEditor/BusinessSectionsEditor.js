@@ -1,11 +1,20 @@
 import React , { Component  } from 'react'
 import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
 import SectionEditor from './BusinessSectionEditor';
 
+const styles = (theme) => ({
+    icon: {
+        color: "white",        
+    },
+    sections: {
+        background: "rgb(39, 37, 37)",
+    },
+})
 
-export default class SectionsEditor extends Component {
+class SectionsEditor extends Component {
 
     state = {
         sections: this.props.sections,
@@ -61,14 +70,17 @@ export default class SectionsEditor extends Component {
     }
 
     render() {
+        const { classes } = this.props;
+
         return (
-            <Grid
-                container
+            <Grid container
+                spacing={3}
                 direction="column"
                 justify="center"
                 alignItems="center">
     
                 <Grid container item
+                    className={classes.sections}
                     direction="column"
                     justify="center"
                     alignItems="center">
@@ -86,11 +98,12 @@ export default class SectionsEditor extends Component {
                     }
                 </Grid>
     
-                <Grid>             
-                    <Icon onClick={this.addOne} >add_circle</Icon>      
+                <Grid item>             
+                    <Icon className={classes.icon} onClick={this.addOne} >add_circle</Icon>      
                 </Grid>
     
             </Grid>
             )
     }
 }
+export default withStyles(styles)(SectionsEditor);

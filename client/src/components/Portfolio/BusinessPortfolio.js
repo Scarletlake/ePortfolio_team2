@@ -7,7 +7,7 @@ import PortfolioSection from '../../components/Portfolio/BusinessPortfolioSectio
 
 export default function TemplateBusinessPortfolioPage(props) {
 
-    const  portfolio  = props.portfolio;
+    const portfolio  = props.portfolio;
     const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602528379/uauqeyyjvqcofbltokwg.png";
     const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg";
     const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg";

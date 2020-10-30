@@ -15,9 +15,7 @@ const styles = (theme) => ({
     },
     section: {
 
-        paddingTop: theme.spacing(1),
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
+        padding: theme.spacing(0.5),        
         background: "transparent",
     },
     content: {
@@ -36,13 +34,15 @@ const styles = (theme) => ({
             height:"100%"
         },
         [theme.breakpoints.up('lg')]: {
-            width:440,
+            width:500,
             height:"100%"
         },
 
+        color: "white",
         background: "#transparent",
         '&:hover': {
-          background: "#f1f1f1",
+            color: "black",
+            background: "#f1f1f1",
         },
         "font-family": "Arial, Helvetica, sans-serif"
     },
@@ -60,6 +60,7 @@ const styles = (theme) => ({
         height: 'fit-content',
     },
     icon: {
+        color: "white",
         position: "absolute",
     },
   });

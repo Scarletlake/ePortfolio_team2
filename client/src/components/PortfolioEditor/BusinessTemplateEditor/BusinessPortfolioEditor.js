@@ -44,14 +44,19 @@ const useStyles = makeStyles((theme) => ({
     width: '18%',
     padding: theme.spacing(3),
   },
+  icon: {
+    color: "white"
+  },
   inputCenter: {
     textAlign: 'center',
   },
   username_input: {
     background: "transparent",
     '&:hover': {
-      background: "#fafafa",
+      color: "black",
+      background: "#f1f1f1",
     },
+    color: "white",
     "font-family": "monospace, sans-serif",
   },
   introduction_input: {
@@ -62,26 +67,37 @@ const useStyles = makeStyles((theme) => ({
   },
   formal_title_input: {
     background: "transparent",
+    color: "white",
     '&:hover': {
+      color: "black",
       background: "#fafafa",
     },
     "font-family": "monospace, sans-serif",
   },
   leisure_title_input: {
     background: "transparent",
+    color: "white",
     '&:hover': {
+      color: "black",
       background: "#fafafa",
     },
     "font-family": "monospace, sans-serif",
   },
   contact_title_input: {
     background: "transparent",
+    color: "white",
     '&:hover': {
+      color: "black",
       background: "#fafafa",
     },
     "font-family": "monospace, sans-serif",
   },
   contact_detail:{
+    color: "white",
+    '&:hover': {
+      color: "black",
+      background: "#fafafa",
+    },
     "font-family": "monospace, sans-serif",
   },
   contact_content: {
@@ -143,14 +159,20 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     //1:1
+    "border-style": "outset",
     width: (size) => (size.width * 0.06),
     height: (size) => (size.width * 0.06),
   },
   tabs_font: {
+    color: "white",
     "font-family": "monospace, sans-serif",
     "font-size": "16px",
     "font-weight": "bold",
   },
+  home_page_photo: {
+    padding: theme.spacing(1),    
+    background: "rgb(39, 37, 37)",
+  }
 }));
 
 function TabPanel(props) {
@@ -184,6 +206,13 @@ function a11yProps(index) {
 }
 
 export default function PortfolioEditor(props) {
+  // default background
+  const defaultBackground1 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg";
+  const defaultBackground2 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604059253/rfw1ejngp2ctzrxdgg5s.jpg";
+
+ // text background
+  const defaultTextBackground = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+
   const size = UseWindowSize();
   const classes = useStyles(size);
   const theme = useTheme();
@@ -407,16 +436,15 @@ export default function PortfolioEditor(props) {
 
                 <Grid container item direction="row" spacing={1}>                  
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground1} onClick={()=>setBackground(defaultBackground1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
-                  </Grid>
-                  <Grid item>
-                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
+                    <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
                   </Grid>
                 </Grid>
-              </Grid>
+              </Grid>            
+
+              
             </Grid>):null
           }
           {value === 1?
@@ -439,30 +467,13 @@ export default function PortfolioEditor(props) {
                 </Grid>
                 <Grid container item direction="row" spacing={1}>                  
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground1} onClick={()=>setBackground(defaultBackground1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
                   </Grid>
                   <Grid item>
                     <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <Grid container item spacing={3}
-                  direction="column"
-                  justify="flex-start"
-                  alignItems="flex-start">
-                <Grid item>
-                    <MuiThemeProvider theme={resFont}><Typography>Change Title Background</Typography></MuiThemeProvider>
-                </Grid>
-                <Grid container item direction="row" spacing={1}>                  
-                  <Grid item>
-                    <img className={classes.img} src={formalPage.pagePhoto} onClick={()=>setFormalPhoto(formalPage.pagePhoto)} alt="Default" />
-                  </Grid>
-                  <Grid item>
-                    <UploadPicture uploadPicture={setFormalPhoto} height={size.width*0.06} width={size.width*0.06}/>
                   </Grid>
                 </Grid>
               </Grid>
@@ -501,39 +512,21 @@ export default function PortfolioEditor(props) {
                   direction="column"
                   justify="flex-start"
                   alignItems="flex-start">
-              <Grid item>
-                  <MuiThemeProvider theme={resFont}><Typography>Change Background</Typography></MuiThemeProvider>
-              </Grid>
-              <Grid container item direction="row" spacing={1} >                
                 <Grid item>
-                  <img className={classes.img}  src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <MuiThemeProvider theme={resFont}><Typography>Change Background</Typography></MuiThemeProvider>
                 </Grid>
-                <Grid item>
-                  <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default"  />
-                </Grid>
-                <Grid item>
-                  <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
-                </Grid>
-              </Grid>
-   
-              </Grid>
-              
-              <Grid container item spacing={3}
-                  direction="column"
-                  justify="flex-start"
-                  alignItems="flex-start">
-                <Grid item>
-                    <MuiThemeProvider theme={resFont}><Typography>Change Title Background</Typography></MuiThemeProvider>
-                </Grid>
-                <Grid container item direction="row" spacing={1}>                  
+                <Grid container item direction="row" spacing={1} >                
                   <Grid item>
-                    <img className={classes.img} src={leisurePage.pagePhoto} onClick={()=>setLeisurePhoto(leisurePage.pagePhoto)} alt="Default" />
+                    <img className={classes.img}  src={defaultBackground1} onClick={()=>setBackground(defaultBackground1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <UploadPicture uploadPicture={setLeisurePhoto} height={size.width*0.06} width={size.width*0.06}/>
+                    <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default"  />
                   </Grid>
-                </Grid>
-              </Grid>
+                  <Grid item>
+                    <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
+                  </Grid>
+                </Grid>   
+              </Grid>                           
               
               <Grid container item spacing={3}
                   direction="column"
@@ -572,10 +565,10 @@ export default function PortfolioEditor(props) {
                 </Grid>
                 <Grid container item direction="row" spacing={1} >
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground1} onClick={()=>setBackground(defaultBackground1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={backgroundImage} onClick={()=>setBackground(backgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackground2} onClick={()=>setBackground(defaultBackground2)} alt="Default" />
                   </Grid>
                   <Grid item>
                     <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
@@ -628,7 +621,7 @@ export default function PortfolioEditor(props) {
                         direction="column"
                         justify="center"
                         alignItems="center">
-                        <Grid item
+                        <Grid container item
                               justify="center"
                               alignItems="center">
                           <InputBase className={classes.username_input}
@@ -639,7 +632,7 @@ export default function PortfolioEditor(props) {
                                   onChange={event=> setUserName(event.target.value)}/>
                         </Grid>
 
-                    <Grid item
+                    <Grid item container
                           justify="center"
                           alignItems="center">
                         <Grid container item 
@@ -663,7 +656,7 @@ export default function PortfolioEditor(props) {
                             ):
                             (
                               <Grid container
-                                    alignItems="center"z
+                                    alignItems="center"
                                     direction="row"
                                     justify="center">
                               <Tabs
@@ -708,12 +701,12 @@ export default function PortfolioEditor(props) {
                           alignItems="center"
                     >
 
-                      <Grid item>
+                      <Grid item className={classes.home_page_photo}>
                         <UploadPicture uploadPicture={setProfilePhoto} 
                                       pictureUrl={profile_photo_value}
                                       onChange={compareEdge()}
-                                      width={smalleredge*0.4}
-                                      height={smalleredge*0.4}/>
+                                      width={smalleredge*1}
+                                      height={smalleredge*0.6}/>
                       </Grid>
 
                       <Grid item>
@@ -726,8 +719,6 @@ export default function PortfolioEditor(props) {
                           id="introduction"
                           name="introduction"
                           label="introduction"
-                          justify="center"
-                          alignItems="center"
                           inputProps={{style: {fontSize: 25}}}
                           defaultValue={introduction_value}
                           onChange={event => setIntroduction(event.target.value)}
@@ -741,18 +732,13 @@ export default function PortfolioEditor(props) {
                 <TabPanel value={value} index={1} dir={theme.direction}>
                   <form noValidate autoComplete="off" className={classes.field_root}>
                     <Grid container
-                          spacing={0}
+                          spacing={5}
                           direction="column"
                           justify="center"
                           alignItems="center">
                       <Grid container item 
                             justify="center"
-                            alignItems="center"
-                            className={classes.page_photo}
-                            style={{ backgroundImage:`url(${formal_page_photo})`,
-                                     backgroundRepeat: "no-repeat",
-
-                                }}>
+                            alignItems="center">
                         <InputBase className={classes.formal_title_input} 
                                   classes={{input: classes.inputCenter}}
                                   name="formal_page_title"
@@ -785,9 +771,7 @@ export default function PortfolioEditor(props) {
                           alignItems="center">
                       <Grid container item 
                             justify="center"
-                            alignItems="center"
-                            className={classes.page_photo} 
-                            style={{ backgroundImage:`url(${leisure_page_photo})`}} >
+                            alignItems="center">
                       
                         <InputBase className={classes.leisure_title_input} 
                                       classes={{input: classes.inputCenter}}
@@ -856,7 +840,7 @@ export default function PortfolioEditor(props) {
                           </Grid>
 
                           <Grid item>
-                            <TextField fullWidth className={classes.contact_detail}     
+                            <InputBase fullWidth className={classes.contact_detail}     
                             id="email"
                             name="email"
                             label="Email"
@@ -868,7 +852,7 @@ export default function PortfolioEditor(props) {
                           </Grid>
 
                           <Grid item>
-                          <TextField fullWidth className={classes.contact_detail}     
+                          <InputBase fullWidth className={classes.contact_detail}     
                             id="phone"
                             name="phone"
                             label="Phone"

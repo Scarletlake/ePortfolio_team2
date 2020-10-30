@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   input: {
+    color: "white",
     "font-family": "monospace, sans-serif",
     "font-size": "16px",
     "font-weight": "bold",

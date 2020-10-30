@@ -62,8 +62,8 @@ export default class SectionsEditor extends Component {
 
     render() {
         return (
-            <Grid
-                container
+            <Grid container
+                spacing={3}
                 direction="column"
                 justify="center"
                 alignItems="center">
@@ -86,7 +86,7 @@ export default class SectionsEditor extends Component {
                     }
                 </Grid>
     
-                <Grid>             
+                <Grid item>             
                     <Icon onClick={this.addOne} >add_circle</Icon>      
                 </Grid>
     
