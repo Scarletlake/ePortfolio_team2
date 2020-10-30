@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { createPortfolio, updatePortfolio } from '../../../api/portfolioAPI';
-import ArtPortfolioHeaderEditor from './ArtPortfolioHeaderEditor';
+import PortfolioHeaderEditor from './ArtPortfolioHeaderEditor';
 import UploadPicture from '../UploadPicture';
-import ArtSectionsEditor from './ArtSectionsEditor';
+import SectionsEditor from './ArtSectionsEditor';
 import PortfolioEditorBar from '../PortfolioEditorBar'
 import Icon from '@material-ui/core/Icon';
 import InputBase from '@material-ui/core/InputBase';
@@ -183,7 +183,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ArtPortfolioEditor(props) {
+export default function PortfolioEditor(props) {
   const size = UseWindowSize();
   const classes = useStyles(size);
   const theme = useTheme();
@@ -654,7 +654,7 @@ export default function ArtPortfolioEditor(props) {
                               alignItems="center"
                               direction="row"
                               justify="center">
-                               <ArtPortfolioHeaderEditor
+                               <PortfolioHeaderEditor
                                           homePageTab={home_page_tag} changeHomePageTab={changeHomePageTab}
                                           formalPageTab={formal_page_tag} changeFormalPageTab={changeFormalPageTab}
                                           leisurePageTab={leisure_page_tag} changeLeisurePageTab={changeLeisurePageTab}
@@ -763,7 +763,7 @@ export default function ArtPortfolioEditor(props) {
                       </Grid>
 
                       <Grid item>
-                        <ArtSectionsEditor sections={formal_page_sections}
+                        <SectionsEditor sections={formal_page_sections}
                                           sectionBackground={formal_text_background} 
                                           onChange={setFormalPageSections}
                                           photoHeight={size.width*0.3*(5/6)}
@@ -801,7 +801,7 @@ export default function ArtPortfolioEditor(props) {
                       <Grid item
                             justify="center"
                             alignItems="center">
-                        <ArtSectionsEditor sections={leisure_page_sections} 
+                        <SectionsEditor sections={leisure_page_sections} 
                                           sectionBackground={leisure_text_background} 
                                           onChange={setLeisurePageSections}
                                            photoHeight={size.width*0.3*(5/6)}

@@ -2,7 +2,7 @@ import React , { Component  } from 'react'
 import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
 
-import SectionEditor from './ArtSectionEditor';
+import SectionEditor from './BusinessSectionEditor';
 
 
 export default class SectionsEditor extends Component {

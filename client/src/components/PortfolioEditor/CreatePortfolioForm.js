@@ -1,8 +1,8 @@
 import React from 'react'
 import { useUserProfile } from "../../api/userAPI"
 import ArtPortfolioEditor from "./ArtTemplateEditor/ArtPortfolioEditor";
-//import MinimalPortfolioEditor from "./MinimalTemplateEditor/MinimalPortfolioEditor";
-//import BusinessPortfolioEditor from "./BusinsessTemplateEditor/BusinessPortfolioEditor";
+import MinimalPortfolioEditor from "./MinimalTemplateEditor/MinimalPortfolioEditor";
+import BusinessPortfolioEditor from "./BusinessTemplateEditor/BusinessPortfolioEditor";
 import {makeStyles} from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles((theme) => ({
@@ -206,7 +206,7 @@ export default function CreatePortfolioform(props) {
     return <ArtPortfolioEditor portfolio={defaultMinimalPortfolio} />
   }
   else if (props.temp === "business"){
-    return <ArtPortfolioEditor portfolio={defaultBusinessPortfolio} />
+    return <MinimalPortfolioEditor portfolio={defaultBusinessPortfolio} />
   }
   else {
     return <ArtPortfolioEditor portfolio={defaultArtPortfolio} />
