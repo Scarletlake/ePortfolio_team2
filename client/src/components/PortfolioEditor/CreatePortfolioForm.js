@@ -84,7 +84,6 @@ export default function CreatePortfolioform(props) {
       title: "Contact Me",
       email: user.email,
       phone: user.phone,
-      //photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg",
       photo: user.avatar,
       textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",
     }
@@ -95,7 +94,7 @@ export default function CreatePortfolioform(props) {
     portfolioName: "portfolio_name",
     template: props.temp,
     userName: user.firstName + " " + user.lastName,
-    backgroungImage: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png",
+    backgroundImage: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604059520/vn2lhtgguax4x9u6c7mh.jpg",
     homePage: {
       tag: "HOME",
       profilePhoto: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526464/h1vr5pkcq7tmuof2qzar.png",
@@ -105,6 +104,7 @@ export default function CreatePortfolioform(props) {
       tag: "About",
       title: "ABOUT ME",
       pagePhoto: "",
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",
       sections: [{
         id: "0",
         sectionTitle: "UNIVERSITY",
@@ -122,6 +122,7 @@ export default function CreatePortfolioform(props) {
       tag: "LEISURE",
       title: "Free Time",
       pagePhoto: '',
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",
       sections: [{
         id: "0",
         sectionTitle: "MUSIC",
@@ -140,7 +141,8 @@ export default function CreatePortfolioform(props) {
       title: "Contact Me",
       email: user.email,
       phone: user.phone,
-      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527938/zsmjqjvssdm5ivt78bqw.jpg"
+      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527938/zsmjqjvssdm5ivt78bqw.jpg",
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png"
     }
   }
 

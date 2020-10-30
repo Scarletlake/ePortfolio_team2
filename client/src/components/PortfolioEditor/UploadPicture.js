@@ -25,9 +25,36 @@ export default function UploadPicture(props) {
             width: props.width,
             height: props.height,
             display: "block",
-            "object-fit": "cover"
+            "object-fit": "cover",
         },
-        overlay: {
+        overlay: {            
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            opacity: 0.5,
+            transition: "1.5s ease",
+            background: "#008CBA"
+        }
+          
+    }));
+
+    const useCircularStyles = makeStyles((theme) => ({
+        root: {
+            width: props.width,
+            height: props.height,
+            "border-radius": "50%",
+            background: "#f1f1f1"
+        },
+        pic: {
+            position: "absolute",
+            width: props.width,
+            height: props.height,
+            display: "block",
+            "object-fit": "cover",
+            "border-radius": "50%"
+        },
+        overlay: {  
+            "border-radius": "50%",          
             position: "absolute",
             height: "100%",
             width: "100%",
@@ -39,6 +66,7 @@ export default function UploadPicture(props) {
     }));
 
     const classes = useStyles();
+    const classesCircular = useCircularStyles();
 
     const [isHover, setIsHover] = useState(false);
     const [pictureUrl, setPictureUrl] = useState(props.pictureUrl);
@@ -54,7 +82,7 @@ export default function UploadPicture(props) {
                     console.error(err);
                 }
                 //setPictureUrl(response.body.url);
-                //console.log(pictureUrl);
+                console.log(response.body.url);
                 props.uploadPicture(response.body.url);
             });
         });
@@ -69,7 +97,35 @@ export default function UploadPicture(props) {
 
     return (
         <FormControl>
-            <div {...getRootProps()} className={classes.root} 
+            {props.circular === "true"?
+            (<div {...getRootProps()} className={classesCircular.root} 
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}>
+                <input {...getInputProps()} />
+                {pictureUrl?
+                    (
+                        <div>
+                            <img src={pictureUrl} alt="Default" className={classesCircular.pic} />
+                        </div>
+                    ):
+                    null                          
+                }
+            
+                <div>
+                    {isHover?
+                        (<Grid container item   
+                            className={classesCircular.overlay}    
+                            direction="column"
+                            justify="center"
+                            alignItems="center">
+                            <p>Click to add the picture</p>     
+                        </Grid>): 
+                        null
+                    } 
+                </div>
+            </div>):
+
+            (<div {...getRootProps()} className={classes.root} 
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}>
                 <input {...getInputProps()} />
@@ -81,7 +137,7 @@ export default function UploadPicture(props) {
                     ):
                     null                          
                 }
-               
+            
                 <div>
                     {isHover?
                         (<Grid container item   
@@ -93,8 +149,10 @@ export default function UploadPicture(props) {
                         </Grid>): 
                         null
                     } 
-                    </div>
-            </div>
+                </div>
+            </div>)
+            }
+            
         </FormControl>
     );
 }

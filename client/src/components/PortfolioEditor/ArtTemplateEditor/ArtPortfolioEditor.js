@@ -143,6 +143,7 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     //1:1
+    "border-style": "outset",
     width: (size) => (size.width * 0.06),
     height: (size) => (size.width * 0.06),
   },
@@ -717,7 +718,7 @@ export default function PortfolioEditor(props) {
                         <UploadPicture uploadPicture={setProfilePhoto} 
                                       pictureUrl={profile_photo_value}
                                       onChange={compareEdge()}
-                                      width={smalleredge*0.4}
+                                      width={smalleredge*1}
                                       height={smalleredge*0.4}/>
                       </Grid>
 
