@@ -134,7 +134,7 @@ export default function LandingPage() {
             <Grid id="team" container style={{ marginTop: 20 }} >
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="heitong" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="HeitongChan.jpg" alt="heitong" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">HeiTong Chan</Typography></Grid>
               </Grid>
 
@@ -144,7 +144,7 @@ export default function LandingPage() {
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="jielin" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="/JielinZheng.jpg" alt="jielin" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Jielin Zheng</Typography></Grid>
               </Grid>
 
@@ -163,6 +163,7 @@ export default function LandingPage() {
               <Grid item xs={2}></Grid>
 
             </Grid>
+
           </div>
         </div>
 

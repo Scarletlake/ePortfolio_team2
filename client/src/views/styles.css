@@ -81,15 +81,15 @@
 /*Landing*/
 .Landing {
     width: 800px;
-    margin-top: 20%;
+    margin-top: 18%;
     text-align: center;
-    margin-bottom: 20%;
+    margin-bottom: 18%;
 }
 
 
 /*footer.js*/
 .Footer {
-    height: 3.5rem;
+    height: 4.5rem;
     width: 100%;
     bottom: 0;
     position: static;

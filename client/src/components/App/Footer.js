@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import {Grid} from "@material-ui/core";
 
 function Copyright() {
   return (
@@ -25,6 +26,9 @@ export default function StickyFooter() {
       <footer className='FooterRoot'>
         <Container maxWidth="sm">
           <Typography variant="body1"> E-Portfolio | This website is developed by Panda</Typography>
+            <Typography  variant="body1">
+                コロナに負けない &nbsp;不要输给新冠病毒 &nbsp;Don't lose to coronavirus
+            </Typography>
           <Copyright />
         </Container>
       </footer>
