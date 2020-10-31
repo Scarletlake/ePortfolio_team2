@@ -48,6 +48,25 @@ export default function PortfolioList (props) {
         const editor_url = "/portfolio/editor?temp="+template+"&id="+portfolioID;
         
         function copyToClipboard() {
+            if (typeof(navigator.clipboard)=='undefined') {
+                console.log('navigator.clipboard');
+                var textArea = document.createElement("textarea");
+                textArea.value = portfolioURL;
+                textArea.style.position="fixed"; 
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+            
+                try {
+                    document.execCommand('copy');                   
+                } catch (err) {
+                    console.log('unable to copy');
+                }
+            
+                document.body.removeChild(textArea)            
+                return;
+            }
+
             navigator.clipboard.writeText(portfolioURL);
         }
 
