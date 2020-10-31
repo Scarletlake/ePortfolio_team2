@@ -216,7 +216,7 @@ function a11yProps(index) {
 
 export default function PortfolioEditor(props) {
   // default background
-  const defaultBackground1 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg";
+  const defaultBackground1 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604108023/lclxqkxtatp81bmkawdg.jpg";
   const defaultBackground2 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604073686/liwmmzagiilgvwutllsi.jpg";
 
  // text background

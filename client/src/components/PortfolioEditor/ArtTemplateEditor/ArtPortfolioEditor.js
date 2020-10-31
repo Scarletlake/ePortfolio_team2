@@ -193,7 +193,8 @@ function a11yProps(index) {
 }
 
 export default function PortfolioEditor(props) {
-  const defaultBackgroundImage = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
+  const defaultBackgroundImage1 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604108666/sjkfvqapldxrxuiw8lph.jpg";
+  const defaultBackgroundImage2 = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
   const defaultFormalPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png";
   const defaultLeisurePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602443847/wk4tyawn3posmcw9tq65.png";
   const defaultTextBackground = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
@@ -422,10 +423,10 @@ export default function PortfolioEditor(props) {
 
                 <Grid container item direction="row" spacing={1}>                  
                   <Grid item>
-                    <img className={classes.img} src={defaultBackgroundImage} onClick={()=>setBackground(defaultBackgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackgroundImage1} onClick={()=>setBackground(defaultBackgroundImage1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={defaultBackgroundImage} onClick={()=>setBackground(defaultBackgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackgroundImage2} onClick={()=>setBackground(defaultBackgroundImage2)} alt="Default" />
                   </Grid>
                   <Grid item>
                     <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
@@ -474,10 +475,10 @@ export default function PortfolioEditor(props) {
                 </Grid>
                 <Grid container item direction="row" spacing={1}>                  
                   <Grid item>
-                    <img className={classes.img} src={defaultBackgroundImage} onClick={()=>setBackground(defaultBackgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackgroundImage1} onClick={()=>setBackground(defaultBackgroundImage1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={defaultBackgroundImage} onClick={()=>setBackground(defaultBackgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackgroundImage2} onClick={()=>setBackground(defaultBackgroundImage2)} alt="Default" />
                   </Grid>
                   <Grid item>
                     <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
@@ -541,10 +542,10 @@ export default function PortfolioEditor(props) {
               </Grid>
               <Grid container item direction="row" spacing={1} >                
                 <Grid item>
-                  <img className={classes.img}  src={defaultBackgroundImage} onClick={()=>setBackground(defaultBackgroundImage)} alt="Default" />
+                  <img className={classes.img}  src={defaultBackgroundImage1} onClick={()=>setBackground(defaultBackgroundImage1)} alt="Default" />
                 </Grid>
                 <Grid item>
-                  <img className={classes.img} src={defaultBackgroundImage} onClick={()=>setBackground(defaultBackgroundImage)} alt="Default"  />
+                  <img className={classes.img} src={defaultBackgroundImage2} onClick={()=>setBackground(defaultBackgroundImage2)} alt="Default"  />
                 </Grid>
                 <Grid item>
                   <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
@@ -607,10 +608,10 @@ export default function PortfolioEditor(props) {
                 </Grid>
                 <Grid container item direction="row" spacing={1} >
                   <Grid item>
-                    <img className={classes.img} src={defaultBackgroundImage} onClick={()=>setBackground(defaultBackgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackgroundImage1} onClick={()=>setBackground(defaultBackgroundImage1)} alt="Default" />
                   </Grid>
                   <Grid item>
-                    <img className={classes.img} src={defaultBackgroundImage} onClick={()=>setBackground(defaultBackgroundImage)} alt="Default" />
+                    <img className={classes.img} src={defaultBackgroundImage2} onClick={()=>setBackground(defaultBackgroundImage2)} alt="Default" />
                   </Grid>
                   <Grid item>
                     <UploadPicture uploadPicture={setBackground} height={size.width*0.06} width={size.width*0.06}/>
