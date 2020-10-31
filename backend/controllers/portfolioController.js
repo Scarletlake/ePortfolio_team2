@@ -3,8 +3,6 @@ const Portfolio = require('../models/Portfolio');
 const User = require('../models/User');
 
 
-
-
 // Get portfolio
 const getPortfolio = async (req, res) => {
   try {
@@ -75,6 +73,7 @@ const createPortfolio = async (req, res) => {
     await portfolio.save();
 
     return res.status(200).json({
+      id: portfolio._id,
       portfolioURL: portfolio.portfolioURL
     });
   } catch (err) {
