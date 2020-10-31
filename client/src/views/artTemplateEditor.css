@@ -86,7 +86,7 @@
 .ContactTitle {
     position: absolute;
     top: 45%;
-    left: 28%;
+    left: 35%;
     transform: translate(-50%, -50%);
     font-family: monospace, sans-serif;
     font-size: 3vh;
@@ -95,10 +95,9 @@
 .ContactDesc {
     position: absolute;
     top: 55%;
-    left: 25%;
+    left: 35%;
     transform: translate(-50%, -50%);
     font-family: monospace, sans-serif;
-    font-size: 20px;
 }
 
 
