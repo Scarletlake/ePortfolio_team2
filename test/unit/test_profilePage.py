@@ -27,8 +27,6 @@ class TestProfile(unittest.TestCase):
         self.driver.get("http://localhost:3000/user/profile")
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-label").click()
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-containedPrimary > .MuiButton-label").click()
-        time.sleep(1)
-        assert driver.switch_to.alert.text == "Updated"
 
     def teardown(self):
        self.driver.quit()

@@ -1,10 +1,21 @@
 /*HomePage*/
 .FixedHeightContainer {
     overflow-y: scroll;
-    width: 1000px;
-    height: 700px;
-    background: #fff;
-    padding-top: 15px;
+    width: 70vw;
+    max-height: 70vh;
+    background-color: rgb(223, 232, 241);
+    padding: 15px;
+}
+
+.HomePageSectionTitle {
+    margin-top: 10vh;
+    margin-left: 5vh;
+    display: flex;
+}
+
+.HomePageSection {
+    margin: 5vh;
+    display: flex;
 }
 
 .PortfolioContainer {
@@ -13,7 +24,7 @@
 
 /*LandingPage*/
 .LandingBlock {
-    margin-top: 40%;
+    margin-top: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,18 +33,17 @@
 
 /*All pages (for footer position)*/
 .ContentWrap {
-    padding-bottom: 3.5rem;
+    padding-bottom: 3.5rem; 
 
 }
 
 .PageContainer {
-    position: sticky;
-    max-height: calc(100vh - 10rem);
+    position: relative;
     max-width: 100%;
-    
+    min-height: calc(100vh - 7rem);
 }
 
-/*signin and signup styles*/
+/*signin and signup*/
 .SignBlock {
     display: flex;
     flex-direction: column;
@@ -70,21 +80,23 @@
 
 /*Landing*/
 .Landing {
-    width: 50%;
-    margin-top: 20vh;
+    width: 800px;
+    margin-top: 18%;
     text-align: center;
-    margin: 20px;
+    margin-bottom: 18%;
 }
 
 
 /*footer.js*/
 .Footer {
-    height: 3.5rem;
+    height: 4.5rem;
     width: 100%;
     bottom: 0;
-    position: absolute;
+    position: static;
     background: #D9D4D2;
     padding: 5px;
+    clear: both;
+
 }
 
 .FooterRoot {
@@ -108,9 +120,17 @@
     align-self: center;
 }
 
+.CenterAlign {
+    vertical-align: auto;
+}
+
 .HomePagePhoto {
 	width: 450px;
     height: 450px;
+}
+
+.white {
+    color: white
 }
 
 
@@ -146,11 +166,16 @@
 
 
 .PortfolioRow {
-	width:fit-content;
-    max-width: 2000px;
-	padding: 45px;
+	width: 80%;
     margin: 2vh;
-    background-color: aliceblue;
+    background-color: white;
+
+}
+
+.PortfolioListSize {
+    width: 70vw;
+    position: relative;
+    left: 14%;
 }
 
 
@@ -176,3 +201,12 @@
 .ProfileButton {
     margin-top: 5px;
 }
+
+.PortfolioPageContent {
+    width: 100vmax;
+    padding: 5vh;
+    margin: 5vh;
+    background-color: #f7f7f7;
+}
+
+

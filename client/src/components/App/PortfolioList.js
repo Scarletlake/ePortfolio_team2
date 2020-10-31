@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
+import EditIcon from '@material-ui/icons/Edit';
 
 import { deletePortfolioByID } from "../../api/portfolioAPI"
 import DeletionAlert from "./DeletionAlert"
@@ -51,9 +52,9 @@ export default function PortfolioList (props) {
         }
 
         return (
-            <div>
+            <div className="PortfolioListSize">
                 <Grid className='PortfolioRow' container >
-                <Grid className='PortfolioRow'
+                <Grid 
                     container item
                     direction="row" 
                     spacing={3}
@@ -62,7 +63,7 @@ export default function PortfolioList (props) {
                     >
 
                     <Grid item>
-                        <Paper className='PortfolioListPaper'>
+                        <Paper className='PortfolioListPaper' elevation={0}>
                             <Grid container 
                                 direction="row" 
                                 justify="center"
@@ -111,17 +112,27 @@ export default function PortfolioList (props) {
                         spacing={5} 
                         xs={3}
                         justify="center"
-                        alignItems="center">  
+                        alignItems="flex-start">
+                      
                         <Grid item>
-                            <Button variant="outlined" color="primary"  href={editor_url}>
-                                    Edit
-                            </Button>
-                        </Grid>  
+                            <Button variant="outlined" color="primary"  href={editor_url}> 
 
+                                <Grid container spacing={1}                        
+                                    justify="center"
+                                    alignItems="center">  
+                                    <Grid item>
+                                        Edit 
+                                    </Grid>
+                                    <Grid item>
+                                         <EditIcon>  Edit </EditIcon>
+                                    </Grid>  
+                                </Grid>
+                            </Button>                          
+                        </Grid>
                         <Grid item>
                             <DeletionAlert handleDelete={()=>deletePortfolio(portfolioID)}/>
                         </Grid> 
-                        </Grid>        
+                    </Grid>        
                     </Grid >
                 </Grid>
             </div>
@@ -154,24 +165,23 @@ export default function PortfolioList (props) {
             justify="flex-start"
             alignItems="flex-start"
             className='PortfolioListRoot'>
-            <Grid item>
-                <Typography gutterBottom variant="h4">
-                    Your Portfolios
-                </Typography>     
-            </Grid>
-            <Grid item className='FixedHeightContainer'
-                container
-                direction="column"
-                justify="flex-start"
-                alignItems="flex-start"
-            >
-                {!portfolio_list || portfolio_list.length === 0 ?
-                    (<Typography gutterBottom variant="h6">
-                        no published portfolio
-                    </Typography>):
-                    <PortfolioList portfolio_list={portfolio_list} />                      
-                }  
-            </Grid>        
+            
+                <Grid item className='FixedHeightContainer'
+                    container
+                    direction="column"
+                    justify="flex-start"
+                    alignItems="flex-start"
+                >
+                    {!portfolio_list || portfolio_list.length === 0 ?
+                        (<div className='SignSubmit'>
+                            <Button variant="contained" color="white" href="/portfolio/template">
+                                Create a new portfolio
+                            </Button>
+                        </div>):
+                        <PortfolioList portfolio_list={portfolio_list}/>                     
+                    }  
+                </Grid> 
+
         </Grid>
         </div>
     );

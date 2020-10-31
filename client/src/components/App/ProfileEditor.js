@@ -1,17 +1,20 @@
 import React from 'react';
 import RadioButtom from "./RadioButtom"
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import '../../views/styles.css'
-
+import UploadAvatar from '../App/UploadAvatar'
 
 export default function ProfileEditor(props) {
     // the form allow users to update their information
- 
+
     return (
         <div>
             <div className="TextCenter VerticalAlign">
                 <form className='ProfileFieldRoot'>
+                    <UploadAvatar avatar={props.avatar} 
+                            first_name={props.firstName} 
+                            last_name={props.lastName}
+                            uploadPicture={props.uploadPicture} />
                     <TextField  id="firstName" 
                                 name="firstName"
                                 label="First Name" 
@@ -46,28 +49,9 @@ export default function ProfileEditor(props) {
                                     readOnly: true,
                                 }}
                     />
+                    
                     <br/>
                 </form>
-            </div>
-
-            <div className=' TextCenter HortizontalAlign'>              
-                <div className='ProfileButton'>
-                    <Button 
-                        variant="contained" 
-                        color="primary" 
-                        onClick={props.handleSubmit}>
-                        Save
-                    </Button>
-                </div>
-
-                <div className='ProfileButton'>
-                    <Button 
-                        variant="contained" 
-                        onClick={props.cancelSubmit}>
-                        Cancel
-                    </Button>
-                </div>
-
             </div>
         </div>
     )

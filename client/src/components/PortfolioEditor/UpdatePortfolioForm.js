@@ -1,6 +1,8 @@
 import React from 'react'
 import {usePortfolio} from "../../api/portfolioAPI"
-import PortfolioEditor from "./PortfolioEditor"
+import ArtPortfolioEditor from "./ArtTemplateEditor/ArtPortfolioEditor";
+import MinimalPortfolioEditor from "./MinimalTemplateEditor/MinimalPortfolioEditor";
+import BusinessPortfolioEditor from "./BusinessTemplateEditor/BusinessPortfolioEditor";
 import {makeStyles} from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles((theme) => ({
@@ -29,9 +31,16 @@ export default function UpdatePortfolioForm (props){
 
   const { portfolio } = res;
  
-  return (
-    <div> 
-      <PortfolioEditor portfolio={portfolio} />
-    </div>
-  )
+  if (portfolio.template === "art"){
+    return <ArtPortfolioEditor portfolio={portfolio} />
+  }
+  else if (portfolio.template === "minimal"){
+    return <MinimalPortfolioEditor portfolio={portfolio} />
+  }
+  else if (portfolio.template === "business"){
+    return <BusinessPortfolioEditor portfolio={portfolio} />
+  }
+  else {
+    return <ArtPortfolioEditor portfolio={portfolio} />
+  }
 }

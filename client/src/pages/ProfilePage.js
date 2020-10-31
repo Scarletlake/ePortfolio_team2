@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     root: {
-        marginTop: theme.spacing(20),
+        paddingTop: theme.spacing(20),
         display: 'flex',
         flexWrap: 'wrap',
         '& > *': {
@@ -48,20 +48,22 @@ export default function ProfilePage (){
     }
 
 
-    const {  firstName, lastName, email, phone, gender } = user;
+    const {  firstName, lastName, avatar, email, phone, gender } = user;
   
   
     return (
-
+        <div className='PageContainer'>
             <div className={classes.root}>
                 <Paper elevation={3}>
                     <Profile firstName ={firstName}
                     lastName={lastName}
+                    avatar={avatar}
                     email={email}
                     phone={phone}
                     gender={gender} />
                 </Paper>
             </div>
+        </div>
 
     )
 }

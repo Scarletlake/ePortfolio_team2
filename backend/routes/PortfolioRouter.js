@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const { check } = require('express-validator');
 const portfolioController = require('../controllers/portfolioController.js');
 
 
@@ -21,13 +20,13 @@ router.delete('/:id', auth, portfolioController.deletePortfolio);
 // @route    POST api/portfolio/create
 // @desc     Creat the portfolio
 // @access   Private
-router.post('/new', auth ,portfolioController.createPortfolio);
+router.post('/new', auth, portfolioController.createPortfolio);
 
 
 // @route    POST api/portfolio/update
 // @desc     Update the portfolio
 // @access   Private
-router.post('/:id', auth ,portfolioController.updatePortfolio);
+router.post('/:id', auth, portfolioController.updatePortfolio);
 
 
 module.exports = router;

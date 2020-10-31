@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
 import PortfolioList from '../components/App/PortfolioList'
 import { useUserPortfolio} from '../api/userAPI'
 import Button from '@material-ui/core/Button';
-import '../views/styles.css'
+import Typography from '@material-ui/core/Typography';
 import {makeStyles} from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+
+import '../views/styles.css'
+
 const useStyles = makeStyles((theme) => ({
     loading: {
         display: 'flex',
@@ -33,17 +36,27 @@ export default function HomePage (){
     const {portfolios} = res;
     
     return (
-      <div className='ContentWrap PageContainer'>
-        <div>
-          <PortfolioList portfolios={portfolios} />
-        </div>
+      <div className='PageContainer'>
 
-        <br/><br/>
-        <div className='SignSubmit'>
-          <Button variant="contained" color="primary" href="/portfolio/template">
-          Create a new portfolio
-          </Button>
-        </div>
+            <div className='HomePageSectionTitle'>
+                <Typography gutterBottom variant="h4">
+                    Your Portfolios
+                </Typography>                 
+            </div>
+
+                <PortfolioList portfolios={portfolios} />
+
+            <div className='HomePageSectionTitle'>
+                <Typography gutterBottom variant="h4">
+                    Create a new portfolio
+                </Typography> 
+            </div> 
+            
+            <div className='HomePageSection'>
+                <Button variant="contained" color="primary" href="/portfolio/template">
+                    Create a new portfolio
+                </Button>            
+            </div> 
       </div>
     )
 }

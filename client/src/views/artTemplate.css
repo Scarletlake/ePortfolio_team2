@@ -1,0 +1,159 @@
+
+/*PortfolioPage*/
+
+.SectionRoot {
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+
+.ArtHomePagePhoto {
+
+	width: 90vw;
+    height: 60vh;
+}
+
+.SectionImage {
+    width: 600px;
+    height: 500px;
+}
+
+.Section {
+    width: fit-content;
+    height: fit-content;
+}
+
+.PortfolioForm {
+    flex-grow: 1;
+    display: flex;
+    height: 100%;
+}
+
+.PortfolioTabs {
+    border-top: 1px;
+}
+
+.PortfolioTabsFont {
+    font-family: monospace, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.PortfolioHeader {
+    width: 70%;
+    border-top: solid;
+    border-top-width: 1px;
+    padding: 1vh;
+    margin-top: 2vh;
+
+}
+
+.PortfolioFullName {
+    padding-top: 20px;
+    font-family: monospace, sans-serif;
+    font-size: 5vh;
+}
+
+.PortfolioField {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.PortfolioText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    padding: 5px;
+}
+
+.PortfolioContactImg {
+    width: 500px;
+    height: 700px;
+    align-content: center;
+
+}
+
+.ContactContainer {
+    position: relative;
+    height: 60%;
+    width: 100%;
+    align-self: center;
+}
+
+.ContactTitle {
+    position: absolute;
+    top: 45%;
+    left: 28%;
+    transform: translate(-50%, -50%);
+    font-family: monospace, sans-serif;
+    font-size: 3vh;
+}
+
+.ContactDesc {
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    font-family: monospace, sans-serif;
+    font-size: 20px;
+}
+
+
+
+.PortfolioHomeDesc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ArtPortfolioFormalPhoto {
+    width: 80vw;
+    height: 50vh;
+    align-self: center;
+    position: relative;
+}
+
+.PortfolioTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: monospace, sans-serif;
+    font-size: 5vh;
+}
+
+.PortfolioDesc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: monospace, sans-serif;
+}
+
+.SectionContainer {
+    position: relative;
+    text-align: center;
+    height: 500px;
+    width: 600px;
+}
+
+.SectionContent {
+    margin: 20px;
+    width: 1200px;
+    align-self: center;
+}
+
+.PortfolioBackgroundImg {
+    width:  100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.PortfolioBackgroundWrap {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}

@@ -24,8 +24,8 @@ const App = () => {
             <Route exact path="/user/signin" component={SignInPage} />
             <Route exact path="/user/signup" component={SignUpPage} />          
             <PrivateRoute exact path="/user/home" component={HomePage} />
-            <PrivateRoute exact path="/user/profile" component={ProfilePage} />
-            <PrivateRoute exact path="/user/initprofile" component={InitPorfilePage} />
+            <PrivateRoute exact path="/user/profile/setup" component={InitPorfilePage} />
+            <PrivateRoute exact path="/user/profile" component={ProfilePage} />            
             <PrivateRoute exact path="/portfolio/editor" component={PortfolioEditorPage} />
             <PrivateRoute exact path="/portfolio/template" component={TemplatePage} />
             <Route exact path="/portfolio/:id" component={PortfolioPage} />

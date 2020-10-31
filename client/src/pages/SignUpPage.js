@@ -71,7 +71,7 @@ export default function SignUpPage() {
     }).then(res => {
       if (res.status === 200) {
         setMessage ("Account created!");
-        window.location.replace("/user/initprofile");
+        window.location.replace("/user/profile/setup");
       }else if(res.status === 409) {
         setMessage ("This email has been registered.");
       }
