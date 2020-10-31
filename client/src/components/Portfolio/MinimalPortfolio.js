@@ -9,7 +9,7 @@ export default function ArtTemplatePortfolioPage(props) {
 
     const portfolio  = props.portfolio;
     const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526464/h1vr5pkcq7tmuof2qzar.png";
-    const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png";
+    const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604106272/b7oonk3pd3czdhlvqh9d.jpg";
     const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
     const defaultContactPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg";
 
@@ -70,6 +70,8 @@ export default function ArtTemplatePortfolioPage(props) {
             </Tabs>
             </div>
 
+            <div className='PageContent' style={{ backgroundImage:`url(${portfolio.backgroundImage})`}}>
+
             {/* Home page */}
             <TabPanel value={value} index={0}>
 
@@ -92,7 +94,7 @@ export default function ArtTemplatePortfolioPage(props) {
             <div className='HomeContainer'>
                 <div className=' TextCenter VerticalAlign'>
                     <div className='PortfolioText MPortfolioTitle'>{portfolio.formalPage.title}</div>  
-                    <PortfolioSection sections={portfolio.formalPage.sections} />
+                    <PortfolioSection sectionsTextBackround={portfolio.formalPage.textBackground} sections={portfolio.formalPage.sections} />
                 </div>
             </div>
             </TabPanel>
@@ -103,7 +105,7 @@ export default function ArtTemplatePortfolioPage(props) {
             <div className='HomeContainer'>
                 <div className=' TextCenter VerticalAlign'>
                     <div className='PortfolioText MPortfolioTitle'>{portfolio.leisurePage.title}</div>  
-                    <PortfolioSection sections={portfolio.leisurePage.sections} />
+                    <PortfolioSection sectionsTextBackround={portfolio.leisurePage.textBackground} sections={portfolio.leisurePage.sections} />
                 </div>
             </div>
             </TabPanel>
@@ -119,7 +121,7 @@ export default function ArtTemplatePortfolioPage(props) {
             
             <div className='VerticalAlign'>
                 <div className='ContactContainer'>
-                <img className='MContactImg' src={defaultDescPhoto}/>
+                <img className='MContactImg' src={portfolio.contactPage.textBackground}/>
                 <div>
                     <div className='ContactTitle'>{portfolio.contactPage.title}</div>
                     <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
@@ -129,6 +131,7 @@ export default function ArtTemplatePortfolioPage(props) {
             </div>
             
             </TabPanel>
+        </div>
 
             
         </div>

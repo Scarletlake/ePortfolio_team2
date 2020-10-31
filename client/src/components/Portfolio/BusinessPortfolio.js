@@ -52,7 +52,7 @@ export default function TemplateBusinessPortfolioPage(props) {
 
     return (
         <div className='PageContainer'>
-        <img className='PortfolioBackgroundImg' src={defaultBackgroundPhoto}/>
+        <img className='PortfolioBackgroundImg' src={portfolio.backgroundImage}/>
         <div className='PortfolioForm TextCenter VerticalAlign PortfolioBackgroundWrap'>
           <div className='PortfolioForm TextCenter VerticalAlign'>
             <div className='PortfolioFullName white'> {portfolio.userName} </div>
@@ -119,8 +119,8 @@ export default function TemplateBusinessPortfolioPage(props) {
                 
                 <div className='VerticalAlign'>
                     <div className='ContactContainer'>
-                    <img className='BusinessPortfolioContactImg' src={defaultDescPhoto}/>
-                    <br/>
+                    <img className='BusinessPortfolioContactImg' src={portfolio.contactPage.textBackground}/>
+                    
                     <div>
                         <div className='ContactTitle white'>{portfolio.contactPage.title}</div>
                         <div className='ContactDesc white'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>

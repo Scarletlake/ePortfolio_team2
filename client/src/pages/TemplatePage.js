@@ -53,45 +53,45 @@ resFont = responsiveFontSizes(resFont);
 const tileData1 = [
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908745/dtsp8csymx6h7pjmnj9g.png",
-    title: 'first',
+    title: 'Page: Home',
   },
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603909821/xhc7bhsmnsb8aicgqg4x.png",
-    title: 'second',
+    title: 'Page: About',
   },
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603909844/bwxobha281divultswsj.png",
-    title: 'third',
+    title: 'Page: Contact',
   },
 ]
 
 const tileData2 = [
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908806/awbltb3htbnozmk64myu.png",
-    title: 'first',
+    title: 'Page: Home',
   },
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603909948/cp2fnno8gumalcyzst7o.png",
-    title: 'second',
+    title: 'Page: About',
   },
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603909964/iy7w0lpjekqydrfwfxyv.png",
-    title: 'third',
+    title: 'Page: Contact',
   }
 ]
 
 const tileData3 = [
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603908880/xlsrzf2dgpubdb6hj2nj.png",
-    title: 'first',
+    title: 'Page: Home',
   },
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603910103/k0h1opuwae3y5drotkji.png",
-    title: 'second',
+    title: 'Page: About',
   },
   {
     img: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603910162/fp4ol4oi983zp5oejt6p.png",
-    title: 'third',
+    title: 'Page: Contact',
   }
 ]
 
@@ -143,7 +143,7 @@ export default function TemplatePage() {
                   component="img"
                   alt="Template Page"
                   height='300'
-                  image="/envelope.png"
+                  image="http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557645/aywlzommatqnbcbi9cnm.png"
                   title="Contemplative Reptile"/>
                 <CardContent>
                   <MuiThemeProvider theme={resFont}>
@@ -174,7 +174,7 @@ export default function TemplatePage() {
                   component="img"
                   alt="Template Page"
                   height='300'
-                  image="/envelope.png"
+                  image="http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527076/dmhb4kzeuworzfnw2h5n.jpg"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -204,7 +204,7 @@ export default function TemplatePage() {
                   component="img"
                   alt="Template Page"
                   height='300'
-                  image="/envelope.png"
+                  image="http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439900/bok5qj4uu6gs6s8tv2f4.png"
                   title="Contemplative Reptile"
                 />
                 <CardContent>

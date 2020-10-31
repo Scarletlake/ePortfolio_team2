@@ -104,7 +104,7 @@ export default function CreatePortfolioform(props) {
       tag: "About",
       title: "ABOUT ME",
       pagePhoto: "",
-      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604106272/b7oonk3pd3czdhlvqh9d.jpg",
       sections: [{
         id: "0",
         sectionTitle: "UNIVERSITY",
@@ -122,7 +122,7 @@ export default function CreatePortfolioform(props) {
       tag: "LEISURE",
       title: "Free Time",
       pagePhoto: '',
-      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png",
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604106272/b7oonk3pd3czdhlvqh9d.jpg",
       sections: [{
         id: "0",
         sectionTitle: "MUSIC",
@@ -142,7 +142,7 @@ export default function CreatePortfolioform(props) {
       email: user.email,
       phone: user.phone,
       photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527938/zsmjqjvssdm5ivt78bqw.jpg",
-      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602439052/yx5dbgeeszcgjpem3kse.png"
+      textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604106272/b7oonk3pd3czdhlvqh9d.jpg",
     }
   }
 

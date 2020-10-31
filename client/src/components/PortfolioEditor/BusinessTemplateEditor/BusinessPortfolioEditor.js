@@ -103,13 +103,13 @@ const useStyles = makeStyles((theme) => ({
     "font-family": "monospace, sans-serif",
   },
   contact_content: {
-    width: "fit-content",
-    "background-size": "cover",
+    width: "fit-content",    
   },
   contact_input: {
     width: (size) => (size.width * 0.195),
-    height: 'fit-content',
-    margin: theme.spacing(2),
+    height: (size) => (size.width * 0.3),
+    background: "blue",
+    "background-size": "cover",
   },
   paper: {
     //4:5
@@ -831,59 +831,59 @@ export default function PortfolioEditor(props) {
                           alignItems="center">
 
                       <Grid container item className={classes.contact_content}
+                          spacing={3}
                           justify="center"
-                          alignItems="center"
-                          style={{ backgroundImage:`url(${contact_text_background})`}}>                        
+                          alignItems="center">                        
 
-                        <Grid item
-                              justify="center"
-                              alignItems="center"
-                              >
+                        <Grid item >
                           <UploadPicture uploadPicture={setContactPhoto} 
                                         pictureUrl={contact_page_photo}
                                          width={smalleredge*0.36}
                                          height={smalleredge*0.36*7/5}/>
                         </Grid>
                         
-                        <Grid container item
-                            className={classes.contact_input}
-                            spacing={2}
-                            direction="column"
-                            justify="flex-start"
-                            alignItems="flex-start"
-                            >
+                        <Grid item >
+                          <Grid container item
+                              className={classes.contact_input}
+                              spacing={3}
+                              direction="column"
+                              justify="center"
+                              alignItems="flex-start"
+                              style={{ backgroundImage:`url(${contact_text_background})`}}
+                              >
 
-                          <Grid item>
-                            <InputBase className={classes.contact_title_input}                                       
-                                      name="contact_page_title"
-                                      placeholder="Contact Me" 
-                                      defaultValue={contact_page_title} 
-                                      inputProps={{style: {fontSize: 35}}}  
-                                      onChange={event=> setContactPageTitle(event.target.value)}/>
-                          </Grid>
+                            <Grid item>
+                              <InputBase className={classes.contact_title_input}                                       
+                                        name="contact_page_title"
+                                        placeholder="Contact Me" 
+                                        defaultValue={contact_page_title} 
+                                        inputProps={{style: {fontSize: 35}}}  
+                                        onChange={event=> setContactPageTitle(event.target.value)}/>
+                            </Grid>
 
-                          <Grid item>
-                            <InputBase fullWidth className={classes.contact_detail}     
-                            id="email"
-                            name="email"
-                            label="Email"
-                            placeholder="email" 
-                            defaultValue={email_value}
-                            inputProps={{style: {fontSize: 20}}}
-                            onChange={event => setEmail(event.target.value)}
-                            />
-                          </Grid>
+                            <Grid item>
+                              <InputBase fullWidth className={classes.contact_detail}     
+                              id="email"
+                              name="email"
+                              label="Email"
+                              placeholder="email" 
+                              defaultValue={email_value}
+                              inputProps={{style: {fontSize: 20}}}
+                              onChange={event => setEmail(event.target.value)}
+                              />
+                            </Grid>
 
-                          <Grid item>
-                          <InputBase fullWidth className={classes.contact_detail}     
-                            id="phone"
-                            name="phone"
-                            label="Phone"
-                            placeholder="Phone" 
-                            defaultValue={phone_value}
-                            inputProps={{style: {fontSize: 20}}}
-                            onChange={event => setPhone(event.target.value)}
-                          />
+                            <Grid item>
+                              <InputBase fullWidth className={classes.contact_detail}     
+                              id="phone"
+                              name="phone"
+                              label="Phone"
+                              placeholder="Phone" 
+                              defaultValue={phone_value}
+                              inputProps={{style: {fontSize: 20}}}
+                              onChange={event => setPhone(event.target.value)}
+                              />
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
