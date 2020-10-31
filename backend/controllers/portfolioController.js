@@ -44,6 +44,7 @@ const createPortfolio = async (req, res) => {
       contactPage: contactPage
     });
 
+    //remember to change url here when deploy
     portfolio.portfolioURL = "http://pandaeportfolio.herokuapp.com/portfolio/" + portfolio._id;
 
     // add the new portfolio to the array           
