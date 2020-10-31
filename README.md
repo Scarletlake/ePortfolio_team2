@@ -63,10 +63,7 @@ This app is deployed to Heroku.
 | SignUp Page      |https://pandaeportfolio.herokuapp.com/user/signup |
 | Home Page   |  https://pandaeportfolio.herokuapp.com/user/home  |
 | Profile Page  | https://pandaeportfolio.herokuapp.com/user/profile |  
-| Template Page |  https://pandaeportfolio.herokuapp.com/portfolio/template| 
-| PortfolioEditor Page | https://pandaeportfolio.herokuapp.com/portfolio/editor?temp=template&id=id | 
-| Portfolio Page | https://pandaeportfolio.herokuapp.com/portfolio/id | 
-
+| Template Page |  https://pandaeportfolio.herokuapp.com/portfolio/template |
 
 ## Install dependencies
 
