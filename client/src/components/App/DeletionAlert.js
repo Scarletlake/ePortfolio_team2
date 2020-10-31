@@ -70,9 +70,9 @@ const DeletionAlert = withStyles(styles)((props) => {
 
   return (
     <div>
-      <Button variant="outlined" color="primary"  onClick={handleClickOpen}> 
+      <Button variant="outlined" color="secondary"  onClick={handleClickOpen}> 
 
-        <Grid container spacing={2}                        
+        <Grid container spacing={1}                        
           justify="center"
           alignItems="center">  
           <Grid item>

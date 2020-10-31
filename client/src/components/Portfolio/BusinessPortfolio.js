@@ -116,16 +116,20 @@ export default function TemplateBusinessPortfolioPage(props) {
                     <img className='BusinessPortfolioContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
                 }
                 
-                <div className='VerticalAlign'>
+                <div >
                     <div className='ContactContainer'>
                         {portfolio.contactPage.textBackground?
                             <img className='BusinessPortfolioContactImg' src={portfolio.contactPage.textBackground} alt="unable to load textBackground"/>:          
                             <img className='BusinessPortfolioContactImg' src={defaultDescPhoto} alt="unable to load textBackground" />
                         }                  
                     
-                    <div>
+                    <div className='VerticalAlign'>
                         <div className='ContactTitle white'>{portfolio.contactPage.title}</div>
-                        <div className='ContactDesc white'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
+                       
+                        <div className='ContactDesc white'> 
+                            <br/> <br/><br/>
+                            Eamil: <br/> {portfolio.contactPage.email}<br/><br/>
+                            Phone: <br/>{portfolio.contactPage.phone}</div>
                     </div>
                     </div>
                 </div>

@@ -118,21 +118,22 @@ export default function ArtTemplatePortfolioPage(props) {
                     <img className='MContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
                 }
             
-            <div className='VerticalAlign'>
+            <div>
                 <div className='ContactContainer'>
                     {portfolio.contactPage.textBackground?
                         <img className='MContactImg' src={portfolio.contactPage.textBackground} alt="textBackground"/> :           
                         <img className='MContactImg' src={defaultDescPhoto} alt="textBackground" />
                     }
               
-                <div>
-                    <div className='ContactTitle'>{portfolio.contactPage.title}</div>
-                    
-                    <div className='ContactDesc'> 
-                        Email: {portfolio.contactPage.email} <br/>
-                        Phone: {portfolio.contactPage.phone}
+                    <div  className='VerticalAlign'>
+                        <div className='ContactTitle'>{portfolio.contactPage.title}</div>
+                        
+                        <div className='ContactDesc'> 
+                            <br/><br/><br/>
+                            Email:<br/> {portfolio.contactPage.email} <br/><br/>
+                            Phone:<br/> {portfolio.contactPage.phone}
+                        </div>
                     </div>
-                </div>
                 
                 </div>
             </div>

@@ -29,8 +29,8 @@ export default function CreatePortfolioform(props) {
   if (error) {
     return <p>Something went wrong: {error.message}</p>;
   }
-
-
+  
+  
   // the default content of portfolio
   const defaultArtPortfolio = {
     _id: "0",
@@ -141,7 +141,7 @@ export default function CreatePortfolioform(props) {
       title: "Contact Me",
       email: user.email,
       phone: user.phone,
-      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602527938/zsmjqjvssdm5ivt78bqw.jpg",
+      photo: user.avatar,
       textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604106272/b7oonk3pd3czdhlvqh9d.jpg",
     }
   }
@@ -198,7 +198,7 @@ export default function CreatePortfolioform(props) {
       title: "Contact Me",
       email: user.email,
       phone: user.phone,
-      photo: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557688/snd6vsb4cihgwjrd2x7j.png",
+      photo: user.avatar,
       textBackground: "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg",
     }
   }

@@ -50,7 +50,7 @@ export default class PortfolioSection extends Component {
                         <Grid item xs={6} className='SectionImage'>
                             {section.photo?
                                 <img width="590" height="500" src={section.photo} alt="Unable to load" />:
-                                <img width="590" height="300" src={defaultPhoto} alt="Unable to load" />
+                                <img width="590" height="500" src={defaultPhoto} alt="Unable to load" />
                             }
                         </Grid>
                     </Grid>

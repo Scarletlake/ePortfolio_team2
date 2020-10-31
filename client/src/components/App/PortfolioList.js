@@ -117,7 +117,7 @@ export default function PortfolioList (props) {
                         <Grid item>
                             <Button variant="outlined" color="primary"  href={editor_url}> 
 
-                                <Grid container spacing={2}                        
+                                <Grid container spacing={1}                        
                                     justify="center"
                                     alignItems="center">  
                                     <Grid item>

@@ -102,6 +102,10 @@ const useStyles = makeStyles((theme) => ({
     },
     "font-family": "monospace, sans-serif",
   },
+  contact_detail_label:{
+    color: "white",
+    "font-family": "monospace, sans-serif",
+  },
   contact_content: {
     width: "fit-content",    
   },
@@ -849,11 +853,12 @@ export default function PortfolioEditor(props) {
                             </Grid>
 
                             <Grid item>
+                              <Typography className={classes.contact_detail_label}>Email: </Typography>
                               <InputBase fullWidth className={classes.contact_detail}     
                               id="email"
                               name="email"
                               label="Email"
-                              placeholder="email" 
+                              placeholder="Enter your mail" 
                               defaultValue={email_value}
                               inputProps={{style: {fontSize: 20}}}
                               onChange={event => setEmail(event.target.value)}
@@ -861,11 +866,12 @@ export default function PortfolioEditor(props) {
                             </Grid>
 
                             <Grid item>
+                              <Typography className={classes.contact_detail_label}>Phone: </Typography>
                               <InputBase fullWidth className={classes.contact_detail}     
                               id="phone"
                               name="phone"
                               label="Phone"
-                              placeholder="Phone" 
+                              placeholder="Enter your phone number" 
                               defaultValue={phone_value}
                               inputProps={{style: {fontSize: 20}}}
                               onChange={event => setPhone(event.target.value)}

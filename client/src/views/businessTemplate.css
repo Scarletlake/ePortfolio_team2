@@ -37,13 +37,13 @@
 .BusinessHomePic {
     width: 80%;
     height: 40%;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     background-color: rgb(70, 68, 68); 
 }
 
 .BusinessSectionContent {
-    margin: 20px;
+    padding: 10px;
     width: 1200px;
     position: relative;
     align-self: center;

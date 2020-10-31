@@ -134,16 +134,19 @@ export default function ArtPortfolio(props) {
             <img className='PortfolioContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
           }
          
-          <div className='VerticalAlign'>
+          <div>
             <div className='ContactContainer'>
               {portfolio.contactPage.textBackground?
                 <img className='PortfolioContactImg' src={portfolio.contactPage.textBackground} alt="PortfolioContactImg"/> :           
                 <img className='PortfolioContactImg' src={defaultDescPhoto} alt="PortfolioContactImg"/>
               }
               
-              <div>
+              <div className='VerticalAlign'>
                 <div className='ContactTitle'>{portfolio.contactPage.title}</div>
-                <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
+                <div className='ContactDesc'> <br/> <br/><br/>
+                            Eamil: <br/> {portfolio.contactPage.email}<br/><br/>
+                            Phone: <br/>{portfolio.contactPage.phone}
+                </div>
               </div>
             </div>
           </div>
