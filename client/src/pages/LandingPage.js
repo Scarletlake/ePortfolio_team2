@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   showcase: {
     textAlign: "center",
     marginTop: "10%",
+    marginBottom: "10vh",
   },
   team: {
     textAlign: "center",
@@ -58,7 +59,7 @@ export default function LandingPage() {
                 <img src="/LogoBlack.png" width="200px" style={{ marginTop: "50px" }}></img>
               </Grid>
 
-              {size.width < 1280 ? <br /> : <Grid item xs={12} sm={12} md={12} lg={1} xl={1}></Grid>}
+              <Grid item xs={12} sm={12} md={12} lg={1} xl={1}></Grid>
 
               <Grid item xs={12} sm={12} md={12} lg={7} xl={7} className={classes.headerText}>
                 <Typography component="h1" variant="h3" color="primary">
@@ -75,20 +76,6 @@ export default function LandingPage() {
               </Grid>
 
             </Grid>
-
-            {/*
-            <div className='SignTextBox'>
-              <div className='SignSubmit'>
-                <Button color="primary" variant="outlined" href="#">
-                  See Examples
-                </Button>
-              </div>
-              <div className='SignSubmit'>
-                <Button color="primary" variant="contained" href="/user/signin">
-                  Start Now
-                </Button>
-              </div>
-            </div> */}
 
           </div>
 
@@ -135,7 +122,10 @@ export default function LandingPage() {
 
           <div className={classes.team}>
 
-            <Typography variant="h4" color="primary">Team</Typography>
+            <Typography variant="h5" color="primary" style={{ marginBottom: 80 }}>
+              Our team
+              <div><KeyboardArrowDownIcon /></div>
+            </Typography>
 
             <Grid container style={{ marginTop: 20 }} >
 
