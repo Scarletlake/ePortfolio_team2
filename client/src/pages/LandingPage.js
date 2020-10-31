@@ -139,7 +139,7 @@ export default function LandingPage() {
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="ouyang" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="/ou.jpg" alt="ouyang" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Ouyang Hui</Typography></Grid>
               </Grid>
 
