@@ -131,32 +131,32 @@ export default function LandingPage() {
               </Typography>
             </AnchorLink>
 
-            <Grid id="team" container style={{ marginTop: 20 }} >
+            <Grid id="team" container style={{ marginTop: 20, width: size.width < 1280 ? 600 : "auto" }} >
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="HeitongChan.jpg" alt="heitong" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="HeitongChan.jpg" alt="heitong" style={{ height: size.width < 1280 ? 90 : 150, width: size.width < 1280 ? 90 : 150, borderRadius: "50%" }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">HeiTong Chan</Typography></Grid>
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="/ou.jpg" alt="ouyang" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="/ou.jpg" alt="ouyang" style={{ height: size.width < 1280 ? 90 : 150, width: size.width < 1280 ? 90 : 150, borderRadius: "50%" }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Ouyang Hui</Typography></Grid>
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="/JielinZheng.jpg" alt="jielin" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="/JielinZheng.jpg" alt="jielin" style={{ height: size.width < 1280 ? 90 : 150, width: size.width < 1280 ? 90 : 150, borderRadius: "50%" }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Jielin Zheng</Typography></Grid>
               </Grid>
 
               <Grid item xs={2}></Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="/ZhuolunWu.png" alt="zhuolun" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="/ZhuolunWu.png" alt="zhuolun" style={{ height: size.width < 1280 ? 90 : 150, width: size.width < 1280 ? 90 : 150, borderRadius: "50%" }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Zhuolun Wu</Typography></Grid>
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="/JiashuaiYu.jpg" alt="jiashuai" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="/JiashuaiYu.jpg" alt="jiashuai" style={{ height: size.width < 1280 ? 90 : 150, width: size.width < 1280 ? 90 : 150, borderRadius: "50%" }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Jiashuai Yu</Typography></Grid>
               </Grid>
 

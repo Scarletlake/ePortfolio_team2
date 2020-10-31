@@ -24,7 +24,6 @@ const UserSchema = new mongoose.Schema({
   userName: {
     type: String,
     default: '',
-    required: true,
   },
 
   backgroundImage: {
@@ -52,6 +51,7 @@ const UserSchema = new mongoose.Schema({
     tag: {
       type: String,
       default: '',
+      required: true
     },
     title: {
       type: String,
@@ -80,6 +80,7 @@ const UserSchema = new mongoose.Schema({
     tag: {
       type: String,
       default: '',
+      required: true
     },
     title: {
       type: String,
@@ -113,7 +114,6 @@ const UserSchema = new mongoose.Schema({
     title: {
       type: String,
       default: '',
-      required: true
     },
     email: {
       type: String,
