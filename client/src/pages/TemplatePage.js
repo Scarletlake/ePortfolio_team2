@@ -135,7 +135,7 @@ export default function TemplatePage() {
           <Typography variant="h2" gutterBottom>CHOOSE THE TEMPLATE YOU WANT TO USE</Typography>
         </MuiThemeProvider>
 
-        <Grid container className={classes.grid} spacing={2} >
+        <Grid container className={classes.grid} spacing={2} justify="center" alignItems="center">
           <Grid item xs={12} sm={12} md={12} lg={4} xl={4} >
             <Card className='container'>
               <CardActionArea className="image" >
@@ -145,15 +145,13 @@ export default function TemplatePage() {
                   height='300'
                   image="http://res.cloudinary.com/do0ecn2sm/image/upload/v1602557645/aywlzommatqnbcbi9cnm.png"
                   title="Contemplative Reptile"/>
-                <CardContent>
-                  <MuiThemeProvider theme={resFont}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Business
-                    </Typography>
-                    <Typography variant="h6" color="textSecondary" component="p">
-                      Theme suitable for business use.
-                    </Typography>
-                  </MuiThemeProvider>
+                <CardContent>                  
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Business
+                  </Typography>
+                  <Typography variant="h6" color="textSecondary" component="p">
+                    Theme suitable for business use.
+                  </Typography>                  
                 </CardContent>
               </CardActionArea>
               <div className="middle" >
