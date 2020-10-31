@@ -15,7 +15,7 @@ class TestTemplate(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
   
-    def test_templateSelect(self):
+    def test_templateSelectBusiness(self):
         driver = self.driver
         driver.get(self.base_url + "/")
         driver.find_element(By.ID, "email").click()
@@ -25,8 +25,34 @@ class TestTemplate(unittest.TestCase):
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
         time.sleep(1)
         self.driver.get("http://localhost:3000/portfolio/template")
-        driver.find_element(By.CSS_SELECTOR, ".MuiButtonBase-root:nth-child(2) > .MuiButton-label").click()
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(1) .MuiButtonBase-root:nth-child(2) > .MuiButton-label").click()
+        self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=business&id=0", driver.current_url)
+    
+    def test_templateSelectMinimal(self):
+        driver = self.driver
+        driver.get(self.base_url + "/")
+        driver.find_element(By.ID, "email").click()
+        driver.find_element(By.ID, "email").send_keys("simplesignin@gmail.com")
+        driver.find_element(By.ID, "password").click()
+        driver.find_element(By.ID, "password").send_keys("Example")
+        driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
+        time.sleep(1)
+        self.driver.get("http://localhost:3000/portfolio/template")
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(2) > .MuiPaper-root .MuiButtonBase-root:nth-child(2) > .MuiButton-label").click()
         self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=minimal&id=0", driver.current_url)
+
+    def test_templateSelectArt(self):
+        driver = self.driver
+        driver.get(self.base_url + "/")
+        driver.find_element(By.ID, "email").click()
+        driver.find_element(By.ID, "email").send_keys("simplesignin@gmail.com")
+        driver.find_element(By.ID, "password").click()
+        driver.find_element(By.ID, "password").send_keys("Example")
+        driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
+        time.sleep(1)
+        self.driver.get("http://localhost:3000/portfolio/template")
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(3) .MuiButtonBase-root:nth-child(2) > .MuiButton-label").click()
+        self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=art&id=0", driver.current_url)
 
     def teardown(self):
        self.driver.quit()

@@ -8,7 +8,7 @@ describe('User Portfolio Integration test:', function() {
       // eslint-disable-next-line max-len
       it('Portfolio get test', function(done) {
         supertest(app)
-          .get('/api/portfolio/5f719834284fac0b48bed993')
+          .get('/api/portfolio/5f9cde8e7f13ea8cfcdbb524')
           .send()
           .end(function(err, res) {
             expect(res.statusCode).to.equal(200);
@@ -26,11 +26,9 @@ describe('User Portfolio Integration test:', function() {
                           "profilePhoto": "link to img",
                           "description": "Hi" },
             "formalPage": { "tag": "About",
-                            "titile": "About Me",
-                            "sections": [] },
+                            "titile": "About Me"},
             "leisurePage": { "tag": "Leisure",
-                             "titile": "Free Time",
-                             "sections": [] },
+                             "titile": "Free Time" },
             "contactPage": { "tag": "Contact",
                              "title": "Contact Me", 
                              "email": "simplesignin@gmail.com",
@@ -50,22 +48,20 @@ describe('User Portfolio Integration test:', function() {
 
       it('Existing Portfolio update test', function(done) {
         let newPortfolio = {
-            "portfolioName": "testUpdate",
-            "template": "art",
-            "userName": "null null",
-            "homePage": { "tag": "Home",
-                          "profilePhoto": "link to img",
-                          "description": "Hi" },
-            "formalPage": { "tag": "About",
-                            "titile": "About Me",
-                            "sections": [] },
-            "leisurePage": { "tag": "Leisure",
-                             "titile": "Free Time",
-                             "sections": [] },
-            "contactPage": { "tag": "Contact",
-                             "title": "Contact Me", 
-                             "email": "simplesignin@gmail.com",
-                             "phone": null}
+          "portfolioName": "testupdate",
+          "template": "art",
+          "userName": "null null",
+          "homePage": { "tag": "Home",
+                        "profilePhoto": "link to img",
+                        "description": "Hi" },
+          "formalPage": { "tag": "About",
+                          "titile": "About Me"},
+          "leisurePage": { "tag": "Leisure",
+                           "titile": "Free Time" },
+          "contactPage": { "tag": "Contact",
+                           "title": "Contact Me", 
+                           "email": "simplesignin@gmail.com",
+                           "phone": null}
           };
        
         supertest(app)
