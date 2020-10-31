@@ -24,7 +24,7 @@ class TestInitProfile(unittest.TestCase):
         driver.find_element(By.ID, "password").send_keys("Example")
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
         time.sleep(1)
-        self.driver.get("http://localhost:3000/user/initprofile")
+        self.driver.get("http://localhost:3000/user/profile/setup")
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-label").click()
         time.sleep(1)
         self.assertEqual(u"http://localhost:3000/user/home", driver.current_url)

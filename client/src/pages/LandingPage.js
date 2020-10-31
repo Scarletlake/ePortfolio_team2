@@ -6,7 +6,8 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import CssBaseLine from '@material-ui/core/CssBaseline';
-import '../views/styles.css'
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+import '../views/styles.css';
 
 import isAuthenticated from "../utils/checkAuthToken";
 import UseWindowSize from '../components/App/UseWindowSize';
@@ -45,7 +46,7 @@ export default function LandingPage() {
   return (
 
     <div className='PageContainer'>
-      <div style={{ width: size.width * 0.7, margin: "auto" }}>
+      <div style={{ width: size.width * 0.7, margin: "auto", }}>
 
         <CssBaseLine />
         <div className='LandingBlock'>
@@ -79,12 +80,14 @@ export default function LandingPage() {
           </div>
 
           <div className={classes.showcase}>
-            <Typography variant="h5" color="primary" style={{ marginBottom: 80 }}>
-              Explore More About Templates
-              <div><KeyboardArrowDownIcon /></div>
-            </Typography>
+            <AnchorLink href='#templatesShowcase' style={{ textDecoration: "none" }}>
+              <Typography variant="h5" color="primary">
+                Explore More About Templates
+                <div style={{ marginBottom: 80 }}><KeyboardArrowDownIcon /></div>
+              </Typography>
+            </AnchorLink>
 
-            <Grid container spacing={5} >
+            <Grid id="templatesShowcase" container spacing={5} >
 
               <Grid item xs={12} sm={12} md={12} lg={3} xl={3} style={{ margin: "auto" }}>
                 <Typography variant="h5" color="primary">
@@ -121,37 +124,39 @@ export default function LandingPage() {
 
           <div className={classes.team}>
 
-            <Typography variant="h5" color="primary" style={{ marginBottom: 80 }}>
-              Our team
-              <div><KeyboardArrowDownIcon /></div>
-            </Typography>
+            <AnchorLink href='#team' style={{ textDecoration: "none" }}>
+              <Typography variant="h5" color="primary">
+                Our Team
+                <div style={{ marginBottom: 80 }}><KeyboardArrowDownIcon /></div>
+              </Typography>
+            </AnchorLink>
 
-            <Grid container style={{ marginTop: 20 }} >
+            <Grid id="team" container style={{ marginTop: 20 }} >
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="avatar" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="heitong" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">HeiTong Chan</Typography></Grid>
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="avatar" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="ouyang" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Ouyang Hui</Typography></Grid>
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="avatar" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="jielin" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Jielin Zheng</Typography></Grid>
               </Grid>
 
               <Grid item xs={2}></Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="avatar" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="zhuolun" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Zhuolun Wu</Typography></Grid>
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="avatar" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="jiashuai" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Jiashuai Yu</Typography></Grid>
               </Grid>
 

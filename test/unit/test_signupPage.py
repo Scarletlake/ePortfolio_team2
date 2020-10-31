@@ -30,7 +30,7 @@ class TestSignup(unittest.TestCase):
         driver.find_element(By.ID, "re_password").send_keys("example")
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained").click()
         time.sleep(1)
-        self.assertEqual(u"http://localhost:3000/user/initprofile", driver.current_url)
+        self.assertEqual(u"http://localhost:3000/user/profile/setup", driver.current_url)
 
 
     def test_signupInsignup(self):
