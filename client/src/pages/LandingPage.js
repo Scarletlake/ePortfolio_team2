@@ -131,7 +131,7 @@ export default function LandingPage() {
               </Typography>
             </AnchorLink>
 
-            <Grid id="team" container style={{ marginTop: 20, }} >
+            <Grid id="team" container style={{ marginTop: 20, width: size.width < 1280 ? 300 : "auto", margin: "auto" }} >
 
               <Grid item xs={4} className={classes.member} container>
                 <Grid item xs={12}><img src="HeitongChan.jpg" alt="heitong" style={{ height: 150, width: 150, borderRadius: "50%" }} /></Grid>
