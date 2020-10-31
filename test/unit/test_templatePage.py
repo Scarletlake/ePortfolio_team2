@@ -25,7 +25,7 @@ class TestTemplate(unittest.TestCase):
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
         time.sleep(1)
         self.driver.get("http://localhost:3000/portfolio/template")
-        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(1) .MuiButtonBase-root:nth-child(2) > .MuiButton-label").click()
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(1) .MuiButtonBase-root:nth-child(4) > .MuiButton-label").click()
         self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=business&id=0", driver.current_url)
     
     def test_templateSelectMinimal(self):
@@ -38,7 +38,7 @@ class TestTemplate(unittest.TestCase):
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
         time.sleep(1)
         self.driver.get("http://localhost:3000/portfolio/template")
-        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(2) > .MuiPaper-root .MuiButtonBase-root:nth-child(2) > .MuiButton-label").click()
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(2) > .MuiPaper-root .MuiButtonBase-root:nth-child(4) > .MuiButton-label").click()
         self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=minimal&id=0", driver.current_url)
 
     def test_templateSelectArt(self):
@@ -51,7 +51,7 @@ class TestTemplate(unittest.TestCase):
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
         time.sleep(1)
         self.driver.get("http://localhost:3000/portfolio/template")
-        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(3) .MuiButtonBase-root:nth-child(2) > .MuiButton-label").click()
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(3) .MuiButtonBase-root:nth-child(4) > .MuiButton-label").click()
         self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=art&id=0", driver.current_url)
 
     def teardown(self):

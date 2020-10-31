@@ -32,7 +32,7 @@ class TestHome(unittest.TestCase):
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
         time.sleep(1)
         driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(1) > .PortfolioListSize .MuiGrid-root > .MuiSvgIcon-root").click()
-        self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=art&id=5f75bfc213f487001756b6a9", driver.current_url)
+        self.assertEqual(u"http://localhost:3000/portfolio/editor?temp=minimal&id=5f771894823bb4449484a853", driver.current_url)
 
 
     def test_createnew(self):
