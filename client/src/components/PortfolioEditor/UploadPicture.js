@@ -82,7 +82,7 @@ export default function UploadPicture(props) {
                     console.error(err);
                 }
                 //setPictureUrl(response.body.url);
-                console.log(response.body.url);
+                //console.log(response.body.url);
                 props.uploadPicture(response.body.url);
             });
         });
