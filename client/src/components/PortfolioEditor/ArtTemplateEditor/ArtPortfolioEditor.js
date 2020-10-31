@@ -646,7 +646,7 @@ export default function PortfolioEditor(props) {
                   alignItems="center">
 
                {/* Header editor */}
-              <Grid item
+              <Grid item container
                     justify="center"
                     alignItems="center">
                   <Grid container
@@ -654,9 +654,7 @@ export default function PortfolioEditor(props) {
                         direction="column"
                         justify="center"
                         alignItems="center">
-                        <Grid item
-                              justify="center"
-                              alignItems="center">
+                        <Grid item>
                           <InputBase className={classes.username_input}
                                   classes={{input: classes.inputCenter}}
                                   placeholder="Your Name"
@@ -665,7 +663,7 @@ export default function PortfolioEditor(props) {
                                   onChange={event=> setUserName(event.target.value)}/>
                         </Grid>
 
-                    <Grid item
+                    <Grid item container
                           justify="center"
                           alignItems="center">
                         <Grid container item 
@@ -689,15 +687,14 @@ export default function PortfolioEditor(props) {
                             ):
                             (
                               <Grid container
-                                    alignItems="center"z
+                                    alignItems="center"
                                     direction="row"
                                     justify="center">
                               <Tabs
                                 value={value}
                                 onChange={handleTabsChange}
                                 tabItemContainerStyle={{width: '20px'}}
-                                indicatorColor={"white"}
-                                centered
+                                indicatorColor={"white"}                                
                                 variant="scrollable"
                                 scrollButtons="auto"
                               >
@@ -819,7 +816,7 @@ export default function PortfolioEditor(props) {
                                       onChange={event => setLeisurePageTitle(event.target.value)}/>
                       </Grid>
 
-                      <Grid item
+                      <Grid item container
                             justify="center"
                             alignItems="center">
                         <SectionsEditor sections={leisure_page_sections} 
@@ -849,10 +846,7 @@ export default function PortfolioEditor(props) {
                           alignItems="center"
                           style={{ backgroundImage:`url(${contact_text_background})`}}>                        
 
-                        <Grid item
-                              justify="center"
-                              alignItems="center"
-                              >
+                        <Grid item >
                           <UploadPicture uploadPicture={setContactPhoto} 
                                         pictureUrl={contact_page_photo}
                                          width={size.width * 0.195}
