@@ -625,7 +625,7 @@ export default function PortfolioEditor(props) {
                   alignItems="center">
 
                {/* Header editor */}
-              <Grid item
+              <Grid item container
                     justify="center"
                     alignItems="center">
                   <Grid container
@@ -676,7 +676,6 @@ export default function PortfolioEditor(props) {
                                 onChange={handleTabsChange}
                                 tabItemContainerStyle={{width: '20px'}}
                                 indicatorColor={"white"}
-                                centered
                                 variant="scrollable"
                                 scrollButtons="auto"
                               >
@@ -796,7 +795,7 @@ export default function PortfolioEditor(props) {
                                       onChange={event => setLeisurePageTitle(event.target.value)}/>
                       </Grid>
 
-                      <Grid item
+                      <Grid item container
                             justify="center"
                             alignItems="center">
                         <SectionsEditor sections={leisure_page_sections} 
