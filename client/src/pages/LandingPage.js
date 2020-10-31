@@ -151,7 +151,7 @@ export default function LandingPage() {
               <Grid item xs={2}></Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/EMG_-_SIMI.jpg" alt="zhuolun" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="/ZhuolunWu.png" alt="zhuolun" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Zhuolun Wu</Typography></Grid>
               </Grid>
 
