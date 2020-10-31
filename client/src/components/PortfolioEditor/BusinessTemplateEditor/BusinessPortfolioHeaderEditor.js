@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
-import InputBase from '@material-ui/core/InputBase';
 import '../../../views/artTemplateEditor.css';
 
 const useStyles = makeStyles((theme) => ({

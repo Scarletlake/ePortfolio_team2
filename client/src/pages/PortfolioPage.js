@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import { Tabs, Tab, Typography, Box } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
+import React from 'react'
 import { useParams } from "react-router-dom";
 import { usePortfolio } from "../api/portfolioAPI"
 import {makeStyles} from "@material-ui/core/styles";

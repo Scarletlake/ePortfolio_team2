@@ -1,11 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import isAuthenticated from "../../utils/checkAuthToken";
 import {userLogOut} from '../../api/userAPI';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -14,18 +12,6 @@ import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import '../../views/styles.css'
-
-const useStyles=makeStyles((theme) => ({
-  logoButton: {
-    flexGrow: 1,
-  },
-  userButton: {
-    flexGrow: 1,
-  },
-  title:{
-    flexGrow: 1
-  },
-}));
 
 const GuestNavBar =()=>{
   return (
@@ -36,7 +22,7 @@ const GuestNavBar =()=>{
                 <HomeIcon/>
               </IconButton>
 
-                <img src="/LogoWhite.png" width="100px"></img>
+                <img src="/LogoWhite.png" width="100px" alt="pandalogo"></img>
 
 
             <Grid container direction="row" justify = "flex-end" alignItems="center">
@@ -54,7 +40,6 @@ const GuestNavBar =()=>{
 
 const AuthNavBar =()=> {
 
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -73,7 +58,7 @@ const AuthNavBar =()=> {
                 <HomeIcon/>
               </IconButton>
 
-              <img src="/LogoWhite.png" width="100px"></img>
+              <img src="/LogoWhite.png" width="100px" alt="pandalogo"></img>
 
             <Grid container direction="row" justify = "flex-end" alignItems="center">
                 <div>

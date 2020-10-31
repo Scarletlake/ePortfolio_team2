@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Tabs, Tab, Typography, Box } from '@material-ui/core';
+import { Tabs, Tab, Box} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import '../../views/styles.css'
 import '../../views/minimalTemplate.css'
@@ -9,9 +9,8 @@ export default function ArtTemplatePortfolioPage(props) {
 
     const portfolio  = props.portfolio;
     const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602526464/h1vr5pkcq7tmuof2qzar.png";
-    const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604106272/b7oonk3pd3czdhlvqh9d.jpg";
-    const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602303637/fzrv3jlliersrymeamvp.jpg";
     const defaultContactPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg";
+    const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1604106272/b7oonk3pd3czdhlvqh9d.jpg";
 
     const [value, setValue] = useState(0); // Tabs
 
@@ -114,18 +113,27 @@ export default function ArtTemplatePortfolioPage(props) {
             <TabPanel value={value} index={3}>
 
             <div className='TextCenter HorizontalAlign HomeContainer'>
-            {portfolio.contactPage.photo?
-                <img className='MContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
-                <img className='MContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
-            }
+                {portfolio.contactPage.photo?
+                    <img className='MContactImg' src={portfolio.contactPage.photo} alt="ContactPagePhoto"/> :           
+                    <img className='MContactImg' src={defaultContactPhoto} alt="ContactPagePhoto" />
+                }
             
             <div className='VerticalAlign'>
                 <div className='ContactContainer'>
-                <img className='MContactImg' src={portfolio.contactPage.textBackground}/>
+                    {portfolio.contactPage.textBackground?
+                        <img className='MContactImg' src={portfolio.contactPage.textBackground} alt="textBackground"/> :           
+                        <img className='MContactImg' src={defaultDescPhoto} alt="textBackground" />
+                    }
+              
                 <div>
                     <div className='ContactTitle'>{portfolio.contactPage.title}</div>
-                    <div className='ContactDesc'> {portfolio.contactPage.email}<br></br>{portfolio.contactPage.phone}</div>
+                    
+                    <div className='ContactDesc'> 
+                        Email: {portfolio.contactPage.email} <br/>
+                        Phone: {portfolio.contactPage.phone}
+                    </div>
                 </div>
+                
                 </div>
             </div>
             </div>

@@ -112,17 +112,27 @@ export default function PortfolioList (props) {
                         spacing={5} 
                         xs={3}
                         justify="center"
-                        alignItems="center">  
+                        alignItems="flex-start">
+                      
                         <Grid item>
-                            <EditIcon  onClick = {event => window.location.href = editor_url}>
-                                    Edit
-                            </EditIcon>
-                        </Grid>  
+                            <Button variant="outlined" color="primary"  href={editor_url}> 
 
+                                <Grid container spacing={2}                        
+                                    justify="center"
+                                    alignItems="center">  
+                                    <Grid item>
+                                        Edit 
+                                    </Grid>
+                                    <Grid item>
+                                         <EditIcon>  Edit </EditIcon>
+                                    </Grid>  
+                                </Grid>
+                            </Button>                          
+                        </Grid>
                         <Grid item>
                             <DeletionAlert handleDelete={()=>deletePortfolio(portfolioID)}/>
                         </Grid> 
-                        </Grid>        
+                    </Grid>        
                     </Grid >
                 </Grid>
             </div>
@@ -155,11 +165,7 @@ export default function PortfolioList (props) {
             justify="flex-start"
             alignItems="flex-start"
             className='PortfolioListRoot'>
-            <Grid item>
-                <Typography gutterBottom variant="h4">
-                    Your Portfolios
-                </Typography>     
-            </Grid>
+            
                 <Grid item className='FixedHeightContainer'
                     container
                     direction="column"
@@ -169,10 +175,10 @@ export default function PortfolioList (props) {
                     {!portfolio_list || portfolio_list.length === 0 ?
                         (<div className='SignSubmit'>
                             <Button variant="contained" color="white" href="/portfolio/template">
-                            Create a new portfolio
+                                Create a new portfolio
                             </Button>
                         </div>):
-                        <PortfolioList portfolio_list={portfolio_list}/>                      
+                        <PortfolioList portfolio_list={portfolio_list}/>                     
                     }  
                 </Grid> 
 

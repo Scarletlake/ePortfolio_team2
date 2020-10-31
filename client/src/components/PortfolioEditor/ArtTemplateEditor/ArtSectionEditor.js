@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 
 import '../../../views/artTemplateEditor.css'
 import UploadPicture from '../UploadPicture';
-import UseWindowSize from '../../App/UseWindowSize';
+
 const styles = (theme) => ({
     root: {
         flexGrow: 1,

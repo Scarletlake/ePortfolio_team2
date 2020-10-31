@@ -28,8 +28,8 @@ export default class PortfolioSection extends Component {
                        <Grid item xs={6} >
                            <div className='SectionContainer'>
                                {this.props.sectionsTextBackround?
-                                <img className='SectionImage' src={this.props.sectionsTextBackround}/>:
-                                <img className='SectionImage' src={defaultDescPhoto}/>
+                                <img className='SectionImage' src={this.props.sectionsTextBackround} alt="unable to load background"/>:
+                                <img className='SectionImage' src={defaultDescPhoto} alt="unable to load background"/>
                                }
                                 
                                 <div className='PortfolioDesc'>

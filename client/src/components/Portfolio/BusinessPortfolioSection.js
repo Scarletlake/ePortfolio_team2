@@ -29,8 +29,8 @@ export default class PortfolioSection extends Component {
                        <Grid item xs={6} >
                            <div className='SectionContainer'>
                                {textBackground?
-                                    <img className='SectionImage' src={textBackground}/>:
-                                    <img className='SectionImage' src={defaultDescPhoto}/>
+                                    <img className='SectionImage' src={textBackground} alt="unable to load background"/>:
+                                    <img className='SectionImage' src={defaultDescPhoto} alt="unable to load background"/>
                                 }
                                 <div className='BusinessPortfolioDesc'>
                                     <Typography 

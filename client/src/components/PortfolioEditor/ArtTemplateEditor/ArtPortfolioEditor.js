@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   formal_title_input: {
+    color: "white",
     background: "transparent",
     '&:hover': {
       background: "#fafafa",
@@ -92,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   contact_input: {
     width: (size) => (size.width * 0.195),
     height: 'fit-content',
-    margin: theme.spacing(2),
+    marginLeft: theme.spacing(2),
   },
   paper: {
     //4:5
@@ -203,8 +204,6 @@ export default function PortfolioEditor(props) {
   const size = UseWindowSize();
   const classes = useStyles(size);
   const theme = useTheme();
-  //use the edge
-  let smalleredge = size.height;
 
   const { _id, portfolioName, template, userName, backgroundImage, homePage, formalPage, leisurePage, contactPage } = props.portfolio;
 
@@ -319,15 +318,6 @@ export default function PortfolioEditor(props) {
   const handleClickAwayHeader = () => {
     setEditHeader(false);
   };
-
-  const compareEdge = () => {
-    if(size.height>size.width){
-      smalleredge=size.width;
-    }else{
-      smalleredge=size.height;
-    }
-
-}
 
   async function publishPortfolio() {
     handlePublish();
@@ -865,8 +855,8 @@ export default function PortfolioEditor(props) {
                               >
                           <UploadPicture uploadPicture={setContactPhoto} 
                                         pictureUrl={contact_page_photo}
-                                         width={smalleredge*0.36}
-                                         height={smalleredge*0.36*7/5}/>
+                                         width={size.width * 0.195}
+                                         height={size.width * 0.195*7/5}/>
                         </Grid>
                         
                         <Grid container item

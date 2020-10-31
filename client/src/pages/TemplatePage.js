@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     height: 48,
     padding: "0 30px",
     marginTop: "5px",
-    width: "80%",
+    width: "100%",
   },
   card: {
     maxWidth: 450,
@@ -137,7 +137,7 @@ export default function TemplatePage() {
 
         <Grid container className={classes.grid} spacing={2} >
           <Grid item xs={12} sm={12} md={12} lg={4} xl={4} >
-            <Card className={classes.card} className="container">
+            <Card className='container'>
               <CardActionArea className="image" >
                 <CardMedia
                   component="img"
@@ -160,6 +160,7 @@ export default function TemplatePage() {
                 <Button className={classes.btn_style} onClick={handleClickOpen1}>
                   View example
                 </Button>
+                <br/><br/>
                 <Button className={classes.btn_style} href="/portfolio/editor?temp=business&id=0">
                   Use this template
                 </Button>
@@ -168,7 +169,7 @@ export default function TemplatePage() {
           </Grid>
 
           <Grid item xs={12} sm={12} md={12} lg={4} xl={4} >
-            <Card className={classes.card} className="container" >
+            <Card className="container" >
               <CardActionArea className="image" >
                 <CardMedia
                   component="img"
@@ -190,6 +191,7 @@ export default function TemplatePage() {
                 <Button className={classes.btn_style} onClick={handleClickOpen2}>
                   View example
                 </Button>
+                <br/><br/>
                 <Button className={classes.btn_style} href="/portfolio/editor?temp=minimal&id=0">
                   Use this template
                 </Button>
@@ -198,7 +200,7 @@ export default function TemplatePage() {
           </Grid>
 
           <Grid item xs={12} sm={12} md={12} lg={4} xl={4} >
-            <Card className={classes.card} className="container" >
+            <Card className="container" >
               <CardActionArea className="image" >
                 <CardMedia
                   component="img"
@@ -220,6 +222,7 @@ export default function TemplatePage() {
                 <Button className={classes.btn_style} onClick={handleClickOpen3}>
                   View example
                 </Button>
+                <br/><br/>
                 <Button className={classes.btn_style} href="/portfolio/editor?temp=art&id=0">
                   Use this template
                 </Button>

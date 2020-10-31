@@ -1,23 +1,13 @@
 import React, { useState } from 'react'
-import { Tabs, Tab, Typography, Box } from '@material-ui/core';
+import { Tabs, Tab, Box } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import ArtPortfolioSection from './ArtPortfolioSection.js';
-import {makeStyles} from "@material-ui/core/styles";
 import '../../views/styles.css'
 import '../../views/artTemplate.css'
 
 
-const useStyles = makeStyles((theme) => ({
-  loading: {
-    display: 'flex',
-    marginTop: theme.spacing(20),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-}));
-
 export default function ArtPortfolio(props) {
-  const classes = useStyles();
+
   const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601626502/hc8a716hhqklmhpfq30j.jpg";
   const defaultFormalPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602407981/plcbsaflnqthvk7rpnmb.png";
   const defaultLeisurePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602443847/wk4tyawn3posmcw9tq65.png";
@@ -67,8 +57,8 @@ export default function ArtPortfolio(props) {
   return (
     <div className='PageContainer'>
       {portfolio.backgroundImage?
-        <img className='PortfolioBackgroundImg' src={portfolio.backgroundImage}/>:
-        <img className='PortfolioBackgroundImg' src={defaultBackgroundPhoto}/>
+        <img className='PortfolioBackgroundImg' src={portfolio.backgroundImage} alt='PortfolioBackgroundImg'/>:
+        <img className='PortfolioBackgroundImg' src={defaultBackgroundPhoto} alt='PortfolioBackgroundImg'/>
       }      
       <div className='PortfolioForm TextCenter VerticalAlign PortfolioBackgroundWrap'>
         <div className='PortfolioFullName'> {portfolio.userName} </div>
@@ -147,8 +137,8 @@ export default function ArtPortfolio(props) {
           <div className='VerticalAlign'>
             <div className='ContactContainer'>
               {portfolio.contactPage.textBackground?
-                <img className='PortfolioContactImg' src={portfolio.contactPage.textBackground}/> :           
-                <img className='PortfolioContactImg' src={defaultDescPhoto}/>
+                <img className='PortfolioContactImg' src={portfolio.contactPage.textBackground} alt="PortfolioContactImg"/> :           
+                <img className='PortfolioContactImg' src={defaultDescPhoto} alt="PortfolioContactImg"/>
               }
               
               <div>

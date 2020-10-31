@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -69,9 +70,20 @@ const DeletionAlert = withStyles(styles)((props) => {
 
   return (
     <div>
-      <DeleteIcon onClick={handleClickOpen}>
-        Delete
-      </DeleteIcon>
+      <Button variant="outlined" color="primary"  onClick={handleClickOpen}> 
+
+        <Grid container spacing={2}                        
+          justify="center"
+          alignItems="center">  
+          <Grid item>
+              Delete 
+          </Grid>
+          <Grid item>
+            <DeleteIcon > Delete </DeleteIcon>
+          </Grid>  
+        </Grid>
+      </Button>
+      
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           Delete This Portfolio?

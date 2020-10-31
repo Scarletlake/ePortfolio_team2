@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Tabs, Tab, Typography, Box } from '@material-ui/core';
+import { Tabs, Tab, Box } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import '../../views/styles.css'
 import '../../views/businessTemplate.css'
@@ -10,7 +10,6 @@ export default function TemplateBusinessPortfolioPage(props) {
     const portfolio  = props.portfolio;
     const defaultHomePhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1602528379/uauqeyyjvqcofbltokwg.png";
     const defaultDescPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603905346/knqtpdid10lzpcriw29s.jpg";
-    const defaultBackgroundPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1603901778/smshitjnldb6rxf1dyz4.jpg";
     const defaultContactPhoto = "http://res.cloudinary.com/do0ecn2sm/image/upload/v1601543959/xiwhjc3rgetogsluhj43.jpg";
 
     const [value, setValue] = useState(0); // Tabs
@@ -52,7 +51,7 @@ export default function TemplateBusinessPortfolioPage(props) {
 
     return (
         <div className='PageContainer'>
-        <img className='PortfolioBackgroundImg' src={portfolio.backgroundImage}/>
+            <img className='PortfolioBackgroundImg' src={portfolio.backgroundImage} alt="unable to load the background"/>
         <div className='PortfolioForm TextCenter VerticalAlign PortfolioBackgroundWrap'>
           <div className='PortfolioForm TextCenter VerticalAlign'>
             <div className='PortfolioFullName white'> {portfolio.userName} </div>
@@ -119,7 +118,10 @@ export default function TemplateBusinessPortfolioPage(props) {
                 
                 <div className='VerticalAlign'>
                     <div className='ContactContainer'>
-                    <img className='BusinessPortfolioContactImg' src={portfolio.contactPage.textBackground}/>
+                        {portfolio.contactPage.textBackground?
+                            <img className='BusinessPortfolioContactImg' src={portfolio.contactPage.textBackground} alt="unable to load textBackground"/>:          
+                            <img className='BusinessPortfolioContactImg' src={defaultDescPhoto} alt="unable to load textBackground" />
+                        }                  
                     
                     <div>
                         <div className='ContactTitle white'>{portfolio.contactPage.title}</div>

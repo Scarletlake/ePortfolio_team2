@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import InputBase from '@material-ui/core/InputBase';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, useTheme, createMuiTheme, responsiveFontSizes, MuiThemeProvider} from '@material-ui/core/styles';
-import { Tabs, Tab, Box, TextField,Typography } from '@material-ui/core';
+import { Tabs, Tab, Box,Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import UseWindowSize from '../../App/UseWindowSize';
@@ -227,8 +227,6 @@ export default function PortfolioEditor(props) {
   const size = UseWindowSize();
   const classes = useStyles(size);
   const theme = useTheme();
-  //use the edge
-  let smalleredge = size.height;
 
   const { _id, portfolioName, template, userName, backgroundImage, homePage, formalPage, leisurePage, contactPage } = props.portfolio;
 
@@ -261,8 +259,6 @@ export default function PortfolioEditor(props) {
   const [leisure_page_sections, setLeisurePageSections] = useState(leisurePage.sections);
  
   // page photos
-  const [formal_page_photo, setFormalPhoto] = useState(formalPage.pagePhoto);
-  const [leisure_page_photo, setLeisurePhoto] = useState(leisurePage.pagePhoto);
   const [contact_page_photo, setContactPhoto] = useState(contactPage.photo);
 
   // page text background
@@ -344,15 +340,6 @@ export default function PortfolioEditor(props) {
     setEditHeader(false);
   };
 
-  const compareEdge = () => {
-    if(size.height>size.width){
-      smalleredge=size.width;
-    }else{
-      smalleredge=size.height;
-    }
-
-}
-
   async function publishPortfolio() {
     handlePublish();
     const portfolio = {
@@ -369,14 +356,14 @@ export default function PortfolioEditor(props) {
       formalPage: {
         tag: formal_page_tag,
         title: formal_page_title,
-        pagePhoto: formal_page_photo,
+        pagePhoto: formalPage.pagePhoto,
         textBackground: formal_text_background,
         sections: formal_page_sections
       },
       leisurePage: {
         tag: leisure_page_tag,
         title: leisure_page_title,
-        pagePhoto: leisure_page_photo,
+        pagePhoto: leisurePage.pagePhoto,
         textBackground: leisure_text_background,
         sections: leisure_page_sections
       },
@@ -838,8 +825,8 @@ export default function PortfolioEditor(props) {
                         <Grid item >
                           <UploadPicture uploadPicture={setContactPhoto} 
                                         pictureUrl={contact_page_photo}
-                                         width={smalleredge*0.36}
-                                         height={smalleredge*0.36*7/5}/>
+                                         width={size.width * 0.195}
+                                         height={size.width * 0.3}/>
                         </Grid>
                         
                         <Grid item >

@@ -216,8 +216,6 @@ export default function PortfolioEditor(props) {
   const [leisure_page_sections, setLeisurePageSections] = useState(leisurePage.sections);
  
   // page photos
-  const [formal_page_photo, setFormalPhoto] = useState(formalPage.pagePhoto);
-  const [leisure_page_photo, setLeisurePhoto] = useState(leisurePage.pagePhoto);
   const [contact_page_photo, setContactPhoto] = useState(contactPage.photo);
 
   // page text background
@@ -324,14 +322,14 @@ export default function PortfolioEditor(props) {
       formalPage: {
         tag: formal_page_tag,
         title: formal_page_title,
-        pagePhoto: formal_page_photo,
+        pagePhoto: formalPage.pagePhoto,
         textBackground: formal_text_background,
         sections: formal_page_sections
       },
       leisurePage: {
         tag: leisure_page_tag,
         title: leisure_page_title,
-        pagePhoto: leisure_page_photo,
+        pagePhoto: leisurePage.pagePhoto,
         textBackground: leisure_text_background,
         sections: leisure_page_sections
       },
@@ -774,8 +772,8 @@ export default function PortfolioEditor(props) {
                               >
                           <UploadPicture uploadPicture={setContactPhoto} 
                                         pictureUrl={contact_page_photo}
-                                         width={smalleredge*0.5}
-                                         height={smalleredge*0.5}/>
+                                        width={size.width * 0.28}
+                                        height={size.width * 0.28}/>
                         </Grid>
                         
                         <Grid container item
