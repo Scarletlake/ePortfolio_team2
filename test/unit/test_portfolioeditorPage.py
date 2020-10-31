@@ -25,7 +25,7 @@ class TestPortfolioEditor(unittest.TestCase):
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
         time.sleep(1)
         driver.find_element(By.CSS_SELECTOR, ".MuiButton-contained > .MuiButton-label").click()
-        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(1) .MuiButtonBase-root:nth-child(2) > .MuiButton-label").click()
+        driver.find_element(By.CSS_SELECTOR, ".MuiGrid-root:nth-child(1) .MuiButtonBase-root:nth-child(4) > .MuiButton-label").click()
         time.sleep(1)
         driver.find_element(By.CSS_SELECTOR, ".material-icons").click()
         time.sleep(1)
