@@ -156,7 +156,7 @@ export default function LandingPage() {
               </Grid>
 
               <Grid item xs={4} className={classes.member} container>
-                <Grid item xs={12}><img src="https://res.cloudinary.com/do0ecn2sm/image/upload/v1602732326/wlofpppmau7a2mviyc0c.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
+                <Grid item xs={12}><img src="/JiashuaiYu.jpg" style={{ height: 150, width: 150, borderRadius: 75 }} /></Grid>
                 <Grid item xs={12}><Typography variant="h6">Jiashuai Yu</Typography></Grid>
               </Grid>
 
