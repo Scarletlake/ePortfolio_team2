@@ -45,6 +45,7 @@ const createPortfolio = async (req, res) => {
     });
 
     portfolio.portfolioURL = "http://pandaeportfolio.herokuapp.com/portfolio/" + portfolio._id;
+    portfolio.portfolioURL = "http://localhost:3000/portfolio/" + portfolio._id;
 
     // add the new portfolio to the array           
     const user = await User.findOneAndUpdate(
