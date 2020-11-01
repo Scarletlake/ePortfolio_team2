@@ -181,7 +181,7 @@ export default function TemplatePage() {
                     Minimal
                   </Typography>
                   <Typography variant="h6" color="textSecondary" component="p">
-                    Simple,but not crude
+                    Simple, but not crude
                   </Typography>
                 </CardContent>
               </CardActionArea>
