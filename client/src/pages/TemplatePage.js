@@ -150,7 +150,7 @@ export default function TemplatePage() {
                     Business
                   </Typography>
                   <Typography variant="h6" color="textSecondary" component="p">
-                    Theme suitable for business use.
+                    Your best partner with your work
                   </Typography>                  
                 </CardContent>
               </CardActionArea>
@@ -181,7 +181,7 @@ export default function TemplatePage() {
                     Minimal
                   </Typography>
                   <Typography variant="h6" color="textSecondary" component="p">
-                    All basic components, the simplest choice.
+                    Simple,but not crude
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -212,7 +212,7 @@ export default function TemplatePage() {
                     Art
                   </Typography>
                   <Typography variant="h6" color="textSecondary" component="p">
-                    Make your portfolio more personalized.
+                    Your own style, your story
                   </Typography>
                 </CardContent>
               </CardActionArea>
