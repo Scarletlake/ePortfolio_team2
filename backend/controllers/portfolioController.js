@@ -44,6 +44,7 @@ const createPortfolio = async (req, res) => {
       contactPage: contactPage
     });
 
+    //remember to change here when deploy heroku
     portfolio.portfolioURL = "http://localhost:3000/portfolio/" + portfolio._id;
 
     // add the new portfolio to the array           

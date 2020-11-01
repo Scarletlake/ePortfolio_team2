@@ -92,6 +92,8 @@
     position: absolute;
     top: 55%;
     left: 35%;
+    top:55%;
+    left:35%;
     transform: translate(-50%, -50%);
     font-family: monospace, sans-serif;
 }
